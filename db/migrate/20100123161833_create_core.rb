@@ -329,6 +329,13 @@ class CreateCore < ActiveRecord::Migration
     end
     add_index :ranks, [:ranking_id]
     add_index :ranks, [:rankable_id,:rankable_type]
+    
+    create_table :badges do |t|
+      t.belongs_to :pet, :null => false
+      t.string :name, :limit => 64, :null => false
+      t.string :description, :limit => 512, :null => false
+    end
+    add_index :badges, [:pet_id]
             
     create_table :comments do |t|
       t.belongs_to :pet, :null => false
@@ -393,6 +400,11 @@ class CreateCore < ActiveRecord::Migration
     drop_table :messages
     drop_table :signals
     drop_table :comments
+    drop_table :badges
+    drop_table :ranks
+    drop_table :rankings
+    drop_table :awards
+    drop_table :leaderboards
     drop_table :loans
     drop_table :belongings
     drop_table :spoils
