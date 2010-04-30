@@ -52,10 +52,9 @@ class CreateCore < ActiveRecord::Migration
       t.string :name, :null => false
       t.boolean :saved, :null => false, :default => false
       t.boolean :active, :null => false, :default => false
-      
       t.timestamps
     end
-    add_index :strategies, [:combatant_id,:combatant_type,:saved,:active]
+    add_index :strategies, [:combatant_id,:combatant_type,:active]
     
     create_table :maneuvers do |t|
       t.integer :rank, :default => 0
@@ -146,7 +145,7 @@ class CreateCore < ActiveRecord::Migration
       t.string :description, :limit => 2048
       t.integer :siblings, :null => false    
       t.datetime :birthday   
-      t.timestamps
+      t.datetime :created_at
     end
     add_index :biographies, [:pet_id] 
     
@@ -172,7 +171,7 @@ class CreateCore < ActiveRecord::Migration
       t.timestamps
     end
     add_index :pack_members, [:pack_id,:status,:created_at]
-    add_index :pack_members, [:pet_id,:createad_at]
+    add_index :pack_members, [:pet_id,:created_at]
     
     create_table :challenges do |t|
       t.string :status, :null => false, :default => "issued"
@@ -182,11 +181,20 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :attacker_strategy, :null => false
       t.belongs_to :defender
       t.belongs_to :defender_strategy
-      
       t.timestamps
     end
-    add_index :challenges, [:attacker_id,:defender_id,:status,:created_at]
-    add_index :challenges, [:defender_id,:attacker_id,:status,:created_at]
+    add_index :challenges, [:attacker_id,:defender_id,:status]
+    add_index :challenges, [:defender_id,:attacker_id,:status]
+    add_index :challenges, [:created_at]
+    
+    create_table :battles do |t|
+      t.belongs_to :challenge, :null => false
+      t.belongs_to :winner
+      t.text :logs
+      t.datetime :created_at
+    end
+    add_index :battles, [:challenge_id]
+    add_index :battles, [:winner_id]
     
     create_table :sentients do |t|
       t.string :sentient_type, :null => false
@@ -204,6 +212,23 @@ class CreateCore < ActiveRecord::Migration
       t.integer :required_rank, :default => 1, :null => false
     end
     add_index :sentients, [:population,:required_rank]
+    
+    create_table :hunts do |t|
+      t.belongs_to :sentient, :null => false
+      t.string :status, :null => false, :default => "started"
+      t.text :logs
+      t.timestamps
+    end
+    add_index :hunts, [:sentient_id,:status,:created_at]
+    add_index :hunts, [:status,:created_at]
+    
+    create_table :hunters do |t|
+      t.belongs_to :hunt, :null => false
+      t.belongs_to :pet, :null => false
+      t.string :outcome, :null => false
+    end
+    add_index :hunters, [:pet_id,:hunt_id], :unique => true
+    add_index :hunters, [:hunt_id]
     
     create_table :humans do |t|
       t.string :name, :null => false, :limit => 64
@@ -314,7 +339,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :item, :null => false
       t.integer :rank, :null => false
     end
-    add_index :leaderboards, [:leaderboard_id,:rank_id]
+    add_index :awards, [:leaderboard_id,:rank]
     
     create_table :rankings do |t|
       t.belongs_to :leaderboard, :null => false
@@ -331,11 +356,16 @@ class CreateCore < ActiveRecord::Migration
     add_index :ranks, [:rankable_id,:rankable_type]
     
     create_table :badges do |t|
-      t.belongs_to :pet, :null => false
       t.string :name, :limit => 64, :null => false
       t.string :description, :limit => 512, :null => false
     end
-    add_index :badges, [:pet_id]
+    
+    create_table :badges_pets do |t|
+      t.belongs_to :badge, :null => false
+      t.belongs_to :pet, :null => false
+      t.timestamps
+    end
+    add_index :badges_pets, [:badge_id,:pet_id], :unique => true
             
     create_table :comments do |t|
       t.belongs_to :pet, :null => false
@@ -391,7 +421,8 @@ class CreateCore < ActiveRecord::Migration
       t.text :params
       t.timestamps
     end
-    add_index :payment_order_transactions, [:payment_order,:created_at]
+    add_index :payment_order_transactions, [:payment_order_id]
+    add_index :payment_order_transactions, [:created_at]
   end
   
   def self.down
@@ -400,6 +431,7 @@ class CreateCore < ActiveRecord::Migration
     drop_table :messages
     drop_table :signals
     drop_table :comments
+    drop_table :badges_pets
     drop_table :badges
     drop_table :ranks
     drop_table :rankings
@@ -413,7 +445,10 @@ class CreateCore < ActiveRecord::Migration
     drop_table :items
     drop_table :tames
     drop_table :humans
+    drop_table :hunters
+    drop_table :hunts
     drop_table :sentients
+    drop_table :battles
     drop_table :challenges
     drop_table :pack_members
     drop_table :packs
