@@ -1,0 +1,13 @@
+<fb:fbml version="1.1">
+  <%= facebook_stylesheet_link_tag "facebook" %>
+  <%= facebook_javascript_tag "facebooker" %>
+
+  <div id="contents">
+	<div id="header">
+	</div>
+	
+	<div id="body">
+    <%= yield %>
+    </div>
+  </div>
+</fb:fbml>
