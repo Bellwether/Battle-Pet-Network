@@ -65,6 +65,7 @@ class CreateCore < ActiveRecord::Migration
    
     create_table :users do |t| 
       t.belongs_to :pet
+      t.belongs_to :referer
       t.integer :facebook_id, :limit => 20
       t.string :iphone_udid, :limit => 512
       t.string :username, :limit => 128

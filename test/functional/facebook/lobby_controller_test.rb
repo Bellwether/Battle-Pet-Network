@@ -20,4 +20,13 @@ class Facebook::LobbyControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'guide'
   end
+
+  def test_should_get_invite
+    facebook_get :invite, :fb_sig_user => users(:one).facebook_id.to_s
+    assert_response :success
+    assert_template 'invite'
+    assert_tag :tag => "fb:request-form"
+    assert_tag :tag => "fb:multi-friend-selector"
+    assert assigns(:exclude_ids)
+  end
 end

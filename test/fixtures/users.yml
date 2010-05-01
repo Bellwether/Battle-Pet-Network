@@ -1,0 +1,6 @@
+one:
+    username: one
+    email: test@battle-pet.net
+    gender: male
+    facebook_id: "1234"
+    persistence_token: <%= Authlogic::Random.friendly_token %>
