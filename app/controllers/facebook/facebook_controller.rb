@@ -1,6 +1,6 @@
 class Facebook::FacebookController < ApplicationController
   include ApplicationHelper
-  include FacebookHelper
+  include Facebook::FacebookHelper
   
   before_filter :ensure_facebook_request
   

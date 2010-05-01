@@ -376,12 +376,12 @@ class CreateCore < ActiveRecord::Migration
     add_index :comments, [:pet_id]
     add_index :comments, [:parent_id,:parent_type,:created_at]
     
-    create_table :signals do |t|
+    create_table :signs do |t|
        t.belongs_to :sender, :null => false
        t.belongs_to :recipient, :null => false
        t.timestamps
     end
-    add_index :signals, [:sender_id,:recipient_id,:created_at]
+    add_index :signs, [:sender_id,:recipient_id,:created_at]
     
     create_table :messages do |t|
        t.belongs_to :sender, :null => false
@@ -429,7 +429,7 @@ class CreateCore < ActiveRecord::Migration
     drop_table :payment_order_transactions
     drop_table :payment_orders
     drop_table :messages
-    drop_table :signals
+    drop_table :signs
     drop_table :comments
     drop_table :badges_pets
     drop_table :badges
