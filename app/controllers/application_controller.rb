@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :registered?
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   def current_user_session
@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
+  end
+  
+  def registered?
+    !current_user.blank?
   end
 end

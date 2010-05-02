@@ -1,3 +1,5 @@
+/* layout */
+
 #contents { 
   font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
   font-size:11px; 
@@ -8,3 +10,26 @@
   font-size:10px;
   font-style:italic;	
 }
+
+#contents .box { 
+  background:#F7F7F7 none repeat scroll 0 0; 
+  border:1px solid #BDC7D8; 
+  padding:5px; 
+  width: 475px; 
+}
+
+#contents .sidebox {
+  border:1px solid #BDC7D8;
+  margin-right:15px	
+}
+
+.breaker {clear:both;display:block;margin-bottom:10px;}
+.hidden {display:none;}
+.right {float:right;}
+.left {float:left;}
+
+/* spacing */
+
+.full { width: 740px !important;}
+.slim { margin-right:15px; width: 250px !important;}
+.half { width: 360px !important;}
