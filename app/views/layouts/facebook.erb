@@ -10,6 +10,10 @@
 	</p>
 	
 	<div id="header">
+	  <div id="hooks right">
+		<%= fb_bookmark_button %>
+	  	<%= fb_fan_button %>
+	  </div>	
 	  <div id="tabs">
 		<%= render_tabs %>
 	  </div>
@@ -24,7 +28,7 @@
 	  </div>
       <div id="links">
 		<ul>
-		  <li><%=facebook_link_to "invite", ''%></li>
+		  <li><%=facebook_link_to "invite friends", ''%></li>
 		  <li><%=facebook_link_to "developers", ''%></li>
 		  <li><%=facebook_link_to "iphone", ''%></li>
 		  <li><%=facebook_link_to "contract", ''%></li>

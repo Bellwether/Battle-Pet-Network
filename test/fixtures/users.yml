@@ -3,4 +3,5 @@ one:
     email: test@battle-pet.net
     gender: male
     facebook_id: "1234"
+    facebook_session_key: 45675cdbb42a1fb18ede
     persistence_token: <%= Authlogic::Random.friendly_token %>

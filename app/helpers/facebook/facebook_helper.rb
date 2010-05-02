@@ -16,6 +16,10 @@ module Facebook::FacebookHelper
   end
 
   def render_tabs
-    render(:partial => '/facebook/strategies/tabs')
+    render(:partial => '/facebook/tabs')
+  end
+  
+  def fb_fan_button
+   "<fb:fan profile_id=\"#{AppConfig.facebook.app_id}\" stream=\"0\" connections=\"0\" width=\"200\" height=\"64\" logobar=\"false\"></fb:fan>"
   end
 end

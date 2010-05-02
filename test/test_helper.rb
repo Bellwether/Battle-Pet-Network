@@ -35,5 +35,16 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  
+  def mock_user_facebooking
+    @facebook_session_mock = flexmock(Facebooker::Session)
+    @facebook_user_mock = flexmock(Facebooker::User)
+    @facebook_user_mock.should_receive(:populate)
+    @facebook_user_mock.should_receive(:name).and_return('mock user')
+    @facebook_user_mock.should_receive(:proxied_email).and_return('mock@example.com')
+    @facebook_user_mock.should_receive(:sex).and_return('male')
+    @facebook_user_mock.should_receive(:locale).and_return('en')
+    
+    @facebook_session_mock.should_receive(:user).and_return(@facebook_user_mock)
+  end
 end

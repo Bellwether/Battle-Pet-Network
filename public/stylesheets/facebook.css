@@ -11,6 +11,11 @@
   font-style:italic;	
 }
 
+#hooks {
+  margin:0 5px 0 0;
+  width:250px;
+}
+
 #contents .box { 
   background:#F7F7F7 none repeat scroll 0 0; 
   border:1px solid #BDC7D8; 
