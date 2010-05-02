@@ -11,6 +11,10 @@ module Facebook::FacebookHelper
     image_tag "#{request.protocol}#{request.host_with_port}/images/#{path}"
   end
   
+  def facebook_link_to(text,url)
+    link_to text, "#{url}"
+  end
+
   def render_tabs
     render(:partial => '/facebook/strategies/tabs')
   end
