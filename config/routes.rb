@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
       lobby.guide 'guide', :action => 'guide'
       lobby.invite 'invite', :action => 'invite'
     end
+    
+    f.root :controller => 'lobby'
   end
 
   map.namespace :iphone do |f|

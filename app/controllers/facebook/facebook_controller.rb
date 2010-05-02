@@ -19,6 +19,10 @@ class Facebook::FacebookController < ApplicationController
     false
   end
   
+  def has_facebook_user?
+    return (facebook_session && facebook_session.secured?)
+  end
+  
   def ensure_facebook_request
     unless request_comes_from_facebook?
       render :file => "#{RAILS_ROOT}/public/401.html", :status => :unauthorized
@@ -31,7 +35,7 @@ class Facebook::FacebookController < ApplicationController
       set_facebook_session 
       
       # if the session is secured then the we have a valid facebook user id
-      if (facebook_session and facebook_session.secured?)
+      if has_facebook_user?
         @current_user = User.from_facebook(facebook_session.user.uid.to_i,facebook_session)
       end
     end

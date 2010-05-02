@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def facebook_friend_ids
+    []
+  end
+  
   def update_from_facebook_session_key(session_key) 
     if facebook_session_key != session_key
       self.facebook_session_key = session_key
