@@ -1,0 +1,17 @@
+<% fb_tabs do %>
+  <% if has_pet? %>
+    <%= fb_tab_item "Home", '', :align => :left %>
+    <%= fb_tab_item "Combat", '', :align => :left %>
+    <%= fb_tab_item "Shop", '', :align => :left if has_shop? %>
+  <% end %>
+  <%= fb_tab_item (has_pet? ? "Rival Pets" : "Pets"), '', :align => :left %>
+  <%= fb_tab_item (has_pack? ? "Rival Packs" : "Packs"), '', :align => :left %>
+  <%= fb_tab_item (has_pet? ? "Hunting" : "Sentients"), '', :align => :left %>
+  <%= fb_tab_item "Humans", '', :align => :left %>
+  <%= fb_tab_item "Market", '', :align => :left %>
+
+  <%= fb_tab_item "Lobby", '', :align => :right %>
+  <%= fb_tab_item "About", '', :align => :right %>
+  <%= fb_tab_item "Guide", '', :align => :right %>
+  <%= fb_tab_item "Leaderboard", '', :align => :right %>
+<% end %>
