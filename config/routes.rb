@@ -10,6 +10,9 @@ ActionController::Routing::Routes.draw do |map|
       lobby.invite 'invite', :action => 'invite'
     end
     
+    f.resources :pets, :only => [:index,:show,:new,:create] do |p|
+    end
+    
     f.root :controller => 'lobby'
   end
 

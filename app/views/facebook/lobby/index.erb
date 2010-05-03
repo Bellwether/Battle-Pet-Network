@@ -1,4 +1,4 @@
-<h2>Welcome to <%=AppConfig.name%></h2>
+<% content_for :page_title do %><h2>Welcome to <%=AppConfig.name%></h2><% end %>
 
 <% unless registered? %>
 <div class="box">

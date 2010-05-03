@@ -1,0 +1,65 @@
+siamese:
+    name: Siamese
+    species: Cat
+    health: 14
+    endurance: 75
+    fortitude: 4
+    intelligence: 4
+    affection: 4
+    power: 1
+    favorite_action: slash
+    
+shorthair:
+    name: Shorthair
+    species: Cat
+    health: 16
+    endurance: 45
+    fortitude: 7
+    intelligence: 2
+    affection: 3
+    power: 2
+    favorite_action: bite
+    
+persian:
+    name: Persian
+    species: Cat
+    health: 14
+    endurance: 50
+    fortitude: 3
+    intelligence: 6
+    affection: 7
+    power: 1
+    favorite_action: flank
+    
+russian_blue:
+    name: Russian Blue
+    species: Cat
+    health: 12
+    endurance: 30
+    fortitude: 10
+    intelligence: 3
+    affection: 5
+    power: 2
+    favorite_action: dodge
+
+maine_coon:        
+    name: Maine Coon
+    species: Cat
+    health: 25
+    endurance: 50
+    fortitude: 4
+    intelligence: 3
+    affection: 3
+    power: 2
+    favorite_action: scratch
+    
+burmese:
+    name: Burmese
+    species: Cat
+    health: 10
+    endurance: 40
+    fortitude: 5
+    intelligence: 3
+    affection: 4
+    power: 1
+    favorite_action: scratch

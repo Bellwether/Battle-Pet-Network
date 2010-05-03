@@ -26,7 +26,7 @@ class Facebook::LobbyControllerTest  < ActionController::TestCase
   end
   
   def test_should_get_invite
-    facebook_get :invite, :fb_sig_user => users(:one).facebook_id.to_s
+    facebook_get :invite, :fb_sig_user => users(:one).facebook_id
     assert_response :success
     assert_template 'invite'
     assert_tag :tag => "fb:request-form"

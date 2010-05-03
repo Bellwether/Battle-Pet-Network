@@ -28,6 +28,31 @@
   margin-right:15px	
 }
 
+.info h4 { 
+  margin-bottom:10px; 
+  padding:5px 0 0 5px; 
+  font-size:13px; 
+}
+
+.info ul { 
+  color:#3B5998; 
+  padding:0 10px 5px; 
+} 
+
+.info li { 
+  font-weight:bold; 
+  list-style-image:none; 
+  list-style-position:inside; 
+  list-style-type:square; 
+  padding:0 0 5px; 
+} 
+
+.info .description { 
+  color:#444444; 
+  font-weight:normal; 
+  padding:3px 0 0 15px; 
+} 
+
 .breaker {clear:both;display:block;margin-bottom:10px;}
 .hidden {display:none;}
 .right {float:right;}

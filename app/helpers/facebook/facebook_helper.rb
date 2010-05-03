@@ -19,6 +19,10 @@ module Facebook::FacebookHelper
     render(:partial => '/facebook/tabs')
   end
   
+  def render_petless_callout
+    render(:partial => '/facebook/petless_callout')
+  end
+  
   def fb_fan_button
    "<fb:fan profile_id=\"#{AppConfig.facebook.app_id}\" stream=\"0\" connections=\"0\" width=\"200\" height=\"64\" logobar=\"false\"></fb:fan>"
   end
