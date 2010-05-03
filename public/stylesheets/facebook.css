@@ -57,6 +57,8 @@
 .hidden {display:none;}
 .right {float:right;}
 .left {float:left;}
+.em {font-style:italic;}
+.strong {float-weight:bold;}
 
 /* spacing */
 

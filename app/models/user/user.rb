@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :pet
+  
   acts_as_authentic do |c|
     c.login_field = :username
     c.validate_login_field = false
