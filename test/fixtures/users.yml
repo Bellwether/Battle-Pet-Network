@@ -1,7 +1,23 @@
 one:
     username: one
-    email: test@battlepet.net
+    email: one@example.com
     gender: male
     facebook_id: "1234"
     facebook_session_key: 45675cdbb42a1fb18ede
+    persistence_token: <%= Authlogic::Random.friendly_token %>
+    
+two:
+    username: two
+    pet: siamese
+    email: two@example.com
+    gender: male
+    facebook_id: "2021"
+    persistence_token: <%= Authlogic::Random.friendly_token %>    
+    
+three:
+    username: three
+    pet: persian
+    email: three@example.com
+    gender: male
+    facebook_id: "4943"
     persistence_token: <%= Authlogic::Random.friendly_token %>

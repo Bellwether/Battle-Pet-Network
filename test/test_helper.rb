@@ -35,7 +35,7 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  def mock_user_facebooking
+  def mock_user_facebooking(facebook_id="2147483647")
     @facebook_session_mock = flexmock(Facebooker::Session)
     @facebook_session_mock.should_receive(:secured?).and_return(true)
     @facebook_session_mock.should_receive(:session_key).and_return("key01029")
@@ -46,13 +46,15 @@ class ActiveSupport::TestCase
     @facebook_user_mock.should_receive(:proxied_email).and_return('mock@example.com')
     @facebook_user_mock.should_receive(:sex).and_return('male')
     @facebook_user_mock.should_receive(:locale).and_return('en')
-    @facebook_user_uid = "2147483647"
-    @facebook_user_mock.should_receive(:uid).and_return(@facebook_user_uid)
-    
+    @facebook_user_mock.should_receive(:uid).and_return(facebook_id)
+  
     @facebook_session_mock.should_receive(:user).and_return(@facebook_user_mock)
+    @user_mock = flexmock(User)
+    @user_mock.new_instances.should_receive(:facebook_session).with(facebook_id).and_return(@facebook_session_mock)
     
     @controller_mock = flexmock(@controller)
     @controller_mock.should_receive(:has_facebook_user?).and_return(true)
+    @controller_mock.should_receive(:set_facebook_session).and_return(true)
     @controller_mock.should_receive(:facebook_session).and_return(@facebook_session_mock)
   end
 end

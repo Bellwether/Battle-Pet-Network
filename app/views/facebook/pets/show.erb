@@ -1,0 +1,44 @@
+<% content_for :page_title do %><h2>Pet Profile</h2><% end %>
+	
+<div class="box">
+  <h4 class="right"><%="Level #{@pet.level_rank_count} #{@pet.breed_name}"%></h4>
+  <h3><%=@pet.name%></h3>
+
+  <table class='pet'>
+	<tbody>
+	<tr>
+	  <td rowspan="6">
+		<div id="breed-details-image" class="<%="avatar-#{@pet.breed.slug}-mid" if @pet.breed %>"></div>
+	  </td>
+	  <td>Health:</td><td><%=@pet.health%></td>
+	  <td rowspan="6">
+		<table>
+		  <tr><td>Leaderboard Rank:</td><td></td></tr>
+		  <tr><td>Total Battles:</td><td></td></tr>
+		  <tr><td>Wins:</td><td></td></tr>
+		  <tr><td>Loses:</td><td></td></tr>
+		  <tr><td>Draws:</td><td></td></tr>
+		  <tr><td>Favorite Actions:</td><td></td></tr>
+		</table>
+	  </td>	
+	</tr>
+	<tr><td>Endurance:</td><td><%= @pet.endurance %></td></tr>
+	<tr><td>Fortitude:</td><td><%= @pet.fortitude %></td></tr>
+	<tr><td>Power:</td><td><%= @pet.power %></td></tr>
+	<tr><td>Intelligence:</td><td><%= @pet.intelligence %></td></tr>
+	<tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
+    </tbody>
+  </table>
+
+  <div class="occupation">Occupied With <strong><%= @pet.occupation.name %></strong></div>
+  <% show_for_pet(@pet) do %>
+  <div>
+    <div class="signs">
+	  <% Sign.signs_with(current_user_pet, @pet).each do |sign|%>
+	    <span class="sign-button left"><%= sign %></span>
+	  <% end %>
+    </div>
+    <span class="sign-button right">Challenge to Battle</span>
+  </div>
+  <% end %>
+</div>

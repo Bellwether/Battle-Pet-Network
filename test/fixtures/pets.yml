@@ -1,0 +1,27 @@
+siamese:
+    breed: siamese
+    user: two
+    name: domino
+    slug: domino
+    current_health: 10
+    current_endurance: 40
+    health: 14
+    endurance: 40
+    fortitude: 4
+    intelligence: 4
+    affection: 4
+    power: 1
+    
+persian:
+    breed: persian
+    user: three
+    name: pearl
+    slug: pearl
+    current_health: 12
+    current_endurance: 50
+    health: 12
+    endurance: 50
+    fortitude: 3
+    intelligence: 6
+    affection: 7
+    power: 1

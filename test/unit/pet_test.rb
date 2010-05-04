@@ -3,20 +3,24 @@ require 'test_helper'
 class PetTest < ActiveSupport::TestCase
   def setup
     mock_user_facebooking
+    
+    @user = users(:one)
+    @new_pet = Pet.new(:name => 'lilly', :breed_id => breeds(:persian).id, :user_id => @user.id)
   end
   
   def test_set_slug
-    user = users(:one)
-    pet = Pet.new(:name => 'lilly', :breed_id => breeds(:persian).id, :user_id => user.id)
-    assert pet.save
-    assert_not_nil pet.slug
+    assert @new_pet.save
+    assert_not_nil @new_pet.slug
+  end
+
+  def test_set_occupation
+    assert @new_pet.save
+    assert_not_nil @new_pet.reload.occupation
   end
   
   def test_set_user
-    user = users(:one)
-    pet = Pet.new(:name => 'lilly', :breed_id => breeds(:persian).id, :user_id => user.id)
-    assert pet.save
-    assert_equal pet.id, user.reload.pet_id
+    assert @new_pet.save
+    assert_equal @new_pet.id, @user.reload.pet_id
   end
 
   def test_populate_from_breed

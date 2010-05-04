@@ -1,5 +1,5 @@
 class Facebook::PetsController < Facebook::FacebookController
-  before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index]
+  before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show]
   
   def index
   end
@@ -8,6 +8,7 @@ class Facebook::PetsController < Facebook::FacebookController
   end
   
   def show
+    @pet = Pet.find_by_id(params[:id]) || Pet.new
   end
   
   def new

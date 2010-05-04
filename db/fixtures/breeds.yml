@@ -23,7 +23,7 @@ shorthair:
 persian:
     name: Persian
     species: Cat
-    health: 14
+    health: 12
     endurance: 50
     fortitude: 3
     intelligence: 6

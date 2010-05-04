@@ -1,0 +1,14 @@
+prowling:
+  name: Prowling
+  description: While prowling you can challenge and battle other pets.
+  cost: 0
+    
+scavenging:
+  name: Scavenging    
+  description: While scavenging you have a chance every hour to discover an item, but you cannot gain experience from battle.
+  cost: 10
+    
+taming:
+  name: Human Taming
+  description: While taming humans you have a chance every hour to discover a wild human and bring them under your pet's control.
+  cost: 30

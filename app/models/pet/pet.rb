@@ -1,11 +1,12 @@
 class Pet < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   
+  belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name" 
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
-                        :power, :intelligence, :fortitude, :affection, :experience, :kibble,
+                        :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,
                         :wins_count, :loses_count, :draws_count, :level_rank_count
   validates_length_of :name, :within => 3..64
   validates_length_of :slug, :within => 3..8
@@ -24,6 +25,7 @@ class Pet < ActiveRecord::Base
     self.loses_count = 0
     self.draws_count = 0
     self.level_rank_count = 1
+    set_occupation
   end  
   
   def populate_from_breed
@@ -38,8 +40,16 @@ class Pet < ActiveRecord::Base
     self.affection = inheritable.affection
   end
   
+  def breed_name
+    breed_id ? breed.name : ''
+  end
+  
   def set_slug
-    self.slug = truncate(name, :length => 8).parameterize unless name.blank?
+    self.slug ||= truncate(name, :length => 8).parameterize unless name.blank?
+  end
+
+  def set_occupation
+    self.occupation_id ||= Occupation.find_by_name("Prowling").id
   end
   
   def set_user

@@ -8,19 +8,19 @@ class Facebook::LobbyControllerTest  < ActionController::TestCase
   end
   
   def test_should_get_index
-    facebook_get :index
+    facebook_get :index, :fb_sig_user => nil
     assert_response :success
     assert_template 'index'
   end
   
   def test_should_get_about
-    facebook_get :about
+    facebook_get :about, :fb_sig_user => nil
     assert_response :success
     assert_template 'about'
   end
   
   def test_should_get_guide
-    facebook_get :guide
+    facebook_get :guide, :fb_sig_user => nil
     assert_response :success
     assert_template 'guide'
   end

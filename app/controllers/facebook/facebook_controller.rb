@@ -40,7 +40,7 @@ class Facebook::FacebookController < ApplicationController
       
       # if the session is secured then the we have a valid facebook user id
       if has_facebook_user?
-        @current_user = User.from_facebook(facebook_session.user.uid.to_i,facebook_session)
+        @current_user ||= User.from_facebook(facebook_session.user.uid.to_i,facebook_session)
       end
     end
   end

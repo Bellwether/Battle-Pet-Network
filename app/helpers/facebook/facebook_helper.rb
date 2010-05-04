@@ -36,7 +36,7 @@ module Facebook::FacebookHelper
     if model && model.respond_to?(attribute.to_sym) 
       val = model.attributes[attribute.to_sym]
     elsif model && model.favorite_action.respond_to?(attribute.to_sym) 
-      val = model.favorite_action.send(attribute.to_sym)
+      val = model.favorite_action.name
     end 
     attribute = attribute.to_s.gsub(/_/,'-')
     "<tr><td>#{label}:</td><td><span id=\"breed-details-#{attribute.to_s}\">#{val}</span></td></tr>"
@@ -55,4 +55,8 @@ module Facebook::FacebookHelper
     end
     render :text => "</tbody></table>"
   end  
+  
+  def show_for_pet(other_pet=nil)
+  	yield if block_given? && current_user_pet && (other_pet && (other_pet != current_user_pet ))
+  end
 end
