@@ -4,6 +4,9 @@ class Pet < ActiveRecord::Base
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name" 
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
+
+  has_many :tames, :include => [:human]
+  # has_many :humans, :order => 'human_type', :select => "id, name, human_type, power, cost, description, required_rank"
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,
