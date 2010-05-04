@@ -60,6 +60,35 @@
 .em {font-style:italic;}
 .strong {float-weight:bold;}
 
+/* controls */
+
+td.radio-cell {
+  cursor:pointer;
+  padding-top:35px;
+  width:55px;
+}
+
+td.radio-cell .input {
+  color: #666666;
+  cursor:pointer;
+  display: block;
+  filter:alpha(opacity=01);
+  float: left;
+  font-size: 12px;
+  height: 16px;
+  opacity:0.01;
+  outline: none;
+  padding: 1px 0px 0px 20px;
+  text-decoration: none;
+  width: 40px;
+}
+
+td.radio-cell .input:hover {
+  color:#0066FF;
+  text-decoration: underline;
+}
+
+
 /* spacing */
 
 .full { width: 740px !important;}

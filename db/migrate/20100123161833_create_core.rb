@@ -8,6 +8,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :species, :null => false
       t.belongs_to :favorite_action, :null => false
       t.string :name, :null => false, :limit => 128
+      t.string :description, :limit => 2048
       t.integer :health, :null => false, :default => 1
       t.integer :endurance, :null => false, :default => 1
       t.integer :power, :null => false, :default => 1

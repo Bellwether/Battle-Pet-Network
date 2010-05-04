@@ -7,6 +7,11 @@ class Pet < ActiveRecord::Base
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble,
                         :wins_count, :loses_count, :draws_count, :level_rank_count
+  validates_length_of :name, :within => 3..64
+  validates_length_of :slug, :within => 3..8
+  validates_numericality_of :kibble, :greater_than_or_equal_to => 0
+  validates_numericality_of :experience, :greater_than_or_equal_to => 0
+  validates_inclusion_of :status, :in => %w(active abandoned)
   
   before_validation_on_create :populate_from_breed, :set_slug
   after_create :set_user
@@ -18,7 +23,7 @@ class Pet < ActiveRecord::Base
     self.wins_count = 0
     self.loses_count = 0
     self.draws_count = 0
-    self.level_rank_count = 0
+    self.level_rank_count = 1
   end  
   
   def populate_from_breed
@@ -38,6 +43,6 @@ class Pet < ActiveRecord::Base
   end
   
   def set_user
-    user.update_attribute(:pet_id, self.id) unless user.blank?
+    User.find(user).update_attribute(:pet_id, self.id) unless user.blank?
   end
 end

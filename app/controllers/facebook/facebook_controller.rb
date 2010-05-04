@@ -3,7 +3,7 @@ class Facebook::FacebookController < ApplicationController
   include Facebook::FacebookHelper
   layout 'facebook'
   
-  helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?
+  helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?, :facebook_redirect_to
   
   before_filter :ensure_facebook_request, :set_facebook_user
   
@@ -22,6 +22,10 @@ class Facebook::FacebookController < ApplicationController
   def has_facebook_user?
     return (facebook_session != nil && facebook_session.secured?)
   end
+  
+  def facebook_redirect_to(url)
+    redirect_to url
+  end  
   
   def ensure_facebook_request
     unless request_comes_from_facebook?

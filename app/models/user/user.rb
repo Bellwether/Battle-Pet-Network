@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :pet
+  has_many :pets
   
   acts_as_authentic do |c|
     c.login_field = :username

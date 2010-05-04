@@ -102,15 +102,16 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "biographies", ["pet_id"], :name => "index_biographies_on_pet_id"
 
   create_table "breeds", :force => true do |t|
-    t.integer "species_id",                                       :null => false
-    t.integer "favorite_action_id",                               :null => false
-    t.string  "name",               :limit => 128,                :null => false
-    t.integer "health",                            :default => 1, :null => false
-    t.integer "endurance",                         :default => 1, :null => false
-    t.integer "power",                             :default => 1, :null => false
-    t.integer "intelligence",                      :default => 1, :null => false
-    t.integer "fortitude",                         :default => 1, :null => false
-    t.integer "affection",                         :default => 1, :null => false
+    t.integer "species_id",                                        :null => false
+    t.integer "favorite_action_id",                                :null => false
+    t.string  "name",               :limit => 128,                 :null => false
+    t.string  "description",        :limit => 2048
+    t.integer "health",                             :default => 1, :null => false
+    t.integer "endurance",                          :default => 1, :null => false
+    t.integer "power",                              :default => 1, :null => false
+    t.integer "intelligence",                       :default => 1, :null => false
+    t.integer "fortitude",                          :default => 1, :null => false
+    t.integer "affection",                          :default => 1, :null => false
   end
 
   add_index "breeds", ["species_id"], :name => "index_breeds_on_species_id"
@@ -479,6 +480,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
 
   create_table "users", :force => true do |t|
     t.integer  "pet_id"
+    t.integer  "referer_id"
     t.integer  "facebook_id"
     t.string   "iphone_udid",          :limit => 512
     t.string   "username",             :limit => 128

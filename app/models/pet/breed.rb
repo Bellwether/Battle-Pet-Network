@@ -7,4 +7,8 @@ class Breed < ActiveRecord::Base
   
   validates_presence_of :species_id, :favorite_action_id, :name, :health, :endurance, 
                         :power, :intelligence, :fortitude, :affection
+                        
+  def slug
+    name.downcase.gsub(/\s/,'-')
+  end                      
 end
