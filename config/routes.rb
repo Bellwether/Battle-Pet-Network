@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     
     f.resources :pets, :only => [:index,:show,:new,:create], :collection => {:home => :get} do |p|
     end
+    f.resource :biography, :only => [:new,:create], :path_prefix =>  '/facebook/pets/home'    
     
     f.root :controller => 'lobby'
   end

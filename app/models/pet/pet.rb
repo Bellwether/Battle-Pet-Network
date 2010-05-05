@@ -4,6 +4,7 @@ class Pet < ActiveRecord::Base
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name" 
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
+  has_one :biography
 
   has_many :tames, :include => [:human]
   # has_many :humans, :order => 'human_type', :select => "id, name, human_type, power, cost, description, required_rank"
@@ -21,13 +22,13 @@ class Pet < ActiveRecord::Base
   after_create :set_user
   
   def after_initialize(*args)
-    self.status = 'active'
-    self.kibble = 0
-    self.experience = 0
-    self.wins_count = 0
-    self.loses_count = 0
-    self.draws_count = 0
-    self.level_rank_count = 1
+    self.status ||= 'active'
+    self.kibble ||= 0
+    self.experience ||= 0
+    self.wins_count ||= 0
+    self.loses_count ||= 0
+    self.draws_count ||= 0
+    self.level_rank_count ||= 1
     set_occupation
   end  
   

@@ -8,7 +8,7 @@ class Facebook::FacebookController < ApplicationController
   before_filter :ensure_facebook_request, :set_facebook_user
   
   def has_pet?
-    false
+    current_user_pet != nil
   end
 
   def has_shop?
@@ -29,6 +29,13 @@ class Facebook::FacebookController < ApplicationController
   
   def ensure_facebook_request
     unless request_comes_from_facebook?
+      render :file => "#{RAILS_ROOT}/public/401.html", :status => :unauthorized
+      return false
+    end
+  end
+  
+  def ensure_has_pet
+    unless has_pet?
       render :file => "#{RAILS_ROOT}/public/401.html", :status => :unauthorized
       return false
     end

@@ -11,6 +11,7 @@ siamese:
     intelligence: 4
     affection: 4
     power: 1
+    occupation: prowling
     
 persian:
     breed: persian
@@ -25,3 +26,4 @@ persian:
     intelligence: 6
     affection: 7
     power: 1
+    occupation: prowling

@@ -34,6 +34,11 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+  
+  # A convinience wrapper for the native Rails logger
+  def logger
+    RAILS_DEFAULT_LOGGER
+  end  
 
   def mock_user_facebooking(facebook_id="2147483647")
     @facebook_session_mock = flexmock(Facebooker::Session)

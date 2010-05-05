@@ -149,7 +149,7 @@ class CreateCore < ActiveRecord::Migration
       t.datetime :birthday   
       t.datetime :created_at
     end
-    add_index :biographies, [:pet_id] 
+    add_index :biographies, [:pet_id], :unique => true 
     
     create_table :packs do |t|
       t.belongs_to :founder, :null => false

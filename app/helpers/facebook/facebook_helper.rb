@@ -57,6 +57,6 @@ module Facebook::FacebookHelper
   end  
   
   def show_for_pet(other_pet=nil)
-  	yield if block_given? && current_user_pet && (other_pet && (other_pet != current_user_pet ))
+  	yield if block_given? && has_pet? && (other_pet && (other_pet != current_user_pet ))
   end
 end

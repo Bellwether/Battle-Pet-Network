@@ -1,3 +1,6 @@
 name: Battle Cat
+awards:
+  daily_login: 5    
+  biography: 50
 facebook:
   app_id: 303486038573
