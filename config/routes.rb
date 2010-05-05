@@ -10,9 +10,12 @@ ActionController::Routing::Routes.draw do |map|
       lobby.invite 'invite', :action => 'invite'
     end
     
+    f.resources :humans, :only => [:index,:show] do |h|
+    end
+    
     f.resources :pets, :only => [:index,:show,:new,:create], :collection => {:home => :get} do |p|
     end
-    f.resource :biography, :only => [:new,:create], :path_prefix =>  '/facebook/pets/home'    
+    f.resource :biography, :only => [:new,:create], :path_prefix =>  '/facebook/pets/home'  
     
     f.root :controller => 'lobby'
   end

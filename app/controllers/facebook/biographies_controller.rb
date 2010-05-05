@@ -1,5 +1,4 @@
 class Facebook::BiographiesController < Facebook::FacebookController
-  include ApplicationHelper
   before_filter :ensure_application_is_installed_by_facebook_user, :ensure_has_pet
   
   def new

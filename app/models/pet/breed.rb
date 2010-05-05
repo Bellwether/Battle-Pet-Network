@@ -10,5 +10,5 @@ class Breed < ActiveRecord::Base
                         
   def slug
     name.downcase.gsub(/\s/,'-')
-  end                      
+  end
 end

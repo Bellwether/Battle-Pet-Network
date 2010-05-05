@@ -1,0 +1,26 @@
+<% content_for :page_title do %><h2>Wild Humans</h2><% end %>
+
+<div class="sidebox slim right">
+</div>
+
+<div class="box">
+  <p class="em"><strong>The Human Slave Trade:</strong> After the fall, humans devolved even further from their barbaric state. Totally mindless, they're now used by pets for a variety of menial tasks to improve a pet's overall welfare and strength. In fact, a healthy human slave trade has emerged among the pets, making them valuable especially considering they're now an endangered species!</p>
+</div>
+
+<div class="box">
+  <h3>A Field Guide to Wild Humans</h3>
+  <% @humans.each do |human| %>
+  <table class="human dotbox">
+	<tr><th colspan="3"><%= facebook_link_to human.name, facebook_human_path(human) %></th></tr>
+	<tr>
+	  <td rowspan="4"><div class="<%="human-#{human.slug}-mid" %>"></div></td>
+	  <td>Ability: <strong><%= human.human_type %></strong></td>
+	  <td rowspan="4" class="em"><%= human.description %></td>
+	</tr>
+	<tr><td>Rarity: <strong><%= human.difficulty %></strong></td></tr>
+	<tr><td>Power: <strong><%= human.power %></strong></td></tr>
+	<tr><td>Required Level: <strong><%= human.required_rank %></strong></td></tr>
+  </table>
+  <% end %>
+  <%= will_paginate @humans %>
+</div>
