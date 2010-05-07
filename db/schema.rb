@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.datetime "created_at"
   end
 
-  add_index "biographies", ["pet_id"], :name => "index_biographies_on_pet_id"
+  add_index "biographies", ["pet_id"], :name => "index_biographies_on_pet_id", :unique => true
 
   create_table "breeds", :force => true do |t|
     t.integer "species_id",                                        :null => false
@@ -254,11 +254,11 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "maneuvers", ["strategy_id", "rank"], :name => "index_maneuvers_on_strategy_id_and_rank"
 
   create_table "messages", :force => true do |t|
-    t.integer  "sender_id",                                      :null => false
-    t.integer  "recipient_id",                                   :null => false
-    t.string   "subject",      :limit => 128,                    :null => false
-    t.string   "body",         :limit => 4096,                   :null => false
-    t.boolean  "new",                          :default => true, :null => false
+    t.integer  "sender_id",                                       :null => false
+    t.integer  "recipient_id",                                    :null => false
+    t.string   "subject",      :limit => 128,                     :null => false
+    t.string   "body",         :limit => 4096,                    :null => false
+    t.string   "status",       :limit => 32,   :default => "new", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

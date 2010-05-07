@@ -1,0 +1,35 @@
+<% content_for :page_title do %><h2>Compose Message</h2><% end %>
+
+<div class="sidebox slim right">	 
+  <div class="box slim biography">	
+      <h4>Corespondents</h4>
+  </div>
+</div>
+
+<div class="box">
+  <% form_for @message, :url => facebook_nested_url(new_facebook_message_path) do |f| %>	
+  <%= f.hidden_field :reply_to_id %>
+  <table class="message">
+	<tbody>
+	  <tr>
+	    <td><%= f.label :recipient_name, 'To' %></td>
+	    <td><%= f.text_field :recipient_name %></td>
+	  </tr>
+	  <tr>
+	    <td><%= f.label :subject, 'Subject' %></td>
+	    <td><%= f.text_field :subject %></td>
+	  </tr>
+	  <tr>	
+        <td rowspan="2"><%= f.label :body %></td>
+        <td rowspan="2"><%= text_area(:message, :body, :size => "50x15")%></td>
+	  </tr>
+	  <tr>	
+	    <td colspan="2">
+	      <%= f.submit 'Send Message' %> 
+	      <%= facebook_link_to "Nevermind", inbox_facebook_messages_path %>
+	    </td>
+	  </tr>
+	</tbody>
+  </table>
+  <% end %>
+</div>

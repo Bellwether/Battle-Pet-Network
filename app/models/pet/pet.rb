@@ -7,7 +7,8 @@ class Pet < ActiveRecord::Base
   has_one :biography
 
   has_many :tames, :include => [:human]
-  # has_many :humans, :order => 'human_type', :select => "id, name, human_type, power, cost, description, required_rank"
+  has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
+  has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,

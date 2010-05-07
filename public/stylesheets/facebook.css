@@ -88,6 +88,13 @@ td.radio-cell .input:hover {
   text-decoration: underline;
 }
 
+/* icons */
+
+.new-message, .read-message, .deleted-message {
+  height: 20px;
+  width: 20px;	
+}
+
 
 /* spacing */
 

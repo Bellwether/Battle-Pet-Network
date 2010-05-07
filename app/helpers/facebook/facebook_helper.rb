@@ -11,8 +11,8 @@ module Facebook::FacebookHelper
     image_tag "#{request.protocol}#{request.host_with_port}/images/#{path}"
   end
   
-  def facebook_link_to(text,url)
-    link_to text, "#{url}"
+  def facebook_link_to(text,url, options = {})
+    link_to text, "#{url}", options
   end
   
   def facebook_nested_url(url)

@@ -3,7 +3,7 @@ require 'test_helper'
 class Facebook::PetsControllerTest  < ActionController::TestCase
   include Facebooker::Rails::TestHelpers
   
-  def test_should_get_pet
+  def test_get_pet
     mock_user_facebooking
     facebook_get :show, :id => pets(:siamese).id, :fb_sig_user => nil
     assert_response :success
@@ -11,7 +11,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert assigns(:pet)
   end
   
-  def test_should_get_pet_for_user
+  def test_get_pet_for_user
     mock_user_facebooking(users(:two).facebook_id)
     facebook_get :show, :id => pets(:persian).id, :fb_sig_user => users(:two).facebook_id
     assert_response :success
@@ -20,7 +20,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "span", :attributes => { :class => "sign-button left" }
   end
     
-  def test_should_get_new_pet
+  def test_get_new_pet
     mock_user_facebooking(users(:one).facebook_id)
     facebook_get :new, :fb_sig_user => users(:one).facebook_id
     assert_response :success
@@ -35,7 +35,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     }
   end
   
-  def test_should_create_pet
+  def test_create_pet
     mock_user_facebooking(users(:one).facebook_id)
     pet_params = {:name=>"Lilly", :breed_id=>breeds(:persian).id}
     assert_difference 'Pet.count', +1, "pet should create under expected normal conditions but had errors" do
@@ -45,7 +45,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     end
   end
 
-  def test_should_fail_create_pet
+  def test_fail_create_pet
     mock_user_facebooking(users(:one).facebook_id)
     pet_mock = flexmock(Pet)
     pet_mock.new_instances.should_receive(:save).and_return(false)
@@ -62,7 +62,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     end
   end
 
-  def test_should_get_index_without_pet
+  def test_get_index_without_pet
     mock_user_facebooking
     facebook_get :index
     assert_response :success
@@ -71,7 +71,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert assigns(:champions)
   end
 
-  def test_should_get_index_with_pet
+  def test_get_index_with_pet
     mock_user_facebooking(users(:one).facebook_id)
     facebook_get :index, :fb_sig_user => users(:one).facebook_id
     assert_response :success

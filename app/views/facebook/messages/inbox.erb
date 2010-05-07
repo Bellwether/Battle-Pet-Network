@@ -1,0 +1,27 @@
+<% content_for :page_title do %><h2>Inbox</h2><% end %>
+	
+<div class="sidebox slim right">	 
+  <div class="box slim">	
+  </div>
+</div>
+
+<div class="box">	
+  <% if @messages.size %>	
+    <table class="messages">
+	  <tbody>
+		<% @messages.each do |message| %>
+		  <tr>
+			<td><div class='<%=message.status%>-message'></div></td>
+			<td><%= facebook_link_to message.sender.name, facebook_pet_path(message.sender) %></td>
+			<td><%= facebook_link_to message.subject, facebook_message_url(message) %></td>
+  			<td><%= "#{time_ago_in_words(message.created_at)} ago" %></td>
+			<td class="delete"><%= facebook_link_to 'delete', facebook_message_url(message), :method => :delete %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+    </table>
+    <%= will_paginate @messages %>
+  <% else %>
+    <p class="em empty">There aren't any messages for you right now.</p>
+  <% end %>
+</div>

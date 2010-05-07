@@ -1,0 +1,7 @@
+first:
+  sender: siamese
+  recipient: persian
+  subject: hello message
+  body: message test here.
+  status: new
+  created_at: 2010-1-1
