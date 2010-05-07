@@ -80,5 +80,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert assigns(:champions)
     assert assigns(:friends)
     assert assigns(:rivals)
+    assert_tag :tag => "div", :attributes => {:class => 'signs'}, :descendant => {
+    }
   end
 end

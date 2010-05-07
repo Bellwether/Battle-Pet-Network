@@ -49,12 +49,16 @@ class Pet < ActiveRecord::Base
     breed_id ? breed.name : ''
   end
   
-  def set_slug
-    self.slug ||= truncate(name, :length => 8).parameterize unless name.blank?
+  def update_occupation!(occupation_id)
+    update_attribute(:occupation_id, occupation_id)
   end
 
   def set_occupation
     self.occupation_id ||= Occupation.find_by_name("Prowling").id
+  end
+  
+  def set_slug
+    self.slug ||= truncate(name, :length => 8).parameterize unless name.blank?
   end
   
   def set_user

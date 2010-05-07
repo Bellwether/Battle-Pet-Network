@@ -6,6 +6,7 @@ class Facebook::FacebookController < ApplicationController
   helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?, :facebook_redirect_to
   
   before_filter :ensure_facebook_request, :set_facebook_user
+  after_filter :store_location
   
   def has_pet?
     current_user_pet != nil
@@ -26,6 +27,15 @@ class Facebook::FacebookController < ApplicationController
   def facebook_redirect_to(url)
     redirect_to url
   end  
+  
+  def store_location
+    session[:return_to] = request.request_uri.gsub('facebook/',facebook_root_path)
+  end
+
+  def redirect_facebook_back
+    path = session[:return_to] || facebook_root_path
+    redirect_to path, :status => :ok
+  end
   
   def ensure_facebook_request
     unless request_comes_from_facebook?

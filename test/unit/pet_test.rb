@@ -25,17 +25,23 @@ class PetTest < ActiveSupport::TestCase
 
   def test_populate_from_breed
     breed = breeds(:persian)
-    pet = Pet.new(:name => 'lilly', :breed_id => breed.id)
-    pet.populate_from_breed
+    @new_pet.populate_from_breed
 
-    assert_equal breed.health, pet.health
-    assert_equal breed.endurance, pet.endurance
-    assert_equal breed.power, pet.power
-    assert_equal breed.intelligence, pet.intelligence
-    assert_equal breed.fortitude, pet.fortitude
-    assert_equal breed.affection, pet.affection
+    assert_equal breed.health, @new_pet.health
+    assert_equal breed.endurance, @new_pet.endurance
+    assert_equal breed.power, @new_pet.power
+    assert_equal breed.intelligence, @new_pet.intelligence
+    assert_equal breed.fortitude, @new_pet.fortitude
+    assert_equal breed.affection, @new_pet.affection
     
-    assert_equal pet.health, pet.current_health
-    assert_equal pet.endurance, pet.current_endurance
+    assert_equal @new_pet.health, @new_pet.current_health
+    assert_equal @new_pet.endurance, @new_pet.current_endurance
+  end
+  
+  def test_update_occupation
+    pet = pets(:siamese)
+    occupation = occupations(:taming)
+    pet.update_occupation!(occupation.id)
+    assert_equal occupation.id, pet.reload.occupation_id
   end
 end
