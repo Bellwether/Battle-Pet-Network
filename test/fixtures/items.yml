@@ -1,0 +1,11 @@
+fiberboard_pillar: 
+    name: Fiberboard Pillar
+    description: A drab and desolate pillar of fiberboard.
+    item_type: Standard
+    power: 2
+    required_rank: 3
+    cost: 800
+    rarity: 300
+    stock: 10
+    stock_cap: 10
+    restock_rate: 3

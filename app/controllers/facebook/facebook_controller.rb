@@ -3,7 +3,8 @@ class Facebook::FacebookController < ApplicationController
   include Facebook::FacebookHelper
   layout 'facebook'
   
-  helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?, :facebook_redirect_to
+  helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?, 
+                :facebook_redirect_to, :stored_location
   
   before_filter :ensure_facebook_request, :set_facebook_user
   after_filter :store_location

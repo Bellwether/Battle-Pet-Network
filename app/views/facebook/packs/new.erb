@@ -30,6 +30,7 @@
     <tr>
 	  <td><%= f.label :standard_id, 'Founding Post' %></td>
 	  <td>
+		<%= render_item_picker(@standards.map(&:item), f, :standard_id) %>	
 	  </td>
     </tr>
     <tr>

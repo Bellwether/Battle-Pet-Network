@@ -200,7 +200,6 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer "collection_id"
     t.string  "name",          :limit => 64,                      :null => false
     t.string  "item_type",     :limit => 64,                      :null => false
-    t.string  "ability",       :limit => 64,                      :null => false
     t.string  "description",   :limit => 1024
     t.integer "power",                         :default => 0,     :null => false
     t.integer "required_rank",                 :default => 0,     :null => false
@@ -288,12 +287,12 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "pack_members", ["pet_id", "created_at"], :name => "index_pack_members_on_pet_id_and_created_at"
 
   create_table "packs", :force => true do |t|
-    t.integer  "founder_id",                                         :null => false
+    t.integer  "founder_id",                                             :null => false
     t.integer  "leader_id"
-    t.integer  "standard_id",                                        :null => false
-    t.string   "name",               :limit => 64,                   :null => false
-    t.integer  "kibble",                           :default => 0,    :null => false
-    t.boolean  "active",                           :default => true, :null => false
+    t.integer  "standard_id",                                            :null => false
+    t.string   "name",               :limit => 64,                       :null => false
+    t.integer  "kibble",                           :default => 0,        :null => false
+    t.string   "status",                           :default => "active", :null => false
     t.integer  "pack_members_count",               :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"

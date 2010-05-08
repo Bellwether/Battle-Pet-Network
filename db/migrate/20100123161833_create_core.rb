@@ -157,7 +157,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :standard, :null => false
       t.string :name, :limit => 64, :null => false
       t.integer :kibble, :null => false, :default => 0
-      t.boolean :active, :null => false, :default => true
+      t.string :status, :null => false, :default => 'active'
       t.integer :pack_members_count, :default => 0
       t.timestamps
     end
@@ -264,7 +264,6 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :collection
       t.string :name, :null => false, :limit => 64
       t.string :item_type, :null => false, :limit => 64
-      t.string :ability, :null => false, :limit => 64
       t.string :description, :limit => 1024
       t.integer :power, :default => 0, :null => false
       t.integer :required_rank, :default => 0, :null => false

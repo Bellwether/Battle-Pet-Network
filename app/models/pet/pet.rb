@@ -3,10 +3,12 @@ class Pet < ActiveRecord::Base
   
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
+  belongs_to :pack, :select => "id, name"
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
   has_one :biography
 
   has_many :tames, :include => [:human]
+  has_many :belongings, :include => [:item]
   has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
   has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
   

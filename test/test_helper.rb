@@ -39,6 +39,13 @@ class ActiveSupport::TestCase
   def logger
     RAILS_DEFAULT_LOGGER
   end  
+  
+  def rescue_save(model)
+    begin
+     model.save
+    rescue
+    end
+  end
 
   def mock_user_facebooking(facebook_id="2147483647")
     @facebook_session_mock = flexmock(Facebooker::Session)

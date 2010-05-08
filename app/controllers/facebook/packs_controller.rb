@@ -3,6 +3,7 @@ class Facebook::PacksController < Facebook::FacebookController
   
   def new
     @pack = Pack.new
+    @standards = current_user_pet.belongings.standards
   end
   
   def create
@@ -13,6 +14,7 @@ class Facebook::PacksController < Facebook::FacebookController
       facebook_redirect_to facebook_pack_path(@pack)
     else
       flash[:error] = "Couldn't found pack! :("
+      @standards = current_user_pet.belongings.standards
       render :action => :new
     end    
   end

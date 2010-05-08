@@ -12,6 +12,7 @@ siamese:
     affection: 4
     power: 1
     occupation: prowling
+    pack: alpha
     
 persian:
     breed: persian
