@@ -32,9 +32,12 @@ class Facebook::FacebookController < ApplicationController
     session[:return_to] = request.request_uri.gsub('facebook/',facebook_root_path)
   end
 
+  def stored_location
+    session[:return_to] || facebook_root_path
+  end
+
   def redirect_facebook_back
-    path = session[:return_to] || facebook_root_path
-    redirect_to path, :status => :ok
+    redirect_to stored_location, :status => :ok
   end
   
   def ensure_facebook_request

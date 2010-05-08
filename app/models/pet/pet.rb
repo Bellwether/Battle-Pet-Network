@@ -2,7 +2,7 @@ class Pet < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
-  belongs_to :breed, :foreign_key => "breed_id", :select => "id, name" 
+  belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
   has_one :biography
 
