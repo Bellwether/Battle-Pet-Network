@@ -3,6 +3,30 @@ require 'test_helper'
 class Facebook::PacksControllerTest < ActionController::TestCase     
   include Facebooker::Rails::TestHelpers
   
+  def test_get_pack
+    mock_user_facebooking
+    facebook_get :show, :id => packs(:alpha).id, :fb_sig_user => nil
+    assert_response :success
+    assert_template 'show'
+    assert assigns(:pack)
+    assert_tag :tag => "div", :attributes => { :id => "spoils" }
+    assert_tag :tag => "td", :attributes => { :class => "pack-member" }
+    assert_no_tag :tag => "span", :attributes => { :id => "challenge-button" }
+    assert_no_tag :tag => "span", :attributes => { :id => "membership-button" }
+  end
+
+  def test_get_pack_with_pet
+    mock_user_facebooking(users(:three).facebook_id)
+    facebook_get :show, :id => packs(:alpha).id, :fb_sig_user => users(:three).facebook_id
+    assert_response :success
+    assert_template 'show'
+    assert assigns(:pack)
+    assert_tag :tag => "div", :attributes => { :id => "spoils" }
+    assert_tag :tag => "td", :attributes => { :class => "pack-member" }
+    assert_tag :tag => "span", :attributes => { :id => "challenge-button" }
+    assert_tag :tag => "span", :attributes => { :id => "membership-button" }
+  end
+  
   def test_get_new_pack
     user = users(:two)
     pet = user.pet

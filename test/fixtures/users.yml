@@ -20,4 +20,12 @@ three:
     email: three@example.com
     gender: male
     facebook_id: "4943"
+    persistence_token: <%= Authlogic::Random.friendly_token %> 
+    
+four:
+    username: four
+    pet: burmese
+    email: four@example.com
+    gender: male
+    facebook_id: "8821"
     persistence_token: <%= Authlogic::Random.friendly_token %>

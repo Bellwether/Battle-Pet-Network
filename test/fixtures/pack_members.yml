@@ -1,0 +1,9 @@
+alpha_founder:
+  pack: alpha
+  pet: siamese
+  position: founder
+  
+alpha_member:
+  pack: alpha
+  pet: burmese
+  position: member

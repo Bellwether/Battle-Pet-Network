@@ -2,6 +2,7 @@ class Facebook::PetsController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show]
   
   def index
+    @pets = []
   end
   
   def home

@@ -28,3 +28,18 @@ persian:
     affection: 7
     power: 1
     occupation: prowling
+    
+burmese:
+    breed: burmese
+    user: four
+    name: tailchaser
+    current_health: 6
+    current_endurance: 40
+    health: 6
+    endurance: 40
+    fortitude: 5
+    intelligence: 3
+    affection: 4
+    power: 1
+    occupation: shopkeeping  
+    pack: alpha  

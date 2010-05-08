@@ -3,7 +3,7 @@ class Pet < ActiveRecord::Base
   
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
-  belongs_to :pack, :select => "id, name"
+  belongs_to :pack, :select => "id, name, status, kibble, created_at, standard_id", :include => [:standard]
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
   has_one :biography
 
@@ -49,6 +49,10 @@ class Pet < ActiveRecord::Base
   
   def breed_name
     breed_id ? breed.name : ''
+  end
+  
+  def battle_record
+    "#{wins_count}/#{loses_count}/#{draws_count}"
   end
   
   def update_occupation!(occupation_id)

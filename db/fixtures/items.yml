@@ -1,3 +1,15 @@
+cat_grass:
+    name: Cat Grass
+    description: Coarse, oaty cereal grass rich with antioxidants and vitamins. Can be found anywhere in the creaveses of the urban landscape.
+    item_type: Food
+    power: 10
+    required_rank: 1
+    cost: 5
+    rarity: 3
+    stock: 75
+    stock_cap: 75
+    restock_rate: 10
+
 fiberboard_pillar: 
     name: Fiberboard Pillar
     description: A drab and desolate pillar of fiberboard.

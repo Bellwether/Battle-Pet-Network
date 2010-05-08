@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer "stock",                         :default => 0,     :null => false
     t.integer "restock_rate",                  :default => 1,     :null => false
     t.integer "stock_cap",                     :default => 3,     :null => false
-    t.boolean "unique",                        :default => false
+    t.boolean "exclusive",                     :default => false
     t.boolean "premium",                       :default => false
   end
 

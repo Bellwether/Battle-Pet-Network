@@ -68,7 +68,6 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'index'
     assert assigns(:pets)
-    assert assigns(:champions)
   end
 
   def test_get_index_with_pet
@@ -77,10 +76,5 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'index'
     assert assigns(:pets)
-    assert assigns(:champions)
-    assert assigns(:friends)
-    assert assigns(:rivals)
-    assert_tag :tag => "div", :attributes => {:class => 'signs'}, :descendant => {
-    }
   end
 end

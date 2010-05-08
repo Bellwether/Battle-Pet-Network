@@ -1,7 +1,10 @@
 class Pack < ActiveRecord::Base
   belongs_to :founder, :class_name => "Pet"
   belongs_to :leader, :class_name => "Pet"
-  belongs_to :standard, :class_name => "Item", :select => 'id, name, description, power, required_rank, unique'
+  belongs_to :standard, :class_name => "Item", :select => 'id, name, description, power, required_rank'
+  
+  has_many :pack_members, :order => 'pack_members.position, pack_members.created_at'
+  has_many :spoils, :include => [:item], :order => 'items.cost DESC'
 
   before_validation_on_create :set_leader
   
@@ -26,5 +29,13 @@ class Pack < ActiveRecord::Base
 
   def set_leader
     self.leader_id = self.founder_id
+  end
+  
+  def member_bonus
+    0
+  end
+  
+  def position_for(pet)
+    "member"
   end
 end

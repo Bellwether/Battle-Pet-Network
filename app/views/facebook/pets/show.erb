@@ -26,7 +26,7 @@
 
 <div class="box">
   <h4 class="right"><%="Level #{@pet.level_rank_count} #{@pet.breed_name}"%></h4>
-  <h3><%=@pet.name%></h3>
+  <h3><%= @pet.name %></h3>
 
   <table class='pet'>
 	<tbody>
@@ -67,6 +67,36 @@
   </div>
   <% end %>
 </div>
+
+<% unless @pet.pack_id.blank? %>
+  <div class="box humans">
+    <h4>Pack: <%= facebook_link_to @pet.pack.name, facebook_pack_path(@pet.pack) %></h4>
+	<h5><%= @pet.pack.position_for(@pet)%></h5>
+    <table>
+	  <tr>
+		<td>Founded:</td>
+		<td><%= "#{time_ago_in_words(@pet.pack.created_at)} ago" %></td>
+		<td>
+		  <% cell_table(@pet.pack.pack_members, 4) do |m,idx| %>
+		    <td>
+		      <div class="<%="avatar-#{m.pet.slug}-small" %>"></div>
+		      <strong class="right"><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></strong>
+		      <span class="em right"><%= "level #{m.pet.level_rank_count}" %></span>
+		    </td>
+		  <% end %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>Standard:</td>
+		<td><%=@pet.pack.standard.name %>
+	  </tr>
+	  <tr>
+		<td>Member Bonus:</td>
+		<td><%=@pet.pack.member_bonus %>
+	  </tr>
+	</table>
+  </div>
+<% end %>
 
 <% unless @pet.tames.blank? %>
   <div class="box humans">
