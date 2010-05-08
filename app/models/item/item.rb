@@ -1,9 +1,16 @@
 class Item < ActiveRecord::Base
-  validates_inclusion_of :item_type, :in => %w(Food Kibble Toy Collar Claws Sensors Ornament Mantle Charm Standard)
+  TYPES = ['Food', 'Kibble', 'Toy', 'Collar', 'Claws', 'Sensors', 'Ornament', 'Mantle', 'Charm', 'Standard']
+  
+  validates_inclusion_of :item_type, :in => TYPES
   
   has_many :spoils
   has_many :inventories
   has_many :belongings
+
+  named_scope :in_stock, :conditions => 'stock > 0'
+  named_scope :type_is, lambda { |item_type| 
+    { :conditions => ["item_type = ?", item_type] }
+  }
   
   def slug
     name.downcase.gsub(/\s/,'-')
