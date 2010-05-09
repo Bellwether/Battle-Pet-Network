@@ -395,6 +395,17 @@ class CreateCore < ActiveRecord::Migration
     add_index :messages, [:sender_id,:created_at]
     add_index :messages, [:recipient_id,:created_at]
     
+    create_table :activity_streams do |t|
+      t.belongs_to :actor, :polymorphic => true, :null => false
+      t.belongs_to :object, :polymorphic => true
+      t.belongs_to :indirect_object, :polymorphic => true
+      t.text :activity_data
+      t.datetime :created_at
+    end
+    add_index :activity_streams, [:actor_id, :actor_type, :created_at], :name => :activity_streams_by_actor
+    add_index :activity_streams, [:object_id, :object_type, :created_at], :name => :activity_streams_by_object
+    add_index :activity_streams, [:indirect_object_id, :indirect_object_type, :created_at], :name => :activity_streams_by_indirect
+    
     create_table :payment_orders do |t|
       t.belongs_to :item
       t.string :ip_address
@@ -429,6 +440,7 @@ class CreateCore < ActiveRecord::Migration
   def self.down
     drop_table :payment_order_transactions
     drop_table :payment_orders
+    drop_table :activity_streams
     drop_table :messages
     drop_table :signs
     drop_table :comments

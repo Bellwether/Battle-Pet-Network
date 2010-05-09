@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
 
   add_index "actions_pets", ["pet_id", "action_id"], :name => "index_actions_pets_on_pet_id_and_action_id", :unique => true
 
+  create_table "activity_streams", :force => true do |t|
+    t.integer  "actor_id",             :null => false
+    t.string   "actor_type",           :null => false
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.integer  "indirect_object_id"
+    t.string   "indirect_object_type"
+    t.text     "activity_data"
+    t.datetime "created_at"
+  end
+
+  add_index "activity_streams", ["actor_id", "actor_type", "created_at"], :name => "activity_streams_by_actor"
+  add_index "activity_streams", ["indirect_object_id", "indirect_object_type", "created_at"], :name => "activity_streams_by_indirect"
+  add_index "activity_streams", ["object_id", "object_type", "created_at"], :name => "activity_streams_by_object"
+
   create_table "awards", :force => true do |t|
     t.integer "leaderboard_id", :null => false
     t.integer "item_id",        :null => false
