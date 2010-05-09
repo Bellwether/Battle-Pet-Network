@@ -17,3 +17,14 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 config.gem 'reek'
+config.gem 'bullet', :source => 'http://gemcutter.org'
+
+config.after_initialize do
+  Bullet.enable = true 
+  Bullet.alert = false
+  Bullet.bullet_logger = true  
+  Bullet.console = false
+  Bullet.growl = false
+  Bullet.rails_logger = false
+  Bullet.disable_browser_cache = true
+end
