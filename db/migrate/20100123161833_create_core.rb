@@ -284,8 +284,9 @@ class CreateCore < ActiveRecord::Migration
       t.string :name, :null => false, :limit => 128
       t.string :status, :limit => 32, :null => false, :default => 'active'
       t.string :specialty, :null => false, :limit => 128
+      t.string :description, :limit => 512
       t.integer :inventories_count, :null => false, :default => 0
-      t.datetime :last_restock_at
+      t.datetime :last_restock_at  
       t.timestamps
     end
     add_index :shops, [:pet_id,:status]

@@ -15,6 +15,8 @@ class Facebook::ShopsController < Facebook::FacebookController
   end
   
   def show
+    @shop = Shop.include_pet.find(params[:id])
+    @inventory = @shop.inventories.paginate :page => params[:page]
   end
   
   def new

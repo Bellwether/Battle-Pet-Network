@@ -435,6 +435,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.string   "name",              :limit => 128,                       :null => false
     t.string   "status",            :limit => 32,  :default => "active", :null => false
     t.string   "specialty",         :limit => 128,                       :null => false
+    t.string   "description",       :limit => 512
     t.integer  "inventories_count",                :default => 0,        :null => false
     t.datetime "last_restock_at"
     t.datetime "created_at"

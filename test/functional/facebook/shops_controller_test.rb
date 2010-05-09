@@ -43,6 +43,18 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     end
   end
 
+  def test_get_shop
+    fbid = users(:three).facebook_id
+    mock_user_facebooking(fbid)
+    facebook_get :show, :id => @shop.id, :fb_sig_user => fbid
+    assert_response :success
+    assert_template 'show'
+    assert assigns(:shop)
+    assert assigns(:inventory)
+    assert_tag :tag => "table", :attributes => { :class => "shopkeeper" }
+    assert_tag :tag => "span", :attributes => { :class => "shopping-button" }
+  end
+
   def test_get_new
     user = users(:three)
     pet = user.pet
