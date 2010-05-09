@@ -6,6 +6,8 @@ class Shop < ActiveRecord::Base
   belongs_to :pet, :include => [:breed]
   has_many :inventories, :validate => true
   
+  accepts_nested_attributes_for :inventories, :allow_destroy => false
+  
   validates_presence_of :pet_id, :name, :status, :specialty, :inventories_count
   validates_length_of :name, :in => 3..128
   validates_inclusion_of :specialty, :in => SPECIALTIES

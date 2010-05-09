@@ -54,7 +54,8 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert assigns(:shop)
     assert_tag :tag => "form", :descendant => { 
       :tag => "table", :attributes => { :class => "form" },
-      :tag => "ul", :attributes => { :id => "inventory-picker" },
+      :tag => "table", :attributes => { :id => "inventory-picker" },
+      :tag => "tr", :attributes => { :class => "inventory-item" },
       :tag => "select", :attributes => { :name => "shop[:specialty]" },
       :tag => "input", :attributes => { :type => "submit" }
     }

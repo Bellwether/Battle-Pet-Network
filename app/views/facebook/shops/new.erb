@@ -10,8 +10,22 @@
 	  <p>You currently don't have any belongings that you can sell. You can still open your shop, though, and 
 		then stock your inventory later.</p>
 	<% else %>
-    <ul id="inventory-picker">
-	</ul>
+    <table id="inventory-picker">
+	  <tbody>
+	  <% f.fields_for :inventories do |item_form| %>	
+	    <% current_user_pet.belongings.sellable.each do |belonging| %>
+	      <tr class='inventory-item'>
+		    <td rowspan="2"><%= check_box_tag( "shop[inventory_ids][][item_id]", belonging.item_id) %></td>
+		    <td class="em">Base Price: <%= belonging.item.cost %></td>
+		    <td rowspan="2"><div class="<%="item-#{human.slug}-small" %>"></div></td>
+          </tr>
+          <tr class='inventory-item'>
+	        <td colspan="2" class="em">Rarity: <%= belonging.item.rarity %></td>
+	      </tr> 
+        <% end %>
+	  <% end %>
+	  </tbody>
+	</table>
 	<% end %>
   <div>
 </div>
