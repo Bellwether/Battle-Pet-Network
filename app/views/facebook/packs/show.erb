@@ -38,7 +38,7 @@
 	  <td></td>
 	  <td><% if can_user_pet_be_member(@pack) %><span id="challenge-button" class="button">Challenge to Battle</span><% end %></td>
 	</tr>
-  </div>
+  </table>
 </div>
 
 <div class="box">
@@ -47,7 +47,7 @@
     <td class="pack-member">
 	  <table>	
 		<tr>
-		  <td rowspan="4"><div class="<%="avatar-#{m.pet.slug}-small" %> left"></td>
+		  <td rowspan="4"><div class="<%="avatar-#{m.pet.slug}-small" %> left"></div></td>
 		  <td><strong><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></strong></td>
 		</tr>
 		<tr><td>Health:</td><td><%= m.pet.fortitude %></td></tr>

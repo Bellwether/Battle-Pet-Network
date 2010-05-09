@@ -27,6 +27,10 @@ module Facebook::FacebookHelper
     render(:partial => '/facebook/petless_callout')
   end
 
+  def render_kibble_box
+    render(:partial => '/facebook/kibble_box')
+  end
+
   def render_breed_picker(form)
     render(:partial => '/facebook/breed_picker', :locals => {:form => form})
   end

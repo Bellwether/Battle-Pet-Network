@@ -14,6 +14,14 @@ class PackTest < ActiveSupport::TestCase
     assert @pet.pack_id
     assert pack.errors.on(:founder_id)
   end
+
+  def test_validates_standard
+    not_owned = items(:sisal_mast)
+    assert !@pet.belongings.map(&:item).include?(not_owned)
+    pack = Pack.new(:founder_id => @pet.id, :name => 'test pack', :standard_id => not_owned.id)
+    rescue_save(pack)
+    assert pack.errors.on(:standard_id)
+  end
   
   def test_validates_founding_fee
     fee = AppConfig.packs.founding_fee

@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
     f.resources :packs, :only => [:new,:create,:show] do |p|
     end
     
-    f.resources :items, :only => [:index], :member => {:store => :get} do |i|
+    f.resources :items, :only => [:index], :member => {:store => :get}, :collection => {:premium => :get} do |i|
       i.resources :belongings, :only => [:create]
     end
     

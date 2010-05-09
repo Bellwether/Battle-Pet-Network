@@ -12,7 +12,7 @@ class Pack < ActiveRecord::Base
   validates_length_of :name, :within => 3..64
   validates_numericality_of :kibble, :greater_than_or_equal_to => 0
   validates_inclusion_of :status, :in => %w(active disbanded insolvent)
-  validate :validates_founder, :validates_founding_fee
+  validate :validates_founder, :validates_founding_fee, :validates_standard
   
   def after_initialize(*args)
     self.status ||= 'active'
@@ -21,6 +21,10 @@ class Pack < ActiveRecord::Base
   
   def validates_founder
     errors.add(:founder_id, "already pack member") if founder && founder.pack_id
+  end
+  
+  def validates_standard
+    errors.add(:standard_id, "not in founders possession") if standard_id && founder_id && !founder.belongings.map(&:item_id).include?(standard.id)
   end
   
   def validates_founding_fee

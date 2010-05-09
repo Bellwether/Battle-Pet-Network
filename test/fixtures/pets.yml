@@ -27,6 +27,7 @@ persian:
     intelligence: 6
     affection: 7
     power: 1
+    kibble: 500
     occupation: prowling
     
 burmese:

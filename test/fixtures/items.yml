@@ -21,3 +21,15 @@ fiberboard_pillar:
     stock: 10
     stock_cap: 10
     restock_rate: 3
+    
+sisal_mast:    
+    name: Sisal Mast
+    description: An imposing tower of sisal fibre engirthed with coarse rope and 
+    item_type: Standard
+    power: 3
+    required_rank: 3
+    cost: 3000
+    rarity: 600
+    stock: 4
+    stock_cap: 4
+    restock_rate: 1

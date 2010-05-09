@@ -8,9 +8,13 @@ class Item < ActiveRecord::Base
   has_many :belongings
 
   named_scope :in_stock, :conditions => 'stock > 0'
+  named_scope :marketable, :conditions => 'cost > 0'  
   named_scope :type_is, lambda { |item_type| 
     { :conditions => ["item_type = ?", item_type] }
   }
+  
+  cattr_reader :per_page
+  @@per_page = 20
   
   def slug
     name.downcase.gsub(/\s/,'-')
