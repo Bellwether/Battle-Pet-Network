@@ -1,0 +1,32 @@
+<% content_for :page_title do %><h2>Pet Shops</h2><% end %>
+
+<div class="sidebox slim right">
+  <%= render_kibble_box %>
+</div>
+
+<div class="box">
+  <p class="em">Entrepreneurial pets and those tired of shedding blood for Kibble have taken their belongings and 
+	opened a personal item shop. Because of unreliable trade routes the market vendors are slow to restock, leaving room 
+	for other pets to supply the demand at variable prices. If you're lucky, you'll find all sorts of things to make 
+	your pet more powerful, stylish, or skillful.</p>
+	
+  <div class="search">
+  	
+  </div>
+	
+  <div class="filters">
+  	<% @shop_filter_types.each do |filter| %>
+      <% filter_qs = params[:filters].include?(filter) ? @filters.delete(filter) : @filters.add(filter) %>
+      <span class="filter-button">
+        <%= facebook_link_to filter, facebook_shops_path, :filters => filter_qs, :search => params[:search] %>
+      </span>
+    <% end %>
+  </div>
+
+  <table id="shops">
+	<tr><th>Shop</th><th>Shopkeeper</th><th>Specialty</th><th>Last Restock</th><th>Inventory</th></tr>
+	<% @shops.each do |shop| %>
+	<% end %>
+  </table>	
+  <p class="center"><%= will_paginate @shops %></p>
+</div>

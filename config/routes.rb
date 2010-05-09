@@ -22,6 +22,9 @@ ActionController::Routing::Routes.draw do |map|
     f.resources :items, :only => [:index], :member => {:store => :get, :purchase => :post}, :collection => {:premium => :get} do |i|
     end
     
+    f.resources :shops, :only => [:index, :show] do |s|
+    end
+    
     f.resources :occupations, :only => [:index,:update,:create]
     
     f.with_options :path_prefix => '/facebook/pets/home' do |home|
