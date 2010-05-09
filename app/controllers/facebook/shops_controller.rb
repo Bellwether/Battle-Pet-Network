@@ -7,6 +7,8 @@ class Facebook::ShopsController < Facebook::FacebookController
     filtering = @filters.size != @shop_filter_types.size
     scope = Shop.include_pet
     scope = scope.has_type_in_stock(params[:filters]) if filtering
+    scope = scope.has_item_named(params[:search]) unless params[:search].blank?
+    
     @shops = scope.paginate :page => params[:page]
   end
   

@@ -12,3 +12,8 @@ first_cat_grass_3:
   shop: first
   item: cat_grass
   cost: 15
+  
+first_fiberboard_pillar:
+  shop: first
+  item: fiberboard_pillar
+  cost: 1200

@@ -11,7 +11,11 @@
 	your pet more powerful, stylish, or skillful.</p>
 	
   <div class="search">
-  	
+	<% form_tag(facebook_nested_url(facebook_shops_path), :method => "get") do %>
+  	  <label>Search by item name:</label>
+	  <%= text_field_tag(:search) %>
+	  <%= submit_tag("Search") %>
+	<% end %>	
   </div>
 	
   <div class="filters">
@@ -26,6 +30,12 @@
   <table id="shops">
 	<tr><th>Shop</th><th>Shopkeeper</th><th>Specialty</th><th>Last Restock</th><th>Inventory</th></tr>
 	<% @shops.each do |shop| %>
+	  <tr>
+		<td><label class="shop"><%= facebook_link_to shop.name, facebook_shop_path(shop) %></label></td>
+		<td><%= shop.pet.name %></td>
+		<td><%= shop.specialty %></td>
+		<td><%= shop.last_restock %></td>
+	  </tr>	
 	<% end %>
   </table>	
   <p class="center"><%= will_paginate @shops %></p>

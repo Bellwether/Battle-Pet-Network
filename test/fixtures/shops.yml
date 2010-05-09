@@ -3,5 +3,5 @@ first:
   name: First Shop
   status: active
   specialty: Weapon
-  items_count: 3
+  items_count: 4
   created_at: 2009-8-4
