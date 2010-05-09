@@ -30,6 +30,7 @@ class Item < ActiveRecord::Base
     belonging.errors.add_to_base("too expensive") if cost > pet.kibble
     if belonging.errors.empty? && belonging.save
       pet.update_attribute(:kibble, pet.kibble - cost)
+      self.update_attribute(:stock, stock - 1)
     end
     return belonging
   end  
