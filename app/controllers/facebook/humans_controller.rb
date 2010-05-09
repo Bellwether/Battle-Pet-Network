@@ -4,6 +4,6 @@ class Facebook::HumansController < Facebook::FacebookController
   end
   
   def show
-    @human = Human.find_by_id(params[:id]) || Human.new
+    @human = Human.find(params[:id])
   end
 end

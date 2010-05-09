@@ -34,7 +34,7 @@ class Facebook::FacebookController < ApplicationController
   end
 
   def stored_location
-    session[:return_to] || facebook_root_path
+    session[:return_to] ||= facebook_root_path
   end
 
   def redirect_facebook_back

@@ -19,7 +19,7 @@
 		  <td>
 			<% if has_pet? %>
 			  <% if current_user_pet.kibble >= i.cost && i.stock > 0 %>
-			    <span class='shopping-button'><%= facebook_link_to("Buy for #{i.cost}K",facebook_item_belongings_path(i.id), :method => :post) %></span>
+			    <span class='shopping-button'><%= facebook_link_to("Buy for #{i.cost}K",purchase_facebook_item_path(i.id), :method => :post) %></span>
 			  <% elsif i.stock == 0 %>
 			    <label>Cost: <%= i.cost %>K <span class="em empty">Out of Stock</span>
 			  <% elsif current_user_pet.kibble < i.cost %>

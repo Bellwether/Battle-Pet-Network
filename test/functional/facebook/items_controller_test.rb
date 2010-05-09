@@ -3,6 +3,12 @@ require 'test_helper'
 class Facebook::ItemsControllerTest < ActionController::TestCase
   include Facebooker::Rails::TestHelpers
   
+  def setup
+    @user = users(:three)
+    @fbid = @user.facebook_id
+    @item = items(:cat_grass)
+  end
+  
   def test_index
     mock_user_facebooking
     facebook_get :index, :fb_sig_user => nil
@@ -31,5 +37,27 @@ class Facebook::ItemsControllerTest < ActionController::TestCase
     assert !assigns(:items).blank?
     assert_tag :tag => "h3", :attributes => { :id => "food-store-title" }
     assert_tag :tag => "span", :attributes => { :class => "shopping-button" }
+  end
+  
+  def test_purchase
+    assert_difference '@user.pet.belongings.count', +1 do    
+      mock_user_facebooking(@fbid)
+      facebook_post :purchase, :fb_sig_user => @fbid, :id => @item.id
+      assert_response :success
+      assert assigns(:purchase_errors).blank?
+    end
+    assert flash[:notice]
+  end
+  
+  def test_fail_purchase
+    @user.pet.update_attribute(:kibble, @item.cost - 1)
+    
+    assert_no_difference '@user.pet.belongings.count' do    
+      mock_user_facebooking(@fbid)
+      facebook_post :purchase, :fb_sig_user => @fbid, :id => @item.id
+      assert_response :success
+      assert assigns(:purchase_errors)
+    end
+    assert flash[:notice]
   end
 end
