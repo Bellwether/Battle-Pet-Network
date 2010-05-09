@@ -121,7 +121,6 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :occupation
       t.belongs_to :rival
       t.belongs_to :mate
-      t.belongs_to :shop
       t.belongs_to :favorite_action
       t.timestamps
     end
@@ -285,12 +284,12 @@ class CreateCore < ActiveRecord::Migration
       t.string :name, :null => false, :limit => 128
       t.string :status, :limit => 32, :null => false, :default => 'active'
       t.string :specialty, :null => false, :limit => 128
-      t.integer :items_count, :null => false, :default => 0
+      t.integer :inventories_count, :null => false, :default => 0
       t.datetime :last_restock_at
       t.timestamps
     end
     add_index :shops, [:pet_id,:status]
-    add_index :shops, [:items_count,:status]
+    add_index :shops, [:inventories_count,:status]
     add_index :shops, [:specialty,:status]
     
     create_table :inventories do |t|

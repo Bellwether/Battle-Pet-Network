@@ -7,6 +7,7 @@ class Pack < ActiveRecord::Base
   has_many :spoils, :include => [:item], :order => 'items.cost DESC'
 
   before_validation_on_create :set_leader
+  after_create :update_founder
   
   validates_presence_of :founder_id, :standard_id, :name, :kibble, :status
   validates_length_of :name, :within => 3..64
@@ -33,6 +34,10 @@ class Pack < ActiveRecord::Base
 
   def set_leader
     self.leader_id = self.founder_id
+  end
+  
+  def update_founder
+    founder.update_attribute(:pack_id, self.id)
   end
   
   def member_bonus

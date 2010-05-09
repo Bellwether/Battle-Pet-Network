@@ -375,7 +375,6 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer  "occupation_id"
     t.integer  "rival_id"
     t.integer  "mate_id"
-    t.integer  "shop_id"
     t.integer  "favorite_action_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -431,18 +430,18 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "shops", :force => true do |t|
-    t.integer  "pet_id",                                                :null => false
+    t.integer  "pet_id",                                                 :null => false
     t.integer  "featured_item_id"
-    t.string   "name",             :limit => 128,                       :null => false
-    t.string   "status",           :limit => 32,  :default => "active", :null => false
-    t.string   "specialty",        :limit => 128,                       :null => false
-    t.integer  "items_count",                     :default => 0,        :null => false
+    t.string   "name",              :limit => 128,                       :null => false
+    t.string   "status",            :limit => 32,  :default => "active", :null => false
+    t.string   "specialty",         :limit => 128,                       :null => false
+    t.integer  "inventories_count",                :default => 0,        :null => false
     t.datetime "last_restock_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "shops", ["items_count", "status"], :name => "index_shops_on_items_count_and_status"
+  add_index "shops", ["inventories_count", "status"], :name => "index_shops_on_inventories_count_and_status"
   add_index "shops", ["pet_id", "status"], :name => "index_shops_on_pet_id_and_status"
   add_index "shops", ["specialty", "status"], :name => "index_shops_on_specialty_and_status"
 

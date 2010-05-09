@@ -5,6 +5,9 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
   
   def setup
     @shop = shops(:first)
+    @user = users(:three)
+    @pet = @user.pet
+    @params = {:pet_id => @pet.id, :name => 'test shop', :specialty => 'Food'}
   end
 
   def test_index
@@ -37,6 +40,43 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert !assigns(:shops).blank?
     assigns(:shops).each do |shop|
       assert shop.inventories.map(&:item).map(&:item_type).join(' ').downcase.include?(filter.downcase)
+    end
+  end
+
+  def test_get_new
+    user = users(:three)
+    pet = user.pet
+
+    mock_user_facebooking(user.facebook_id)
+    facebook_get :new, :fb_sig_user => user.facebook_id
+    assert_response :success
+    assert_template 'new'
+    assert assigns(:shop)
+    assert_tag :tag => "form", :descendant => { 
+      :tag => "table", :attributes => { :class => "form" },
+      :tag => "ul", :attributes => { :id => "inventory-picker" },
+      :tag => "select", :attributes => { :name => "shop[:specialty]" },
+      :tag => "input", :attributes => { :type => "submit" }
+    }
+  end
+  
+  def test_create
+    mock_user_facebooking(@user.facebook_id)
+    assert_difference 'Shop.count', +1 do
+      facebook_post :create, :shop => @params, :fb_sig_user => @user.facebook_id
+      assert_response :success
+      assert flash[:notice]
+      assert !assigns(:shop).blank?
+    end
+  end
+  
+  def test_fail_create
+    @params.delete(:name)
+    mock_user_facebooking(@user.facebook_id)
+    assert_no_difference 'Shop.count' do
+      facebook_post :create, :shop => @params, :fb_sig_user => @user.facebook_id
+      assert_response :success
+      assert !assigns(:shop).blank?
     end
   end
 end

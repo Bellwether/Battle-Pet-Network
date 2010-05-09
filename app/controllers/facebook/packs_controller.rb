@@ -6,12 +6,12 @@ class Facebook::PacksController < Facebook::FacebookController
   end
   
   def new
-    @pack = Pack.new
+    @pack = current_user_pet.build_pack
     @standards = current_user_pet.belongings.standards
   end
   
   def create
-    @pack = Pack.new(params)
+    @pack = current_user_pet.build_pack(params[:pack])
 
     if @pack.save
       flash[:notice] = "Today will be remembered in history as the founding of your pack!"

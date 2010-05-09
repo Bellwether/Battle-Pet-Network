@@ -1,0 +1,11 @@
+three_grass:
+  pet: persian
+  item: cat_grass    
+  source: purchased    
+  status: active    
+  
+three_standard:
+  pet: persian
+  item: fiberboard_pillar
+  source: purchased    
+  status: active  

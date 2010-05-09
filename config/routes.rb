@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     f.with_options :path_prefix => '/facebook/pets/home' do |home|
       home.resource :biography, :only => [:new,:create]
       home.resources :messages, :only => [:show,:new,:create,:destroy], :collection => {:inbox => :get, :outbox => :get} 
+      home.resource :shop, :only => [:new,:create] 
     end
     
     f.root :controller => 'lobby'

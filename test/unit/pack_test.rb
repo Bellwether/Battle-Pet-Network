@@ -37,4 +37,11 @@ class PackTest < ActiveSupport::TestCase
     assert pack.founder_id && pack.leader_id
     assert_equal pack.founder_id, pack.leader_id
   end
+
+  def test_updates_founder
+    @founder.update_attribute(:kibble, AppConfig.packs.founding_fee)
+    pack = Pack.new(@params)
+    pack.send(:after_save)
+    assert_equal pack.id, @founder.pack_id
+  end
 end

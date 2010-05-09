@@ -1,4 +1,6 @@
 class Facebook::ShopsController < Facebook::FacebookController
+  before_filter :ensure_application_is_installed_by_facebook_user, :ensure_has_pet, :except => [:index,:show]
+
   def index
     @shop_filter_types = ['Food','Toy','Sensor','Mantle','Collar','Weapon','Standard','Charm','Ornament']
     @filters = params[:filters] ? params[:filters].split(',') : @shop_filter_types
@@ -13,5 +15,20 @@ class Facebook::ShopsController < Facebook::FacebookController
   end
   
   def show
+  end
+  
+  def new
+    @shop = current_user_pet.build_shop(params[:shop])
+  end
+  
+  def create
+    @shop = current_user_pet.build_shop(params[:shop])
+
+    if @shop.save
+      flash[:notice] = "Today marks the grand opening of your pet shop!"
+      facebook_redirect_to facebook_shop_path(@shop)
+    else
+      render :action => :new
+    end
   end
 end

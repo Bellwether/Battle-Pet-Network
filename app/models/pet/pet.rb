@@ -6,6 +6,7 @@ class Pet < ActiveRecord::Base
   belongs_to :pack, :select => "id, name, status, kibble, created_at, standard_id", :include => [:standard]
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
   has_one :biography
+  has_one :shop  
 
   has_many :tames, :include => [:human]
   has_many :belongings, :include => [:item]
