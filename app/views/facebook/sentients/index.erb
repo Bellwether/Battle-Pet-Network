@@ -1,0 +1,38 @@
+<% content_for :page_title do %><h2>The Sentient Threat</h2><% end %>
+
+<div class="sidebox slim right">
+</div>
+
+<div class="box">
+<p class="em">
+  <em>The world remains a dangerous battleground, inhabited by noble pets as well as populations of vicious predators, 
+  mindless animals, mutants, feral humans, and worse. These beasts are known as 'sentients' and must be hunted down and 
+  destroyed by vigilant pets like yours.</em>
+</p>
+<p class="em">
+  Hunting sentients works just like normal battle, except that combat is resolved immediately and instead of 
+  experience your pet is rewarded in Kibble for fighting the sentient menace. It's a great way to earn Kibble and 
+  safeguard your community.
+</p>
+</div>
+
+<div class="box">
+  <h3>Active Sentients</h3>
+  <% @sentients.each do |sentient| %>
+  <table class="sentients">
+	<tr>
+	  <td rowspan="5"><div class="<%="sentient-#{sentient.slug}-mid" %>"></div></td>
+	  <th><%= facebook_link_to sentient.name, facebook_sentient_path(sentient) %></th>
+	</tr>
+	<tr><td>Health: <label><%= sentient.health %></label></td></tr>
+	<tr><td>Endurance: <label><%= sentient.endurance %></label></td></tr>
+	<tr><td>Power: <strong><%= sentient.power %></strong></td></tr>
+	<tr><td>Award: <strong><%= sentient.kibble %></strong></td></tr>
+	<tr>
+	  <td><% if has_pet? %><span class='hunt-button'>Hunt It</span><% end %></td>
+	  <td>Population: <strong><%= sentient.population %></strong></td>
+	</tr>
+  </table>
+  <% end %>
+  <%= will_paginate @sentients %>
+</div>

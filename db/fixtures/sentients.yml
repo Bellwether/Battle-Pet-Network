@@ -1,0 +1,15 @@
+leper_rat:
+  sentient_type: threat    
+  name: Leper Rat
+  description: These loathesome creatures thrive in the rotting disease they carry, spreading plauge through the shadows 
+               in their withering course of death.
+  health: 10
+  endurance: 30
+  power: 1
+  intelligence: 1
+  fortitude: 1
+  kibble: 1
+  population: 100
+  repopulation_rate: 10
+  population_cap: 100
+  required_rank: 1

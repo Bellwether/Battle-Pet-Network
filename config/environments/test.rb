@@ -36,6 +36,6 @@ config.after_initialize do
   Bullet.bullet_logger = true  
   Bullet.console = false
   Bullet.growl = false
-  Bullet.rails_logger = false
+  Bullet.rails_logger = true
   Bullet.disable_browser_cache = true
 end
