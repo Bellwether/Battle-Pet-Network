@@ -182,9 +182,10 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "humans", ["required_rank", "power"], :name => "index_humans_on_required_rank_and_power"
 
   create_table "hunters", :force => true do |t|
-    t.integer "hunt_id", :null => false
-    t.integer "pet_id",  :null => false
-    t.string  "outcome", :null => false
+    t.integer "hunt_id",     :null => false
+    t.integer "pet_id",      :null => false
+    t.integer "strategy_id", :null => false
+    t.string  "outcome",     :null => false
   end
 
   add_index "hunters", ["hunt_id"], :name => "index_hunters_on_hunt_id"

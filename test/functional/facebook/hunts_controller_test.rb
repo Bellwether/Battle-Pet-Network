@@ -7,6 +7,8 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
     @user = users(:two)
     @pet = @user.pet
     @sentient = sentients(:leper_rat)
+    @new_strategy_params = {:maneuvers_attributes => { "0" => {:rank => 1, :action_id => actions(:scratch).id}}}
+    @params = {:sentient_id => @sentient.id, :hunters_attributes => {"0" => {:pet_id => @pet.id, :strategy_attributes => @new_strategy_params}} }
   end
 
   def test_get_new
@@ -24,5 +26,17 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
       :tag => "li", :attributes => { :class => "tactic" },
       :tag => "input", :attributes => { :type => "submit" }
     }
+  end
+
+  def test_create
+    mock_user_facebooking(@user.facebook_id)   
+    assert_difference ['Hunt.count','Hunter.count','Strategy.count'], +1 do
+      facebook_post :create, :sentient_id => @sentient.id, :hunt => @params, :fb_sig_user => @user.facebook_id
+      assert_response :success
+      assert !assigns(:hunt).blank?
+      assert !assigns(:hunt).hunters.blank?
+      assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
+    end    
+    assert flash[:notice]
   end
 end

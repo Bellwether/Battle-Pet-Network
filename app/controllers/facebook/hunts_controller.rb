@@ -3,9 +3,20 @@ class Facebook::HuntsController < Facebook::FacebookController
   
   def new
     @sentient = Sentient.find(params[:sentient_id])
-    @hunt = @sentient.hunts.build(:hunters_attributes => [{ :pet_id => current_user_pet.id }])
+    @hunt = @sentient.hunts.build(:hunters_attributes => {"0" => { :pet_id => current_user_pet.id }})
   end
   
   def create
+    @sentient = Sentient.find(params[:sentient_id])
+    @hunt = @sentient.hunts.build(params[:hunt])
+    @hunt.hunters.first.pet = @hunt.hunters.first.strategy.combatant = current_user_pet
+    
+    if @hunt.save!
+      flash[:notice] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"
+      facebook_redirect_to facebook_sentients_path
+    else
+      flash[:error] = "Couldn't start hunt. :("
+      render :action => :new
+    end
   end
 end

@@ -13,6 +13,7 @@ class Pet < ActiveRecord::Base
   has_many :hunters, :include => [:hunt]
   has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
   has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
+  has_many :strategies, :as => :combatant, :dependent => :destroy
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,

@@ -227,6 +227,7 @@ class CreateCore < ActiveRecord::Migration
     create_table :hunters do |t|
       t.belongs_to :hunt, :null => false
       t.belongs_to :pet, :null => false
+      t.belongs_to :strategy, :null => false
       t.string :outcome, :null => false
     end
     add_index :hunters, [:pet_id,:hunt_id], :unique => true
