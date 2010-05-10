@@ -29,11 +29,13 @@ class CreateCore < ActiveRecord::Migration
     add_index :levels, [:breed_id,:experience]
     
     create_table :actions do |t|
+       t.belongs_to :breed, :null => false
        t.string :name, :null => false, :limit => 32
        t.string :action_type, :null => false, :limit => 32
-       t.string :description, :limit => 128
+       t.string :verb, :limit => 128
        t.integer :power, :null => false
     end
+    add_index :actions, [:breed_id,:action_type]
     add_index :actions, [:action_type]
     
     create_table :actions_breeds, :id => false do |t|

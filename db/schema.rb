@@ -12,13 +12,15 @@
 ActiveRecord::Schema.define(:version => 20100124124827) do
 
   create_table "actions", :force => true do |t|
+    t.integer "breed_id",                   :null => false
     t.string  "name",        :limit => 32,  :null => false
     t.string  "action_type", :limit => 32,  :null => false
-    t.string  "description", :limit => 128
+    t.string  "verb",        :limit => 128
     t.integer "power",                      :null => false
   end
 
   add_index "actions", ["action_type"], :name => "index_actions_on_action_type"
+  add_index "actions", ["breed_id", "action_type"], :name => "index_actions_on_breed_id_and_action_type"
 
   create_table "actions_breeds", :id => false, :force => true do |t|
     t.integer "action_id", :null => false
@@ -193,7 +195,6 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.string   "status",      :default => "started", :null => false
     t.text     "logs"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "hunts", ["sentient_id", "status", "created_at"], :name => "index_hunts_on_sentient_id_and_status_and_created_at"

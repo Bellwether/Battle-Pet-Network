@@ -39,6 +39,10 @@ module Facebook::FacebookHelper
     render(:partial => '/facebook/item_picker', :locals => {:items => items, :form => form, :attribute => attribute})
   end
 
+  def render_strategy_picker
+    render(:partial => '/facebook/strategy_picker')
+  end
+
   def breed_details_row(label,model,attribute)
     val = nil
     if model && model.respond_to?(attribute.to_sym) 
