@@ -11,7 +11,7 @@ class Facebook::HuntsController < Facebook::FacebookController
     @hunt = @sentient.hunts.build(params[:hunt])
     @hunt.hunters.first.pet = @hunt.hunters.first.strategy.combatant = current_user_pet
     
-    if @hunt.save!
+    if @hunt.save
       flash[:notice] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"
       facebook_redirect_to facebook_sentients_path
     else

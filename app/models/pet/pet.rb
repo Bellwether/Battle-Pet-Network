@@ -9,6 +9,7 @@ class Pet < ActiveRecord::Base
   has_one :shop  
 
   has_many :tames, :include => [:human]
+    
   has_many :belongings, :include => [:item]
   has_many :hunters, :include => [:hunt]
   has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
@@ -56,6 +57,10 @@ class Pet < ActiveRecord::Base
   
   def battle_record
     "#{wins_count}/#{loses_count}/#{draws_count}"
+  end
+  
+  def slave_earnings
+    tames.enslaved.sum(:power)
   end
   
   def update_occupation!(occupation_id)
