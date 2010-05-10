@@ -23,7 +23,7 @@
 	in the treasury to "feed" each of the pack's members. If a pack cannot supply its members with enough Kibble, it will 
 	become "insolvent" and members will loose all benefits until the pack's treasury is replenished.</p>
 
-  <% form_for @pack, :url => facebook_nested_url(new_facebook_pack_path) do |f| %>
+  <% form_for @pack, :url => facebook_nested_url(facebook_pack_path), :html => { :method => :post} do |f| %>
   <table class='form'>
     <tbody>
     <tr>

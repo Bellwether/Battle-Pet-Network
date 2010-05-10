@@ -49,6 +49,10 @@ module Facebook::FacebookHelper
     attribute = attribute.to_s.gsub(/_/,'-')
     "<tr><td>#{label}:</td><td><span id=\"breed-details-#{attribute.to_s}\">#{val}</span></td></tr>"
   end
+  
+  def percentage_bar(values)
+    
+  end  
     
   def fb_fan_button
    "<fb:fan profile_id=\"#{AppConfig.facebook.app_id}\" stream=\"0\" connections=\"0\" width=\"200\" height=\"64\" logobar=\"false\"></fb:fan>"

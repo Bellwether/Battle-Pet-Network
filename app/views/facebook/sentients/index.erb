@@ -29,7 +29,11 @@
 	<tr><td>Power: <strong><%= sentient.power %></strong></td></tr>
 	<tr><td>Award: <strong><%= sentient.kibble %></strong></td></tr>
 	<tr>
-	  <td><% if has_pet? %><span class='hunt-button'>Hunt It</span><% end %></td>
+	  <td>
+	    <% if has_pet? %>
+	      <span class='hunt-button'><%= facebook_link_to 'Hunt It', new_facebook_sentient_hunt_path(sentient) %></span>
+	    <% end %>
+	  </td>
 	  <td>Population: <strong><%= sentient.population %></strong></td>
 	</tr>
   </table>

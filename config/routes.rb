@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     
     f.resources :sentients, :only => [:index,:show] do |s|
+      s.resources :hunts, :only => [:new,:create]
     end
     
     f.resources :items, :only => [:index], :member => {:store => :get, :purchase => :post}, :collection => {:premium => :get} do |i|

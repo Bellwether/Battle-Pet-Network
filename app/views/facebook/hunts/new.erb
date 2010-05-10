@@ -1,0 +1,86 @@
+<% content_for :page_title do %><h2>Hunting</h2><% end %>
+
+<div class="box full">
+
+<table class="comparison-table">
+<tbody><tr><th class="leftbox"><%= current_user_pet.name %></th><td>is hunting the</td><th><%= @sentient.name %></th></tr></tbody>
+</table>
+
+<% form_for @hunt, :url => facebook_nested_url(facebook_sentient_hunts_path(@sentient)), :html => { :method => :post} do |f| %>	
+<table class="comparison-table">
+  <tbody>
+	<tr>
+	<td class="leftbox">
+	  <table class="dotbox">
+		<tr>
+		  <td rowspan="5"><div class="<%="avatar-#{current_user_pet.slug}-large" %> left"></div></td>
+		  <td><%= percentage_bar [current_user_pet.current_health,@sentient.health] %></td>
+		  <td><%= current_user_pet.current_health %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [current_user_pet.current_endurance,@sentient.endurance] %></td>
+		  <td><%= current_user_pet.current_endurance %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [current_user_pet.power,@sentient.power] %></td>
+		  <td><%= current_user_pet.power %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [current_user_pet.fortitude,@sentient.fortitude] %></td>
+		  <td><%= current_user_pet.fortitude %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [current_user_pet.intelligence,@sentient.intelligence] %></td>
+		  <td><%= current_user_pet.intelligence %></td>
+		</tr>
+		  <td>&nbsp;</td>
+		  <td>-</td>
+		</tr>
+	  </table>	
+	</td>
+	<tr>	
+	<td class="middlebox">
+	  <table class="dotbox">
+		<tr><td>Health</td></tr>
+		<tr><td>Endurance</td></tr>
+		<tr><td>Power</td></tr>
+		<tr><td>Fortitude</td></tr>
+		<tr><td>Intelligence</td></tr>
+		<tr><td>&nbsp;</td><tr>
+		<tr><th>Combat</th></tr>
+		<tr><td><%= submit_tag "Begin the Hunt"%></td></tr>
+	</td>	
+	</tr>	
+	<tr>
+	<td class="rightbox">
+	  <table class="dotbox">
+		<tr>
+		  <td><%= @sentient.health %></td>
+		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health] %></td>
+		  <td rowspan="5"><div class="<%="avatar-#{@sentient.slug}-large" %> right"></div></td>
+		</tr>
+		<tr>
+		  <td><%= @sentient.endurance %></td>
+		  <td><%= percentage_bar [@sentient.endurance,current_user_pet.current_endurance] %></td>
+		</tr>
+		<tr>
+		  <td><%= @sentient.power %></td>
+		  <td><%= percentage_bar [@sentient.power,current_user_pet.power] %></td>
+		</tr>
+		<tr>
+		  <td><%= @sentient.fortitude %></td>
+		  <td><%= percentage_bar [@sentient.fortitude,current_user_pet.fortitude] %></td>
+		</tr>
+		<tr>
+		  <td><%= @sentient.intelligence %></td>
+		  <td><%= percentage_bar [@sentient.intelligence,current_user_pet.intelligence] %></td>
+		</tr>
+		  <th><%= @sentient.kibble %></th>
+		  <td>&nbsp;</td>
+		</tr>
+	  </table>
+	</td> 	
+	</tr>
+  </tbody>
+</table>
+<% end %>
