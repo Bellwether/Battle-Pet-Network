@@ -1,0 +1,14 @@
+leper_rat_strategy_scratch: 
+  action: scratch
+  strategy: leper_rat_strategy
+  rank: 5
+  
+leper_rat_strategy_slash: 
+  action: slash
+  strategy: leper_rat_strategy
+  rank: 3
+  
+leper_rat_strategy_bite: 
+  action: bite
+  strategy: leper_rat_strategy
+  rank: 2

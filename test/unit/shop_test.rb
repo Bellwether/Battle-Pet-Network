@@ -14,6 +14,7 @@ class ShopTest < ActiveSupport::TestCase
     end
     @shop.inventories.create(:item_id => items(:cat_grass).id, :cost => 10)
     assert !@shop.valid?
+    puts  @shop.errors.on_base
     assert @shop.errors.on_base.include?("inventory limit reached")
   end
 end

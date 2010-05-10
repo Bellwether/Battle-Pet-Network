@@ -1,0 +1,5 @@
+leper_rat_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :leper_rat %>
+  name: LRS
+  status: active

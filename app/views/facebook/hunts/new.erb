@@ -90,6 +90,17 @@
 		<tr>
 		  <td colspan="3">
 			<div>Sentient's Tactics</div>
+			<p class="em"><%= @sentient.name.pluralize %> like to:</p>
+			<ul class="tactics">
+			  <% @sentient.strategy.maneuvers.each do |maneuver| %>
+			    <li class="tactic">
+				  <span class="<%="action-#{maneuver.action.action_type}-small" %>"></span>
+				  <label><%= maneuver.action.action_type.upcase %></label>
+				  <label><%= maneuver.action.name %></label>
+				  <strong><%= maneuver.action.power %></strong>				
+				</li>
+			  <% end %>
+			</ul>	
 		  </td>
 		</tr>
 	  </table>

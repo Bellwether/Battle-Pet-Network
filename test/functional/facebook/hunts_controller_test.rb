@@ -20,6 +20,8 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
     assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
     assert_tag :tag => "form", :descendant => { 
       :tag => "table", :attributes => { :class => "comparison-table" },
+      :tag => "ul", :attributes => { :class => "tactics" },
+      :tag => "li", :attributes => { :class => "tactic" },
       :tag => "input", :attributes => { :type => "submit" }
     }
   end

@@ -472,16 +472,15 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "spoils", ["pack_id", "status"], :name => "index_spoils_on_pack_id_and_status"
 
   create_table "strategies", :force => true do |t|
-    t.integer  "combatant_id",                      :null => false
-    t.string   "combatant_type",                    :null => false
-    t.string   "name",                              :null => false
-    t.boolean  "saved",          :default => false, :null => false
-    t.boolean  "active",         :default => false, :null => false
+    t.integer  "combatant_id",                                       :null => false
+    t.string   "combatant_type",                                     :null => false
+    t.string   "name",                                               :null => false
+    t.string   "status",         :limit => 32, :default => "active", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "strategies", ["combatant_id", "combatant_type", "active"], :name => "index_strategies_on_combatant_id_and_combatant_type_and_active"
+  add_index "strategies", ["combatant_id", "combatant_type", "status"], :name => "index_strategies_on_combatant_id_and_combatant_type_and_status"
 
   create_table "tames", :force => true do |t|
     t.integer  "pet_id",                                         :null => false

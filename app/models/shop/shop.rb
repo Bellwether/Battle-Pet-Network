@@ -39,7 +39,7 @@ class Shop < ActiveRecord::Base
   end
   
   def validates_max_inventory
-    errors.add_to_base("shopkeeping ability too low for that much inventory") if inventories.size > max_inventory
+    errors.add_to_base("inventory limit reachedry") if inventories.size > max_inventory
   end
   
   def max_inventory

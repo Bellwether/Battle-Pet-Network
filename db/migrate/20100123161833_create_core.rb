@@ -53,11 +53,10 @@ class CreateCore < ActiveRecord::Migration
     create_table :strategies do |t|
       t.belongs_to :combatant, :null => false, :polymorphic => true
       t.string :name, :null => false
-      t.boolean :saved, :null => false, :default => false
-      t.boolean :active, :null => false, :default => false
+      t.string :status, :limit => 32, :null => false, :default => 'active'
       t.timestamps
     end
-    add_index :strategies, [:combatant_id,:combatant_type,:active]
+    add_index :strategies, [:combatant_id,:combatant_type,:status]
     
     create_table :maneuvers do |t|
       t.integer :rank, :default => 0

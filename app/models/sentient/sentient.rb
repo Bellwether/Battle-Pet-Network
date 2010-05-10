@@ -1,5 +1,6 @@
 class Sentient < ActiveRecord::Base
   has_many :hunts, :include => [:hunter]
+  has_one :strategy, :as => :combatant, :dependent => :destroy
   
   validates_inclusion_of :sentient_type, :in => %w(threat)
   
