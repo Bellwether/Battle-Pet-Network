@@ -6,6 +6,7 @@ class Facebook::TamesControllerTest  < ActionController::TestCase
   def setup
     @user = users(:two)
     @pet = @user.pet
+    @tamed = @pet.tames.kenneled.first
   end
   
   def test_index
@@ -19,5 +20,17 @@ class Facebook::TamesControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :class => "kennels"}, :descendant => { 
       :tag => "table", :attributes => { :class => "domesticated-human" }
     }
+  end
+  
+  def test_enslave
+    facebook_get :enslave, :fb_sig_user => @user.facebook_id, :id => @tamed.id
+    assert_equal 'enslaved', @tamed.reload.status
+  end
+
+  def test_release
+    assert_difference ['@pet.tames.count','Tame.count'], -1 do
+      facebook_get :release, :fb_sig_user => @user.facebook_id, :id => @tamed.id
+    end
+    assert_nil Tame.find_by_id(@tamed.id)
   end
 end

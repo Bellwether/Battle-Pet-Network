@@ -26,7 +26,7 @@ class Facebook::BiographiesControllerTest  < ActionController::TestCase
 
   def test_should_create_bio
     mock_user_facebooking(@pet.user.facebook_id)
-    assert_difference 'Biography.count', +1, "biography should create under expected normal conditions but had errors" do
+    assert_difference 'Biography.count', +1 do
       facebook_post :create, :fb_sig_user => @pet.user.facebook_id, :biography => @params
     end
     assert_response :success, "response should be a success"

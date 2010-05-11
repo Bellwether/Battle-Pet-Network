@@ -60,7 +60,7 @@ class Pet < ActiveRecord::Base
   end
   
   def slave_earnings
-    tames.enslaved.sum(:power)
+    tames.enslaved.size * AppConfig.humans.slavery_earnings_multiplier
   end
   
   def update_occupation!(occupation_id)

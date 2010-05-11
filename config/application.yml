@@ -8,3 +8,6 @@ packs:
   founding_fee: 1000  
 shops:
   opening_fee: 2000
+humans:
+  slavery_earnings_multiplier: 1
+  release_multiplier: 250      
