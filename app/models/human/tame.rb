@@ -16,6 +16,7 @@ class Tame < ActiveRecord::Base
       tame.pet.update_attribute(:kibble, tame.pet.kibble + release_award)
       Tame.delete(id)
     end
+    
     def enslave(id)
       find(id).update_attribute(:status, 'enslaved')
     end    

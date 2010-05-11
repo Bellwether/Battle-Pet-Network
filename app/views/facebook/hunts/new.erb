@@ -3,7 +3,13 @@
 <div class="box full">
 
 <table class="comparison-table">
-<tbody><tr><th class="leftbox"><%= current_user_pet.name %></th><td>is hunting the</td><th><%= @sentient.name %></th></tr></tbody>
+<tbody>
+  <tr>
+	<th class="leftbox"><%= current_user_pet.name %></th>
+	<td>is hunting the</td>
+	<th><%= @sentient.name %></th>
+  </tr>
+</tbody>
 </table>
 
 <% form_for @hunt, :url => facebook_nested_url(facebook_sentient_hunts_path(@sentient)), :html => { :method => :post} do |f| %>	
@@ -33,6 +39,7 @@
 		  <td><%= percentage_bar [current_user_pet.intelligence,@sentient.intelligence] %></td>
 		  <td><%= current_user_pet.intelligence %></td>
 		</tr>
+		<tr>
 		  <td>&nbsp;</td>
 		  <td>-</td>
 		</tr>

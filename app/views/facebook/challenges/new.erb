@@ -1,0 +1,131 @@
+<% content_for :page_title do %><h2>Challenge to Battle</h2><% end %>
+
+<div class="box full">
+
+<table class="comparison-table">
+<tbody>
+  <tr>
+	<th class="leftbox"><%= @challenge.attacker.name %></th>
+	<td>challenges</td>
+	<th class="rightbox"><%= @challenge.defender.name %></th>
+  </tr>
+</tbody>
+</table>
+
+<% form_for @challenge, :url => facebook_nested_url(new_facebook_pet_challenge_path(@pet)), :html => { :method => :post} do |f| %>	
+<table class="comparison-table">
+  <tbody>
+	<tr>
+	<td class="leftbox">
+	  <table class="dotbox">
+		<tr>
+		  <td rowspan="5"><div class="<%="avatar-#{@challenge.attacker.slug}-large" %> left"></div></td>
+		  <td>&nbsp;</td>
+		  <td><%= @challenge.attacker.breed.name %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [@challenge.attacker.health,@challenge.defender.health] %></td>
+		  <td><%= @challenge.attacker.health %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [@challenge.attacker.endurance,@challenge.defender.endurance] %></td>
+		  <td><%= @challenge.attacker.endurance %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [@challenge.attacker.power,@challenge.defender.power] %></td>
+		  <td><%= @challenge.attacker.power %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [@challenge.attacker.fortitude,@challenge.defender.fortitude] %></td>
+		  <td><%= @challenge.attacker.fortitude %></td>
+		</tr>
+		<tr>
+		  <td><%= percentage_bar [@challenge.attacker.intelligence,@challenge.defender.intelligence] %></td>
+		  <td><%= @challenge.attacker.intelligence %></td>
+		</tr>
+		<tr>
+		  <td rowspan="3">
+		  </td>
+		  <td><%= percentage_bar [@challenge.attacker.level_rank_count,@challenge.defender.level_rank_count] %></td>
+		  <td><%= @challenge.attacker.level_rank_count %></td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td></td>
+		</tr>
+		<tr>
+		  <td colspan="3">
+			<div>Your Pet's Battle Strategy</div>
+			<%= render_strategy_picker %>
+		  </td>
+		</tr>
+	  </table>
+	</td>
+	<tr>	
+	<td class="middlebox">
+	  <table class="dotbox">
+		<tr><td>Breed</td></tr>
+		<tr><td>Health</td></tr>
+		<tr><td>Endurance</td></tr>
+		<tr><td>Power</td></tr>
+		<tr><td>Fortitude</td></tr>
+		<tr><td>Intelligence</td></tr>
+		<tr><td>Level</td></tr>
+		<tr><td>Favorite Action</td></tr>
+		<tr><td>&nbsp;</td><tr>
+		<tr><th>Combat</th></tr>
+		<tr><td><%= submit_tag "Challenge"%></td></tr>
+	</td>	
+	</tr>	
+	<tr>
+	<td class="rightbox">
+	  <table class="dotbox">
+		<tr>
+		  <td><%= @challenge.defender.health %></td>
+		  <td>&nbsp;</td>
+		  <td rowspan="5"><div class="<%="avatar-#{@challenge.defender.slug}-large" %> right"></div></td>
+		</tr>
+		<tr>
+		  <td><%= @challenge.defender.health %></td>
+		  <td><%= percentage_bar [@challenge.defender.health,@challenge.attacker.health] %></td>
+		</tr>
+		<tr>
+		  <td><%= @challenge.defender.endurance %></td>
+		  <td><%= percentage_bar [@challenge.defender.endurance,@challenge.attacker.endurance] %></td>
+		</tr>
+		<tr>
+		  <td><%= @challenge.defender.power %></td>
+		  <td><%= percentage_bar [@challenge.defender.power,@challenge.attacker.power] %></td>
+		</tr>
+		<tr>
+		  <td><%= @challenge.defender.fortitude %></td>
+		  <td><%= percentage_bar [@challenge.defender.fortitude,@challenge.attacker.fortitude] %></td>
+		</tr>
+		<tr>
+		  <td><%= @challenge.defender.intelligence %></td>
+		  <td><%= percentage_bar [@challenge.defender.intelligence,@challenge.attacker.intelligence] %></td>
+		<tr>
+		  <td rowspan="3">
+		  </td>
+		  <td><%= percentage_bar [@challenge.defender.level_rank_count,@challenge.attacker.level_rank_count] %></td>
+		  <td><%= @challenge.defender.level_rank_count %></td>
+		</tr>
+		<tr>
+		  <td></td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td colspan="3">
+			<div>Defender's Tactics</div>
+			<p class="em">
+			  The defender will choose a strategy after they accept your challenge. Try to anticipate their actions
+			  as and then act stronger!
+			</p>
+		  </td>
+		</tr>
+	  </table>
+	</td> 	
+	</tr>
+  </tbody>
+</table>
+<% end %>

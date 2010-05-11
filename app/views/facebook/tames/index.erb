@@ -39,7 +39,13 @@
 			<div>Required Level: <strong><%= tame.human.required_rank %></strong></div>
 			<div>Rarity: <strong><%= tame.human.difficulty %></strong></div>
 		  </td>
-		  <td class="em"><%= tame.human.description %></td>
+		  <td class="em" colspan="2"><%= tame.human.description %></td>
+		</tr>
+		<tr>
+		  <td>
+		    <strong><%= facebook_link_to "Enslave", enslave_facebook_kennel_path(tame.id) %></strong>
+			<br />
+		    <strong><%= facebook_link_to "Release", release_facebook_kennel_path(tame.id) %></strong>
 		</tr>
 		</tbody>
 	  </table>

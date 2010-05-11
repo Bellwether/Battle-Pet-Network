@@ -1,4 +1,9 @@
 class Challenge < ActiveRecord::Base
+  belongs_to :attacker, :polymorphic => true
+  belongs_to :defender, :polymorphic => true
+  belongs_to :attacker_strategy, :class_name => "Strategy"
+  belongs_to :defender_strategy, :class_name => "Strategy"
+  
   has_one :battle
 
   validates_presence_of :status, :challenge_type, :attacker_id
