@@ -7,6 +7,9 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     @attacker = pets(:siamese)
     @defender = pets(:persian)
     @user = @attacker.user
+    @params = {:attacker_strategy_attributes => {
+                :maneuvers_attributes => { "0" => {:action_id => actions(:scratch).id}} 
+              }}
   end
   
   def test_get_new
@@ -20,5 +23,28 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       :tag => "table", :attributes => { :class => "comparison-table" },
       :tag => "input", :attributes => { :type => "submit" }
     }
+  end
+
+  def test_create
+    mock_user_facebooking(@user.facebook_id)   
+    assert_difference ['Challenge.count','Strategy.count'], +1 do
+      facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => @params
+      assert_response :success
+      assert !assigns(:challenge).blank?
+      assert !assigns(:pet).blank?
+    end    
+    assert flash[:notice]
+  end
+
+  def test_fail_create
+    mock_user_facebooking(@user.facebook_id)   
+    assert_no_difference ['Challenge.count','Strategy.count'] do
+      @params[:attacker_strategy_attributes][:maneuvers_attributes] = {}
+      facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => @params
+      assert_response :success
+      assert !assigns(:challenge).blank?
+      assert !assigns(:pet).blank?
+    end    
+    assert flash[:error]
   end
 end

@@ -17,7 +17,6 @@ class Hunt < ActiveRecord::Base
   def validates_required_rank
     return if sentient.blank? || hunters.blank?
     hunters.each do |h|
-      puts sentient.required_rank
       errors.add(:sentient_id, "required level too high") if h.pet.level_rank_count < sentient.required_rank
     end
   end
