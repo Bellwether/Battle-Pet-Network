@@ -44,4 +44,15 @@ class PackTest < ActiveSupport::TestCase
     pack.send(:after_save)
     assert_equal pack.id, @founder.pack_id
   end
+  
+  def test_position_for
+    stranger = pets(:persian)
+    member = pets(:burmese)
+    pack = packs(:alpha)
+    assert_equal pack.founder_id, @pet.id
+    assert_not_equal pack.id, stranger.pack_id
+    assert_equal 'founder', pack.position_for(@pet)
+    assert_equal 'member', pack.position_for(member)
+    assert_equal nil, pack.position_for(stranger)
+  end
 end

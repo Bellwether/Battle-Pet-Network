@@ -1,11 +1,14 @@
 class Item < ActiveRecord::Base
-  TYPES = ['Food', 'Kibble', 'Toy', 'Collar', 'Claws', 'Sensors', 'Ornament', 'Mantle', 'Charm', 'Standard']
+  TYPES = ['Food', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensors', 'Ornament', 'Mantle', 'Charm', 'Standard']
+  BATTLE_TYPES = ['Collar', 'Weapon', 'Sensors', 'Mantle']
   
   validates_inclusion_of :item_type, :in => TYPES
   validates_numericality_of :cost, :greater_than_or_equal_to => 0
   validates_numericality_of :stock, :greater_than_or_equal_to => 0
   validates_numericality_of :restock_rate, :greater_than_or_equal_to => 0
   validates_numericality_of :stock_cap, :greater_than_or_equal_to => 0
+  
+  belongs_to :species
   
   has_many :spoils
   has_many :inventories

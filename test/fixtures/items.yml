@@ -33,3 +33,16 @@ sisal_mast:
     stock: 4
     stock_cap: 4
     restock_rate: 1
+    
+catamount_claws:
+    species: cat
+    name: Catamount Claws
+    description: The murder weapon of choice of all serious predators.
+    item_type: Weapon
+    power: 4
+    required_rank: 7
+    cost: 20000
+    rarity: 25
+    stock: 3
+    stock_cap: 3
+    restock_rate: 1

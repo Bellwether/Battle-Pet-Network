@@ -14,13 +14,21 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :attacker_strategy, :allow_destroy => false
   accepts_nested_attributes_for :defender_strategy, :allow_destroy => false
   
-  validate :validates_different_combatants
+  validate :validates_different_combatants, :validates_no_existing_challenge
   
   def after_initialize(*args)
-    self.status ||= 'issued'
+    self.status ||= 'issued' if attributes.include?(:status)
   end
 
   def validates_different_combatants
     errors.add_to_base("cannot challenge self") if attacker_id == defender_id
+  end
+  
+  def validates_no_existing_challenge
+    return true unless new_record?
+    existing_challenge = Challenge.exists?(
+      ["status = 'issued' AND ((attacker_id = ? AND defender_id = ?) OR (attacker_id = ? AND defender_id = ?))", 
+        attacker_id, defender_id, defender_id, attacker_id])
+    errors.add_to_base("existing challenge already issued") if existing_challenge
   end
 end

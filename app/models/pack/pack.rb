@@ -3,7 +3,7 @@ class Pack < ActiveRecord::Base
   belongs_to :leader, :class_name => "Pet"
   belongs_to :standard, :class_name => "Item", :select => 'id, name, description, power, required_rank'
   
-  has_many :pack_members, :order => 'pack_members.position, pack_members.created_at'
+  has_many :pack_members, :order => 'pack_members.position, pack_members.created_at', :include => [:pet]
   has_many :spoils, :include => [:item], :order => 'items.cost DESC'
 
   before_validation_on_create :set_leader
@@ -45,6 +45,9 @@ class Pack < ActiveRecord::Base
   end
   
   def position_for(pet)
-    "member"
+    pack_members.each do |m|
+      return m.position if m.pet_id == pet.id
+    end
+    return nil
   end
 end

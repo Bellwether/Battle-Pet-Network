@@ -1,0 +1,5 @@
+siamese_burmese_issued:
+  attacker: siamese
+  defender: burmese
+  attacker_strategy: siamese_strategy
+  challenge_type: 1v1    

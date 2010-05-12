@@ -9,3 +9,9 @@ three_standard:
   item: fiberboard_pillar
   source: purchased    
   status: active  
+  
+two_catamount_claws:
+  pet: siamese
+  item: catamount_claws    
+  source: purchased
+  status: active

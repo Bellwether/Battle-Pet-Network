@@ -21,6 +21,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert !assigns(:pet).blank?
     assert_tag :tag => "form", :descendant => { 
       :tag => "table", :attributes => { :class => "comparison-table" },
+      :tag => "td", :attributes => { :class => "battle-gear" },
       :tag => "input", :attributes => { :type => "submit" }
     }
   end
@@ -46,5 +47,13 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       assert !assigns(:pet).blank?
     end    
     assert flash[:error]
+  end
+  
+  def test_create_parameter_injection
+    @exploiter = pets(:burmese)
+    @params[:attacker_strategy_attributes][:combatant_id] = @exploiter.id
+    facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => @params
+    assert !assigns(:challenge).blank?
+    assert_equal @attacker.id, assigns(:challenge).attacker_strategy.combatant_id
   end
 end

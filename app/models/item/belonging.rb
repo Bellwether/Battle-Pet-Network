@@ -6,6 +6,8 @@ class Belonging < ActiveRecord::Base
   validates_inclusion_of :status, :in => %w(active holding expended)
   validates_inclusion_of :source, :in => %w(scavenged purchased gift award)
 
+  named_scope :battle_ready, :conditions => ["belongings.status = 'active' AND items.item_type IN (?) ", Item::BATTLE_TYPES], 
+                             :include => [:item]
   named_scope :sellable, :conditions => ["belongings.status = 'holding'"], 
                           :order => "items.cost DESC"
   named_scope :standards, :conditions => ["items.item_type = 'Standard'"], 

@@ -45,6 +45,12 @@
 		</tr>
 		<tr>
 		  <td rowspan="3">
+			<% cell_table(@challenge.attacker.belongings.battle_ready) do |b,idx| %>
+			  <td class='battle-gear'>
+				<div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+				<label><%= b.item.name %></label>
+			  </td>
+			<% end %>
 		  </td>
 		  <td><%= percentage_bar [@challenge.attacker.level_rank_count,@challenge.defender.level_rank_count] %></td>
 		  <td><%= @challenge.attacker.level_rank_count %></td>
@@ -106,6 +112,12 @@
 		  <td><%= percentage_bar [@challenge.defender.intelligence,@challenge.attacker.intelligence] %></td>
 		<tr>
 		  <td rowspan="3">
+			<% cell_table(@challenge.defender.belongings.battle_ready) do |b,idx| %>
+			  <td class='battle-gear'>
+				<div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+				<label><%= b.item.name %></label>
+			  </td>
+			<% end %>
 		  </td>
 		  <td><%= percentage_bar [@challenge.defender.level_rank_count,@challenge.attacker.level_rank_count] %></td>
 		  <td><%= @challenge.defender.level_rank_count %></td>
