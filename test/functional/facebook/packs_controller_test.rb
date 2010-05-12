@@ -8,6 +8,7 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     @pet = @user.pet
     @standard = items(:fiberboard_pillar)
     @params = {:founder_id => @pet.id, :name => 'test pack', :standard_id => @standard.id}
+    @leader = packs(:alpha).leader
   end
   
   def test_get_pack
@@ -15,7 +16,8 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     facebook_get :show, :id => packs(:alpha).id, :fb_sig_user => nil
     assert_response :success
     assert_template 'show'
-    assert assigns(:pack)
+    assert !assigns(:pack).blank?
+    assert !assigns(:pack).pack_members.blank?
     assert_tag :tag => "div", :attributes => { :id => "spoils" }
     assert_tag :tag => "td", :attributes => { :class => "pack-member" }
     assert_no_tag :tag => "span", :attributes => { :id => "challenge-button" }
@@ -27,7 +29,8 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     facebook_get :show, :id => packs(:alpha).id, :fb_sig_user => users(:three).facebook_id
     assert_response :success
     assert_template 'show'
-    assert assigns(:pack)
+    assert !assigns(:pack).blank?
+    assert !assigns(:pack).pack_members.blank?
     assert_tag :tag => "div", :attributes => { :id => "spoils" }
     assert_tag :tag => "td", :attributes => { :class => "pack-member" }
     assert_tag :tag => "span", :attributes => { :id => "challenge-button" }
@@ -42,8 +45,8 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     facebook_get :new, :fb_sig_user => @user.facebook_id
     assert_response :success
     assert_template 'new'
-    assert assigns(:pack)
-    assert assigns(:standards)
+    assert !assigns(:pack).blank?
+    assert !assigns(:standards).blank?
     assert_tag :tag => "form", :descendant => { 
       :tag => "input", :attributes => { :name => "pack[standard_id]", :type => "radio" },  
       :tag => "table", :attributes => { :id => "item-picker" },
@@ -73,5 +76,17 @@ class Facebook::PacksControllerTest < ActionController::TestCase
       assert !assigns(:pack).blank?
     end    
     assert flash[:error]
+  end
+  
+  def test_get_edit
+    mock_user_facebooking(@leader.user.facebook_id)
+    facebook_get :edit, :fb_sig_user => @leader.user.facebook_id
+    assert_response :success
+    assert_template 'edit'
+    assert !assigns(:pack).blank?
+    assert assigns(:items)
+    assert_tag :tag => "form", :attributes => {:id => 'donate-items'}
+    assert_tag :tag => "form", :attributes => {:id => 'donate-kibble'}
+    assert_tag :tag => "form", :attributes => {:class => 'loan-spoils'}
   end
 end

@@ -29,7 +29,7 @@
 	  <table class="item">
 		<tr><th colspan="2"><%= i.item.name %></th></tr>
 		<tr>
-		  <td rowspan="4"><div class='i.item-#{i.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
+		  <td rowspan="4"><div class='item-#{i.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
 		  <td>
 			<% if has_pet? %>
 			  <% if current_user_pet.kibble >= i.cost %>

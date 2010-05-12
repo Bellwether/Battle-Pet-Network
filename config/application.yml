@@ -6,6 +6,7 @@ facebook:
   app_id: 303486038573
 packs:
   founding_fee: 1000  
+  member_bonus_modifier: 2
 shops:
   opening_fee: 2000
 humans:

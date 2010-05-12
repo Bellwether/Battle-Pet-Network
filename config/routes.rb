@@ -38,7 +38,9 @@ ActionController::Routing::Routes.draw do |map|
       home.resources :messages, :only => [:show,:new,:create,:destroy], :collection => {:inbox => :get, :outbox => :get} 
       home.resources :kennel, :only => [:index], :member => {:enslave => :put, :release => :put}, :controller => 'tames'
       home.resource :shop, :only => [:new,:create] 
-      home.resource :pack, :only => [:edit]
+      home.resource :pack, :only => [:edit] do |pack|
+        pack.resources :spoils, :only => [:create,:update]
+      end
     end
     
     f.root :controller => 'lobby'

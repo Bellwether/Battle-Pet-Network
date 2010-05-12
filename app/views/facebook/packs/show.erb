@@ -30,12 +30,12 @@
 	</tr>
 	<tr>
 	  <td><label>Member Bonus:</label></td>
-	  <td><%= @pack.member_bonus %></td>
+	  <td><%= @pack.membership_bonus %></td>
 	  <td><% if can_user_pet_challenge(@pack) %><span id="membership-button" class="button">Request Membership</span><% end %></td>
 	</tr>
 	<tr>
 	  <td><label>Member Battle Record:</label></td>
-	  <td></td>
+	  <td><%= @pack.battle_record %></td>
 	  <td><% if can_user_pet_be_member(@pack) %><span id="challenge-button" class="button">Challenge to Battle</span><% end %></td>
 	</tr>
   </table>

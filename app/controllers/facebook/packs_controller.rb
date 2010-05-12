@@ -1,9 +1,8 @@
 class Facebook::PacksController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :ensure_has_pet, :except => [:show]
-  before_filter :ensure_pack_mamber, :only => [:edit]
   
   def show
-    @pack = Pack.find(params[:id])
+    @pack = Pack.include_pack_members.find(params[:id])
   end
   
   def new
@@ -25,10 +24,7 @@ class Facebook::PacksController < Facebook::FacebookController
   end
   
   def edit
-  end
-  
-  def ensure_pack_mamber
-    @pack = Pack.find[:id]
-    facebook_redirect_to facebook_pack_path(@pack) unless @pack.position_for(current_user_pet.id)
+    @pack = current_user_pet.pack
+    @items = current_user_pet.belongings.sellable.collect(&:items)
   end
 end

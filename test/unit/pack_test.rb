@@ -51,8 +51,33 @@ class PackTest < ActiveSupport::TestCase
     pack = packs(:alpha)
     assert_equal pack.founder_id, @pet.id
     assert_not_equal pack.id, stranger.pack_id
-    assert_equal 'founder', pack.position_for(@pet)
+    assert_equal 'leader', pack.position_for(@pet)
     assert_equal 'member', pack.position_for(member)
     assert_equal nil, pack.position_for(stranger)
+  end
+  
+  def test_battle_record
+    pack = packs(:alpha)
+    wins = 0
+    loses = 0
+    draws = 0
+    pack.pack_members.each do |m|
+      wins = wins + m.pet.wins_count
+      loses = loses + m.pet.loses_count
+      draws = draws + m.pet.draws_count
+    end
+    assert_equal "#{wins}/#{loses}/#{draws}", pack.battle_record
+  end
+  
+  def test_membership_bonus
+    pack = packs(:alpha)
+    members = pack.pack_members
+    ranks = members.collect(&:pet).collect(&:level_rank_count)
+    total = 0
+    ranks.each do |r|
+      total = total + r
+    end
+    total = total * AppConfig.packs.member_bonus_modifier
+    assert_equal pack.membership_bonus, total
   end
 end

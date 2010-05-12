@@ -3,7 +3,9 @@ class Pet < ActiveRecord::Base
   
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
-  belongs_to :pack, :select => "id, name, status, kibble, created_at, standard_id", :include => [:standard]
+  belongs_to :pack, 
+              :select => "id, name, status, kibble, created_at, standard_id, leader_id", 
+              :include => {:standard => {},:pack_members => {:pet => :breed}}
   belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
   has_one :biography
   has_one :shop  

@@ -27,6 +27,10 @@ class Item < ActiveRecord::Base
     name.downcase.gsub(/\s/,'-')
   end 
   
+  def bonus
+    ""
+  end
+  
   def purchase_for!(pet)
     belonging = belongings.build(:pet_id => pet.id, :source => 'purchased')
     belonging.errors.add_to_base("out of stock") if stock < 1
