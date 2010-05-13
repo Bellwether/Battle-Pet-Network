@@ -8,14 +8,4 @@ module Facebook::ItemsHelper
       "<tr><td colspan='2'>#{description}</td></tr>" <<
       "</table>"
   end
-  
-  def cell_table(array,cols=3)
-    render :text => "<table><tbody>"
-    array.each_with_index do |row,idx|
-  	  render :text => "<tr>" if idx % cols == 0
-      yield row, idx
-      render :text =>  "</tr>" if idx % cols == (cols - 1)
-    end
-    render :text => "</tbody></table>"
-  end
 end

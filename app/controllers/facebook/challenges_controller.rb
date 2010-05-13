@@ -10,6 +10,8 @@ class Facebook::ChallengesController < Facebook::FacebookController
   def new
     @pet = Pet.find(params[:pet_id])
     @challenge = Challenge.new(:attacker => current_user_pet, :defender => @pet)
+    @challenge.challenge_type = "1v1"
+    @gear = @pet.belongings.battle_ready
   end
   
   def create

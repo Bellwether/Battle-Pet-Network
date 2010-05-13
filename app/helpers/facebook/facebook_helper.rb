@@ -62,8 +62,13 @@ module Facebook::FacebookHelper
    "<fb:fan profile_id=\"#{AppConfig.facebook.app_id}\" stream=\"0\" connections=\"0\" width=\"200\" height=\"64\" logobar=\"false\"></fb:fan>"
   end
   
-  def cell_table(array,cols=3)
-    render :text => "<table><tbody>"
+  def cell_table(array,cols=3,options = {})
+    if array.blank?
+      render :text => "" 
+      return 
+    end
+    
+    render :text => "<table class='#{(options[:class] || '')}'><tbody>"
     array.each_with_index do |row,idx|
   	  render :text => "<tr>" if idx % cols == 0
       yield row, idx

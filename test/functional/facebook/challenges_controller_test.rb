@@ -39,6 +39,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert !assigns(:pet).blank?
     assert_tag :tag => "form", :descendant => { 
       :tag => "table", :attributes => { :class => "comparison-table" },
+      :tag => "table", :attributes => { :class => "battle-gear" },
       :tag => "td", :attributes => { :class => "battle-gear" },
       :tag => "input", :attributes => { :type => "submit" }
     }

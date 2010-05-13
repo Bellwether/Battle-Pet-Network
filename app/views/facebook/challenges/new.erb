@@ -48,7 +48,7 @@
 			<% cell_table(@challenge.attacker.belongings.battle_ready) do |b,idx| %>
 			  <td class='battle-gear'>
 				<div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
-				<label><%= b.item.name %></label>
+				<label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
 			  </td>
 			<% end %>
 		  </td>
@@ -57,7 +57,14 @@
 		</tr>
 		<tr>
 		  <td>&nbsp;</td>
-		  <td></td>
+		  <td>
+			<% cell_table(@challenge.defender.belongings.battle_ready) do |b,idx| %>
+			  <td class='battle-gear'>
+				<div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+				<label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
+			  </td>
+			<% end %>
+		  </td>
 		</tr>
 		<tr>
 		  <td colspan="3">
