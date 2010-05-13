@@ -1,4 +1,6 @@
 class Pack < ActiveRecord::Base
+  KIBBLE_CONTRIBUTIONS = [25,50,100,200,300,400,500,1000]
+
   belongs_to :founder, :class_name => "Pet"
   belongs_to :leader, :class_name => "Pet"
   belongs_to :standard, :class_name => "Item", :select => 'id, name, description, power, required_rank'
@@ -8,6 +10,7 @@ class Pack < ActiveRecord::Base
   has_many :spoils, :include => [:item], :order => 'items.cost DESC'
 
   before_validation_on_create :set_leader
+  before_update :contribute_kibble
   after_create :update_founder
   
   validates_presence_of :founder_id, :standard_id, :name, :kibble, :status
@@ -17,6 +20,8 @@ class Pack < ActiveRecord::Base
   validate :validates_founder, :validates_founding_fee, :validates_standard
   
   named_scope :include_pack_members, :include => {:pack_members => :pet}
+
+  attr_accessor :kibble_contribution
   
   def after_initialize(*args)
     self.status ||= 'active'
@@ -41,6 +46,10 @@ class Pack < ActiveRecord::Base
 
   def set_leader
     self.leader_id = self.founder_id
+  end
+  
+  def contribute_kibble
+    self.kibble = kibble + kibble_contribution unless kibble_contribution.blank?
   end
   
   def update_founder

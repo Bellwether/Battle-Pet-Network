@@ -75,9 +75,9 @@
   <tr>
 	<td>
 	  <label>Add to Treasury:</label>	
-      <% form_for @pack, :url => "", 
-				     :html => { :method => :post, :id => 'donate-kibble'} do |f| %>
-        <select></select>
+      <% form_for @pack, :url => facebook_nested_url(edit_facebook_pack_path(@pack)), 
+				     :html => { :method => :put, :id => 'donate-kibble'} do |f| %>
+        <%= f.collection_select(:kibble_contribution, Pack::KIBBLE_CONTRIBUTIONS, :to_s, :to_s, {:include_blank => true}) %>
         <br />
         <%= f.submit 'Contribute' %>
       <% end %>

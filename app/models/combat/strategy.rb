@@ -15,8 +15,6 @@ class Strategy < ActiveRecord::Base
   end  
   
   def set_name
-    return unless name.blank? && maneuvers.size > 0
-    
     maneuvers.each do |m|
       (self.name ||= "") << m.action.power.to_s
     end
@@ -25,6 +23,6 @@ class Strategy < ActiveRecord::Base
     day_part = Time.now.day
     month_part = Time.now.month
     
-    self.name << "#{name_part}#{day_part}#{month_part}"
+    self.name = "#{name_part}#{day_part}#{month_part}"
   end
 end

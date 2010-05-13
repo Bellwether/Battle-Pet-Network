@@ -7,6 +7,8 @@ class Hunt < ActiveRecord::Base
   validates_presence_of :sentient_id, :status, :logs
   validates_inclusion_of :status, :in => %w(gathering started ended)
   
+  validates_presence_of :hunters
+    
   validate :validates_required_rank
   
   def after_initialize(*args)

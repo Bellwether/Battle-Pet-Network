@@ -59,9 +59,8 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
 
   def test_fail_create
     Challenge.destroy_all
-    mock_user_facebooking(@user.facebook_id)   
     assert_no_difference ['Challenge.count','Strategy.count'] do
-      @params[:attacker_strategy_attributes][:maneuvers_attributes] = {}
+      @params = {}
       facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => @params
       assert_response :success
       assert !assigns(:challenge).blank?

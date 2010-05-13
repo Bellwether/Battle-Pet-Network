@@ -43,12 +43,10 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
   def test_fail_create
     mock_user_facebooking(@user.facebook_id)   
     assert_no_difference ['Hunt.count','Hunter.count','Strategy.count'] do
-      @params[:hunters_attributes]["0"][:strategy_attributes] = {}
+      @params = {}
       facebook_post :create, :sentient_id => @sentient.id, :hunt => @params, :fb_sig_user => @user.facebook_id
       assert_response :success
       assert !assigns(:hunt).blank?
-      assert !assigns(:hunt).hunters.blank?
-      assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
     end    
     assert flash[:error]
   end

@@ -9,7 +9,8 @@ class Facebook::HuntsController < Facebook::FacebookController
   def create
     @sentient = Sentient.find(params[:sentient_id])
     @hunt = @sentient.hunts.build(params[:hunt])
-    @hunt.hunters.first.pet = @hunt.hunters.first.strategy.combatant = current_user_pet
+    @hunt.hunters.first.pet = current_user_pet unless @hunt.hunters.blank?
+    @hunt.hunters.first.strategy.combatant = current_user_pet unless @hunt.hunters.blank?
     
     if @hunt.save
       flash[:notice] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"

@@ -3,6 +3,7 @@ require 'test_helper'
 class PackTest < ActiveSupport::TestCase
   def setup
     @pet = pets(:siamese)
+    @pack = packs(:alpha)
     @founder = pets(:persian)
     @standard = items(:fiberboard_pillar)
     @params = {:founder_id => @founder.id, :name => 'test pack', :standard_id => @standard.id}
@@ -57,27 +58,33 @@ class PackTest < ActiveSupport::TestCase
   end
   
   def test_battle_record
-    pack = packs(:alpha)
     wins = 0
     loses = 0
     draws = 0
-    pack.pack_members.each do |m|
+    @pack.pack_members.each do |m|
       wins = wins + m.pet.wins_count
       loses = loses + m.pet.loses_count
       draws = draws + m.pet.draws_count
     end
-    assert_equal "#{wins}/#{loses}/#{draws}", pack.battle_record
+    assert_equal "#{wins}/#{loses}/#{draws}", @pack.battle_record
   end
   
   def test_membership_bonus
-    pack = packs(:alpha)
-    members = pack.pack_members
+    members = @pack.pack_members
     ranks = members.collect(&:pet).collect(&:level_rank_count)
     total = 0
     ranks.each do |r|
       total = total + r
     end
     total = total * AppConfig.packs.member_bonus_modifier
-    assert_equal pack.membership_bonus, total
+    assert_equal @pack.membership_bonus, total
+  end
+  
+  def test_contribute_kibble
+    contribution = 25
+    assert_difference '@pack.kibble', +contribution do    
+      @pack.kibble_contribution = contribution
+      @pack.save(false)
+    end
   end
 end

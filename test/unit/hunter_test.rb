@@ -6,13 +6,12 @@ class HunterTest < ActiveSupport::TestCase
   end
   
   def test_validates_pet_strategy
-    valid_strategy = Strategy.new(:combatant => @pet)
-    invalid_strategy = Strategy.new(:combatant => pets(:persian))
-    hunter = Hunter.new(:pet_id => @pet.id)
-    hunter.strategy = valid_strategy
+    valid_strategy = Strategy.new(:combatant => @pet, :name => "Test")
+    invalid_strategy = Strategy.new(:combatant => pets(:persian), :name => "Test")
+    hunter = Hunter.new(:pet_id => @pet.id, :hunt => hunts(:rat_hunt), :strategy => valid_strategy)
     hunter.save
-    assert !hunter.errors.on(:strategy_id).include?("unknown strategy")
-    hunter.strategy = invalid_strategy
+    assert_nil hunter.errors.on(:strategy_id)
+    hunter = Hunter.new(:pet_id => @pet.id, :hunt => hunts(:rat_hunt), :strategy => invalid_strategy)
     hunter.save
     assert hunter.errors.on(:strategy_id).include?("unknown strategy")
   end
