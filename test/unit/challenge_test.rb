@@ -20,4 +20,20 @@ class ChallengeTest < ActiveSupport::TestCase
     invalid_challenge = Challenge.create(@params)
     assert invalid_challenge.errors.on_base.include?("existing challenge already issued")
   end
+  
+  def test_validate_prowling
+    Challenge.destroy_all
+    prowling = occupations(:prowling)
+    taming = occupations(:taming)
+    @attacker.update_attribute(:occupation_id,prowling.id)
+    @defender.update_attribute(:occupation_id,prowling.id)
+    challenge = Challenge.create(@params)
+    assert_nil challenge.errors.on(:defender_id)
+    assert_nil challenge.errors.on(:attacker_id)
+    @attacker.update_attribute(:occupation_id,taming.id)
+    @defender.update_attribute(:occupation_id,taming.id)
+    challenge = Challenge.create(@params)
+    assert_equal "must be prowling to issue challenge", challenge.errors.on(:attacker_id)
+    assert_equal "must be prowling to accept challenge", challenge.errors.on(:defender_id)
+  end
 end

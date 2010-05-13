@@ -9,3 +9,9 @@ siamese_strategy:
   combatant_id: <%= Fixtures.identify :siamese %>      
   name: SPS
   status: active
+  
+persian_strategy:
+  combatant_type: Pet
+  combatant_id: <%= Fixtures.identify :persian %>      
+  name: PPS
+  status: active  

@@ -12,6 +12,24 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
               }}
   end
   
+  def test_index
+    pet = pets(:persian)
+    user = pet.user
+    mock_user_facebooking(user.facebook_id)
+    facebook_get :index, :fb_sig_user => user.facebook_id
+    assert_template 'index'
+    assert !assigns(:challenges).blank?
+    assert !assigns(:issued).blank?
+    assert !assigns(:resolved).blank?
+    assert_tag :tag => "ul", :attributes => { :id => 'issued-challenges'}, :descendant => {
+      :tag => "a"
+    }
+    assert_tag :tag => "table", :attributes => {:class => 'challenge'}, :descendant => {
+      :tag => "span", :attributes => { :class => "right button" },  
+      :tag => "span", :attributes => { :class => "left button" }
+    }
+  end
+  
   def test_get_new
     mock_user_facebooking(@user.facebook_id)
     facebook_get :new, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id
@@ -27,6 +45,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
   end
 
   def test_create
+    Challenge.destroy_all
     mock_user_facebooking(@user.facebook_id)   
     assert_difference ['Challenge.count','Strategy.count'], +1 do
       facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => @params
@@ -38,6 +57,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
   end
 
   def test_fail_create
+    Challenge.destroy_all
     mock_user_facebooking(@user.facebook_id)   
     assert_no_difference ['Challenge.count','Strategy.count'] do
       @params[:attacker_strategy_attributes][:maneuvers_attributes] = {}

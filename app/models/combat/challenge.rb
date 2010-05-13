@@ -14,7 +14,16 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :attacker_strategy, :allow_destroy => false
   accepts_nested_attributes_for :defender_strategy, :allow_destroy => false
   
-  validate :validates_different_combatants, :validates_no_existing_challenge
+  validate :validates_different_combatants, :validates_no_existing_challenge, :validates_prowling
+  
+  named_scope :issued, :conditions => "status = 'issued'"
+  named_scope :resolved, :conditions => "status = 'resolved'"  
+  named_scope :for_attacker, lambda { |attacker_id| 
+    { :conditions => ["attacker_id = ?", attacker_id] }
+  }  
+  named_scope :for_defender, lambda { |defender_id| 
+    { :conditions => ["defender_id = ?", defender_id] }
+  }  
   
   def after_initialize(*args)
     self.status ||= 'issued' if attributes.include?(:status)
@@ -22,6 +31,11 @@ class Challenge < ActiveRecord::Base
 
   def validates_different_combatants
     errors.add_to_base("cannot challenge self") if attacker_id == defender_id
+  end
+  
+  def validates_prowling
+    errors.add(:attacker_id, "must be prowling to issue challenge") if attacker && !attacker.prowling?
+    errors.add(:defender_id, "must be prowling to accept challenge") if defender && !defender.prowling?
   end
   
   def validates_no_existing_challenge

@@ -6,6 +6,7 @@ class PetTest < ActiveSupport::TestCase
     
     @user = users(:one)
     @new_pet = Pet.new(:name => 'lilly', :breed_id => breeds(:persian).id, :user_id => @user.id)
+    @pet = pets(:siamese)
   end
   
   def test_set_slug
@@ -43,5 +44,14 @@ class PetTest < ActiveSupport::TestCase
     occupation = occupations(:taming)
     pet.update_occupation!(occupation.id)
     assert_equal occupation.id, pet.reload.occupation_id
+  end
+  
+  def test_is_prowling
+    taming = occupations(:taming)
+    prowling = occupations(:prowling)
+    @pet.update_attribute(:occupation_id,prowling.id)
+    assert @pet.reload.prowling?
+    @pet.update_attribute(:occupation_id,taming.id)
+    assert !@pet.reload.prowling?
   end
 end

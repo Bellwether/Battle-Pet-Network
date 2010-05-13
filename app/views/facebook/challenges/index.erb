@@ -1,0 +1,70 @@
+<% content_for :page_title do %><h2>Challenge Records</h2><% end %>
+
+<div class="sidebox slim right">
+  <div class="box slim">
+    <h4>Unanswered Challenges</h4>
+    <% if @issued.blank? %>
+	  <p class="em">You have issued no challenges that have gone unanswered at the moment.</p>
+	<% else %>
+	  <ul id='issued-challenges' class='challenges'>
+	  <% @issued.each do |challenge| %>
+	    <li>
+		  <div class="<%="avatar-#{challenge.defender.slug}-small" %> left">
+		  <div>
+			<span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
+			<br />
+		    <div><% facebook_link_to "Cancel Challenge", "" %></div>
+		  </div>
+		</li>
+	  <% end %>	
+	  </ul>
+    <% end %>
+  </div>
+</div>
+
+<% unless @challenges.blank? %>
+<div class="box">
+  <h3>You've Been Challenge to Battle! Now You Must Respond.</h3>
+
+  <% cell_table(@challenges) do |c,idx| %>
+  <td>
+    <table class="challenge">
+	  <tbody>
+		<tr>
+		  <td rowspan="4">
+			<div class="<%="avatar-#{c.attacker.slug}-medium" %>"></div>
+		  </td>
+		  <th><%= facebook_link_to c.attacker.name, facebook_pet_path(c.attacker)%></th>
+		</tr>
+		<tr>
+		  <td><label>Level <%= c.attacker.level_rank_count %><%= c.attacker.breed.name %></label></td>
+		  <td><label>Record: <% c.attacker.battle_record %></label>
+		  <td>
+			<span class="right button"><%= facebook_link_to "Decline", "" %></span>
+			<span class="left button"><%= facebook_link_to "Accept", "" %></span>
+		  </td>
+		</tr>
+	  </tbody>	
+	</table>
+  </td>	
+  <% end %>
+</div>
+<% end %>
+
+<div class="box">
+  <h3>Challenge History</h3>
+  <% unless @resolved.blank? %>
+	<ul class="records challenges">
+	  <% @resolved.each do |challenge| %>
+		<li class="record">
+		  <div class="<%="avatar-#{challenge_opposing_pet_from(challenge,current_user_pet).slug}-small" %>"></div>
+		  <span><%= challenge_outcome_description_for(challenge,current_user_pet) %></span>
+		</li>
+	  <% end %>
+	</ul>	
+  <% else %>
+    <p class="em">You haven't yet been challenged nor dared to challenge another pet. You'll have to step forth and
+	 test your might if you want to forge a place in the world and claim its rewards.</p>
+	<p><%= facebook_link_to "Find Pets to Challenge", "" %></p>
+  <% end %>
+</div>

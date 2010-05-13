@@ -1,6 +1,8 @@
 class Pet < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   
+  SELECT_BASICS = "id,status,kibble,experience,level_rank_count,breed_id"
+  
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
   belongs_to :pack, 
@@ -17,6 +19,15 @@ class Pet < ActiveRecord::Base
   has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
   has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
   has_many :strategies, :as => :combatant, :dependent => :destroy
+  
+  has_many :challenges, :finder_sql => '#{id} IN (attacker_id, defender_id) ', :order => "created_at DESC" do
+    def attacking
+      all :conditions => "#{proxy_owner.id} = attacker_id"
+    end
+    def defending
+      all :conditions => "#{proxy_owner.id} = defender_id"
+    end    
+  end
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,
@@ -63,6 +74,10 @@ class Pet < ActiveRecord::Base
   
   def slave_earnings
     tames.enslaved.size * AppConfig.humans.slavery_earnings_multiplier
+  end
+  
+  def prowling?
+    occupation_id && occupation.name.downcase == "prowling"
   end
   
   def update_occupation!(occupation_id)
