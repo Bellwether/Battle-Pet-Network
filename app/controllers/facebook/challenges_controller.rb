@@ -30,4 +30,11 @@ class Facebook::ChallengesController < Facebook::FacebookController
       render :action => :new
     end
   end
+  
+  def edit
+    @pet = current_user_pet
+    @challenge = current_user_pet.challenges.responding_to(params[:id])
+    puts @challenge.inspect
+    @gear = @pet.belongings.battle_ready
+  end
 end

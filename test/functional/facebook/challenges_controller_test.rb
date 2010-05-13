@@ -69,6 +69,13 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert flash[:error]
   end
   
+  def test_edit
+    challenge = challenges(:siamese_persian_issued)
+    pet = challenge.defender
+    mock_user_facebooking(pet.user.facebook_id)
+    facebook_get :edit, :fb_sig_user => pet.user.facebook_id, :id => challenge.id
+  end
+  
   def test_create_parameter_injection
     @exploiter = pets(:burmese)
     @params[:attacker_strategy_attributes][:combatant_id] = @exploiter.id

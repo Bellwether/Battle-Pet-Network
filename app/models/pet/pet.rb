@@ -26,7 +26,10 @@ class Pet < ActiveRecord::Base
     end
     def defending
       all :conditions => "#{proxy_owner.id} = defender_id"
-    end    
+    end
+    def responding_to(id)
+      all(:conditions => ["? = id",id],:limit=>1).first
+    end
   end
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,

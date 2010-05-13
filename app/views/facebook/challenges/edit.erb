@@ -1,4 +1,4 @@
-<% content_for :page_title do %><h2>Challenge to Battle</h2><% end %>
+<% content_for :page_title do %><h2>Respond to Challenge</h2><% end %>
 
 <div class="box full">
 
@@ -6,7 +6,7 @@
 <tbody>
   <tr>
 	<th class="leftbox"><%= @challenge.attacker.name %></th>
-	<td>challenges</td>
+	<td>challenged</td>
 	<th class="rightbox"><%= @challenge.defender.name %></th>
   </tr>
 </tbody>
@@ -53,8 +53,11 @@
 		</tr>
 		<tr>
 		  <td colspan="3">
-			<div>Your Pet's Battle Strategy</div>
-			<%= render_strategy_picker %>
+			<div>Attacker's Strategy'</div>
+			<p class="em">
+			  The attacker has already chosen their strategy. It's up to you now to outwit them with a better strategy 
+			  of your own...
+			</p>
 		  </td>
 		</tr>
 	  </table>
@@ -106,11 +109,8 @@
 		</tr>
 		<tr>
 		  <td colspan="3">
-			<div>Defender's Strategy</div>
-			<p class="em">
-			  The defender will choose a strategy after they accept your challenge. Try to anticipate their actions
-			  as and then act stronger!
-			</p>
+			<div>Your Pet's Battle Strategy</div>
+			<%= render_strategy_picker %>
 		  </td>
 		</tr>
 	  </table>

@@ -26,4 +26,12 @@ module Facebook::ChallengesHelper
     opposing_pet = (pet.id == challenge.attacker_id) ? challenge.defender : challenge.attacker
     return opposing_pet
   end  
+  
+  def details_bar_row(first,second,order='left')
+    if order == 'left'
+  	  "<tr><td>#{percentage_bar([first,second])}</td><td>#{first}</td></tr>"
+	  else
+  	  "<tr><td>#{first}</td><td>#{percentage_bar([first,second])}</td></tr>"
+    end
+  end
 end
