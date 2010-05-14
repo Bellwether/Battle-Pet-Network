@@ -36,8 +36,8 @@ class Challenge < ActiveRecord::Base
   end
   
   def validates_prowling
-    errors.add(:attacker_id, "must be prowling to issue challenge") if attacker && !attacker.prowling?
-    errors.add(:defender_id, "must be prowling to accept challenge") if defender && !defender.prowling?
+    errors.add(:attacker_id, "must be prowling to issue challenge") if new_record? && attacker && !attacker.prowling?
+    errors.add(:defender_id, "must be prowling to accept challenge") if !new_record? && defender && !defender.prowling?
   end
   
   def validates_no_existing_challenge
@@ -46,5 +46,10 @@ class Challenge < ActiveRecord::Base
       ["status = 'issued' AND ((attacker_id = ? AND defender_id = ?) OR (attacker_id = ? AND defender_id = ?))", 
         attacker_id, defender_id, defender_id, attacker_id])
     errors.add_to_base("existing challenge already issued") if existing_challenge
+  end
+  
+  def battle!
+    return if attacker_strategy_id.blank? || defender_strategy_id.blank?
+    create_battle
   end
 end

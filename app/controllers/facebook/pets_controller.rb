@@ -5,6 +5,14 @@ class Facebook::PetsController < Facebook::FacebookController
     @pets = []
   end
   
+  def combat
+    @pet = current_user_pet
+    @strategies = current_user_pet.strategies.active
+    @gear = @pet.belongings.battle_ready
+    @levels = @pet.breed.levels
+    @challenges = current_user_pet.challenges.resolved.all
+  end
+  
   def home
   end
   

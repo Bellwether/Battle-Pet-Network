@@ -72,7 +72,7 @@
 		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health] %></td>
 		  <td rowspan="5">
 			<div class="<%="avatar-#{@sentient.slug}-large" %> right"></div>
-			<strong class="right">Population: <%= @sentient.population %></strong>
+			<span class="right strong">Population: <%= @sentient.population %></span>
 		  </td>
 		</tr>
 		<tr>
@@ -104,7 +104,7 @@
 				  <span class="<%="action-#{maneuver.action.action_type}-small" %>"></span>
 				  <label><%= maneuver.action.action_type.upcase %></label>
 				  <label><%= maneuver.action.name %></label>
-				  <strong><%= maneuver.action.power %></strong>				
+				  <label class="strong"><%= maneuver.action.power %></label>				
 				</li>
 			  <% end %>
 			</ul>	

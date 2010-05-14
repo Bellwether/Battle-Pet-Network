@@ -41,7 +41,7 @@ class Pet < ActiveRecord::Base
   validates_numericality_of :experience, :greater_than_or_equal_to => 0
   validates_inclusion_of :status, :in => %w(active abandoned)
   
-  before_validation_on_create :populate_from_breed, :set_slug
+  before_validation_on_create :populate_from_breed, :set_slug, :set_level
   after_create :set_user
   
   def after_initialize(*args)
@@ -93,6 +93,11 @@ class Pet < ActiveRecord::Base
   
   def set_slug
     self.slug ||= truncate(name, :length => 8).parameterize unless name.blank?
+  end
+  
+  def set_level
+    return if breed.blank?
+    self.level_id = breed.levels.ranked(1).id
   end
   
   def set_user

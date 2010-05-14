@@ -42,6 +42,7 @@ ActionController::Routing::Routes.draw do |map|
       home.resource :pack, :only => [:edit,:update] do |pack|
         pack.resources :spoils, :only => [:create,:update]
       end
+      home.combat 'combat', :controller => 'pets', :action => 'combat'
     end
     
     f.root :controller => 'lobby'

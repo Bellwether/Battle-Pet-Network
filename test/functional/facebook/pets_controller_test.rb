@@ -3,17 +3,25 @@ require 'test_helper'
 class Facebook::PetsControllerTest  < ActionController::TestCase
   include Facebooker::Rails::TestHelpers
   
+  def setup
+    @pet = pets(:siamese)
+    @user = @pet.user
+  end
+  
   def test_get_pet
     mock_user_facebooking
     facebook_get :show, :id => pets(:siamese).id, :fb_sig_user => nil
     assert_response :success
     assert_template 'show'
     assert assigns(:pet)
+    assert_tag :tag => "div", :attributes => { :class => 'box gear' }
+    assert_tag :tag => "div", :attributes => { :class => 'box pack' }
+    assert_tag :tag => "div", :attributes => { :class => 'box humans' }
   end
   
   def test_get_pet_for_user
-    mock_user_facebooking(users(:two).facebook_id)
-    facebook_get :show, :id => pets(:persian).id, :fb_sig_user => users(:two).facebook_id
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :show, :id => pets(:persian).id, :fb_sig_user => @user.facebook_id
     assert_response :success
     assert_template 'show'
     assert assigns(:pet)
@@ -62,7 +70,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     end
   end
 
-  def test_get_index_without_pet
+  def test_index_without_pet
     mock_user_facebooking
     facebook_get :index
     assert_response :success
@@ -70,11 +78,23 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert assigns(:pets)
   end
 
-  def test_get_index_with_pet
+  def test_index_with_pet
     mock_user_facebooking(users(:one).facebook_id)
     facebook_get :index, :fb_sig_user => users(:one).facebook_id
     assert_response :success
     assert_template 'index'
     assert assigns(:pets)
+  end
+  
+  def test_combat_profile
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :combat, :id => pets(:persian).id, :fb_sig_user => @user.facebook_id
+    assert_response :success
+    assert_template 'combat'
+    assert !assigns(:pet).blank?
+    assert !assigns(:levels).blank?
+    assert !assigns(:challenges).blank?
+    assert assigns(:strategies)
+    assert assigns(:gear)
   end
 end

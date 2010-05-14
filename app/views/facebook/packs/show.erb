@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="box">
+<div class="box pack">
   <h3><%= @pack.name %></h3>
   <p class="em">Founded <%= time_ago_in_words(@pack.created_at) %> ago</p>
   <table>
@@ -41,14 +41,14 @@
   </table>
 </div>
 
-<div class="box">
+<div class="box pack-members">
   <h4>Pack Members</h4>
   <% cell_table(@pack.pack_members) do |m,idx| %>
     <td class="pack-member">
 	  <table>	
 		<tr>
 		  <td rowspan="4"><div class="<%="avatar-#{m.pet.slug}-small" %> left"></div></td>
-		  <td><strong><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></strong></td>
+		  <td><span class="strong"><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></span></td>
 		</tr>
 		<tr><td>Health:</td><td><%= m.pet.fortitude %></td></tr>
 		<tr><td>Endurance:</td><td><%= m.pet.endurance %></td></tr>

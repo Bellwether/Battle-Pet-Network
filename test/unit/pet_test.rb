@@ -54,4 +54,10 @@ class PetTest < ActiveSupport::TestCase
     @pet.update_attribute(:occupation_id,taming.id)
     assert !@pet.reload.prowling?
   end
+  
+  def test_set_level
+    assert @new_pet.save
+    assert_equal 1, @new_pet.level_rank_count
+    assert_not_nil @new_pet.level_id
+  end
 end

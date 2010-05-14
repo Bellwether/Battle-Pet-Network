@@ -36,4 +36,15 @@ class ChallengeTest < ActiveSupport::TestCase
     assert_equal "must be prowling to issue challenge", challenge.errors.on(:attacker_id)
     assert_equal "must be prowling to accept challenge", challenge.errors.on(:defender_id)
   end
+  
+  def test_battle
+    challenge = challenges(:siamese_persian_issued)
+    assert_no_difference ['Battle.count'] do
+      challenge.battle!
+    end  
+    challenge.defender_strategy_id = challenge.defender.strategies.first.id  
+    assert_difference ['Battle.count'], +1 do
+      challenge.battle!
+    end
+  end
 end

@@ -74,6 +74,16 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     pet = challenge.defender
     mock_user_facebooking(pet.user.facebook_id)
     facebook_get :edit, :fb_sig_user => pet.user.facebook_id, :id => challenge.id
+    assert_response :success
+    assert_template 'edit'
+    assert !assigns(:challenge).blank?
+    assert !assigns(:pet).blank?
+    assert_tag :tag => "form", :descendant => { 
+      :tag => "table", :attributes => { :class => "comparison-table" },
+      :tag => "table", :attributes => { :class => "battle-gear" },
+      :tag => "td", :attributes => { :class => "battle-gear" },
+      :tag => "input", :attributes => { :type => "submit" }
+    }
   end
   
   def test_create_parameter_injection

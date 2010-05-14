@@ -68,8 +68,23 @@
   <% end %>
 </div>
 
+<% unless @pet.belongings.battle_ready.blank? %>
+<div class="box gear">
+  <h4>Battle Gear</h4>
+
+  <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
+    <td class='battle-gear'>
+	  <div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+	  <label class="strong"><%= b.item.name %></label> 
+	  <br />
+	  <label class="em">Power: <%= b.item.power %></label>
+    </td>
+  <% end %>
+</div>
+<% end %>
+
 <% unless @pet.pack_id.blank? %>
-  <div class="box humans">
+  <div class="box pack">
     <h4>Pack: <%= facebook_link_to @pet.pack.name, facebook_pack_path(@pet.pack) %></h4>
 	<h5><%= @pet.pack.position_for(@pet)%></h5>
     <table>

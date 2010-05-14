@@ -1,0 +1,79 @@
+<% content_for :page_title do %><h2>Your Combat Profile</h2><% end %>
+	
+<div class="sidebox slim right">
+  <div class="box slim">	
+    <h4>Strategies</h4>
+    <p class="em">
+	  <% if @strategies.blank? %>
+	  You haven't saved any strategies yet. When you issue or respond to a challenge and select a strategy, you'll have the 
+	  option to save it for quick access before battle. 
+	  <% else %>
+	  You've saved the following strategies for quick access before battle. 
+	  <% end >
+	</p>
+	<% unless @strategies.blank? %>
+	  <table class="strategies">
+		<% @strategies.each do |strategy| %>
+		  <tr>
+			<td></td>
+			<td><%= strategy.name %></td>
+			<td><%= strategy.average_power %></td>
+			<td>
+			</td>
+		  </tr>
+		<% end %>
+	  </table>	
+	<% end %>
+  <div>
+	
+  <div class="box slim">	
+    <h4>Battle History</h4>
+  <div>
+</div>
+
+<div class="box">
+  <table id="combat-profile">
+	<tr>
+	  <td>
+	    <h3><%= @pet.name %></h3>
+		<table>
+		  <tr>
+		    <td rowspan="4">
+			  <div class="<%="avatar-#{@pet.breed.slug}-mid" %>"></div>
+		    </td>
+		    <td><label>Endurance: <%= @pet.endurance %></label></td>
+		  </tr>
+		  <tr><td><label>Health: <%= @pet.health %></label></td></tr>
+		  <tr><td><label>Power: <%= @pet.power %></label></td></tr>
+		  <tr><td><label>Fortitude: <%= @pet.fortitude %></label></td></tr>
+		  <tr>
+			<td><h5><%= @pet.breed.name %></h5></td>
+		    <td><label>Intelligence: <%= @pet.intelligence %></label></td>
+		  </tr>
+		</table>
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+		<table>
+		  <tr><td><label class="strong">Total Battles:</label></td><td><%= @pet.battles_count %></td></tr>
+		  <tr><td><label>Wins:</label></td><td><%= @pet.wins_count %><%= graph_bar [@pet.wins_count,@pet.battles_count]%></td></tr>
+		  <tr><td><label>Loses:</label></td><td><%= @pet.loses_count %><%= graph_bar [@pet.loses_count,@pet.battles_count]%></td></tr>
+		  <tr><td><label>Draws:</label></td><td><%= @pet.draws_count %><%= graph_bar [@pet.draws_count,@pet.battles_count]%></td></tr>
+		</table>
+	  </td>	
+	</tr>
+	<tr>
+	  <td>
+		<h5>Leadeboard Ranking</h5>
+		<p>
+		  Current: 999<br />
+		  <span class="em">No ranking bonus</span>
+		</p>
+		<p>1 Week Ago: 999</p>
+		<p>2 Weeks Ago: 999</p>
+	  </td>
+	</tr>
+	
+  </table>
+</div>

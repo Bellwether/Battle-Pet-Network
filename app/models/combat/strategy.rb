@@ -10,9 +10,15 @@ class Strategy < ActiveRecord::Base
   
   before_validation_on_create :set_name
   
+  named_scope :active, :conditions => ["strategies.status = 'active'"]
+  
   def after_initialize(*args)
     self.status ||= 'used'
   end  
+  
+  def average_power
+    0
+  end
   
   def set_name
     maneuvers.each do |m|

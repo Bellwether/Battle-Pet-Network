@@ -34,7 +34,19 @@ class Facebook::ChallengesController < Facebook::FacebookController
   def edit
     @pet = current_user_pet
     @challenge = current_user_pet.challenges.responding_to(params[:id])
-    puts @challenge.inspect
     @gear = @pet.belongings.battle_ready
+  end
+  
+  def update
+    @pet = current_user_pet
+    @challenge = current_user_pet.challenges.responding_to(params[:id])
+    
+    if @challenge.update_attributes(params[:challenge]) && @challenge.battle!
+      facebook_redirect_to facebook_challenges_path
+    else
+      flash[:error] = "Couldn't respond to challenge. :("
+      @gear = @pet.belongings.battle_ready
+      render :action => :edit
+    end
   end
 end
