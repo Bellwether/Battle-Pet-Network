@@ -264,7 +264,7 @@ russian_blue_9:
     advancement_type: fortitude
     
 russian_blue_10:
-    breed: burmese
+    breed: russian_blue
     experience: 4050
     rank: 10
     advancement_amount: 15
@@ -278,7 +278,7 @@ maine_coon_1:
 maine_coon_2:    
     breed: maine_coon
     experience: 50
-    rank: 1
+    rank: 2
     advancement_amount: 2
     advancement_type: affection   
     

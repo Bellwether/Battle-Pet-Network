@@ -54,8 +54,10 @@ module Facebook::FacebookHelper
     "<tr><td>#{label}:</td><td><span id=\"breed-details-#{attribute.to_s}\">#{val}</span></td></tr>"
   end
   
+  def experience_bar(level)
+  end
+  
   def percentage_bar(values,options={})
-    
   end  
   
   def graph_bar(values,options={})

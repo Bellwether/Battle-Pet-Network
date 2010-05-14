@@ -17,6 +17,7 @@ siamese:
     loses_count: 1
     draws_count: 2
     pack: alpha
+    level: siamese_2
     
 persian:
     breed: persian
@@ -37,6 +38,7 @@ persian:
     draws_count: 1
     kibble: 500
     occupation: prowling
+    level: persian_1
     
 burmese:
     breed: burmese
@@ -56,3 +58,4 @@ burmese:
     draws_count: 1
     occupation: shopkeeping  
     pack: alpha  
+    level: burmese_1

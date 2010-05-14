@@ -9,7 +9,7 @@
 	  option to save it for quick access before battle. 
 	  <% else %>
 	  You've saved the following strategies for quick access before battle. 
-	  <% end >
+	  <% end %>
 	</p>
 	<% unless @strategies.blank? %>
 	  <table class="strategies">
@@ -65,7 +65,7 @@
 	</tr>
 	<tr>
 	  <td>
-		<h5>Leadeboard Ranking</h5>
+		<h5>Leaderboard Ranking</h5>
 		<p>
 		  Current: 999<br />
 		  <span class="em">No ranking bonus</span>
@@ -74,6 +74,52 @@
 		<p>2 Weeks Ago: 999</p>
 	  </td>
 	</tr>
-	
+  </table>
+</div>
+
+<% unless @pet.belongings.battle_ready.blank? %>
+<div class="box gear">
+  <h4>Battle Gear</h4>
+
+  <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
+    <td class='battle-gear'>
+	  <div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+	  <label class="strong"><%= b.item.name %></label> 
+	  <br />
+	  <label class="em">Power: <%= b.item.power %></label>
+    </td>
+  <% end %>
+</div>
+<% end %>
+
+<div class="box">
+  <table>	
+	<tr>
+	  <td>
+	    <h4>Advancement</h4>
+	    <h5>Level <%=@pet.level_rank_count %></h5>
+	  </td>
+	  <td>
+		<label>Current Experience:</label> <label class="strong"><% @pet.experience %></label>
+		<br />
+		<% if next_level = @pet.level.next_level %>
+		  <label>Current Experience:</label> <label class="strong"><% next_level.experience %></label>
+		<% end %>
+	  </td>
+	  <td>
+		<%= experience_bar @pet.level %>
+	  </td>
+	</tr>
+  </table>
+  <table id="advancements">
+	<tr><th>Level</th><th>Experience</th><th>Advancement</th><th>Obtained</th></tr>
+	<% @pet.breed.levels.each_with_index do |l,idx| %>
+	  <tr class="<%= @pet.level_rank_count >= idx ? 'complete' : 'incomplete'%>">
+		<td><%= l.rank %></td>
+		<td><%= l.experience %></td>
+		<td><%= "+#{l.advancement_amount} #{l.advancement_type}"%></td>
+		<td><%= @pet.level_rank_count >= idx ? 'YES' : 'NO'%></td>
+	  </tr>
+	<% end %>
   </table>
 </div>
