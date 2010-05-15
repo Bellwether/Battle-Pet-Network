@@ -12,4 +12,17 @@ class StrategyTest < ActiveSupport::TestCase
     @new_strategy.save
     assert_not_nil @new_strategy.name
   end
+  
+  def test_average_power
+    strategy = @pet.strategies.build
+    average = strategy.average_power
+    assert_equal 0, average
+    actions = [actions(:scratch),actions(:flank),actions(:claw)]
+    actions.each do |a|
+      strategy.maneuvers.build(:action => a)
+      average = average + a.power
+    end
+    assert_operator average, ">", 0
+    assert_equal (average / strategy.maneuvers.size), strategy.average_power
+  end
 end

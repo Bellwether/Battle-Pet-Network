@@ -18,6 +18,15 @@ class CombatTest < ActiveSupport::TestCase
               :challenge_type => "1v1"}
   end
   
+  def test_attr_accessors
+    accessors = [:current_round,:attacker_damage,:defender_damage,:attacker_experience,:defender_experience]
+    @combat_models.each do |m|
+      accessors.each do |a|
+        assert m.respond_to?(a)
+      end
+    end
+  end
+  
   def test_attacker
     @combat_models.each do |m|
       assert m.respond_to?(:attacker)
@@ -29,6 +38,13 @@ class CombatTest < ActiveSupport::TestCase
     @combat_models.each do |m|
       assert m.respond_to?(:defender)
       assert_not_nil m.defender, @hunt.sentient.inspect
+    end
+  end
+  
+  def test_combatants
+    @combat_models.each do |m|
+      assert m.combatants.is_a? Array
+      assert_equal 2, m.combatants.size
     end
   end
   
@@ -47,5 +63,57 @@ class CombatTest < ActiveSupport::TestCase
     hunt.status = "ended"
     hunt.save(false)
     assert !hunt.combat_needs_to_occur?
+  end
+  
+  def test_combat_in_progress?
+    attributes = [:current_health,:current_endurance]
+    @combat_models.each do |m|
+      assert m.combat_in_progress?
+      m.combatants.each do |c|
+        attributes.each do |a|
+          c.update_attribute(a,0)
+          assert !m.combat_in_progress?
+        end
+      end
+    end
+  end
+  
+  def test_losers_end_result
+    attributes = [:current_health,:current_endurance]
+    results = []
+    expected_results = [3,4]
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        attributes.each do |a|
+          c.update_attribute(a,0)
+          assert_not_nil m.end_result
+          results << m.end_result.to_i unless results.include?(m.end_result.to_i)
+          c.update_attribute(a,1)
+        end
+      end
+    end
+    
+    assert_equal expected_results.size, results.size
+    expected_results.each do |r|
+      assert results.include?(r)
+    end
+  end
+  
+  def test_winners_end_result
+    attributes = [:current_health,:current_endurance]
+    results = []
+    expected_results = [1,2]
+    @combat_models.each do |m|
+      attributes.each do |a|
+        m.combatants.each { |c| c.update_attribute(a,0) }
+        assert_not_nil m.end_result
+        results << m.end_result.to_i unless results.include?(m.end_result.to_i)
+      end
+    end
+    
+    assert_equal expected_results.size, results.size
+    expected_results.each do |r|
+      assert results.include?(r)
+    end
   end
 end
