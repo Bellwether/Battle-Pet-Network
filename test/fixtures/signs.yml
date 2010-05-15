@@ -1,0 +1,5 @@
+siamese_buremese_today:
+  sender: siamese
+  recipient: burmese
+  sign_type: purr
+  created_at: <%= Time.now %>

@@ -383,9 +383,11 @@ class CreateCore < ActiveRecord::Migration
     create_table :signs do |t|
        t.belongs_to :sender, :null => false
        t.belongs_to :recipient, :null => false
+       t.string :sign_type, :null => false, :limit => 32
        t.timestamps
     end
     add_index :signs, [:sender_id,:recipient_id,:created_at]
+    add_index :signs, [:sign_type,:created_at]
     
     create_table :messages do |t|
        t.belongs_to :sender, :null => false

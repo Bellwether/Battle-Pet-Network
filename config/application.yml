@@ -11,4 +11,6 @@ shops:
   opening_fee: 2000
 humans:
   slavery_earnings_multiplier: 1
-  release_multiplier: 250      
+  release_multiplier: 250
+communication:
+  sign_endurance_cost: 3

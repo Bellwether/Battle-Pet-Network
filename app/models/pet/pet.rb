@@ -19,6 +19,14 @@ class Pet < ActiveRecord::Base
   has_many :hunters, :include => [:hunt]
   has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
   has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
+  has_many :signs, :class_name => "Sign", 
+                   :foreign_key => "recipient_id", 
+                   :conditions => ['created_at >= ?', (Time.now - 72.hours)],
+                   :order => 'created_at ASC'
+  has_many :signings, :class_name => "Sign", 
+                      :foreign_key => "sender_id", 
+                      :conditions => ['created_at >= ?', (Time.now - 24.hours)],
+                      :order => 'created_at ASC'
   has_many :strategies, :as => :combatant, :dependent => :destroy
   
   has_many :challenges, :finder_sql => '#{id} IN (attacker_id, defender_id) ', :order => "created_at DESC" do

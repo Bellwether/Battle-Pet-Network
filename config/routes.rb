@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     
     f.resources :pets, :only => [:index,:show,:new,:create], :collection => {:home => :get} do |p|
       p.resources :challenges, :only => [:new,:create]
+      p.resources :signs, :only => [:create]
     end
     
     f.resources :packs, :only => [:new,:create,:show] do |p|

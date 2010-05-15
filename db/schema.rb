@@ -449,13 +449,15 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "shops", ["specialty", "status"], :name => "index_shops_on_specialty_and_status"
 
   create_table "signs", :force => true do |t|
-    t.integer  "sender_id",    :null => false
-    t.integer  "recipient_id", :null => false
+    t.integer  "sender_id",                  :null => false
+    t.integer  "recipient_id",               :null => false
+    t.string   "sign_type",    :limit => 32, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "signs", ["sender_id", "recipient_id", "created_at"], :name => "index_signs_on_sender_id_and_recipient_id_and_created_at"
+  add_index "signs", ["sign_type", "created_at"], :name => "index_signs_on_sign_type_and_created_at"
 
   create_table "species", :force => true do |t|
     t.string "name", :limit => 64, :null => false
