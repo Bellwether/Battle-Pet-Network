@@ -59,7 +59,10 @@
   <div>
     <div class="signs">
 	  <% Sign.signs_with(current_user_pet, @pet).each do |sign|%>
-	    <span class="sign-button left"><%= sign %></span>
+	    <% form_for Sign.new, :url => facebook_nested_url(facebook_pet_signs_path(@pet)) do |f| %>	
+	    <%= f.hidden_field :sign_type, {:value => sign} %> %>
+		<span class="sign-button left"><%= f.submit sign.upcase %></span>
+		<% end %>
 	  <% end %>
     </div>
     <span class="sign-button message right"><%= facebook_link_to 'Message', new_facebook_message_path %></span>
