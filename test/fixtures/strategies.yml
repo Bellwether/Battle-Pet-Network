@@ -15,3 +15,10 @@ persian_strategy:
   combatant_id: <%= Fixtures.identify :persian %>      
   name: PPS
   status: active  
+  
+
+burmese_strategy:
+  combatant_type: Pet
+  combatant_id: <%= Fixtures.identify :burmese %>      
+  name: BPS
+  status: active  

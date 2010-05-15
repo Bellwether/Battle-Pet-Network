@@ -9,6 +9,8 @@ class ChallengeTest < ActiveSupport::TestCase
               :defender_id => @defender.id,
               :attacker_strategy_id => @attacker_strategy.id, 
               :challenge_type => "1v1"}
+    @prowling = occupations(:prowling)
+    @taming = occupations(:taming)
   end
   
   def test_validates_different_combatants
@@ -21,19 +23,28 @@ class ChallengeTest < ActiveSupport::TestCase
     assert invalid_challenge.errors.on_base.include?("existing challenge already issued")
   end
   
-  def test_validate_prowling
-    Challenge.destroy_all
-    prowling = occupations(:prowling)
-    taming = occupations(:taming)
-    @attacker.update_attribute(:occupation_id,prowling.id)
-    @defender.update_attribute(:occupation_id,prowling.id)
+  def test_validates_prowling
+    @attacker.update_attribute(:occupation_id,@prowling.id)
+    @defender.update_attribute(:occupation_id,@prowling.id)
     challenge = Challenge.create(@params)
     assert_nil challenge.errors.on(:defender_id)
     assert_nil challenge.errors.on(:attacker_id)
-    @attacker.update_attribute(:occupation_id,taming.id)
-    @defender.update_attribute(:occupation_id,taming.id)
-    challenge = Challenge.create(@params)
+  end
+  
+  def test_validates_attacker_prowling
+    Challenge.destroy_all
+    @attacker.update_attribute(:occupation_id,@taming.id)
+    challenge = Challenge.new(@params)
+    challenge.save
     assert_equal "must be prowling to issue challenge", challenge.errors.on(:attacker_id)
+  end
+  
+  def test_validates_defender_prowling
+    Challenge.destroy_all
+    challenge = Challenge.create(@params)
+    @defender.update_attribute(:occupation_id,@taming.id)
+    challenge.update_attribute(:defender_strategy_id,@defender.strategies.first.id)
+    challenge.save
     assert_equal "must be prowling to accept challenge", challenge.errors.on(:defender_id)
   end
   

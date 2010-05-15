@@ -23,8 +23,7 @@ class Sign < ActiveRecord::Base
   end
 
   def validates_once_per_day
-    existing = Sign.exists?(["created_at >= ? AND sender_id = ? AND recipient_id = ?", 
-                            (Time.now - 24.hours),
+    existing = Sign.exists?(["created_at >= (created_at >= DATE_ADD(NOW(), INTERVAL -24 HOUR)) AND sender_id = ? AND recipient_id = ?", 
                             sender_id,
                             recipient_id])
     errors.add(:recipient_id, "already sent a sign today") if existing

@@ -23,5 +23,14 @@ module Combat
   end
   
   def validates_combat
+    return unless combat_needs_to_occur?
+  end
+  
+  def combat_needs_to_occur?
+    if self.respond_to?(:challenge)
+      return self.new_record?
+    elsif self.respond_to?(:hunters)
+      return status == "started"
+    end
   end
 end

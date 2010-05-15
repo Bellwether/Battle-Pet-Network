@@ -3,6 +3,7 @@ require 'test_helper'
 class HunterTest < ActiveSupport::TestCase
   def setup
     @pet = pets(:siamese)
+    Hunter.destroy_all
   end
   
   def test_validates_pet_strategy

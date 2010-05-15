@@ -2,3 +2,8 @@ persian_burmese_resolved_battle:
   challenge: persian_burmese_resolved
   winner: persian
   logs: --
+      
+siamese_burmese_resolved_battle:
+  challenge: siamese_burmese_resolved
+  winner: siamese
+  logs: --      
