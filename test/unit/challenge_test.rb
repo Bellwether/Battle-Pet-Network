@@ -49,11 +49,12 @@ class ChallengeTest < ActiveSupport::TestCase
   end
   
   def test_battle
+    mock_combat
     challenge = challenges(:siamese_persian_issued)
     assert_no_difference ['Battle.count'] do
       challenge.battle!
     end  
-    challenge.defender_strategy_id = challenge.defender.strategies.first.id  
+    challenge.defender_strategy_id = challenge.defender.strategies.first.id 
     assert_difference ['Battle.count'], +1 do
       challenge.battle!
     end

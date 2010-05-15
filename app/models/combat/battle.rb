@@ -4,9 +4,23 @@ class Battle < ActiveRecord::Base
   belongs_to :challenge
   belongs_to :winner, :class_name => "Pet", :foreign_key => "winner_id", :select => Pet::SELECT_BASICS
   
-  after_create :resolve_challenge
+  after_create :resolve_challenge, :update_combatant_counters
 
   def resolve_challenge
     challenge.update_attribute(:status,"resolved")
+  end
+
+  def update_combatant_counters
+    combatants.each do |c|
+      if combatant_defeated?(attacker) && combatant_defeated?(defender)
+        c.update_attribute(:draws_count, c.draws_count + 1)
+      else
+        if combatant_defeated?(c)
+          c.update_attribute(:loses_count, c.loses_count + 1)
+        else
+          c.update_attribute(:wins_count, c.wins_count + 1)
+        end
+      end
+    end
   end
 end

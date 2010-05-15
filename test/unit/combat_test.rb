@@ -137,4 +137,21 @@ class CombatTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_restore_combatants_condition
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        c.current_health = (c == m.attacker) ? 1 : 0
+      end
+      m.restore_combatants_condition
+      m.combatants.each do |c|
+        next unless c.is_a? Pet
+        if (c == m.attacker)
+          assert_equal c.health, c.current_health
+        else
+          assert_equal c.health / 2, c.current_health
+        end
+      end
+    end
+  end
 end

@@ -22,7 +22,7 @@ module Combat
     if self.respond_to?(:challenge)
       @_attacker = challenge.attacker
     elsif self.respond_to?(:hunters)
-      @_attacker = hunter.pet
+      @_attacker = hunter ? hunter.pet : nil
     end
     return @_attacker
   end
@@ -57,9 +57,12 @@ module Combat
       exhaust_combatants
       
       results = CombatActions::Resolution.new(attacker, action_for(attacker), defender, action_for(defender))
-      break
+      
+      attacker.current_health = [attacker.current_health - results.second_damage,0].max
+      defender.current_health = [defender.current_health - results.first_damage,0].max
     end
     
+    restore_combatants_condition
     respond_to?(:award!) ? award! : award_combatants
   end
   
@@ -69,6 +72,17 @@ module Combat
       c.current_endurance = [c.current_endurance - cost, 0].max
     end
   end  
+  
+  def restore_combatants_condition
+    combatants.each do |c|
+      next unless c.is_a? Pet
+      if combatant_defeated?(c)
+        c.current_health = [c.current_health, c.health / 2].max
+      else  
+        c.current_health = c.health
+      end
+    end
+  end
   
   def award_combatants
     return if end_result == EndResult::BOTH_UNCONSCIOUS
@@ -103,6 +117,10 @@ module Combat
       return hunter.strategy if (combatant == attacker) 
       return combatant.strategy if (combatant == defender)
     end
+  end
+  
+  def combatant_defeated?(combatant)
+    combatant.current_endurance == 0 || combatant.current_health == 0
   end
   
   def end_result

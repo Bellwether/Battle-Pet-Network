@@ -46,6 +46,13 @@ class ActiveSupport::TestCase
     rescue
     end
   end
+  
+  def mock_combat
+    @battle_mock = flexmock(Battle)
+    @hunt_mock = flexmock(Hunt)
+    @battle_mock.new_instances.should_receive(:run_combat)
+    @hunt_mock.new_instances.should_receive(:run_combat)
+  end
 
   def mock_user_facebooking(facebook_id="2147483647")
     @facebook_session_mock = flexmock(Facebooker::Session)

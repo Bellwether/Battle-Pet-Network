@@ -24,6 +24,16 @@ class Strategy < ActiveRecord::Base
       power = power + a.power
     end
     return (power / unique_actions.size)
+  end  
+  
+  def total_power
+    return 0 if maneuvers.blank?
+    unique_actions = maneuvers.collect(&:action).uniq
+    power = 0
+    unique_actions.each do |a|
+      power = power + a.power
+    end
+    return power
   end
   
   def set_name

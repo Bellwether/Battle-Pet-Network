@@ -12,20 +12,53 @@ module Combat::CombatActions
       @second = second
       @second_action = second_action
       
-      resolve
+      @first_damage = 0
+      @second_damage = 0
+      
+      resolve_damage
     end
     
-    def resolve
+    def resolve_damage
       if both_attacking?
-        
-      elsif both_defending?
+        @first_damage = @first_action.power
+        @second_damage = @second_action.power
       elsif first_attacking_second?
+        if did_undercut?(@first_action, @second_action)
+          @first_damage = @first_action.power * 2
+        elsif second_action_greater?
+          @first_damage = @first_action.power
+        elsif first_action_greater?
+          if did_undercut?(@second_action, @first_action)  
+            @second_damage = @first_action.power * 2
+          else
+            @first_damage = @first_action.power - @second_action.power
+          end
+        end  
       elsif second_attacking_first?
+        if did_undercut?(@second_action, @first_action)
+          @second_damage = @second_action.power * 2
+        elsif first_action_greater?
+          @second_damage = @second_action.power
+        elsif second_action_greater?
+          if did_undercut?(@first_action, @second_action)
+            @first_damage = @second_action.power * 2
+          else
+            @second_damage = @second_action.power - @first_action.power
+          end
+        end
       end
     end
 
     def did_undercut?(given_action,target_action)
       given_action.power == target_action.power - 1
+    end
+    
+    def first_action_greater?
+      @first_action.power > @second_action.power
+    end
+
+    def second_action_greater?
+      @second_action.power > @first_action.power
     end
     
     def both_attacking?

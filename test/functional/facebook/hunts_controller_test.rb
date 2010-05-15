@@ -41,6 +41,7 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
   end
 
   def test_fail_create
+    mock_combat
     mock_user_facebooking(@user.facebook_id)   
     assert_no_difference ['Hunt.count','Hunter.count','Strategy.count'] do
       @params = {}

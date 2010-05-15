@@ -10,6 +10,7 @@ class Facebook::SignsControllerTest  < ActionController::TestCase
   end
   
   def test_create
+    Sign.destroy_all
     mock_user_facebooking(@user.facebook_id)
     assert_difference ['Sign.count','@sender.signings.count','@recipient.signs.count'], +1 do
       facebook_post :create, :pet_id => @recipient.id, :sign_type => 'purr', :fb_sig_user => @user.facebook_id
