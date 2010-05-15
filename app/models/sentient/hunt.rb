@@ -32,4 +32,18 @@ class Hunt < ActiveRecord::Base
       return hunters
     end
   end
+  
+  def set_outcome
+    hunters.each do |h|
+      if combatant_defeated?(defender) && !combatant_defeated?(h.pet)
+        outcome = "won"
+      elsif !combatant_defeated?(defender) && combatant_defeated?(h.pet)
+        outcome = "lost"
+      elsif combatant_defeated?(defender) && combatant_defeated?(h.pet)        
+        outcome = "deadlocked"
+      end
+      h.outcome = outcome
+    end
+    self.status = "ended"
+  end
 end

@@ -16,7 +16,7 @@ class BattleTest < ActiveSupport::TestCase
     mock_combat
     battle = @issued_challenge.build_battle
     battle.attacker.current_health = 0
-    battle.defender.current_health = 0    
+    battle.defender.current_health = 0
     assert_difference ['battle.attacker.draws_count','battle.defender.draws_count'], +1 do
       battle.update_combatant_counters
     end
@@ -24,5 +24,17 @@ class BattleTest < ActiveSupport::TestCase
     assert_difference ['battle.attacker.wins_count','battle.defender.loses_count'], +1 do
       battle.update_combatant_counters
     end
+  end
+  
+  def test_set_outcome
+    mock_combat
+    battle = @issued_challenge.build_battle
+    battle.defender.current_health = 0
+    battle.set_outcome
+    assert_equal battle.attacker.id, battle.winner_id
+    battle.attacker.current_health = 0
+    battle.defender.current_health = 10
+    battle.set_outcome
+    assert_equal battle.defender.id, battle.winner_id
   end
 end

@@ -23,4 +23,12 @@ class Battle < ActiveRecord::Base
       end
     end
   end
+  
+  def set_outcome
+    if !combatant_defeated?(attacker) && combatant_defeated?(defender)
+      self.winner_id = attacker.id
+    elsif combatant_defeated?(attacker) && !combatant_defeated?(defender)
+      self.winner_id = defender.id
+    end   
+  end
 end

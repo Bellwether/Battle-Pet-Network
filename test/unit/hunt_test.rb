@@ -18,4 +18,21 @@ class HuntTest < ActiveSupport::TestCase
     assert_not_nil hunt.hunter
     assert_not_nil hunt.hunter.pet
   end
+  
+  def test_set_outcome
+    mock_combat
+    hunt = @sentient.hunts.build(:hunters_attributes => { "0" => {:pet_id => @pet.id }})
+    hunt.attacker.current_health = 0
+    hunt.defender.current_health = 0
+    hunt.set_outcome
+    assert_equal "deadlocked", hunt.hunter.outcome
+    hunt.attacker.current_health = 10
+    hunt.set_outcome
+    assert_equal "won", hunt.hunter.outcome
+    hunt.attacker.current_health = 0
+    hunt.defender.current_health = 10
+    hunt.set_outcome
+    assert_equal "lost", hunt.hunter.outcome
+    assert_equal "ended", hunt.status
+  end
 end

@@ -63,6 +63,7 @@ module Combat
     end
     
     restore_combatants_condition
+    set_outcome if respond_to?(:set_outcome)
     respond_to?(:award!) ? award! : award_combatants
   end
   
