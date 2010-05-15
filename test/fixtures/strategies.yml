@@ -16,7 +16,6 @@ persian_strategy:
   name: PPS
   status: active  
   
-
 burmese_strategy:
   combatant_type: Pet
   combatant_id: <%= Fixtures.identify :burmese %>      

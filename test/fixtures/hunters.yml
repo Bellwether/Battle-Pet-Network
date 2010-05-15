@@ -1,3 +1,4 @@
 rat_hunt_hunter:
   hunt: rat_hunt
   pet: siamese
+  strategy: siamese_strategy

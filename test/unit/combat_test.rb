@@ -19,10 +19,10 @@ class CombatTest < ActiveSupport::TestCase
   end
   
   def test_attr_accessors
-    accessors = [:current_round,:attacker_damage,:defender_damage,:attacker_experience,:defender_experience]
+    accessors = [:current_round,:attacker_damage,:defender_damage]
     @combat_models.each do |m|
       accessors.each do |a|
-        assert m.respond_to?(a)
+        assert m.respond_to?(a), "#{m.class.name} didn't respond to #{a}"
       end
     end
   end
@@ -33,7 +33,7 @@ class CombatTest < ActiveSupport::TestCase
       assert_not_nil m.attacker
     end
   end
-
+  
   def test_defender
     @combat_models.each do |m|
       assert m.respond_to?(:defender)
@@ -114,6 +114,27 @@ class CombatTest < ActiveSupport::TestCase
     assert_equal expected_results.size, results.size
     expected_results.each do |r|
       assert results.include?(r)
+    end
+  end
+  
+  def test_strategy_for
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        m.current_round = 0
+        assert_equal c, m.strategy_for(c).combatant
+      end
+    end
+  end
+  
+  def test_exhaust_combatants
+    action = actions(:claw)
+    @combat_models.each do |m|
+      m.initialize_combat
+      action_mock = flexmock(m)
+      action_mock.should_receive(:action_for).and_return(action)
+      assert_difference ['m.defender.current_endurance','m.attacker.current_endurance'], -action.endurance_cost do      
+        m.exhaust_combatants
+      end
     end
   end
 end

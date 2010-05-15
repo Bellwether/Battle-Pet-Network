@@ -28,7 +28,7 @@ class Hunt < ActiveRecord::Base
   def hunter
     if hunters.size == 1
       return hunters.first
-    elsif hunters.size > 0
+    elsif hunters.size > 1
       return hunters
     end
   end
