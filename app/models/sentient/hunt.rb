@@ -1,4 +1,6 @@
 class Hunt < ActiveRecord::Base
+  include Combat
+  
   belongs_to :sentient
   has_many :hunters
   
@@ -20,6 +22,14 @@ class Hunt < ActiveRecord::Base
     return if sentient.blank? || hunters.blank?
     hunters.each do |h|
       errors.add(:sentient_id, "required level too high") if h.pet.level_rank_count < sentient.required_rank
+    end
+  end
+  
+  def hunter
+    if hunters.size == 1
+      return hunters.first
+    elsif hunters.size > 0
+      return hunters
     end
   end
 end

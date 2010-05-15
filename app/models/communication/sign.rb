@@ -27,7 +27,6 @@ class Sign < ActiveRecord::Base
                             (Time.now - 24.hours),
                             sender_id,
                             recipient_id])
-                            puts "existing.inspect=#{existing.inspect}"
     errors.add(:recipient_id, "already sent a sign today") if existing
   end
 

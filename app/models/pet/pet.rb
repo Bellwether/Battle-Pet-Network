@@ -21,11 +21,11 @@ class Pet < ActiveRecord::Base
   has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
   has_many :signs, :class_name => "Sign", 
                    :foreign_key => "recipient_id", 
-                   :conditions => ['created_at >= ?', (Time.now - 72.hours)],
+                   :conditions => 'created_at >= DATE_ADD(NOW(), INTERVAL -72 HOURS)',
                    :order => 'created_at ASC'
   has_many :signings, :class_name => "Sign", 
                       :foreign_key => "sender_id", 
-                      :conditions => ['created_at >= ?', (Time.now - 24.hours)],
+                      :conditions => 'created_at >= DATE_ADD(NOW(), INTERVAL -24 HOURS)',
                       :order => 'created_at ASC'
   has_many :strategies, :as => :combatant, :dependent => :destroy
   
