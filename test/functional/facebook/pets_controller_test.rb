@@ -17,6 +17,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "div", :attributes => { :class => 'box gear' }
     assert_tag :tag => "div", :attributes => { :class => 'box pack' }
     assert_tag :tag => "div", :attributes => { :class => 'box humans' }
+    assert_tag :tag => "table", :attributes => { :class => 'kennels' }
   end
   
   def test_get_pet_for_user

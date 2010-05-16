@@ -1,5 +1,6 @@
 class Hunt < ActiveRecord::Base
   include Combat
+  serialize :logs, Hash
   
   belongs_to :sentient
   has_many :hunters
