@@ -46,6 +46,7 @@ burmese:
     breed: burmese
     user: four
     name: tailchaser
+    slug: taily
     current_health: 6
     current_endurance: 40
     health: 6

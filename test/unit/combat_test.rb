@@ -183,4 +183,19 @@ class CombatTest < ActiveSupport::TestCase
     overpowered = Combat.calculate_experience(12, 10, 5, true)
     assert_operator overpowered, "<", winner
   end
+  
+  def test_save_combatants
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        next unless c.is_a?(Pet)
+        
+        timestamp = c.updated_at
+        c.touch unless timestamp.blank?
+        sleep 0.3
+        c.experience = c.experience + 1
+        m.save_combatants
+        assert_operator c.updated_at, ">", timestamp
+      end
+    end
+  end
 end

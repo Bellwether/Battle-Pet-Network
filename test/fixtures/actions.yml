@@ -1,55 +1,55 @@
 scratch:
   breed: cat
   name: Scratch
-  verb: scratches
+  verb: scratch
   action_type: offensive
   power: 2
     
 slash:
   breed: cat    
   name: Slash
-  verb: slashes
+  verb: slash
   action_type: offensive
   power: 4    
     
 claw:
   breed: cat    
   name: Claw
-  verb: clawed
+  verb: claw
   action_type: offensive
   power: 6
 
 bite:
   breed: cat    
   name: Bite
-  verb: bites
+  verb: bite
   action_type: offensive
   power: 8
   
 swat:
   breed: cat
   name: Swat
-  verb: swats back
+  verb: swat
   action_type: defensive    
   power: 1
   
 flank:
   breed: cat
   name: Flank
-  verb: flanks
+  verb: flank
   action_type: defensive    
   power: 3
   
 dodge:
   breed: cat
   name: Dodge
-  verb: dodges
+  verb: dodge
   action_type: defensive    
   power: 5
   
 pounce:
   breed: cat
   name: Leap
-  verb: leaps
+  verb: leap
   action_type: defensive
   power: 7

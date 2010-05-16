@@ -15,7 +15,6 @@ class Hunt < ActiveRecord::Base
   
   def after_initialize(*args)
     self.status ||= 'started'
-    self.logs ||= '--'
   end
   
   def validates_required_rank

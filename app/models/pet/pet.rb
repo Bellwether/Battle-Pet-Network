@@ -108,6 +108,7 @@ class Pet < ActiveRecord::Base
   end
   
   def advance_level(lvl)
+    lvl.advance(pet)
   end
 
   def set_occupation

@@ -116,6 +116,12 @@ module Combat
       c.award_experience!(experience)
     end
   end
+  
+  def save_combatants
+    combatants.each do |c|
+      c.save if c.is_a? Pet
+    end
+  end
 
   def combat_needs_to_occur?
     if self.respond_to?(:challenge)

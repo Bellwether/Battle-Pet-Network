@@ -39,6 +39,7 @@ class CombatActionsTest < ActiveSupport::TestCase
             assert_equal 0, res.first_damage
           end
         end
+        assert_not_nil res.description
       end
     end
   end
