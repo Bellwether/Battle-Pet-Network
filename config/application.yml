@@ -14,3 +14,8 @@ humans:
   release_multiplier: 250
 communication:
   sign_endurance_cost: 3
+experience:
+  handicap_divisor: 10
+  double_ko_divisor: 3
+  undercut_bonus: 3
+  minimum_award: 1

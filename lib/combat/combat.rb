@@ -11,6 +11,23 @@ module Combat
   attr_accessor :current_round
   attr_accessor :attacker_damage, :defender_damage
   
+  class << self
+    def calculate_experience(power, level_rank, opponent_level_rank, did_win)
+      outcome = did_win ? 1 : 0 
+      outcome_award = (power * outcome)
+      
+      divisor = AppConfig.experience.handicap_divisor
+      delta = opponent_level_rank - level_rank
+      delta = 1 if delta == 0
+      combat_award = ( (delta.to_f / divisor.to_f) * power.to_f).ceil
+      
+      minimum_award = AppConfig.experience.minimum_award
+      total_award = (outcome_award + combat_award).to_i
+      puts ""
+      return [minimum_award, total_award].max
+    end
+  end
+  
   def initialize_combat
     @current_round = 0
     @attacker_damage = 0

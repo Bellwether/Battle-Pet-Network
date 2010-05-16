@@ -154,4 +154,14 @@ class CombatTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_calculate_experience
+    winner = Combat.calculate_experience(12, 5, 5, true)
+    loser = Combat.calculate_experience(12, 5, 5, false)
+    assert_operator winner, ">", loser
+    handicaped = Combat.calculate_experience(12, 5, 10, false)
+    assert_operator handicaped, ">", loser
+    overpowered = Combat.calculate_experience(12, 10, 5, true)
+    assert_operator overpowered, "<", winner
+  end
 end
