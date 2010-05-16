@@ -12,6 +12,7 @@ siamese:
     affection: 4
     power: 1
     level_rank_count: 2
+    experience: 55
     occupation: prowling
     wins_count: 6
     loses_count: 1
@@ -33,6 +34,7 @@ persian:
     affection: 7
     power: 1
     level_rank_count: 1
+    experience: 0
     wins_count: 1
     loses_count: 1
     draws_count: 1
@@ -53,6 +55,7 @@ burmese:
     affection: 4
     power: 1
     level_rank_count: 1
+    experience: 0
     wins_count: 2
     loses_count: 3
     draws_count: 1

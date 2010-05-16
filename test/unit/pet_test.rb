@@ -60,4 +60,11 @@ class PetTest < ActiveSupport::TestCase
     assert_equal 1, @new_pet.level_rank_count
     assert_not_nil @new_pet.level_id
   end
+  
+  def test_award_experience
+    exp = 10
+    assert_difference 'Pet.find(@pet).experience', +exp do
+      @pet.award_experience!(exp)
+    end
+  end
 end

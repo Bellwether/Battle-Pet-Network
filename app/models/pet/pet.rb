@@ -100,6 +100,16 @@ class Pet < ActiveRecord::Base
     update_attribute(:occupation_id, occupation_id)
   end
 
+  def award_experience!(exp)
+    self.experience = experience + exp
+    next_level = level.next_level
+    advance_level(next_level) if experience >= next_level.experience
+    save
+  end
+  
+  def advance_level(lvl)
+  end
+
   def set_occupation
     self.occupation_id ||= Occupation.find_by_name("Prowling").id
   end

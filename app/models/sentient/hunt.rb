@@ -45,4 +45,7 @@ class Hunt < ActiveRecord::Base
     end
     self.status = "ended"
   end
+  
+  def award!
+  end
 end

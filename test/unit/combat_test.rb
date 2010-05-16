@@ -155,6 +155,25 @@ class CombatTest < ActiveSupport::TestCase
     end
   end
   
+  def test_award_combatants
+    @combat_models.each do |m|
+      next if m.respond_to?(:award!)
+      
+      assert_no_difference ['m.attacker.experience','m.defender.experience'] do
+        m.attacker.current_endurance = 0
+        m.defender.current_endurance = 0
+        m.award_combatants
+      end
+      m.attacker.current_endurance = 10
+      m.attacker.experience = 0
+      m.defender.experience = 0
+      m.award_combatants
+      assert_operator m.attacker.experience, ">", 0
+      assert_operator m.defender.experience, ">", 0
+      assert_operator m.attacker.experience, ">", m.defender.experience
+    end
+  end
+  
   def test_calculate_experience
     winner = Combat.calculate_experience(12, 5, 5, true)
     loser = Combat.calculate_experience(12, 5, 5, false)

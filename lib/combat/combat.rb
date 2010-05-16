@@ -23,7 +23,6 @@ module Combat
       
       minimum_award = AppConfig.experience.minimum_award
       total_award = (outcome_award + combat_award).to_i
-      puts ""
       return [minimum_award, total_award].max
     end
   end
@@ -103,7 +102,19 @@ module Combat
   end
   
   def award_combatants
-    return if end_result == EndResult::BOTH_UNCONSCIOUS
+    return if end_result == EndResult::BOTH_EXHAUSTED
+    combatants.each do |c|
+      next unless c.is_a?(Pet)
+      
+      did_win = !combatant_defeated?(c)
+      power = strategy_for(c).total_power
+      level = c.level_rank_count
+      opponent = opponent_for(c)
+      other_level = opponent.is_a?(Pet) ? opponent.level_rank_count : 1
+      
+      experience = Combat.calculate_experience(power, level, other_level, did_win)
+      c.award_experience!(experience)
+    end
   end
 
   def combat_needs_to_occur?
@@ -120,6 +131,15 @@ module Combat
                   attacker.current_health > 0 &&
                   defender.current_health > 0
     return in_progress
+  end
+  
+  def opponent_for(combatant)
+    if combatant == attacker
+      return defender
+    elsif combatant == defender
+      return attacker
+    end
+    return nil
   end
   
   def action_for(combatant)
