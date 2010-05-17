@@ -35,11 +35,11 @@ class Hunt < ActiveRecord::Base
   
   def set_outcome
     hunters.each do |h|
-      if combatant_defeated?(defender) && !combatant_defeated?(h.pet)
+      if combatant_defeated?(sentient) && !combatant_defeated?(h.pet)
         h.outcome = "won"
-      elsif !combatant_defeated?(defender) && combatant_defeated?(h.pet)
+      elsif !combatant_defeated?(sentient) && combatant_defeated?(h.pet)
         h.outcome = "lost"
-      elsif combatant_defeated?(defender) && combatant_defeated?(h.pet)        
+      elsif combatant_defeated?(sentient) && combatant_defeated?(h.pet)        
         h.outcome = "deadlocked"
       end
     end
@@ -47,5 +47,8 @@ class Hunt < ActiveRecord::Base
   end
   
   def award!
+    hunters.each do |h|
+      h.pet.update_attribute(:kibble, h.pet.kibble + sentient.kibble) if h.outcome == "won"
+    end
   end
 end

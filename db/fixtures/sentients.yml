@@ -14,6 +14,22 @@ leper_rat:
   population_cap: 100
   required_rank: 1
 
+omega_rat:
+  sentient_type: threat
+  name: Omega Rat
+  description: Basked in a radioactive aura these monsters have emerged as a highly adaptive response to the hazards
+               of the toxic post-war landscape.
+  health: 25
+  endurance: 75
+  power: 2
+  intelligence: 3
+  fortitude: 5
+  kibble: 20
+  population: 25
+  repopulation_rate: 5
+  population_cap: 25
+  required_rank: 2
+
 gila_monstrosity:
   sentient_type: threat
   name: Gila Monstrosity
@@ -24,6 +40,7 @@ gila_monstrosity:
   intelligence: 3
   fortitude: 4
   kibble: 50
+  population: 10
   repopulation_rate: 2
   population_cap: 10  
   required_rank: 3

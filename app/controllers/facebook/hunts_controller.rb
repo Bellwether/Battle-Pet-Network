@@ -22,4 +22,9 @@ class Facebook::HuntsController < Facebook::FacebookController
       render :action => :new
     end
   end
+  
+  def show
+    @hunt = current_user_pet.hunters.find_by_hunt_id(params[:id])
+    @hunts = current_user_pet.hunters.all(:limit => 12)
+  end
 end

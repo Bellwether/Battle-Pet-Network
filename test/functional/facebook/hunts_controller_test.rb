@@ -10,6 +10,23 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
     @new_strategy_params = {:maneuvers_attributes => { "0" => {:rank => 1, :action_id => actions(:scratch).id}}}
     @params = {:sentient_id => @sentient.id, :hunters_attributes => {"0" => {:pet_id => @pet.id, :strategy_attributes => @new_strategy_params}} }
   end
+  
+  def test_show
+    @pet = pets(:persian)
+    @user = @pet.user
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :show, :fb_sig_user => @user.facebook_id, :id => hunts(:omega_rat_hunt).id
+    assert_response :success
+    assert_template 'show'
+    assert !assigns(:hunt).blank?
+    assert !assigns(:hunts).blank?
+    assert_tag :tag => "ul", :attributes => {:id => 'recent-hunts'}, :descendant => {
+      :tag => "li", :attributes => { :class => "hunt" }
+    }
+    assert_tag :tag => "ul", :attributes => {:class => 'logs'}, :descendant => {
+      :tag => "li", :attributes => { :class => "log" }
+    }
+  end
 
   def test_get_new
     mock_user_facebooking(@user.facebook_id)

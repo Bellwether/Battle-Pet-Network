@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.string   "status",      :default => "started", :null => false
     t.text     "logs"
     t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "hunts", ["sentient_id", "status", "created_at"], :name => "index_hunts_on_sentient_id_and_status_and_created_at"

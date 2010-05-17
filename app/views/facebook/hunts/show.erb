@@ -1,0 +1,62 @@
+<% content_for :page_title do %><h2>Human Profile</h2><% end %>
+
+<div class="sidebox slim right">
+  <div class="box slim">	
+    <h4>Recent Hunts</h4>
+    <p class="em">Hunting is the easiest way the earn kibble while testing your battle strategies 
+	and keeping the lands safe from sentient threats.</p>
+	<ul id="recent-hunts">
+	<% @hunts.each do |h| %>
+	  <li class="hunt">
+		<%= "#{time_ago_in_words(h.hunt.updated_at)} ago" %> you hunted a 
+		<%= h.hunt.sentient.name %> and <label><%= facebook_link_to h.outcome, facebook_hunt_path(h.hunt) %></label>.
+	  </li>
+	<% end %>
+	</ul>
+  </div>
+</div>
+
+<div class="box">
+  <h3>Hunting Records</h3>
+  <table class="hunts">
+	<tr>
+	  <th>
+	    <%= "#{time_ago_in_words(@hunt.hunt.updated_at)} ago" %> <%= @hunt.pet.name %> hunted a 
+		<label><%= @hunt.hunt.sentient.name %></label>
+	  </th>
+	</tr>
+	<tr>
+	  <td>	
+	  	<%= current_user_pet.name %> 
+		<%= @hunt.outcome == "won" ? "won" : "lost" %>
+		the hunt
+	  </td>
+	  <td>
+	  	<%= @hunt.hunt.sentient.name %> 
+		<% if (@hunt.outcome == "won") %>
+	  	  was defeated
+		<% elsif (@hunt.outcome == "lost") %>
+		  was victorious
+		<% else %>
+		  escaped
+		<% end %>
+	  </td>
+	</tr>
+	<tr>
+	  <td><div class="<%="avatar-#{current_user_pet.slug}-large" %> left"></div></td>	
+	  <td><div class="<%="avatar-#{@hunt.hunt.sentient.slug}-large" %> right"></div></td>
+	</tr>
+	<tr><th colspan="2" class="em">Here's what happened</th></tr>
+	<tr>
+	  <td colspan="2">
+		<ul class="logs">
+		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
+		    <li class="log">
+		      <%= log %>	
+		    </li>
+		  <% end %>
+		</ul>
+	  </td>
+    </tr>
+  </table>
+</div>

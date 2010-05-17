@@ -219,7 +219,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :sentient, :null => false
       t.string :status, :null => false, :default => "started"
       t.text :logs
-      t.datetime :created_at
+      t.timestamps :updated_at
     end
     add_index :hunts, [:sentient_id,:status,:created_at]
     add_index :hunts, [:status,:created_at]
