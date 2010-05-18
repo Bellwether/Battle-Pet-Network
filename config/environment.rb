@@ -40,5 +40,5 @@ Rails::Initializer.run do |config|
   # load all models and libs in subdirectories
   ['app/models','lib'].each do |path|
     config.load_paths += Dir["#{RAILS_ROOT}/#{path}/*"].find_all { |f| File.stat(f).directory? }
-  end  
+  end    
 end

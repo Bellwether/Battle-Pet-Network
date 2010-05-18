@@ -53,6 +53,10 @@ module Facebook::FacebookHelper
     attribute = attribute.to_s.gsub(/_/,'-')
     "<tr><td>#{label}:</td><td><span id=\"breed-details-#{attribute.to_s}\">#{val}</span></td></tr>"
   end
+
+  def render_paypal_submit_tag
+    image_submit_tag "https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif", :class => "paypal-sm-button"
+  end
   
   def experience_bar(level)
   end

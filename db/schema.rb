@@ -335,10 +335,10 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "payment_order_transactions", ["payment_order_id"], :name => "index_payment_order_transactions_on_payment_order_id"
 
   create_table "payment_orders", :force => true do |t|
-    t.integer  "item_id"
+    t.integer  "item_id",     :null => false
+    t.integer  "user_id",     :null => false
     t.string   "ip_address"
     t.string   "ack"
-    t.string   "payer_id"
     t.string   "email"
     t.string   "first_name"
     t.string   "middle_name"
@@ -346,12 +346,13 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.string   "phone"
     t.string   "country"
     t.string   "city"
-    t.float    "total"
+    t.float    "total",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "payment_orders", ["created_at"], :name => "index_payment_orders_on_created_at"
+  add_index "payment_orders", ["user_id", "created_at"], :name => "index_payment_orders_on_user_id_and_created_at"
 
   create_table "pets", :force => true do |t|
     t.string   "name",               :limit => 64,                       :null => false

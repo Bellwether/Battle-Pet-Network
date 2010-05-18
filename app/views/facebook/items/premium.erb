@@ -21,15 +21,20 @@
     <td>
 	  <table class="item">
 		<tr>
-		  <td rowspan="2"><div class='item-#{i.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
+		  <td rowspan="3"><div class='item-#{i.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
 		  <th><%= i.name %></th>
 		</tr>
+		<tr><td><label>Kibble: <%= i.power %></label></td></tr>
+		<tr><td><label>Cost: $<%= i.cost %></label></td></tr>
 		<tr>
 		  <td>
-			Purchase for $<%= i.cost %>
-		  </td>	
+			<% form_for @payment_order, :url => facebook_nested_url(facebook_payment_orders_path), 
+										:html => { :method => :post, :class => 'premium-form'} do |f| %>
+	          <%= f.hidden_field :item_id, {:value => i.id} %>
+			  <%= render_paypal_submit_tag %>
+			<% end %>
+		  </td>
 		</tr>
-		<tr><td><label>Kibble: <%= i.power %></label></td></tr>
 		<tr><td class="em" colspan="2"><%= i.description %></td></tr>
 	  </table>
 	</td>

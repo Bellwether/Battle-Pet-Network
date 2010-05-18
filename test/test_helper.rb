@@ -53,6 +53,9 @@ class ActiveSupport::TestCase
     @battle_mock.new_instances.should_receive(:run_combat)
     @hunt_mock.new_instances.should_receive(:run_combat)
   end
+  
+  def mock_merchant                               
+  end
 
   def mock_user_facebooking(facebook_id="2147483647")
     @facebook_session_mock = flexmock(Facebooker::Session)

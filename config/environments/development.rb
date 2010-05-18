@@ -27,4 +27,12 @@ config.after_initialize do
   Bullet.growl = false
   Bullet.rails_logger = true
   Bullet.disable_browser_cache = true
+
+  ActiveMerchant::Billing::Base.mode = :test
+  paypal_options = {
+    :login => "cmd_1268360324_biz_api1.battlepet.net",
+    :password => "1268360330",
+    :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A3Yn9CXgd7OsPfHVy2z3A2K0rWdC"
+  }
+  ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
 end

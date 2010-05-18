@@ -412,10 +412,10 @@ class CreateCore < ActiveRecord::Migration
     add_index :activity_streams, [:indirect_object_id, :indirect_object_type, :created_at], :name => :activity_streams_by_indirect
     
     create_table :payment_orders do |t|
-      t.belongs_to :item
+      t.belongs_to :item, :null => false
+      t.belongs_to :user, :null => false
       t.string :ip_address
       t.string :ack
-      t.string :payer_id
       t.string :email
       t.string :first_name
       t.string :middle_name
@@ -423,9 +423,10 @@ class CreateCore < ActiveRecord::Migration
       t.string :phone
       t.string :country
       t.string :city
-      t.float :total
+      t.float :total, :null => false
       t.timestamps
     end
+    add_index :payment_orders, [:user_id,:created_at]
     add_index :payment_orders, [:created_at]
     
     create_table :payment_order_transactions do |t|

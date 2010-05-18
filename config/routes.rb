@@ -48,6 +48,8 @@ ActionController::Routing::Routes.draw do |map|
       home.combat 'combat', :controller => 'pets', :action => 'combat'
     end
     
+    f.resources :payment_orders, :only => [:create]
+    
     f.root :controller => 'lobby'
   end
 

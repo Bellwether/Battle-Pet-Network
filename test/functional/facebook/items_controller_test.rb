@@ -67,6 +67,10 @@ class Facebook::ItemsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'premium'
     assert !assigns(:items).blank?
+    assert !assigns(:payment_order).blank?
     assert_tag :tag => "table", :attributes => { :class => "item" }
+    assert_tag :tag => "form", :attributes => { :class => "premium-form" }, :descendant => {
+      :tag => "input", :attributes => { :type => "image" }
+    }
   end
 end

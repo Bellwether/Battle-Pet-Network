@@ -23,5 +23,6 @@ class Facebook::ItemsController < Facebook::FacebookController
   
   def premium
     @items = Item.premium.kibble.all
+    @payment_order = PaymentOrder.new
   end
 end
