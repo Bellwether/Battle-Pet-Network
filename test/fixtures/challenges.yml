@@ -31,3 +31,11 @@ siamese_burmese_resolved:
   defender_strategy: persian_strategy
   challenge_type: 1v1
   status: resolved
+  
+siamese_burmese_old:
+  attacker: siamese
+  defender: persian
+  attacker_strategy: siamese_strategy
+  defender_strategy: persian_strategy
+  challenge_type: 1v1
+  status: resolved  

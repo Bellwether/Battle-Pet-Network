@@ -49,4 +49,11 @@ class Facebook::ChallengesController < Facebook::FacebookController
       render :action => :edit
     end
   end
+  
+  def show
+    @pet = current_user_pet
+    @challenge = current_user_pet.challenges.responding_to(params[:id])
+    @opponent = @challenge.attacker_id == current_user_pet.id ? @challenge.attacker : @challenge.defender
+    @history = Challenge.for_combatants(@pet.id, @opponent.id).resolved.excluding(@challenge.id).all(:limit => 12)
+  end
 end

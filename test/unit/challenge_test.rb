@@ -59,4 +59,12 @@ class ChallengeTest < ActiveSupport::TestCase
       challenge.battle!
     end
   end
+  
+  def test_description
+    challenge = challenges(:siamese_burmese_resolved)
+    [challenge.attacker_id,challenge.defender_id,nil].each do |winner|
+      challenge.battle.update_attribute(:winner_id, winner)
+      assert_not_nil challenge.description
+    end
+  end
 end

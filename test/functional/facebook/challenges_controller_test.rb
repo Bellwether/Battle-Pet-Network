@@ -30,6 +30,20 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     }
   end
   
+  def test_show
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :show, :fb_sig_user => @user.facebook_id, :id => challenges(:siamese_burmese_resolved).id
+    assert_response :success
+    assert_template 'show'
+    assert !assigns(:challenge).blank?
+    assert !assigns(:pet).blank?
+    assert !assigns(:opponent).blank?
+    assert !assigns(:history).blank?
+    assert_tag :tag => "ul", :attributes => { :class => 'battle-records'}, :descendant => {
+      :tag => "li", :attributes => { :class => "battle" }
+    }
+  end
+  
   def test_get_new
     mock_user_facebooking(@user.facebook_id)
     facebook_get :new, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id
@@ -44,7 +58,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       :tag => "input", :attributes => { :type => "submit" }
     }
   end
-
+  
   def test_create
     Challenge.destroy_all
     mock_user_facebooking(@user.facebook_id)   
@@ -56,7 +70,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     end    
     assert flash[:notice]
   end
-
+  
   def test_fail_create
     Challenge.destroy_all
     assert_no_difference ['Challenge.count','Strategy.count'] do

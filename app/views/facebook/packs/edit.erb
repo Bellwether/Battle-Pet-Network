@@ -10,7 +10,7 @@
     <table id="spoils">
 	<% @pack.spoils.each do |s| %>
 	  <tr>
-		<td rowspan="4"><div class='item-#{s.item.slug.downcase.gsub(/\s/,'-')}-mid'></td>
+		<td rowspan="4"><div class='item-#{s.item.slug.downcase.gsub(/\s/,'-')}-mid'></div></td>
 		<th colspan="2"><%= s.item.name %></th>
 	  </tr>	
 	  <tr>

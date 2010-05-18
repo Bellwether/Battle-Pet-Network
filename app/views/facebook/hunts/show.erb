@@ -17,11 +17,10 @@
 </div>
 
 <div class="box">
-  <h3>Hunting Records</h3>
-  <table class="hunts">
+  <table class="hunt-profile">
 	<tr>
 	  <th>
-	    <%= "#{time_ago_in_words(@hunt.hunt.updated_at)} ago" %> <%= @hunt.pet.name %> hunted a 
+	    <%= "#{time_ago_in_words(@hunt.hunt.updated_at)} ago" %> <label><%= @hunt.pet.name %></label> hunted a 
 		<label><%= @hunt.hunt.sentient.name %></label>
 	  </th>
 	</tr>
@@ -51,9 +50,10 @@
 	  <td colspan="2">
 		<ul class="logs">
 		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
-		    <li class="log">
-		      <%= log %>	
-		    </li>
+		    <li class="log"><%= log %></li>
+		  <% end %>
+		  <% @hunt.hunt.logs[:attacker_awards].each do |log| %>
+		    <li class="log award"><%= log %></li>
 		  <% end %>
 		</ul>
 	  </td>

@@ -1,4 +1,6 @@
 class Challenge < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+  
   belongs_to :attacker, :class_name => "Pet"
   belongs_to :defender, :class_name => "Pet"
   belongs_to :attacker_strategy, :class_name => "Strategy"
@@ -25,7 +27,13 @@ class Challenge < ActiveRecord::Base
   }  
   named_scope :for_defender, lambda { |defender_id| 
     { :conditions => ["defender_id = ?", defender_id] }
-  }  
+  }
+  named_scope :for_combatants, lambda { |first_id, second_id| 
+    { :conditions => ["? IN (attacker_id, defender_id) AND ? IN (attacker_id, defender_id)", first_id, second_id] }
+  }
+  named_scope :excluding, lambda { |ids| 
+    { :conditions => ["id NOT IN (?)", ids.is_a?(Array) ? ids : [ids] ] }
+  }      
   
   def after_initialize(*args)
     self.status ||= 'issued' if attributes.include?(:status)
@@ -46,6 +54,22 @@ class Challenge < ActiveRecord::Base
       ["status = 'issued' AND ((attacker_id = ? AND defender_id = ?) OR (attacker_id = ? AND defender_id = ?))", 
         attacker_id, defender_id, defender_id, attacker_id])
     errors.add_to_base("existing challenge already issued") if existing_challenge
+  end
+  
+  def description
+    text = "#{time_ago_in_words(created_at)} ago #{attacker.name} challenged #{defender.name} "
+    
+    case status
+      when "resolved"
+        if battle.winner_id == attacker_id
+          text = "#{text} and won the battle."
+        elsif battle.winner_id == defender_id
+          text = "#{text} and was defeated."
+        else
+          text = "#{text} and fought to a draw."
+        end
+    end
+    return text
   end
   
   def battle!
