@@ -60,4 +60,13 @@ class Facebook::ItemsControllerTest < ActionController::TestCase
     end
     assert flash[:notice]
   end
+  
+  def test_premium
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :premium, :fb_sig_user => @user.facebook_id
+    assert_response :success
+    assert_template 'premium'
+    assert !assigns(:items).blank?
+    assert_tag :tag => "table", :attributes => { :class => "item" }
+  end
 end

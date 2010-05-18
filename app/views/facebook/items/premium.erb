@@ -1,0 +1,37 @@
+<% content_for :page_title do %><h2>Storefront</h2><% end %>
+
+<div class="sidebox slim right">
+  <div class="box slim">	
+    <h4>Payment Methods</h4>
+    <p>paypal checkout</p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>Cash Shop</h3>
+  <p><em>
+	Kibble are dry, tasteless pellets once given to pets as food rations by their human masters. Today, it's
+	used as common currency when trading and buying items found at the 
+	<%= facebook_link_to "Item Market", facebook_items_path %> and 
+	<%= facebook_link_to "Pet Shops", facebook_shops_path %>.</em></p>
+  <p><em>You can buy bulk Kibble with your PayPal account, which can then immediately be used to purchase special 
+	items for your pet whenever you'd like.</em></p>
+	
+  <% cell_table(@items,3) do |i,idx| %>
+    <td>
+	  <table class="item">
+		<tr>
+		  <td rowspan="2"><div class='item-#{i.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
+		  <th><%= i.name %></th>
+		</tr>
+		<tr>
+		  <td>
+			Purchase for $<%= i.cost %>
+		  </td>	
+		</tr>
+		<tr><td><label>Kibble: <%= i.power %></label></td></tr>
+		<tr><td class="em" colspan="2"><%= i.description %></td></tr>
+	  </table>
+	</td>
+  <% end %>
+</div>	

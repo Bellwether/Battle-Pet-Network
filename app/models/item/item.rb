@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
   has_many :inventories
   has_many :belongings
 
+  named_scope :kibble, :conditions => "item_type = 'Kibble'"
+  named_scope :premium, :conditions => {:premium => true}
   named_scope :in_stock, :conditions => 'stock > 0'
   named_scope :marketable, :conditions => 'cost > 0'  
   named_scope :type_is, lambda { |item_type| 

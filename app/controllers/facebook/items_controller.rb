@@ -22,5 +22,6 @@ class Facebook::ItemsController < Facebook::FacebookController
   end
   
   def premium
+    @items = Item.premium.kibble.all
   end
 end
