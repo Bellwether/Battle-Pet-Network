@@ -415,6 +415,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :item, :null => false
       t.belongs_to :user, :null => false
       t.string :ip_address
+      t.string :payer_id
       t.string :ack
       t.string :email
       t.string :first_name
@@ -430,10 +431,10 @@ class CreateCore < ActiveRecord::Migration
     add_index :payment_orders, [:created_at]
     
     create_table :payment_order_transactions do |t|
-      t.belongs_to :payment_order
+      t.belongs_to :payment_order, :null => false
       t.string :action
       t.integer :amount
-      t.boolean :success
+      t.boolean :success, :null => false, :default => false
       t.string :authorization
       t.string :message
       t.text :params

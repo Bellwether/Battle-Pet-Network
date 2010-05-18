@@ -2,7 +2,7 @@
 	
 <% form_for @shop, :url => facebook_nested_url(new_facebook_shop_path) do |f| %>
 <div class="sidebox slim right">	
-  <div class="box slim">	
+  <div class="box slim">
     <h4>Starting Inventory</h4>
     <p class="em>">Your pet's shopkeeping ability allows for <%= pluralize(@shop.max_inventory, 'item') %> 
 	in your inventory at once.</p>

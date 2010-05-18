@@ -54,7 +54,29 @@ class ActiveSupport::TestCase
     @hunt_mock.new_instances.should_receive(:run_combat)
   end
   
-  def mock_merchant                               
+  def mock_merchant
+    @gateway_response = flexmock(:token => "1234", 
+                                :success? => true, 
+                                :authorization => true,
+                                :message => "Success",
+                                :params => {}) 
+                                
+    @pending_po = payment_orders(:user_two_pending_po)                            
+    @token_details = flexmock(:params => {"ack" => "Success",
+                                         "first_name" => "Test",
+                                         "middle_name" => "T.",
+                                         "last_name" => "Test",
+                                         "payer" => "test@example.com",
+                                         "phone" => "123-456-7890",
+                                         "country" => "USA",
+                                         "city" => "Boston",
+                                         "total" => "2.00",
+                                         "invoice_id" => @pending_po.id
+       }, :payer_id => "1234")                        
+
+    @gateway_mock = flexmock(EXPRESS_GATEWAY)
+    @gateway_mock.should_receive(:details_for).and_return(@token_details)
+    @gateway_mock.should_receive(:purchase).and_return(@gateway_response)    
   end
 
   def mock_user_facebooking(facebook_id="2147483647")

@@ -48,7 +48,9 @@ ActionController::Routing::Routes.draw do |map|
       home.combat 'combat', :controller => 'pets', :action => 'combat'
     end
     
-    f.resources :payment_orders, :only => [:create]
+    f.resources :payment_orders, :only => [:create] do |po|
+      po.resources :payment_order_transactions, :only => [:new]
+    end
     
     f.root :controller => 'lobby'
   end

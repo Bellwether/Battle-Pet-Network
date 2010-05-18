@@ -320,10 +320,10 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "packs", ["pack_members_count"], :name => "index_packs_on_pack_members_count"
 
   create_table "payment_order_transactions", :force => true do |t|
-    t.integer  "payment_order_id"
+    t.integer  "payment_order_id",                    :null => false
     t.string   "action"
     t.integer  "amount"
-    t.boolean  "success"
+    t.boolean  "success",          :default => false, :null => false
     t.string   "authorization"
     t.string   "message"
     t.text     "params"
@@ -338,6 +338,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer  "item_id",     :null => false
     t.integer  "user_id",     :null => false
     t.string   "ip_address"
+    t.string   "payer_id"
     t.string   "ack"
     t.string   "email"
     t.string   "first_name"

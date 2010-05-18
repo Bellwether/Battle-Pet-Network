@@ -17,4 +17,13 @@ class Facebook::PaymentOrdersControllerTest  < ActionController::TestCase
       assert_response :success
     end
   end
+  
+  def test_fail_create
+    assert_no_difference ['PaymentOrder.count','@user.payment_orders.count'] do
+      @params = {}
+      facebook_post :create, :payment_order => @params, :fb_sig_user => @user.facebook_id
+      assert_response :success
+    end    
+    assert flash[:error]
+  end  
 end
