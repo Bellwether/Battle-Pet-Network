@@ -13,7 +13,16 @@ class Belonging < ActiveRecord::Base
   named_scope :standards, :conditions => ["items.item_type = 'Standard'"], 
                           :order => "items.cost DESC"
                           
+  after_create :apply                          
+                          
   def after_initialize(*args)
     self.status ||= 'holding'
+  end
+  
+  def apply
+    if item.currency?
+      pet.update_attribute(:kibble, pet.kibble + item.power)
+      update_attribute(:status, "expended")
+    end
   end
 end

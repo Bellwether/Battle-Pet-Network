@@ -2,6 +2,17 @@
 
 <div class="sidebox slim right">	
   <div class="box slim">
+	<p class="em">Now that you've finished you may want to visit:</p>
+	<ul>
+	  <li><%= facebook_link_to "The item market...", facebook_items_path %></li>
+	  <li><%= facebook_link_to "Some pet shops...", facebook_shops_path %></li>
+	  <li><%= facebook_link_to "Your belongings...", "" %></li>
+	  <% if has_shop? %>
+	    <li><%= facebook_link_to "Your shop...", "" %></li>
+	  <% else %>
+	    <li><%= facebook_link_to "Opening a shop...", new_facebook_shop_path %></li>
+	  <% end %>
+	</ul>
   </div>
 </div>
 

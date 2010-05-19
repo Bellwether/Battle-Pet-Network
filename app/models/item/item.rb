@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
-  TYPES = ['Food', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensors', 'Ornament', 'Mantle', 'Charm', 'Standard']
-  BATTLE_TYPES = ['Collar', 'Weapon', 'Sensors', 'Mantle']
+  TYPES = ['Food', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensor', 'Ornament', 'Mantle', 'Charm', 'Standard']
+  BATTLE_TYPES = ['Collar', 'Weapon', 'Sensor', 'Mantle']
   
   validates_inclusion_of :item_type, :in => TYPES
   validates_numericality_of :cost, :greater_than_or_equal_to => 0
@@ -31,6 +31,10 @@ class Item < ActiveRecord::Base
   
   def bonus
     ""
+  end
+  
+  def currency?
+    item_type.downcase == "kibble"
   end
   
   def purchase_for!(pet)

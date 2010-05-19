@@ -376,6 +376,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer  "breed_id",                                               :null => false
     t.integer  "user_id"
     t.integer  "pack_id"
+    t.integer  "shop_id"
     t.integer  "level_id"
     t.integer  "occupation_id"
     t.integer  "rival_id"

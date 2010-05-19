@@ -6,6 +6,7 @@ class Pet < ActiveRecord::Base
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
   belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
   belongs_to :level
+  belongs_to :shop  
   belongs_to :pack, 
               :select => "id, name, status, kibble, created_at, standard_id, leader_id", 
               :include => {:standard => {},:pack_members => {:pet => :breed}}

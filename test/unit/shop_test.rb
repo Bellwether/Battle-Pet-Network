@@ -16,4 +16,10 @@ class ShopTest < ActiveSupport::TestCase
     assert !@shop.valid?
     assert @shop.errors.on_base.include?("inventory limit reached")
   end
+  
+  def test_set_shopkeeper
+    shop = Shop.new(@params)
+    assert shop.save
+    assert_equal shop.id, @pet.reload.shop_id
+  end
 end

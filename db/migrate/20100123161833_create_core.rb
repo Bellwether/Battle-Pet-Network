@@ -118,6 +118,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :breed, :null => false
       t.belongs_to :user
       t.belongs_to :pack
+      t.belongs_to :shop
       t.belongs_to :level
       t.belongs_to :occupation
       t.belongs_to :rival

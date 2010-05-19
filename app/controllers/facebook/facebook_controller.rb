@@ -14,11 +14,11 @@ class Facebook::FacebookController < ApplicationController
   end
 
   def has_shop?
-    false
+    !current_user_pet.shop_id.blank?
   end
 
   def has_pack?
-    false
+    !current_user_pet.pack_id.blank?
   end
   
   def has_facebook_user?

@@ -1,6 +1,8 @@
 class Occupation < ActiveRecord::Base
   has_many :pets
   
+  named_scope :scavenging, :conditions => "name LIKE 'Scavenging'", :limit => 1  
+  
   def slug
     name.downcase.gsub(/\s/,'-')
   end

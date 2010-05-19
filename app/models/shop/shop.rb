@@ -11,6 +11,8 @@ class Shop < ActiveRecord::Base
   validates_presence_of :pet_id, :name, :status, :specialty, :inventories_count
   validates_length_of :name, :in => 3..128
   validates_inclusion_of :specialty, :in => SPECIALTIES
+  
+  after_create :set_shopkeeper
       
   named_scope :include_pet, :include => [:pet]
   named_scope :has_item_named, lambda { |name|
@@ -48,5 +50,9 @@ class Shop < ActiveRecord::Base
   
   def last_restock
     last_restock_at ? "#{time_ago_in_words(last_restock_at)} ago" : "unstocked"
+  end
+  
+  def set_shopkeeper
+    pet.update_attribute(:shop_id,id) if pet.shop_id.blank?
   end
 end
