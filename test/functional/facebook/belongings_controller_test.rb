@@ -17,4 +17,13 @@ class Facebook::BelongingsControllerTest  < ActionController::TestCase
     assert !assigns(:gear).blank? 
     assert_tag :tag => "table", :attributes => { :class => "item"}
   end
+  
+  def test_update
+    belonging = belongings(:two_catamount_claws)
+    mock_user_facebooking(@user.facebook_id)
+    facebook_put :update, :fb_sig_user => @user.facebook_id, :id => belonging.id, :belonging => {:status => 'holding'}
+    assert_response :success
+    assert_equal 'holding', belonging.reload.status
+    assert flash[:notice]
+  end
 end
