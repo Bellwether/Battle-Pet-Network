@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
-  TYPES = ['Food', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensor', 'Ornament', 'Mantle', 'Charm', 'Standard']
+  TYPES = ['Food', 'Treat', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensor', 'Ornament', 'Mantle', 'Charm', 'Standard']
   BATTLE_TYPES = ['Collar', 'Weapon', 'Sensor', 'Mantle']
+  FOODSTUFFS = ['Food', 'Treat']  
   
   validates_inclusion_of :item_type, :in => TYPES
   validates_numericality_of :cost, :greater_than_or_equal_to => 0
@@ -31,6 +32,18 @@ class Item < ActiveRecord::Base
   
   def bonus
     ""
+  end
+  
+  def gear?
+    Item::BATTLE_TYPES.include?(item_type)
+  end
+  
+  def food?
+    Item::FOODSTUFFS.include?(item_type)
+  end
+
+  def practice?
+    item_type.downcase == "toy"
   end
   
   def currency?

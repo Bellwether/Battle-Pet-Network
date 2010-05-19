@@ -30,7 +30,7 @@ class Tame < ActiveRecord::Base
   
   def validates_exclusivity
     errors.add(:human_id, "human already tamed") if human && 
-                                                         pet && 
-                                                         pet.tames.kenneled.map(&:human_id).include?(human.id)
+                                                    pet && 
+                                                    pet.tames.kenneled.map(&:human_id).include?(human.id)
   end
 end

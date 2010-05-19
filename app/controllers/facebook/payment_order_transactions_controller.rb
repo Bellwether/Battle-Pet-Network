@@ -10,7 +10,6 @@ class Facebook::PaymentOrderTransactionsController < Facebook::FacebookControlle
     else
       flash[:notice] = "There was a problem with your order."
       flash[:error] = @po.errors.full_messages
-      puts @po.errors.full_messages
     end
   end
 end

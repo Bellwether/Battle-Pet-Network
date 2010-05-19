@@ -33,6 +33,17 @@ sisal_mast:
   stock: 4
   stock_cap: 4
   restock_rate: 1
+  
+hunting_claws:
+  name: Hunting Claws
+  item_type: Weapon
+  power: 1
+  required_rank: 3
+  cost: 12000
+  rarity: 1000 
+  stock: 5
+  stock_cap: 5
+  restock_rate: 1 
     
 catamount_claws:
   species: cat
@@ -45,6 +56,40 @@ catamount_claws:
   rarity: 25
   stock: 3
   stock_cap: 3
+  restock_rate: 1
+  
+silver_whiskers:
+  species: cat
+  name: Silver Whiskers
+  item_type: Sensor
+  power: 2
+  required_rank: 3
+  cost: 3000
+  rarity: 800
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
+  
+calico_cloak:
+  name: Calico Cloak
+  item_type: Mantle
+  power: 1
+  required_rank: 2
+  cost: 4000
+  rarity: 800
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
+  
+cordura_collar:    
+  name: Cordura Collar
+  item_type: Collar
+  power: 2
+  required_rank: 3
+  cost: 6000
+  rarity: 900
+  stock: 2
+  stock_cap: 2
   restock_rate: 1
     
 kibble_pack:

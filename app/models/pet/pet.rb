@@ -97,6 +97,10 @@ class Pet < ActiveRecord::Base
     occupation_id && occupation.name.downcase == "prowling"
   end
   
+  def owns_item?(item_id)
+    return belongings.collect(&:item_id).include?(item_id)
+  end
+  
   def update_occupation!(occupation_id)
     update_attribute(:occupation_id, occupation_id)
   end

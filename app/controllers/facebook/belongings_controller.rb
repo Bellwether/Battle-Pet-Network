@@ -9,7 +9,7 @@ class Facebook::BelongingsController < Facebook::FacebookController
   def update
     @belonging = current_user_pet.belongings.find(params[:id])
         
-    if @belonging.update_attributes(params[:belonging])
+    if @belonging.use_item
       flash[:notice] = "Used #{@belonging.item.name}"
     else    
       flash[:error] = "Couldn't use #{@belonging.item.name}. #{@belonging.errors.full_messages}"
