@@ -62,6 +62,11 @@ class Item < ActiveRecord::Base
     return pet.save
   end
   
+  def practice!(pet)
+    return false unless practice?
+    return pet.award_experience!(power)
+  end
+  
   def purchase_for!(pet)
     belonging = belongings.build(:pet_id => pet.id, :source => 'purchased')
     belonging.errors.add_to_base("out of stock") if stock < 1

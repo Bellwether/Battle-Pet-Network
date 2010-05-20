@@ -103,6 +103,17 @@ cordura_collar:
   stock: 2
   stock_cap: 2
   restock_rate: 1
+  
+spiked_yarn_ball:
+  name: Spiked Yarn Ball
+  item_type: Toy
+  power: 50
+  required_rank: 1
+  cost: 40
+  rarity: 35
+  stock: 75
+  stock_cap: 75
+  restock_rate: 5
     
 kibble_pack:
   name: Kibble Pack

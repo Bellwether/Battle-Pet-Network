@@ -4,17 +4,18 @@ class ItemTest < ActiveSupport::TestCase
   def setup
     @item = items(:cat_grass)
     @treat = items(:cheezburger)
+    @toy = items(:spiked_yarn_ball)
     @pet = pets(:persian)
   end
   
   def test_purchase_for
     assert_difference '@item.stock', -1 do
-    assert_difference '@pet.kibble', -@item.cost do
-      assert_difference '@pet.belongings.count', +1 do
-        belonging = @item.purchase_for!(@pet)
-        assert_equal 'purchased', belonging.source
-      end    
-    end
+      assert_difference '@pet.kibble', -@item.cost do
+        assert_difference '@pet.belongings.count', +1 do
+          belonging = @item.purchase_for!(@pet)
+          assert_equal 'purchased', belonging.source
+        end    
+      end
     end
     @pet.update_attribute(:kibble, 0)
     purchase = @item.purchase_for!(@pet)
@@ -26,21 +27,29 @@ class ItemTest < ActiveSupport::TestCase
   
   def test_eat_food
     @pet.update_attributes(:current_health => 1, :current_endurance => 1)
-    @item.eat!(@pet)
+    assert @item.eat!(@pet)
     assert_equal @pet.health, @pet.current_health
     assert_equal @item.power + 1, @pet.current_endurance
     @pet.update_attributes(:current_health => @pet.health - 1, :current_endurance => @pet.endurance - 1)
-    @item.eat!(@pet)
+    assert @item.eat!(@pet)
     assert_equal @pet.health, @pet.current_health
     assert_equal @pet.endurance, @pet.current_endurance
   end
   
   def test_eat_treat
     @pet.update_attributes(:current_health => 1)
-    @treat.eat!(@pet)
+    assert @treat.eat!(@pet)
     assert_equal @pet.health + @treat.power, @pet.current_health
     @pet.update_attributes(:current_health => @pet.health + 1)
-    @treat.eat!(@pet)
+    assert @treat.eat!(@pet)
     assert_equal @pet.health + 1 + @treat.power, @pet.current_health
+  end
+  
+  def test_practice
+    pet_mock = flexmock(@pet)
+    pet_mock.should_receive(:advance_level)
+    assert_difference '@pet.experience', +@toy.power do
+      assert @toy.practice!(@pet)
+    end    
   end
 end

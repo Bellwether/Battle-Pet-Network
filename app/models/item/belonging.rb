@@ -39,7 +39,8 @@ class Belonging < ActiveRecord::Base
       success = item.eat!(pet)
       success = update_attribute :status, "expended" if success
     elsif item.practice?
-      success = update_attribute :status, "expended"
+      success = item.practice!(pet)
+      success = update_attribute :status, "expended" if success
     end
     return success
   end
