@@ -19,6 +19,7 @@ siamese:
     draws_count: 2
     pack: alpha
     level: siamese_2
+    actions: scratch,slash,claw,bite,swat,flank,dodge,leap
     
 persian:
     breed: persian
@@ -41,6 +42,7 @@ persian:
     kibble: 500
     occupation: prowling
     level: persian_1
+    actions: scratch,slash,claw,bite,swat,flank,dodge,leap
     
 burmese:
     breed: burmese
@@ -63,3 +65,4 @@ burmese:
     occupation: shopkeeping  
     pack: alpha  
     level: burmese_1
+    actions: scratch,slash,claw,bite,swat,flank,dodge,leap

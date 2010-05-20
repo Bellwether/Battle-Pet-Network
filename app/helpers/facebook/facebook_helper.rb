@@ -24,23 +24,23 @@ module Facebook::FacebookHelper
   end
   
   def render_petless_callout
-    render(:partial => '/facebook/petless_callout')
+    render :partial => '/facebook/petless_callout'
   end
 
   def render_kibble_box
-    render(:partial => '/facebook/kibble_box')
+    render :partial => '/facebook/kibble_box'
   end
 
   def render_breed_picker(form)
-    render(:partial => '/facebook/breed_picker', :locals => {:form => form})
+    render :partial => '/facebook/breed_picker', :locals => {:form => form}
   end
 
   def render_item_picker(items,form=nil,attribute=nil)
-    render(:partial => '/facebook/item_picker', :locals => {:items => items, :form => form, :attribute => attribute})
+    render :partial => '/facebook/item_picker', :locals => {:items => items, :form => form, :attribute => attribute}
   end
 
-  def render_strategy_picker
-    render(:partial => '/facebook/strategy_picker')
+  def render_strategy_picker(form,strategy_name='attacker_strategy')
+    render :partial => '/facebook/strategy_picker', :locals => {:form =>form,:strategy_name=>strategy_name}
   end
 
   def breed_details_row(label,model,attribute)

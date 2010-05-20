@@ -47,7 +47,7 @@ dodge:
   action_type: defensive    
   power: 5
   
-pounce:
+leap:
   breed: cat
   name: Leap
   verb: leap

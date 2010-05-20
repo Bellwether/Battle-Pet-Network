@@ -29,6 +29,7 @@ class Pet < ActiveRecord::Base
                       :conditions => 'created_at >= DATE_ADD(NOW(), INTERVAL -24 HOUR)',
                       :order => 'created_at ASC'
   has_many :strategies, :as => :combatant, :dependent => :destroy
+  has_and_belongs_to_many :actions, :order => "action_type DESC, power ASC"
   
   has_many :challenges, :finder_sql => '#{id} IN (attacker_id, defender_id) ', :order => "created_at DESC" do
     def attacking
@@ -52,7 +53,7 @@ class Pet < ActiveRecord::Base
   validates_inclusion_of :status, :in => %w(active abandoned)
   
   before_validation_on_create :populate_from_breed, :set_slug, :set_level
-  after_create :set_user
+  after_create :set_user, :set_actions
   
   def after_initialize(*args)
     self.status ||= 'active'
@@ -79,6 +80,10 @@ class Pet < ActiveRecord::Base
   
   def breed_name
     breed_id ? breed.name : ''
+  end
+  
+  def max_actions
+    intelligence
   end
   
   def battles_count
@@ -131,5 +136,11 @@ class Pet < ActiveRecord::Base
   
   def set_user
     User.find(user).update_attribute(:pet_id, self.id) unless user.blank?
+  end
+  
+  def set_actions
+    breed.actions.each do |action|
+      self.actions << action
+    end
   end
 end

@@ -1,6 +1,6 @@
 class Action < ActiveRecord::Base
   belongs_to :breed
-  has_many :pets
+  has_and_belongs_to_many :pets
   has_many :maneuvers
   
   validates_presence_of :breed_id, :action_type, :verb, :power
