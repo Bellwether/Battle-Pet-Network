@@ -50,6 +50,18 @@ class Item < ActiveRecord::Base
     item_type.downcase == "kibble"
   end
   
+  def eat!(pet)
+    return false unless food?
+    case item_type
+      when 'Food'
+        pet.current_endurance = [pet.current_endurance + power, pet.endurance].min
+        pet.current_health = pet.health
+      when 'Treat'  
+        pet.current_health = [pet.health, pet.current_health].max + power
+    end    
+    return pet.save
+  end
+  
   def purchase_for!(pet)
     belonging = belongings.build(:pet_id => pet.id, :source => 'purchased')
     belonging.errors.add_to_base("out of stock") if stock < 1

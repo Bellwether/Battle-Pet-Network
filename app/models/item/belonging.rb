@@ -32,15 +32,16 @@ class Belonging < ActiveRecord::Base
   end
   
   def use_item
+    success = false
     if item.gear?
-      return update_attribute :status, (active? ? "holding" : "active")
+      success = update_attribute :status, (active? ? "holding" : "active")
     elsif item.food?
-      return update_attribute :status, "expended"
+      success = item.eat!(pet)
+      success = update_attribute :status, "expended" if success
     elsif item.practice?
-      return update_attribute :status, "expended"
-    else
-      return false
+      success = update_attribute :status, "expended"
     end
+    return success
   end
   
   def apply

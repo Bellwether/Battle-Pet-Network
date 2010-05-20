@@ -10,6 +10,18 @@ cat_grass:
   stock_cap: 75
   restock_rate: 10
 
+cheezburger:
+  name: Cheezburger
+  description: Ya, u can haz cheezburger.
+  item_type: Treat
+  power: 2
+  required_rank: 2
+  cost: 35
+  rarity: 85
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
+
 fiberboard_pillar: 
   name: Fiberboard Pillar
   description: A drab and desolate pillar of fiberboard.
