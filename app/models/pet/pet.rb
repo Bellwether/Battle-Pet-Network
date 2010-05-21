@@ -55,6 +55,8 @@ class Pet < ActiveRecord::Base
   before_validation_on_create :populate_from_breed, :set_slug, :set_level
   after_create :set_user, :set_actions
   
+  named_scope :scavenging, :conditions => "occupations.name = 'Scavenging'", :include => [:occupation]
+  
   def after_initialize(*args)
     self.status ||= 'active'
     self.kibble ||= 0

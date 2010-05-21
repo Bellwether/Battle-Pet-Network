@@ -6,9 +6,9 @@ class Human < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
   
-  named_scope :random, :order => "(25 - difficulty) * RAND() DESC"  
+  named_scope :random, :order => "(25 - difficulty) * RAND() DESC", :limit => 1 
   named_scope :random_for_pet, lambda { |pet| 
-    { :conditions => ["required_rank <= ?", pet.level_rank_count], :order => "(25 - difficulty) * RAND() DESC" }
+    { :conditions => ["required_rank <= ?", pet.level_rank_count], :order => "(25 - difficulty) * RAND() DESC", :limit => 1  }
   }
   
   class << self  

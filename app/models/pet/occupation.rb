@@ -5,6 +5,18 @@ class Occupation < ActiveRecord::Base
   
   validates_inclusion_of :status, :in => ['Prowling','Scavenging','Human Taming','Shopkeeping']
     
+  class << self    
+    def scavenge!
+      scavenging = Occupation.find_by_name("Scavenging", :limit => 1)
+      return unless scavenging
+    
+      pets = Pet.scavenging.all
+      pets.each do |pet|
+        scavenging.perform_for_pet(pet)
+      end
+    end    
+  end
+      
   def slug
     name.downcase.gsub(/\s/,'-')
   end
@@ -32,10 +44,14 @@ class Occupation < ActiveRecord::Base
   end
   
   def perform_for_pet(pet)
+    success = false
     case name
       when 'Human Taming'
+        success = tame_human(pet)
       when 'Scavenging'
+        success = scavenge_item(pet)
     end
+    return success
   end
   
   def tame_human(pet,human=nil)
@@ -48,7 +64,7 @@ class Occupation < ActiveRecord::Base
   
   def scavenge_item(pet,item=nil)
     success = Item.scavenges?(pet)
-    item = Item.find_random_item(pet,item).first if success
+    item = Item.find_random_item(pet,item) if success
     success = pet.belongings.create(:item => item, :source => 'scavenged') if success
     return success
   end
