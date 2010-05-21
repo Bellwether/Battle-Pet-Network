@@ -22,9 +22,26 @@ class Item < ActiveRecord::Base
   named_scope :type_is, lambda { |item_type| 
     { :conditions => ["item_type = ?", item_type] }
   }
-  
+  named_scope :random, :conditions => 'rarity > 0', :order => "rarity * RAND() DESC"
+  named_scope :random_for_pet, lambda { |pet| 
+    { :conditions => ["rarity > 0 AND required_rank <= ?", pet.level_rank_count], :order => "rarity * RAND() DESC" }
+  }
+    
   cattr_reader :per_page
   @@per_page = 20
+  
+  class << self
+    def find_random_item(pet=nil,item=nil)
+      return pet.blank? ? Item.random : Item.random_for_pet(pet)
+    end
+    
+    def scavenges?(pet)
+      div = AppConfig.occupations.scavenge_chance_divisor.to_f
+      chance = (pet.intelligence.to_f + pet.intelligence_bonus.to_f) / div
+      val = 1 + rand(100)
+      return val <= chance
+    end    
+  end  
   
   def slug
     name.downcase.gsub(/\s/,'-')

@@ -12,7 +12,6 @@ class Human < ActiveRecord::Base
   }
   
   class << self  
-    # finds a random human weighted by difficulty
     def find_random_human(pet=nil)
       return pet.blank? ? Human.random : Human.random_for_pet(pet)
     end

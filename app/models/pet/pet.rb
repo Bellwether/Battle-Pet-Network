@@ -102,6 +102,10 @@ class Pet < ActiveRecord::Base
     0
   end
   
+  def intelligence_bonus
+    0
+  end
+  
   def battles_count
     wins_count + loses_count + draws_count
   end

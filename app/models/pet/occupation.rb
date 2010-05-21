@@ -25,6 +25,7 @@ class Occupation < ActiveRecord::Base
         success = tame_human(pet,subject)
         exhaust pet
       when 'Scavenging'  
+        success = scavenge_item(pet,subject)
         exhaust pet
     end
     return success
@@ -42,6 +43,13 @@ class Occupation < ActiveRecord::Base
     human = Human.find_random_human(pet,human) if success
     success = Tame.pet_tames_human?(pet,human) if success
     success = pet.tames.create(:human => human, :status => 'kenneled') if success
+    return success
+  end
+  
+  def scavenge_item(pet,item=nil)
+    success = Item.scavenges?(pet)
+    item = Item.find_random_item(pet,item) if success
+    success = pet.belongings.create(:item => item, :source => 'scavenged') if success
     return success
   end
   

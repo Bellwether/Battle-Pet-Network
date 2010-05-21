@@ -52,4 +52,17 @@ class ItemTest < ActiveSupport::TestCase
       assert @toy.practice!(@pet)
     end    
   end
+
+  def test_find_random_item
+    assert_not_nil Item.find_random_item
+    assert_not_nil Item.find_random_item(@pet)
+  end
+
+  def test_scavenges
+    chance = @pet.intelligence.to_f + @pet.intelligence_bonus.to_f
+    AppConfig.occupations.scavenge_chance_divisor = chance / 1000
+    assert Item.scavenges?(@pet)
+    AppConfig.occupations.scavenge_chance_divisor = chance * 1000
+    assert !Item.scavenges?(@pet)
+  end
 end
