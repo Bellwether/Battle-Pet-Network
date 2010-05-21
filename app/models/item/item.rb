@@ -22,9 +22,9 @@ class Item < ActiveRecord::Base
   named_scope :type_is, lambda { |item_type| 
     { :conditions => ["item_type = ?", item_type] }
   }
-  named_scope :random, :conditions => 'rarity > 0', :order => "rarity * RAND() DESC"
+  named_scope :random, :conditions => 'rarity > 0', :order => "rarity * RAND() DESC", :limit => 1
   named_scope :random_for_pet, lambda { |pet| 
-    { :conditions => ["rarity > 0 AND required_rank <= ?", pet.level_rank_count], :order => "rarity * RAND() DESC" }
+    { :conditions => ["rarity > 0 AND required_rank <= ?", pet.level_rank_count], :order => "rarity * RAND() DESC", :limit => 1 }
   }
     
   cattr_reader :per_page

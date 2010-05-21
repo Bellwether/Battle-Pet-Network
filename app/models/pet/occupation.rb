@@ -48,12 +48,12 @@ class Occupation < ActiveRecord::Base
   
   def scavenge_item(pet,item=nil)
     success = Item.scavenges?(pet)
-    item = Item.find_random_item(pet,item) if success
+    item = Item.find_random_item(pet,item).first if success
     success = pet.belongings.create(:item => item, :source => 'scavenged') if success
     return success
   end
   
   def exhaust(pet)
-    pet.update_attribute(:current_endurance, [pet.current_endurance - power, 0].max)
+    pet.update_attribute(:current_endurance, [pet.current_endurance - cost, 0].max)
   end
 end

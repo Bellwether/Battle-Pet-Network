@@ -32,7 +32,7 @@ ActionController::Routing::Routes.draw do |map|
       s.resources :inventory, :only => [], :member => {:purchase => :post}
     end
     
-    f.resources :occupations, :only => [:index,:update,:create]
+    f.resources :occupations, :only => [:index,:update], :member => {:attempt => :put}
     
     f.with_options :path_prefix => '/facebook/pets/home' do |home|
       home.resource :biography, :only => [:new,:create]

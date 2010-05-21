@@ -15,7 +15,11 @@
 		<td>
 		  <div class="<%="occupation-#{o.slug}-mid" %>"></div>
 		  <% if o.cost > 0 && o.pet_can?(current_user_pet) %>
-			<p><span class="occupation-button">Perform (<%= o.cost %>)</span></p>
+			<p>
+			  <span class="occupation-button">
+			  <%= facebook_link_to "Perform (#{o.cost}K)", attempt_facebook_occupation_path(0) %>)
+			  </span>
+			</p>
 		  <% elsif o.cost > 0 %>
 			<p class="em">Too Tired</p>
 		  <% end %>
