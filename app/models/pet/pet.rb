@@ -58,6 +58,18 @@ class Pet < ActiveRecord::Base
   named_scope :scavenging, :conditions => "occupations.name = 'Scavenging'", :include => [:occupation]
   named_scope :taming, :conditions => "occupations.name = 'Human Taming'", :include => [:occupation]  
   
+  class << self
+    def recover!
+      connection.execute "UPDATE pets " +
+        "SET current_health = health, " +
+        "current_endurance = CASE " +
+        "  WHEN current_endurance + fortitude <= endurance " +
+        "  THEN current_endurance + fortitude " +
+        "  ELSE endurance END " +
+        "  WHERE current_endurance < endurance; "
+    end
+  end  
+  
   def after_initialize(*args)
     self.status ||= 'active'
     self.kibble ||= 0

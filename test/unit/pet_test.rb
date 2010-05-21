@@ -79,4 +79,13 @@ class PetTest < ActiveSupport::TestCase
     Tame.destroy_all
     assert_equal 0, pet.slave_earnings
   end
+
+  def test_recover
+    Pet.connection.execute( "UPDATE pets SET current_endurance = endurance / 2, current_health = 1 " )
+    Pet.recover!
+    Pet.all.each do |p|
+      assert_equal p.current_endurance, (p.endurance / 2) + p.fortitude
+      assert_equal p.current_health, p.health
+    end
+  end
 end
