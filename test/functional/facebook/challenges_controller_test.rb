@@ -100,6 +100,26 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     }
   end
   
+  def test_refuse
+    challenge = challenges(:siamese_persian_issued)
+    pet = challenge.defender
+    mock_user_facebooking(pet.user.facebook_id)
+    facebook_put :refuse, :fb_sig_user => pet.user.facebook_id, :id => challenge.id
+    assert_response :success
+    assert !assigns(:challenge).blank?
+    assert_equal 'refused', challenge.reload.status
+  end
+
+  def test_cancel
+    challenge = challenges(:siamese_persian_issued)
+    pet = challenge.attacker
+    mock_user_facebooking(pet.user.facebook_id)
+    facebook_put :cancel, :fb_sig_user => pet.user.facebook_id, :id => challenge.id
+    assert_response :success
+    assert !assigns(:challenge).blank?
+    assert_equal 'canceled', challenge.reload.status
+  end
+  
   def test_create_parameter_injection
     @exploiter = pets(:burmese)
     @params[:attacker_strategy_attributes][:combatant_id] = @exploiter.id

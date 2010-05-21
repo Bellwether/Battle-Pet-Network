@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
       home.resource :biography, :only => [:new,:create]
       home.resources :messages, :only => [:show,:new,:create,:destroy], :collection => {:inbox => :get, :outbox => :get} 
       home.resources :kennel, :only => [:index], :member => {:enslave => :put, :release => :put}, :controller => 'tames'
-      home.resources :challenges, :only => [:index,:edit,:show]
+      home.resources :challenges, :only => [:index,:edit,:show], :member => {:refuse => :put, :cancel => :put}
       home.resources :hunts, :only => [:show]
       home.resources :battles, :only => [:show]
       home.resource :shop, :only => [:new,:create] 

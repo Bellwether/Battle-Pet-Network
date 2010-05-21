@@ -13,7 +13,7 @@
 		  <div>
 			<span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
 			<br />
-		    <div><% facebook_link_to "Cancel Challenge", "" %></div>
+		    <div><% facebook_link_to "Cancel Challenge", cancel_facebook_challenge_path(challenge) %></div>
 		  </div>
 		</li>
 	  <% end %>	
@@ -40,8 +40,8 @@
 		  <td><label>Level <%= c.attacker.level_rank_count %><%= c.attacker.breed.name %></label></td>
 		  <td><label>Record: <% c.attacker.battle_record %></label>
 		  <td>
-			<span class="right button"><%= facebook_link_to "Decline", "" %></span>
-			<span class="left button"><%= facebook_link_to "Accept", "" %></span>
+			<span class="right button"><%= facebook_link_to "Decline", refuse_facebook_challenge_path(c) %></span>
+			<span class="left button"><%= facebook_link_to "Accept", edit_facebook_challenge_path(c) %></span>
 		  </td>
 		</tr>
 	  </tbody>	

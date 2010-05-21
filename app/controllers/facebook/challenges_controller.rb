@@ -31,6 +31,22 @@ class Facebook::ChallengesController < Facebook::FacebookController
     end
   end
   
+  def refuse
+    @challenge = Challenge.for_defender(current_user_pet).find(params[:id])
+    if @challenge && @challenge.update_attribute(:status, 'refused')
+      flash[:notice] = "Challenge refused"
+    end
+    redirect_facebook_back
+  end
+  
+  def cancel
+    @challenge = Challenge.for_attacker(current_user_pet).find(params[:id])
+    if @challenge && @challenge.update_attribute(:status, 'canceled')
+      flash[:notice] = "Challenge refused"
+    end
+    redirect_facebook_back
+  end
+  
   def edit
     @pet = current_user_pet
     @challenge = current_user_pet.challenges.responding_to(params[:id])
