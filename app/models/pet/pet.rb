@@ -118,7 +118,11 @@ class Pet < ActiveRecord::Base
   end
   
   def slave_earnings
-    tames.enslaved.size * AppConfig.humans.slavery_earnings_multiplier
+    earnings = 0
+    tames.enslaved.each do |slave|
+      earnings = earnings + slave.human.power
+    end
+    return earnings * AppConfig.humans.slavery_earnings_multiplier
   end
   
   def prowling?

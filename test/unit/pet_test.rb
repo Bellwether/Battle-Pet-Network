@@ -67,4 +67,16 @@ class PetTest < ActiveSupport::TestCase
       @pet.award_experience!(exp)
     end
   end
+  
+  def test_slave_earnings
+    pet = pets(:persian)
+    sarah = humans(:sarah)
+    ichabod = humans(:ichabod)
+    pet.tames.create(:human => sarah, :status => 'enslaved')
+    pet.tames.create(:human => ichabod, :status => 'enslaved')
+    expected = (sarah.power + ichabod.power) * AppConfig.humans.slavery_earnings_multiplier
+    assert_equal expected, pet.slave_earnings
+    Tame.destroy_all
+    assert_equal 0, pet.slave_earnings
+  end
 end
