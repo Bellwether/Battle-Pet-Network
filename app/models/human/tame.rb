@@ -24,6 +24,16 @@ class Tame < ActiveRecord::Base
   
   named_scope :enslaved, :conditions => "tames.status = 'enslaved'"
   
+  class << self  
+    def pet_tames_human?(pet,human)
+      div = AppConfig.occupations.tame_human_chance_divisor.to_f
+      change = [(pet.affection + pet.affection_bonus) - human.difficulty, 1].max
+      chance = pet.affection.to_f / div
+      val = 1 + rand(100)
+      return val <= chance
+    end
+  end  
+  
   def after_initialize(*args)
     self.status ||= 'kenneled'
   end  

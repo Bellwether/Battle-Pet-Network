@@ -86,6 +86,22 @@ class Pet < ActiveRecord::Base
     intelligence
   end
   
+  def affection_bonus
+    0
+  end
+  
+  def health_bonus
+    0
+  end
+  
+  def endurance_bonus
+    0
+  end
+  
+  def fortitude_bonus
+    0
+  end
+  
   def battles_count
     wins_count + loses_count + draws_count
   end

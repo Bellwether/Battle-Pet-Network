@@ -21,4 +21,9 @@ experience:
   minimum_award: 1
 merchant:
   paypal:
-    notification_url:       
+    notification_url: 
+occupations:
+  scavenge_chance_divisor: 2   
+  find_human_chance_divisor: 5 
+  tame_human_chance_divisor: 1
+              

@@ -3,6 +3,8 @@ class Occupation < ActiveRecord::Base
   
   named_scope :scavenging, :conditions => "name LIKE 'Scavenging'", :limit => 1  
   
+  validates_inclusion_of :status, :in => ['Prowling','Scavenging','Human Taming','Shopkeeping']
+    
   def slug
     name.downcase.gsub(/\s/,'-')
   end
@@ -10,12 +12,40 @@ class Occupation < ActiveRecord::Base
   def pet_doing?(pet)
     pet.occupation_id == self.id
   end
-  
-  def pet_can_do?(pet)
-    true
-  end
 
   def pet_can?(pet)
     cost > 0 && pet.current_endurance >= cost
+  end
+  
+  def do_for_pet!(pet,subject=nil)
+    return false unless pet_can?(pet)
+    success = false
+    case name
+      when 'Human Taming'
+        success = tame_human(pet,subject)
+        exhaust pet
+      when 'Scavenging'  
+        exhaust pet
+    end
+    return success
+  end
+  
+  def perform_for_pet(pet)
+    case name
+      when 'Human Taming'
+      when 'Scavenging'
+    end
+  end
+  
+  def tame_human(pet,human=nil)
+    success = Human.finds_human?(pet)
+    human = Human.find_random_human(pet,human) if success
+    success = Tame.pet_tames_human?(pet,human) if success
+    success = pet.tames.create(:human => human, :status => 'kenneled') if success
+    return success
+  end
+  
+  def exhaust(pet)
+    pet.update_attribute(:current_endurance, [pet.current_endurance - power, 0].max)
   end
 end

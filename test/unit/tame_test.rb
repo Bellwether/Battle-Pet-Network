@@ -4,6 +4,7 @@ class TameTest < ActiveSupport::TestCase
   def setup
     @pet = pets(:siamese)
     @tamed = pets(:siamese).tames.kenneled.first
+    @human = humans(:sarah)
   end
   
   def test_validates_exclusivity
@@ -25,5 +26,13 @@ class TameTest < ActiveSupport::TestCase
       end    
     end
     assert_nil Tame.find_by_id(@tamed.id)
+  end
+  
+  def pet_tames_human
+    chance = @pet.affection.to_f + @pet.affection_bonus.to_f
+    AppConfig.occupations.tame_human_chance_divisor = chance / 1000
+    assert Tame.pet_tames_human?(@pet,@human)
+    AppConfig.occupations.tame_human_chance_divisor = chance * 1000
+    assert !Tame.pet_tames_human?(@pet,@human)
   end
 end
