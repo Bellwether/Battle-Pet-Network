@@ -15,6 +15,16 @@ class Occupation < ActiveRecord::Base
         scavenging.perform_for_pet(pet)
       end
     end    
+    
+    def tame_humans!
+      taming = Occupation.find_by_name("Human Taming", :limit => 1)
+      return unless taming
+      
+      pets = Pet.taming.all
+      pets.each do |pet|
+        taming.perform_for_pet(pet)
+      end
+    end
   end
       
   def slug

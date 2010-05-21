@@ -52,7 +52,20 @@ class OccupationTest < ActiveSupport::TestCase
     Pet.all.each { |pet| pet.belongings.clear }  
     Occupation.scavenge!
     Pet.all.each do |p|
-      assert_equal 1, p.belongings.size, "pet should have scavenged an item"
+      assert_equal 1, p.belongings.size
     end
-  end  
+  end 
+
+  def test_tame_humans
+    flexmock(Human).should_receive(:finds_human?).and_return(true)
+    flexmock(Human).should_receive(:find_random_human).and_return(@human)
+    flexmock(Tame).should_receive(:pet_tames_human?).and_return(true)
+
+    Pet.update_all( "occupation_id = '#{@taming.id}'" )
+    Pet.all.each { |pet| pet.tames.clear }  
+    Occupation.tame_humans!
+    Pet.all.each do |p|
+      assert_equal 1, p.tames.size
+    end
+  end 
 end
