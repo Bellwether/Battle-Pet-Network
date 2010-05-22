@@ -2,7 +2,9 @@ class Facebook::PetsController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show]
   
   def index
-    @pets = []
+    scope = Pet.include_user
+    scope = scope.search(params[:search]) if params[:search]
+    @pets = scope.paginate :page => params[:page]
   end
   
   def combat

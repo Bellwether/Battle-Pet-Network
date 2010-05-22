@@ -88,4 +88,12 @@ class PetTest < ActiveSupport::TestCase
       assert_equal p.current_health, p.health
     end
   end
+  
+  def test_last_seen
+    new_pet = Pet.new
+    assert_nil new_pet.last_seen
+    timestamp = Time.now
+    @pet.user.update_attribute(:current_login_at,timestamp)
+    assert_equal timestamp, @pet.last_seen
+  end
 end

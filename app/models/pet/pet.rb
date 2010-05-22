@@ -10,7 +10,8 @@ class Pet < ActiveRecord::Base
   belongs_to :pack, 
               :select => "id, name, status, kibble, created_at, standard_id, leader_id", 
               :include => {:standard => {},:pack_members => {:pet => :breed}}
-  belongs_to :user, :foreign_key => "user_id", :select => "id, facebook_id, facebook_session_key, username"
+  belongs_to :user, :foreign_key => "user_id", 
+                    :select => "id, facebook_id, facebook_session_key, username, last_login_at, current_login_at"
   has_one :biography
   has_one :shop  
 
@@ -57,6 +58,10 @@ class Pet < ActiveRecord::Base
   
   named_scope :scavenging, :conditions => "occupations.name = 'Scavenging'", :include => [:occupation]
   named_scope :taming, :conditions => "occupations.name = 'Human Taming'", :include => [:occupation]  
+  named_scope :include_user, :include => [:user]
+  named_scope :search, lambda { |term| 
+    { :conditions => ["slug LIKE ? OR name LIKE ?", "%#{term}%", "%#{term}%"] }
+  }
   
   class << self
     def recover!
@@ -128,6 +133,13 @@ class Pet < ActiveRecord::Base
   def battle_record
     "#{wins_count}/#{loses_count}/#{draws_count}"
   end
+  
+  def last_seen
+    return nil if user_id.blank?
+    
+    seen_at = user.current_login_at || user.last_login_at
+    return seen_at
+  end  
   
   def slave_earnings
     earnings = 0

@@ -30,6 +30,14 @@ config.action_mailer.delivery_method = :test
 config.gem 'reek'
 config.gem 'bullet', :source => 'http://gemcutter.org'
 
+require 'reek/adapters/rake_task'
+
+Reek::RakeTask.new do |t|
+  t.fail_on_error = true
+  t.verbose = false
+  t.source_files = 'lib/**/*.rb'
+end
+
 config.after_initialize do
   Bullet.enable = true 
   Bullet.alert = false

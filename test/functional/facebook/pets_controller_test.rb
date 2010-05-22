@@ -76,7 +76,11 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     facebook_get :index
     assert_response :success
     assert_template 'index'
-    assert assigns(:pets)
+    assert !assigns(:pets).blank?
+    assert_tag :tag => "form", :descendant => {
+      :tag => "div", :attributes => { :class => "filters" },
+      :tag => "input", :attributes => { :type => "text" }
+    }
   end
 
   def test_index_with_pet
@@ -84,7 +88,20 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     facebook_get :index, :fb_sig_user => users(:one).facebook_id
     assert_response :success
     assert_template 'index'
-    assert assigns(:pets)
+    assert !assigns(:pets).blank?
+    assert_tag :tag => "form", :descendant => {
+      :tag => "div", :attributes => { :class => "filters" },
+      :tag => "input", :attributes => { :type => "text" }
+    }
+  end
+  
+  def test_search_index
+    mock_user_facebooking(users(:one).facebook_id)
+    facebook_get :index, :fb_sig_user => users(:one).facebook_id, :search => @pet.slug
+    assert_response :success
+    assert_template 'index'
+    assert !assigns(:pets).blank?
+    assert_equal 1, assigns(:pets).size
   end
   
   def test_combat_profile

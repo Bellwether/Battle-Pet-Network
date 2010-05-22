@@ -67,6 +67,7 @@ class Occupation < ActiveRecord::Base
   def tame_human(pet,human=nil)
     success = Human.finds_human?(pet)
     human = Human.find_random_human(pet,human) if success
+    human = human.first if success && human.is_a?(Array)
     success = Tame.pet_tames_human?(pet,human) if success
     success = pet.tames.create(:human => human, :status => 'kenneled') if success
     return success
@@ -75,6 +76,7 @@ class Occupation < ActiveRecord::Base
   def scavenge_item(pet,item=nil)
     success = Item.scavenges?(pet)
     item = Item.find_random_item(pet,item) if success
+    item = item.first if success && item.is_a?(Array)
     success = pet.belongings.create(:item => item, :source => 'scavenged') if success
     return success
   end
