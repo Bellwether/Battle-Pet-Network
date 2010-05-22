@@ -21,7 +21,7 @@ class Human < ActiveRecord::Base
       chance = (pet.affection.to_f + pet.affection_bonus) / div
       val = 1 + rand(100)
       return val <= chance
-    end  
+    end
   end
   
   def slug

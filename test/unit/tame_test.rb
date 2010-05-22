@@ -4,6 +4,7 @@ class TameTest < ActiveSupport::TestCase
   def setup
     @pet = pets(:siamese)
     @tamed = pets(:siamese).tames.kenneled.first
+    @kenneled = @pet.tames.kenneled
     @human = humans(:sarah)
   end
   
@@ -34,5 +35,30 @@ class TameTest < ActiveSupport::TestCase
     assert Tame.pet_tames_human?(@pet,@human)
     AppConfig.occupations.tame_human_chance_divisor = chance * 1000
     assert !Tame.pet_tames_human?(@pet,@human)
+  end
+  
+  def test_kills_neighbor
+    AppConfig.humans.kills_neighbor_modifier = 100  
+    @kenneled.each do |t|
+      assert t.kills_neighbor?(@kenneled.size)
+    end
+    AppConfig.humans.kills_neighbor_modifier = 0
+    @kenneled.each do |t|
+      assert !t.kills_neighbor?(@kenneled.size)
+    end
+  end
+  
+  def test_coexist_kills
+    AppConfig.humans.kills_neighbor_modifier = 100
+    assert_difference '@pet.tames.count', -1 do
+      Tame.coexist!(@kenneled)
+    end    
+  end
+
+  def test_coexist_peace
+    AppConfig.humans.kills_neighbor_modifier = 0
+    assert_no_difference '@pet.tames.count' do
+      Tame.coexist!(@kenneled)
+    end    
   end
 end

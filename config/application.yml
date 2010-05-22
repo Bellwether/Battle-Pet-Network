@@ -12,6 +12,7 @@ shops:
 humans:
   slavery_earnings_multiplier: 1
   release_multiplier: 250
+  kills_neighbor_modifier: 1
 communication:
   sign_endurance_cost: 3
 experience:

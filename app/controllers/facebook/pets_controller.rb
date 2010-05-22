@@ -3,7 +3,7 @@ class Facebook::PetsController < Facebook::FacebookController
   
   def index
     scope = Pet.include_user
-    scope = scope.search(params[:search]) if params[:search]
+    scope = scope.searching(params[:search]) if params[:search]
     @pets = scope.paginate :page => params[:page]
   end
   

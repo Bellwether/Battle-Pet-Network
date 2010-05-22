@@ -59,7 +59,7 @@ class Pet < ActiveRecord::Base
   named_scope :scavenging, :conditions => "occupations.name = 'Scavenging'", :include => [:occupation]
   named_scope :taming, :conditions => "occupations.name = 'Human Taming'", :include => [:occupation]  
   named_scope :include_user, :include => [:user]
-  named_scope :search, lambda { |term| 
+  named_scope :searching, lambda { |term| 
     { :conditions => ["slug LIKE ? OR name LIKE ?", "%#{term}%", "%#{term}%"] }
   }
   

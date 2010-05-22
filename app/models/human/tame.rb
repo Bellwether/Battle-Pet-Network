@@ -32,11 +32,29 @@ class Tame < ActiveRecord::Base
       val = 1 + rand(100)
       return val <= chance
     end
+
+    def coexist!(tames)
+      tames.each do |tame|
+        if tame.kills_neighbor?(tames.size)
+          targets = tames.reject{|t| t.id == tame.id}
+          random_target = targets.sort_by{rand}[0]
+          random_target.destroy
+          return false
+        end
+      end
+      return true
+    end
   end  
   
   def after_initialize(*args)
     self.status ||= 'kenneled'
   end  
+  
+  def kills_neighbor?(chance)
+    val = 1 + rand(100)
+    chance = chance.to_f * AppConfig.humans.kills_neighbor_modifier.to_f
+    return val <= chance
+  end
   
   def validates_exclusivity
     errors.add(:human_id, "human already tamed") if human && 
