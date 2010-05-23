@@ -6,7 +6,7 @@ class LeaderboardTest < ActiveSupport::TestCase
   end
   
   def test_rankables_for_indefatigable
-    rankables = Leaderboard.rankables_for :indefatigable
+    rankables = Leaderboard.rankables_for_indefatigable
     rankables.each do |pet|
       sql = "#{pet.id} IN (attacker_id, defender_id) AND challenges.#{Leaderboard::SQL_RECENT}"
       new_rank = Challenge.count(:conditions => sql)
@@ -17,7 +17,7 @@ class LeaderboardTest < ActiveSupport::TestCase
   end
   
   def test_rankables_for_overlords
-    rankables = Leaderboard.rankables_for :overlords
+    rankables = Leaderboard.rankables_for_overlords
     rankables.each do |pet|
       assert_equal "active", pet.status
       assert_operator pet.user.last_login_at, ">=", Time.now - 1.week
@@ -25,11 +25,29 @@ class LeaderboardTest < ActiveSupport::TestCase
   end
   
   def test_rankables_for_strongest
-    rankables = Leaderboard.rankables_for :strongest
+    rankables = Leaderboard.rankables_for_strongest
     last_wins = 0
     rankables.each do |pet|
       count = Battle.count(:conditions => "winner_id = #{pet.id}")
       assert_operator count, ">=", last_wins
+    end
+  end
+  
+  def test_rank_indefatigable
+    leaderboard = Leaderboard.indefatigable.first
+    assert_difference ['leaderboard.rankings.count','Ranking.count'], +1 do    
+      assert_difference ['Rank.count'], +Leaderboard.rankables_for_indefatigable.size do
+        Leaderboard.rank_indefatigable
+      end
+    end
+  end
+
+  def test_rank_strongest
+    leaderboard = Leaderboard.strongest.first
+    assert_difference ['leaderboard.rankings.count','Ranking.count'], +1 do    
+      assert_difference ['Rank.count'], +Leaderboard.rankables_for_strongest.size do
+        Leaderboard.rank_strongest
+      end
     end
   end
 end
