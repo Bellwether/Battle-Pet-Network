@@ -55,7 +55,8 @@ class Pet < ActiveRecord::Base
   
   before_validation_on_create :populate_from_breed, :set_slug, :set_level
   after_create :set_user, :set_actions
-  
+
+  named_scope :active, :conditions => "status = 'active'"
   named_scope :scavenging, :conditions => "occupations.name = 'Scavenging'", :include => [:occupation]
   named_scope :taming, :conditions => "occupations.name = 'Human Taming'", :include => [:occupation]  
   named_scope :include_user, :include => [:user]

@@ -69,6 +69,7 @@ burmese:
   
 russian_blue:
     breed: russian_blue
+    user: five
     name: blue thunder
     current_health: 8
     current_endurance: 30
