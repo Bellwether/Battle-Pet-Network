@@ -78,4 +78,19 @@ class Pack < ActiveRecord::Base
     end
     return nil
   end
+  
+  def invite_membership(sender,invitee)
+    body = "#{sender.name} has invited you to join their pack #{name}."
+    message = sender.outbox.new(:subject => "Pack Member Invite", :body => body, :recipient => invitee)
+    if sender.pack_id != id
+      message.errors.add(:sender_id, "can only invite to own pack")
+      return message
+    elsif !invitee.pack_id.blank?
+      message.errors.add(:recipient_id, "pet already a pack member")
+      return message
+    else
+      message.save
+    end
+    return message
+  end
 end

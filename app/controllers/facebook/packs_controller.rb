@@ -30,4 +30,17 @@ class Facebook::PacksController < Facebook::FacebookController
   
   def update
   end
+
+  def invite
+    @pack = current_user_pet.pack
+    @pet = Pet.find_by_slug(params[:invittee]) || Pet.find_by_name(params[:invittee])
+    
+    message = @pack.invite_membership(current_user_pet,@pet)
+    if message.new_record?
+      flash[:error] = "Couldn't send invite - #{message.errors.full_messages}"
+    else
+      flash[:notice] = "Invited #{params[:invittee]} to join"
+    end
+    redirect_facebook_back    
+  end
 end

@@ -88,5 +88,19 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     assert_tag :tag => "form", :attributes => {:id => 'donate-items'}
     assert_tag :tag => "form", :attributes => {:id => 'donate-kibble'}
     assert_tag :tag => "form", :attributes => {:class => 'loan-spoils'}
+    assert_tag :tag => "form", :attributes => {:class => 'invite-form'}
+  end
+  
+  def test_invite
+    recipient = pets(:persian)
+    mock_user_facebooking(@leader.user.facebook_id)
+    [recipient.name,recipient.slug].each do |invittee|
+      assert_difference 'Message.count', +1 do
+        facebook_post :invite, :fb_sig_user => @leader.user.facebook_id, :invittee => invittee
+        assert !assigns(:pack).blank?
+        assert !assigns(:pet).blank?
+        assert flash[:notice]
+      end
+    end
   end
 end

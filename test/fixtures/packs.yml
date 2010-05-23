@@ -5,3 +5,11 @@ alpha:
   leader: siamese
   kibble: 300
   status: active
+  
+beta:
+  name: Beta
+  standard: fiberboard_pillar
+  founder: russian_blue
+  leader: russian_blue
+  kibble: 300
+  status: active  

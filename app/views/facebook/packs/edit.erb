@@ -4,7 +4,7 @@
   </h2>
 <% end %>
 	
-<div class="sidebox slim right">	
+<div class="sidebox slim right">
   <div class="box slim">	
     <h4>Pack Spoils</h4>
     <table id="spoils">
@@ -33,6 +33,23 @@
 	<% end %>
 	</table>
   <div>
+	
+  <div class="box slim">	
+    <h4>Invite Pack Members</h4>
+    <p class="em">
+	  The more members, the more powerful your pack. You can invite any other pet to join as long as they 
+	  don't belong to a pack already.
+	</p>
+    <% form_tag facebook_nested_url(invite_facebook_pack_path), 
+				:method => :post, :class => 'invite-form' do |f| %>
+	  <table>
+		<tr>
+		  <td><label>Enter pet name or tag:</label></td>
+		  <td><%= text_field_tag(:invitee) %></td>
+		</tr>
+	  </table>
+	<% end %>
+  </div>
 </div>
 
 <div class="box">

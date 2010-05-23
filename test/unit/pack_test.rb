@@ -87,4 +87,27 @@ class PackTest < ActiveSupport::TestCase
       @pack.save(false)
     end
   end
+  
+  def test_invite_membership
+    recipient = pets(:persian)
+    assert_difference 'Message.count', +1 do
+      message = @pack.invite_membership(@pet,recipient)
+      assert message
+      assert_not_nil message.body
+      assert_not_nil message.subject
+      assert_not_nil message.id
+      assert_equal @pet, message.sender
+      assert_equal recipient, message.recipient
+    end
+  end
+  
+  def test_fail_invite_membership
+    recipient = pets(:burmese)
+    assert_no_difference 'Message.count' do
+      message = @pack.invite_membership(@pet,recipient)
+      assert message.errors.on(:recipient_id)
+      message = packs(:beta).invite_membership(@pet,recipient)
+      assert message.errors.on(:sender_id)
+    end
+  end
 end

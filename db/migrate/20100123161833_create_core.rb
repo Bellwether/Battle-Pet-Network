@@ -396,6 +396,7 @@ class CreateCore < ActiveRecord::Migration
        t.string :subject, :null => false, :limit => 128
        t.string :body, :null => false, :limit => 4096
        t.string :status, :limit => 32, :null => false, :default => 'new'
+       t.string :message_type, :limit => 32, :null => false, :default => 'personal'
        t.timestamps
     end
     add_index :messages, [:sender_id,:created_at]

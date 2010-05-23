@@ -2,10 +2,11 @@ class Message < ActiveRecord::Base
   belongs_to :sender, :class_name => "Pet", :foreign_key => "sender_id"
   belongs_to :recipient, :class_name => "Pet", :foreign_key => "recipient_id"
   
-  validates_presence_of :sender_id, :recipient_id, :subject, :body, :status
+  validates_presence_of :sender_id, :recipient_id, :subject, :body, :status, :message_type
   validates_length_of :subject, :within => 3..128
   validates_length_of :body, :within => 1..4096  
   validates_inclusion_of :status, :in => %w(new read deleted)
+  validates_inclusion_of :message_type, :in => %w(personal membership system)
   
   before_validation_on_create :set_status, :set_recipient
   
@@ -23,6 +24,8 @@ class Message < ActiveRecord::Base
   end
   
   def after_initialize(*args)
+    self.message_type ||= 'personal'
+    
     if !reply_to_id.blank?
       reply_to = Message.find(reply_to_id, :select => 'sender_id')
       self.recipient = reply_to.sender
