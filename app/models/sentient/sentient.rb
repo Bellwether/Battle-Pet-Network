@@ -13,6 +13,14 @@ class Sentient < ActiveRecord::Base
   
   named_scope :threats, :conditions => "sentient_type = 'threat'"
   
+  class << self
+    def populate
+      connection.execute "UPDATE sentients " +
+                         "SET population = population + repopulation_rate " +
+                         "WHERE population < population_cap " # (allows for minor overpopulation)
+    end    
+  end  
+  
   def slug
     name.downcase.gsub(/\s/,'-')
   end
