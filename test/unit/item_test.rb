@@ -65,4 +65,14 @@ class ItemTest < ActiveSupport::TestCase
     AppConfig.occupations.scavenge_chance_divisor = chance * 1000
     assert !Item.scavenges?(@pet)
   end
+
+  def test_restock
+    Item.all.each do |item|
+      next if item.stock_cap < 1
+      item.update_attribute(:stock, 0)
+      assert_difference 'item.reload.stock', +item.restock_rate do
+        Item.restock
+      end    
+    end
+  end  
 end

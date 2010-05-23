@@ -31,6 +31,14 @@ class Item < ActiveRecord::Base
   @@per_page = 20
   
   class << self
+    def restock
+      connection.execute "UPDATE items " +
+                         "SET stock = stock + restock_rate " +
+                         "WHERE stock_cap > 0 " +
+                         "AND stock + restock_rate <= stock_cap "
+      
+    end
+    
     def find_random_item(pet=nil,item=nil)
       return pet.blank? ? Item.random : Item.random_for_pet(pet)
     end
