@@ -1,0 +1,17 @@
+indefatigable:
+  rankable_type: Pet
+  name: Indefatigable Fighters
+  description: These pets have tirelessly battled with every waking moment, fighting ever more often than their rivals and with an enduring dedication to the arts of war.
+  ranked_count: 15
+  
+overlords:
+  rankable_type: Pet
+  name: Overlords
+  description: These pets have achived excellence in a number of fields of industry and skill, from combat to shopkeeping, item collecting to pack membership and other survivial arts, making them the most powerful individuals in the world.
+  ranked_count: 10
+  
+strongest:
+  rankable_type: Pet
+  name: Strongest Fighters
+  description: These pets have won the most battles against the greatest odds, showing both strength and cunning in combat and using the laws of strategy to the fullest.
+  ranked_count: 25
