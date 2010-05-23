@@ -1,0 +1,39 @@
+<% content_for :page_title do %><h2><%=AppConfig.name%> Leadboards</h2><% end %>
+<div class="right">
+  <div class="box half">
+    <h3>Strongest Fighters</h3>
+    <table class="leaderboard">
+	  <tbody>
+		<tr><th>Rank</th><th>Wins</th><th>Name</th><th>Level</th><th>Record</th></tr>
+		<% @strongest.rankings.first.ranks.each do |r| %>
+		<tr class="ranking">
+		  <td><%= r.rank %></td>
+		  <td><%= r.rankable.challenges.wins.count %></td>
+		  <td><%= r.rankable.name %></td>
+		  <td><%= r.rankable.level_rank_count %></td>
+		  <td><%= r.rankable.battle_record %></td>
+		</tr>
+		<% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>
+<div class="left">
+  <div class="box half">
+    <h3>Indefatigable Fighters</h3>
+    <table class="leaderboard">
+	  <tbody>
+		<tr><th>Rank</th><th>Battles</th><th>Name</th><th>Level</th><th>Record</th></tr>
+		<% @indefatigable.rankings.first.ranks.each do |r| %>
+		<tr class="ranking">
+		  <td><%= r.rank %></td>
+		  <td><%= r.rankable.challenges.recent.count %></td>
+		  <td><%= r.rankable.name %></td>
+		  <td><%= r.rankable.level_rank_count %></td>
+		  <td><%= r.rankable.battle_record %></td>
+		</tr>
+		<% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>

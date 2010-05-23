@@ -42,6 +42,12 @@ class Pet < ActiveRecord::Base
     def responding_to(id)
       all(:conditions => ["? = id",id],:limit=>1).first
     end
+    def recent
+      all(:conditions => "created_at >= DATE_ADD(NOW(), INTERVAL -7 DAY)")
+    end
+    def wins
+      all :conditions => "battles.created_at >= DATE_ADD(NOW(), INTERVAL -7 DAY) AND #{proxy_owner.id} = battles.winner_id", :joins => "INNER JOIN battles ON battles.challenge_id = challenges.id"
+    end
   end
   
   validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
