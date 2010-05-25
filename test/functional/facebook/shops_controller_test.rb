@@ -92,4 +92,17 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
       assert !assigns(:shop).blank?
     end
   end
+  
+  def test_edit
+    fbid = @shop.pet.user.facebook_id
+    mock_user_facebooking(fbid)
+    facebook_get :edit, :fb_sig_user => fbid
+    assert_response :success
+    assert_template 'edit'
+    assert !assigns(:shop).blank?
+    assert !assigns(:inventory).blank?
+    assert !assigns(:belongings).blank?
+    assert_tag :tag => "form", :attributes => { :id => 'shop-form' }
+    assert_tag :tag => "table", :attributes => { :class => 'item dotbox' }
+  end
 end

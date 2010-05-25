@@ -37,7 +37,7 @@
 			      <%= facebook_link_to("Buy for #{i.cost}K",purchase_facebook_shop_inventory_path(@shop,i.id), :method => :post) %>
 			    </span>
 			  <% elsif current_user_pet.kibble < i.cost %>
-			    <label>Cost: <%= i.cost %>K <span class="em empty">Too Expensive</span>
+			    <label>Cost: <%= i.cost %>K <span class="em empty">Too Expensive</span></label>
 			  <% end %>
 			<% end %>
 		  </td>	

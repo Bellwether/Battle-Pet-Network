@@ -1,4 +1,4 @@
-# Be sure to restart your server when you modify this file
+RAILS_ENV = ENV['RAILS_ENV'] || 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION

@@ -1,0 +1,49 @@
+<% content_for :page_title do %><h2>Manage Your Pet's Shop</h2><% end %>
+
+<div class="sidebox slim right">
+  <div class="box slim">
+    <h4>Stock Up Your Inventory</h4>
+    <%= render_inventory_picker %>
+  </div>
+</div>
+
+<div class="box">
+  <h4 class="right">Specialty: <%= @shop.specialty%></h4>
+  <h3><%= @shop.name %></h3>
+  <% form_for @shop, :url => facebook_nested_url(facebook_shop_path(@shop)), :html => {:id => 'shop-form'} do |f| %>
+    <p>
+	  <div><label>Description</label></div>
+      <div><%= text_area(:shop, :description, :size => "50x15")%></div>	
+      <%= f.submit 'Update' %>
+    </p>
+  <% end %>
+</div>
+
+<div class="box">
+  <h4>Inventory</h4>
+  <p class="em">Owning a shop allows you to sell items to other pets. Once your pet owns an item, you can add it
+	to the shop's inventory and set a price of your choosing.</p>
+
+  <% @inventory.each do |i| %>
+  <table class="item dotbox">
+	<tr>
+	  <th colspan="3"><%= i.item.name %></th>
+	  <td><% facebook_link_to "Remove from Inventory", ''%></td>
+	</tr>
+	<tr>
+	  <td rowspan="5"><div class="<%="item-#{i.item.slug}-mid" %>"></div></td>
+	  <td colspan="2">Type: <strong><%= i.item.item_type %></strong></td>
+	</tr>
+	<tr><td colspan="2">Rarity: <strong><%= i.item.rarity %></strong></td></tr>
+	<tr><td colspan="2">Power: <strong><%= i.item.power %></strong></td></tr>
+	<tr><td colspan="2">Required Level: <strong><%= i.item.required_rank %></strong></td></tr>
+	<tr>
+	  <td colspan="2">Suggested Price: <strong><%= i.item.cost %></strong></td>
+	  <td>
+		Your Shop Price: <input type="text" /> Updated
+	  </td>
+	</tr>
+  </table>
+  <% end %>
+  <%= will_paginate @inventory %>
+</div>

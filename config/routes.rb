@@ -43,7 +43,7 @@ ActionController::Routing::Routes.draw do |map|
       home.resources :challenges, :only => [:index,:edit,:show], :member => {:refuse => :put, :cancel => :put}
       home.resources :hunts, :only => [:show]
       home.resources :battles, :only => [:show]
-      home.resource :shop, :only => [:new,:create] 
+      home.resource :shop, :only => [:new,:create,:edit,:update] 
       home.resource :pack, :only => [:edit,:update], :member => {:invite => :post} do |pack|
         pack.resources :spoils, :only => [:create,:update]
       end

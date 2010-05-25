@@ -15,3 +15,9 @@ two_catamount_claws:
   item: catamount_claws    
   source: purchased
   status: active
+  
+four_grass:
+  pet: burmese  
+  item: cat_grass
+  source: purchased
+  status: holding
