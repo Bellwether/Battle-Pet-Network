@@ -1,0 +1,12 @@
+<% form_for @shop.inventories.build, 
+			:url => facebook_nested_url(facebook_shop_inventories_path), 
+			:html => {:id => 'inventory-form'} do |f| %>
+  <table>
+	<tbody>
+	  <tr><td class="em">Add items from your belongings to sell them from your shop.</div>
+      <tr><td><%= f.label :item_id, 'Select Belonging' %></td></tr>
+      <tr><td><%= f.collection_select(:item_id, @belongings, :id, :name, {:include_blank => true}) %></td></tr>
+      <tr><td><%= f.submit 'Add to Inventory' %></td></tr>
+    </tbody>
+  </table>
+<% end %>

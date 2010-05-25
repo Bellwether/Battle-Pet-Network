@@ -6,6 +6,10 @@ class BelongingTest < ActiveSupport::TestCase
     @belonging = belongings(:two_catamount_claws)
   end
   
+  def test_name
+    assert_equal @belonging.item.name, @belonging.name
+  end
+  
   def test_apply
     currency = items(:kibble_pack)
     assert_difference '@pet.reload.kibble', +currency.power do

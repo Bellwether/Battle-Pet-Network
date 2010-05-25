@@ -103,6 +103,7 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert !assigns(:inventory).blank?
     assert !assigns(:belongings).blank?
     assert_tag :tag => "form", :attributes => { :id => 'shop-form' }
+    assert_tag :tag => "form", :attributes => { :id => 'inventory-form' }
     assert_tag :tag => "table", :attributes => { :class => 'item dotbox' }
   end
 end

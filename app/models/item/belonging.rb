@@ -11,6 +11,7 @@ class Belonging < ActiveRecord::Base
   after_validation :deactivate_other_gear
   
   named_scope :active, :conditions => "status = 'active'"
+  named_scope :holding, :conditions => "status = 'holding'"  
   named_scope :battle_ready, :conditions => ["belongings.status = 'active' AND items.item_type IN (?) ", Item::BATTLE_TYPES], 
                              :include => [:item]
   named_scope :sellable, :conditions => ["belongings.status = 'holding'"], 
@@ -19,8 +20,7 @@ class Belonging < ActiveRecord::Base
                           :order => "items.cost DESC"
   named_scope :type_is, lambda { |item_type| 
     { :conditions => ["items.item_type = ?", item_type], :include => [:item] }
-  }
-                          
+  }      
                           
   def after_initialize(*args)
     self.status ||= 'holding'
@@ -57,6 +57,10 @@ class Belonging < ActiveRecord::Base
       other = pet.belongings.active.type_is(item.item_type).first
       other.update_attribute(:status, "holding") if other
     end
+  end
+  
+  def name
+    item ? item.name : ""
   end
   
   def expended?
