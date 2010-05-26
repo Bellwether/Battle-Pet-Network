@@ -85,6 +85,6 @@ russian_blue:
     loses_count: 2
     draws_count: 0
     occupation: prowling 
-    pack: beta   
+    pack: beta
     level: russian_blue_2
     actions: scratch,slash,claw,bite,swat,flank,dodge,leap

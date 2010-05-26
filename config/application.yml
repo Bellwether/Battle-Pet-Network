@@ -7,6 +7,7 @@ facebook:
 packs:
   founding_fee: 1000  
   member_bonus_modifier: 2
+  member_dues: 10
 shops:
   opening_fee: 2000
 humans:

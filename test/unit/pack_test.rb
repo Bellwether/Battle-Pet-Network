@@ -18,6 +18,21 @@ class PackTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_pay_dues
+    starting = 100
+    Pack.connection.execute( "UPDATE packs SET kibble = #{starting} " )
+    Pack.pay_dues!
+    Pack.active.all.each do |p|
+      assert_equal starting - p.membership_dues, p.kibble
+    end
+    
+    Pack.connection.execute( "UPDATE packs SET kibble = 0 " )
+    Pack.pay_dues!
+    Pack.active.all.each do |p|
+      assert_equal 'insolvent', p.status
+    end
+  end
 
   def test_validates_founder
     pack = Pack.new(:founder_id => @pet.id, :name => 'test pack', :standard_id => @standard.id)
@@ -25,7 +40,7 @@ class PackTest < ActiveSupport::TestCase
     assert @pet.pack_id
     assert pack.errors.on(:founder_id)
   end
-
+  
   def test_validates_standard
     not_owned = items(:sisal_mast)
     assert !@pet.belongings.map(&:item).include?(not_owned)
@@ -48,7 +63,7 @@ class PackTest < ActiveSupport::TestCase
     assert pack.founder_id && pack.leader_id
     assert_equal pack.founder_id, pack.leader_id
   end
-
+  
   def test_updates_founder
     @founder.update_attribute(:kibble, AppConfig.packs.founding_fee)
     pack = Pack.new(@params)

@@ -4,5 +4,10 @@ namespace :bpn do
     task(:recover => :environment) do
       Pack.recover!
     end
+    
+    desc "Pay pack member dues"
+    task(:dues => :environment) do
+      Pack.pay_dues!
+    end
   end
 end

@@ -20,13 +20,14 @@ class Pack < ActiveRecord::Base
   validate :validates_founder, :validates_founding_fee, :validates_standard
   
   named_scope :include_pack_members, :include => {:pack_members => :pet}
-  named_scope :active, :include => {:pack_members => :pet}, :conditions => "status = 'active' AND leader_id IS NOT NULL"
+  named_scope :active, :conditions => "status = 'active' AND leader_id IS NOT NULL"
+  named_scope :credited, :conditions => "status <> 'disbanded'"
 
   attr_accessor :kibble_contribution
   
   class << self
     def recover!
-      Pack.active.all.each do |pack|
+      Pack.active.include_pack_members.all.each do |pack|
         bonus = pack.membership_bonus
         connection.execute "UPDATE pets " +
           "SET current_endurance = CASE " +
@@ -35,6 +36,17 @@ class Pack < ActiveRecord::Base
           "  ELSE endurance END " +
           " WHERE pack_id = #{pack.id} " +
           " AND current_endurance < #{bonus}; "
+      end
+    end
+    
+    def pay_dues!
+      Pack.credited.include_pack_members.all.each do |pack|
+        dues = pack.membership_dues
+        if pack.kibble < dues
+          pack.update_attribute(:status, 'insolvent')
+        else
+          pack.update_attributes(:status => 'active', :kibble => (pack.kibble - dues))
+        end
       end
     end
   end  
@@ -84,6 +96,10 @@ class Pack < ActiveRecord::Base
     
     total_levels = pets.sum(:level_rank_count)
     return AppConfig.packs.member_bonus_modifier * total_levels
+  end
+  
+  def membership_dues
+    pack_members.size * AppConfig.packs.member_dues
   end
   
   def position_for(pet)
