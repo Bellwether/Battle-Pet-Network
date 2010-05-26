@@ -13,6 +13,18 @@ class Facebook::InventoriesController < Facebook::FacebookController
     redirect_facebook_back
   end
   
+  def update
+    @shop = current_user_pet.shop
+    @inventory = @shop.inventories.find(params[:id])
+        
+    if @inventory.update_attributes(params[:inventory])
+      flash[:notice] = "Inventory updated"
+    else    
+      flash[:error] = "Couldn't update inventory. #{@inventory.errors.full_messages}"
+    end
+    redirect_facebook_back
+  end
+  
   def destroy
     @shop = current_user_pet.shop
     @inventory = @shop.inventories.find(params[:id])

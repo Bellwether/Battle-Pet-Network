@@ -40,7 +40,9 @@
 	<tr>
 	  <td colspan="2">Suggested Price: <strong><%= i.item.cost %></strong></td>
 	  <td>
-		Your Shop Price: <input type="text" /> Updated
+		<% form_for i, :url => facebook_nested_url(facebook_shop_inventories_path(i)) do |f| %>		
+		  <%= f.label :cost, 'Your Shop Price:' %> <%= f.text_field :cost, {:value => i.cost} %> <%= f.submit 'Update' %>
+		<% end %>
 	  </td>
 	</tr>
   </table>
