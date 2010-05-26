@@ -20,8 +20,24 @@ class Pack < ActiveRecord::Base
   validate :validates_founder, :validates_founding_fee, :validates_standard
   
   named_scope :include_pack_members, :include => {:pack_members => :pet}
+  named_scope :active, :include => {:pack_members => :pet}, :conditions => "status = 'active' AND leader_id IS NOT NULL"
 
   attr_accessor :kibble_contribution
+  
+  class << self
+    def recover!
+      Pack.active.all.each do |pack|
+        bonus = pack.membership_bonus
+        connection.execute "UPDATE pets " +
+          "SET current_endurance = CASE " +
+          "  WHEN current_endurance + #{bonus} <= endurance " +
+          "  THEN current_endurance + #{bonus} " +
+          "  ELSE endurance END " +
+          " WHERE pack_id = #{pack.id} " +
+          " AND current_endurance < #{bonus}; "
+      end
+    end
+  end  
   
   def after_initialize(*args)
     self.status ||= 'active'

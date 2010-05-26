@@ -8,6 +8,16 @@ class PackTest < ActiveSupport::TestCase
     @standard = items(:fiberboard_pillar)
     @params = {:founder_id => @founder.id, :name => 'test pack', :standard_id => @standard.id}
   end
+  
+  def test_recover
+    Pet.connection.execute( "UPDATE pets SET current_endurance = 1 " )
+    Pack.recover!
+    Pack.active.all.each do |p|
+      p.pack_members.each do |m|
+        assert_equal p.membership_bonus + 1, m.pet.current_endurance
+      end
+    end
+  end
 
   def test_validates_founder
     pack = Pack.new(:founder_id => @pet.id, :name => 'test pack', :standard_id => @standard.id)
