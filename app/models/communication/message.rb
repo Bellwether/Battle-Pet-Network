@@ -46,6 +46,10 @@ class Message < ActiveRecord::Base
     @recipient_name ||= recipient.slug unless recipient.blank?
   end
   
+  def read?
+    message.status == 'read'
+  end
+  
   def set_read!
     update_attribute(:status,'read')
   end
