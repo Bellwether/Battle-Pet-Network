@@ -60,6 +60,13 @@ ActionController::Routing::Routes.draw do |map|
     f.root :controller => 'lobby'
   end
 
+  map.namespace :web do |f|
+    f.with_options :controller => 'main' do |main|
+      main.index 'index', :action => 'index'
+    end
+  end
+  map.root :controller => 'web'  
+
   map.namespace :iphone do |f|
   end
 end
