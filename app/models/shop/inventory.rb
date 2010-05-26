@@ -11,15 +11,28 @@ class Inventory < ActiveRecord::Base
   @@per_page = 12
   
   validate :validates_belonging
-  
-  def validates_belonging
-    return if belonging_id.blank? || shop_id.blank?
-    errors.add(:item_id, "shop owner isn't holding belonging") if shop.pet.belongings.holding.find_by_id(belonging_id).blank?
-  end
+  after_create :remove_belonging
   
   def after_initialize(*args)
     if item_id.blank? && !belonging_id.blank?
       self.item_id = Belonging.find(belonging_id).item_id
     end
+  end
+
+  def validates_belonging
+    return if belonging_id.blank? || shop_id.blank?
+    errors.add(:item_id, "shop owner isn't holding belonging") if shop.pet.belongings.holding.find_by_id(belonging_id).blank?
+  end
+  
+  def remove_belonging
+    return if belonging_id.blank? || shop_id.blank?
+    shop.pet.belongings.destroy(belonging_id)
+  end
+  
+  def unstock!
+    pet = shop.pet
+    pet.belongings.create(:item => item, :status => "holding", :source => "inventory")
+    self.destroy 
+    return true
   end
 end

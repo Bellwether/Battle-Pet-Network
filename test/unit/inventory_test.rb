@@ -17,4 +17,21 @@ class InventoryTest < ActiveSupport::TestCase
     inventory.save
     assert_equal "shop owner isn't holding belonging", inventory.errors.on(:item_id)
   end
+  
+  def test_remove_belonging
+    pet = @shop.pet
+    assert_difference ['Belonging.count'], -1 do
+      inventory = Inventory.create!(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)      
+    end
+  end
+  
+  def test_unstock
+    pet = @shop.pet
+    inventory = @shop.inventories.first
+    assert_difference ['pet.belongings.count'], +1 do
+      assert_difference ['@shop.inventories.count'], -1 do
+        inventory.unstock!
+      end
+    end
+  end
 end

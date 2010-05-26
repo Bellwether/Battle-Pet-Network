@@ -4,7 +4,7 @@ class Belonging < ActiveRecord::Base
   
   validates_presence_of :item_id, :pet_id, :source, :status
   validates_inclusion_of :status, :in => %w(active holding expended)
-  validates_inclusion_of :source, :in => %w(scavenged purchased gift award)
+  validates_inclusion_of :source, :in => %w(scavenged purchased gift award inventory)
   
   validate :validates_exclusivity
   after_create :apply

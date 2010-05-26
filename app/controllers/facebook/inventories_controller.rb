@@ -12,4 +12,12 @@ class Facebook::InventoriesController < Facebook::FacebookController
     end
     redirect_facebook_back
   end
+  
+  def destroy
+    @shop = current_user_pet.shop
+    @inventory = @shop.inventories.find(params[:id])
+    @inventory.unstock!
+    flash[:notice] = "Item added to your inventory"
+    redirect_facebook_back
+  end
 end

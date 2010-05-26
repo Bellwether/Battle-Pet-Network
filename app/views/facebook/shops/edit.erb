@@ -28,7 +28,7 @@
   <table class="item dotbox">
 	<tr>
 	  <th colspan="3"><%= i.item.name %></th>
-	  <td><% facebook_link_to "Remove from Inventory", ''%></td>
+	  <td><% facebook_link_to "Remove from Inventory", facebook_shop_inventory_path(i), :method => :delete %></td>
 	</tr>
 	<tr>
 	  <td rowspan="5"><div class="<%="item-#{i.item.slug}-mid" %>"></div></td>

@@ -29,4 +29,13 @@ class Facebook::InventoriesControllerTest  < ActionController::TestCase
       assert flash[:alert]
     end
   end
+  
+  def test_destroy
+    inventory = @shop.inventories.first
+    assert_difference ['Inventory.count','@shop.inventories.count'], -1 do
+      facebook_delete :destroy, :inventory => @params, :fb_sig_user => @user.facebook_id, :id => inventory.id
+      assert_response :success
+      assert flash[:notice]
+    end
+  end
 end

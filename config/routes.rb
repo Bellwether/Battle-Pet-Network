@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
       home.resources :hunts, :only => [:show]
       home.resources :battles, :only => [:show]
       home.resource :shop, :only => [:new,:create,:edit,:update] do |shop|
-        shop.resources :inventories, :only => [:create]
+        shop.resources :inventories, :only => [:create,:destroy]
       end
       home.resource :pack, :only => [:edit,:update], :member => {:invite => :post} do |pack|
         pack.resources :spoils, :only => [:create,:update]

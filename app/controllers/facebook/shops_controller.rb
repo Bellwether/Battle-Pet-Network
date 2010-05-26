@@ -35,9 +35,7 @@ class Facebook::ShopsController < Facebook::FacebookController
   end
   
   def edit
-    @shop = current_user_pet.shop
-    puts current_user_pet.name
-    puts current_user_pet.shop_id    
+    @shop = current_user_pet.shop    
     @inventory = @shop.inventories.paginate :page => params[:page]
     @belongings = current_user_pet.belongings.sellable.all(:limit => 75)
   end
