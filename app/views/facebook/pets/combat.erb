@@ -38,9 +38,7 @@
 	    <h3><%= @pet.name %></h3>
 		<table>
 		  <tr>
-		    <td rowspan="4">
-			  <div class="<%="avatar-#{@pet.breed.slug}-mid" %>"></div>
-		    </td>
+		    <td rowspan="4"><%= avatar_image(@pet,'medium') %></td>
 		    <td><label>Endurance: <%= @pet.endurance %></label></td>
 		  </tr>
 		  <tr><td><label>Health: <%= @pet.health %></label></td></tr>

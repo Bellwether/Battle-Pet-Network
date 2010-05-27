@@ -9,7 +9,7 @@
 	  <ul id='issued-challenges' class='challenges'>
 	  <% @issued.each do |challenge| %>
 	    <li>
-		  <div class="<%="avatar-#{challenge.defender.slug}-small" %> left"></div>
+		  <%= avatar_image(challenge.defender,'large') %>
 		  <div>
 			<span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
 			<br />
@@ -31,9 +31,7 @@
     <table class="challenge">
 	  <tbody>
 		<tr>
-		  <td rowspan="4">
-			<div class="<%="avatar-#{c.attacker.slug}-medium" %>"></div>
-		  </td>
+		  <td rowspan="4"><%= avatar_image(c.attacker,'medium') %></td>
 		  <th><%= facebook_link_to c.attacker.name, facebook_pet_path(c.attacker)%></th>
 		</tr>
 		<tr>
@@ -57,6 +55,7 @@
 	<ul class="records challenges">
 	  <% @resolved.each do |challenge| %>
 		<li class="record">
+		  <%= avatar_image(challenge_opposing_pet_from(challenge,current_user_pet)) %>
 		  <div class="<%="avatar-#{challenge_opposing_pet_from(challenge,current_user_pet).slug}-small" %>"></div>
 		  <span><%= challenge_outcome_description_for(challenge,current_user_pet) %></span>
 		</li>

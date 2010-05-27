@@ -19,7 +19,7 @@
 	<td class="leftbox">
 	  <table class="dotbox">
 		<tr>
-		  <td rowspan="5"><div class="<%="avatar-#{@challenge.attacker.slug}-large" %> left"></div></td>
+		  <td rowspan="5"><%= avatar_image(@challenge.defender,'large') %></td>
 		  <td>&nbsp;</td>
 		  <td><%= @challenge.attacker.breed.name %></td>
 		</tr>
@@ -81,7 +81,7 @@
 		<tr>
 		  <td><%= @challenge.defender.health %></td>
 		  <td>&nbsp;</td>
-		  <td rowspan="5"><div class="<%="avatar-#{@challenge.defender.slug}-large" %> right"></div></td>
+		  <td rowspan="5"><%= avatar_image(@challenge.defender,'large') %></td>
 		</tr>
 		<%= details_bar_row(@challenge.defender.health,@challenge.attacker.health, 'right') %>
 		<%= details_bar_row(@challenge.defender.endurance,@challenge.attacker.endurance, 'right') %>

@@ -8,7 +8,7 @@
     <table class="shopkeeper">
 	  <tbody>
 		<tr>
-		  <td rowspan="2"><div class="<%="avatar-#{@shop.pet.breed.slug}-mid" %>"></div></td>
+		  <td rowspan="2"><%= avatar_image(@shop.pet) %></td>
 		  <td>Opened for Trade: <br /><span class="em"><%= "#{time_ago_in_words(@shop.created_at)} ago" %></span></td>
 		</tr>
 		<tr>

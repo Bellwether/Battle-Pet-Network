@@ -18,6 +18,17 @@ module Facebook::FacebookHelper
   def facebook_nested_url(url)
     return url.gsub(/facebook\//i,'') 
   end
+  
+  def avatar_image(model,size='small')
+    path = model.class.name.downcase.pluralize
+    if model.is_a?(Pet)
+      breed_path = model.breed.name.downcase.pluralize
+      path = "#{breed_path}/#{path}"
+    end
+    filename = model.name.downcase.gsub(/\s/,'-')
+    path = "#{path}/#{size}/#{filename}.png"
+    return facebook_image_tag(path)
+  end
 
   def render_tabs
     render(:partial => '/facebook/tabs')

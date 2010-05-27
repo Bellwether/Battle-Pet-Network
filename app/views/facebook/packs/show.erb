@@ -47,7 +47,7 @@
     <td class="pack-member">
 	  <table>	
 		<tr>
-		  <td rowspan="4"><div class="<%="avatar-#{m.pet.slug}-small" %> left"></div></td>
+		  <td rowspan="4"><%= avatar_image(m.pet) %></td>
 		  <td><span class="strong"><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></span></td>
 		</tr>
 		<tr><td>Health:</td><td><%= m.pet.fortitude %></td></tr>

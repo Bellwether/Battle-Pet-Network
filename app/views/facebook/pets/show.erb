@@ -97,7 +97,7 @@
 		<td>
 		  <% cell_table(@pet.pack.pack_members, 4) do |m,idx| %>
 		    <td>
-		      <div class="<%="avatar-#{m.pet.slug}-small" %>"></div>
+		      <%= avatar_image(m.pet) %>
 		      <strong class="right"><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></strong>
 		      <span class="em right"><%= "level #{m.pet.level_rank_count}" %></span>
 		    </td>

@@ -42,8 +42,8 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td><div class="<%="avatar-#{current_user_pet.slug}-large" %> left"></div></td>	
-	  <td><div class="<%="avatar-#{@hunt.hunt.sentient.slug}-large" %> right"></div></td>
+	  <td><%= avatar_image(current_user_pet,'large') %></td>	
+	  <td><%= avatar_image(@hunt.hunt.sentient, 'large') %></td>
 	</tr>
 	<tr><th colspan="2" class="em">Here's what happened</th></tr>
 	<tr>

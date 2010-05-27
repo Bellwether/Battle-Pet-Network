@@ -24,22 +24,21 @@
 		<td>Shop?</td>
 		<td>Last Seen</td>
 	  </tr>	
-		<% @pets.each_with_index do |pet,idx| %>
-			<% odd_row = (idx % 2 == 0 ? "" : "odd") %>
-			<tr class='<%=odd_row%>'>
-			<td><div class="<%="avatar-#{pet.slug}-small" %> left"></div></td>
-			<td><%= facebook_link_to pet.name, facebook_pet_path(pet) %></td>
-			<td><%= pet.breed.name %></td>
-			<td><%= pet.level_rank_count %></td>
-			<td><%= pet.wins_count %></td>
-			<td><%= pet.loses_count %></td>
-			<td><%= pet.draws_count %></td>
-			<td><%= pet.pack_id.blank? ? 'NO' : 'YES' %></td>
-			<td><%= pet.shop_id.blank? ? 'NO' : 'YES' %></td>
-			<td><%= "#{time_ago_in_words(pet.last_seen)} ago" if pet.last_seen %></td>
-			</tr>
-		<% end %>
-	  </tr>
+	  <% @pets.each_with_index do |pet,idx| %>
+		<% odd_row = (idx % 2 == 0 ? "" : "odd") %>
+		<tr class='<%=odd_row%>'>
+		<td><%= avatar_image(pet) %></td>
+		<td><%= facebook_link_to pet.name, facebook_pet_path(pet) %></td>
+		<td><%= pet.breed.name %></td>
+		<td><%= pet.level_rank_count %></td>
+		<td><%= pet.wins_count %></td>
+		<td><%= pet.loses_count %></td>
+		<td><%= pet.draws_count %></td>
+		<td><%= pet.pack_id.blank? ? 'NO' : 'YES' %></td>
+		<td><%= pet.shop_id.blank? ? 'NO' : 'YES' %></td>
+		<td><%= "#{time_ago_in_words(pet.last_seen)} ago" if pet.last_seen %></td>
+		</tr>
+	  <% end %>
 	</tbody>
   </table>
   <%= will_paginate @pets %>
