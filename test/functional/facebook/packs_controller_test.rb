@@ -9,6 +9,7 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     @standard = items(:fiberboard_pillar)
     @params = {:founder_id => @pet.id, :name => 'test pack', :standard_id => @standard.id}
     @leader = packs(:alpha).leader
+    @member = pack_members(:alpha_member).pet
   end
   
   def test_get_pack
@@ -89,6 +90,28 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     assert_tag :tag => "form", :attributes => {:id => 'donate-kibble'}
     assert_tag :tag => "form", :attributes => {:class => 'loan-spoils'}
     assert_tag :tag => "form", :attributes => {:class => 'invite-form'}
+    assert_tag :tag => "form", :descendant => {
+      :tag => "input", :attributes => { :type => "hidden", :value => "disbanded" },
+      :tag => "input", :attributes => { :type => "submit" }
+    }
+  end
+  
+  def test_disband
+    mock_user_facebooking(@leader.user.facebook_id)
+    facebook_put :update, :fb_sig_user => @leader.user.facebook_id, :pack => {:status => 'disbanded'}
+    assert_response :success
+    pack = assigns(:pack)
+    assert !pack.blank?
+    assert pack.disbanded?
+  end
+
+  def test_disband_fail
+    mock_user_facebooking(@member.user.facebook_id)
+    facebook_put :update, :fb_sig_user => @member.user.facebook_id, :pack => {:status => 'disbanded'}
+    assert_response :success
+    pack = assigns(:pack)
+    assert !pack.blank?
+    assert !pack.disbanded?
   end
   
   def test_invite

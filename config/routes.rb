@@ -54,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
       end
       home.resources :belongings, :only => [:index,:update]
       home.combat 'combat', :controller => 'pets', :action => 'combat'
+      home.profile 'profile', :controller => 'pets', :action => 'profile'
     end
     
     f.resources :payment_orders, :only => [:create] do |po|

@@ -135,4 +135,16 @@ class PackTest < ActiveSupport::TestCase
       assert message.errors.on(:sender_id)
     end
   end
+  
+  def test_disband
+    assert_difference '@pack.leader.kibble', +@pack.kibble do
+      assert @pack.disband!
+    end
+    assert_equal 0, @pack.kibble
+    assert_equal 'disbanded', @pack.status
+    @pack.pack_members.each do |m|
+      assert_equal 'disbanded', m.status
+      assert_nil m.pet.pack_id
+    end
+  end
 end

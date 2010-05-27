@@ -78,6 +78,10 @@
 		  <td><%= @pack.battle_record %></td>
 		</tr>
 	  </table>
+	  <% form_for @pack, :url => facebook_nested_url(facebook_pack_path(@pack)), :html => { :method => :put} do |f| %>
+        <%= f.hidden_field :status, {:value => 'disbanded'} %>
+	    <%= f.submit 'Disband Pack!' %>
+	  <% end %>
 	</td>
 	<td>
 	  <label>Add to Spoils:</label>	

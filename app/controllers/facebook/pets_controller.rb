@@ -15,7 +15,7 @@ class Facebook::PetsController < Facebook::FacebookController
     @challenges = current_user_pet.challenges.resolved.all
   end
   
-  def home
+  def profile
   end
   
   def show

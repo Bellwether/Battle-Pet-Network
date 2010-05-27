@@ -111,6 +111,10 @@ class Pack < ActiveRecord::Base
     return nil
   end
   
+  def disbanded?
+    status == "disbanded"
+  end
+  
   def invite_membership(sender,invitee)
     body = "#{sender.name} has invited you to join their pack #{name}."
     message = sender.outbox.new(:subject => "Pack Member Invite", :body => body, :recipient => invitee)
@@ -124,5 +128,13 @@ class Pack < ActiveRecord::Base
       message.save
     end
     return message
+  end
+  
+  def disband!
+    leader.update_attribute(:kibble, leader.kibble + kibble) unless leader_id.blank?
+    update_attributes(:kibble => 0, :status => 'disbanded')
+    pack_members.update_all( "status = 'disbanded'" )
+    Pet.update_all( "pack_id = NULL", "pack_id = #{id}" )
+    return true
   end
 end

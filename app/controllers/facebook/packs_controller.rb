@@ -29,6 +29,16 @@ class Facebook::PacksController < Facebook::FacebookController
   end
   
   def update
+    @pack = current_user_pet.pack
+    @pack.attributes = params[:pack] if current_user_pet.id == @pack.leader_id
+    
+    if @pack.disbanded?
+      flash[:notice] = "Disbanded your pack and scattered the members to the 4 winds."
+      facebook_redirect_to facebook_profile_path
+    else
+      flash[:notice] = "Pack updated"
+      facebook_redirect_to edit_facebook_pack_path(@pack)
+    end
   end
 
   def invite
