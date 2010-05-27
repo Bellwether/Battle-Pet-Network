@@ -2,11 +2,11 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: battlepet_production
+  database: bpn_development
   pool: 5
-  username: battlepet
-  password: catpiss
-  host: mysql.battlepet.net
+  username: root
+  password: 
+  host: localhost
 
 test:
   adapter: mysql

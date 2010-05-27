@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.namespace :admin do |f|
+  map.namespace :admin do |admin|
+    admin.with_options :controller => 'main' do |l|
+      l.logs 'logs', :action => 'logs'
+    end    
   end
   
   map.namespace :facebook do |f|
@@ -65,7 +68,7 @@ ActionController::Routing::Routes.draw do |map|
       main.index 'index', :action => 'index'
     end
   end
-  map.root :controller => 'web'  
+  map.root :controller => 'web/main'  
 
   map.namespace :iphone do |f|
   end
