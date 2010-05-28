@@ -104,4 +104,13 @@ class PetTest < ActiveSupport::TestCase
     @pet.user.update_attribute(:current_login_at,timestamp)
     assert_equal timestamp, @pet.last_seen
   end
+  
+  def test_favorite_actions
+    @pet.favorite_action = @pet.breed.favorite_action
+    assert_equal "constantly #{@pet.favorite_action.name}", @pet.favorite_actions
+    @pet.favorite_action = nil
+    assert_equal "#{@pet.breed.favorite_action.name}", @pet.favorite_actions
+    @pet.favorite_action = actions(:leap)
+    assert_equal "#{@pet.breed.favorite_action.name} and #{actions(:leap).name}", @pet.favorite_actions
+  end
 end

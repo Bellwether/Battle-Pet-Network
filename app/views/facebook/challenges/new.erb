@@ -41,7 +41,6 @@
 		  <td><%= @challenge.attacker.level_rank_count %></td>
 		</tr>
 		<tr>
-		  <td>&nbsp;</td>
 		  <td>
 			<% cell_table(@challenge.defender.belongings.battle_ready) do |b,idx| %>
 			  <td class='battle-gear'>
@@ -50,6 +49,7 @@
 			  </td>
 			<% end %>
 		  </td>
+		  <td><%= @challenge.attacker.name %> likes to <%= @challenge.attacker.favorite_actions %></td>
 		</tr>
 		<tr>
 		  <td colspan="3">
@@ -101,7 +101,7 @@
 		  <td><%= @challenge.defender.level_rank_count %></td>
 		</tr>
 		<tr>
-		  <td></td>
+		  <td><%= @challenge.defender.name %> likes to <%= @challenge.defender.favorite_actions %></td>
 		  <td>&nbsp;</td>
 		</tr>
 		<tr>
@@ -111,6 +111,7 @@
 			  The defender will choose a strategy after they accept your challenge. Try to anticipate their actions
 			  as and then act stronger!
 			</p>
+			<p><%= @challenge.defender.name %> likes to <%= @challenge.defender.favorite_actions %></p>
 		  </td>
 		</tr>
 	  </table>

@@ -146,6 +146,16 @@ class Pet < ActiveRecord::Base
     "#{wins_count}/#{loses_count}/#{draws_count}"
   end
   
+  def favorite_actions
+    if breed.favorite_action_id == favorite_action_id
+      text = "constantly #{favorite_action.name}"
+    else
+      text = "#{breed.favorite_action.name}"
+      text = "#{text} and #{favorite_action.name}" unless favorite_action_id.blank?
+    end
+    return text
+  end
+  
   def last_seen
     return nil if user_id.blank?
     
