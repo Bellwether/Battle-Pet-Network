@@ -2,6 +2,8 @@ class Action < ActiveRecord::Base
   belongs_to :breed
   has_and_belongs_to_many :pets
   has_many :maneuvers
+  has_many :breeds, :as => :favorite_action
+  has_many :pets, :as => :favorite_action
   
   validates_presence_of :breed_id, :action_type, :verb, :power
   validates_numericality_of :power, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 8

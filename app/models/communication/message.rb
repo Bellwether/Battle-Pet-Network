@@ -27,7 +27,7 @@ class Message < ActiveRecord::Base
     self.message_type ||= 'personal'
     
     if !reply_to_id.blank?
-      reply_to = Message.find(reply_to_id, :select => 'sender_id')
+      reply_to = Message.find(reply_to_id, :select => 'id,message_type,sender_id')
       self.recipient = reply_to.sender
     end
   end  

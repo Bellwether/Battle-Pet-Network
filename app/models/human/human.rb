@@ -3,7 +3,7 @@ class Human < ActiveRecord::Base
   
   has_many :tames
   
-  validates_inclusion_of :status, :in => %w(active disbanded insolvent)
+  validates_inclusion_of :human_type, :in => %w(wise fatted collector burly friendly)
     
   cattr_reader :per_page
   @@per_page = 10

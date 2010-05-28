@@ -1,6 +1,6 @@
 <% fb_tabs do %>
   <% if has_pet? %>
-    <%= fb_tab_item "Home", '', :align => :left %>
+    <%= fb_tab_item "Home", facebook_nested_url(profile_facebook_pet_path), :align => :left %>
     <%= fb_tab_item "Combat", '', :align => :left %>
     <%= fb_tab_item "Shop", '', :align => :left if has_shop? %>
   <% end %>

@@ -21,6 +21,7 @@ experience:
   double_ko_divisor: 3
   undercut_bonus: 3
   minimum_award: 1
+  favorite_action_bonus: 1
 merchant:
   paypal:
     notification_url: 

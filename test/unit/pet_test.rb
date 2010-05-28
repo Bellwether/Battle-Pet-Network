@@ -40,10 +40,18 @@ class PetTest < ActiveSupport::TestCase
   end
   
   def test_update_occupation
-    pet = pets(:siamese)
     occupation = occupations(:taming)
-    pet.update_occupation!(occupation.id)
-    assert_equal occupation.id, pet.reload.occupation_id
+    @pet.update_occupation!(occupation.id)
+    assert_equal occupation.id, @pet.reload.occupation_id
+  end
+  
+  def test_update_favorite_action
+    @pet.update_attribute(:favorite_action_id, nil)
+    scratch = actions(:scratch)
+    claw = actions(:claw)
+    assert @pet.update_favorite_action!(scratch)
+    assert !@pet.update_favorite_action!(claw)
+    assert_equal "favorite action has already been chosen", @pet.errors.on(:favorite_action_id)
   end
   
   def test_is_prowling

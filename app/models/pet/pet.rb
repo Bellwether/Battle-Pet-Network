@@ -4,8 +4,9 @@ class Pet < ActiveRecord::Base
   SELECT_BASICS = "id,status,kibble,experience,level_rank_count,breed_id"
   
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id, name" 
-  belongs_to :breed, :foreign_key => "breed_id", :select => "id, name"
+  belongs_to :breed, :foreign_key => "breed_id", :select => "id, name, favorite_action_id"
   belongs_to :level
+  belongs_to :favorite_action, :class_name => "Action"
   belongs_to :shop  
   belongs_to :pack, 
               :select => "id, name, status, kibble, created_at, standard_id, leader_id", 
@@ -170,6 +171,15 @@ class Pet < ActiveRecord::Base
   
   def update_occupation!(occupation_id)
     update_attribute(:occupation_id, occupation_id)
+  end
+  
+  def update_favorite_action!(action_id)
+    if favorite_action_id.blank?
+      return update_attribute(:favorite_action_id, action_id)
+    else
+      errors.add(:favorite_action_id, "favorite action has already been chosen")
+      return false
+    end
   end
 
   def award_experience!(exp)

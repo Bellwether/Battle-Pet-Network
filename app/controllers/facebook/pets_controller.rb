@@ -40,4 +40,23 @@ class Facebook::PetsController < Facebook::FacebookController
       render :action => :new
     end
   end
+
+  def update
+    if params[:pet]
+      action_id = params[:pet][:favorite_action_id]
+      success = true
+      
+      if action_id
+        if current_user_pet.update_favorite_action!(action_id)
+          flash[:notice] = "You're favorite action is now to #{current_user_pet.favorite_action.name}"
+        else
+          flash[:error] = "Couldn't update favorite action: #{current_user_pet.errors.full_messages}"
+        end
+      end
+    else
+      flash[:alert] = "Nothing to update"
+    end
+    
+    redirect_facebook_back
+  end
 end

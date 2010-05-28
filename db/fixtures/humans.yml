@@ -1,6 +1,6 @@
 sarah:
     name: Sarah
-    human_type: Friendly
+    human_type: friendly
     difficulty: 3
     power: 2
     cost: 4000
@@ -8,7 +8,7 @@ sarah:
     
 ichabod:
     name: Ichabod
-    human_type: Wise
+    human_type: wise
     difficulty: 5
     power: 3
     cost: 8000
@@ -16,7 +16,7 @@ ichabod:
     
 oscar:
     name: Oscar
-    human_type: Fatted
+    human_type: fatted
     difficulty: 4
     power: 2
     cost: 6000
@@ -24,7 +24,7 @@ oscar:
     
 lestor:
     name: Lestor
-    human_type: Collector
+    human_type: collector
     difficulty: 3
     power: 1
     cost: 9000
@@ -32,7 +32,7 @@ lestor:
 
 bruno:
     name: Bruno
-    human_type: Burly
+    human_type: burly
     difficulty: 2
     power: 1
     cost: 4000

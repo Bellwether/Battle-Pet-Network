@@ -34,7 +34,7 @@ class Facebook::PacksController < Facebook::FacebookController
     
     if @pack.disbanded?
       flash[:notice] = "Disbanded your pack and scattered the members to the 4 winds."
-      facebook_redirect_to facebook_profile_path
+      facebook_redirect_to profile_facebook_pet_path(current_user_pet)
     else
       flash[:notice] = "Pack updated"
       facebook_redirect_to edit_facebook_pack_path(@pack)

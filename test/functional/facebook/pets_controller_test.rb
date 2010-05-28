@@ -118,4 +118,32 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :id => "advancements" }
     assert_tag :tag => "div", :attributes => { :class => "box gear" }
   end
+  
+  def test_update
+    mock_user_facebooking(@user.facebook_id)
+    facebook_put :update, :fb_sig_user => @user.facebook_id
+    assert_response :success
+  end
+  
+  def test_update_favorite_action
+    @pet.update_attribute(:favorite_action_id, nil)
+    scratch = actions(:scratch)
+    
+    mock_user_facebooking(@pet.user.facebook_id)
+    facebook_put :update, :fb_sig_user => @pet.user.facebook_id, :pet => {:favorite_action_id => scratch.id}
+    assert_response :success
+    assert flash[:notice]
+    assert_equal scratch.id, @pet.reload.favorite_action_id
+  end
+  
+  def test_fail_update_favorite_action
+    scratch = actions(:scratch)
+    claw = actions(:claw)
+    @pet.update_attribute(:favorite_action_id, claw.id)
+    mock_user_facebooking(@pet.user.facebook_id)
+    facebook_put :update, :fb_sig_user => @pet.user.facebook_id, :pet => {:favorite_action_id => scratch.id}
+    assert_response :success
+    assert flash[:error]
+    assert_equal claw.id, @pet.reload.favorite_action_id
+  end
 end
