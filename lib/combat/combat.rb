@@ -108,16 +108,24 @@ module Combat
     return if end_result == EndResult::BOTH_EXHAUSTED
     combatants.each do |c|
       next unless c.is_a?(Pet)
-      
-      did_win = !combatant_defeated?(c)
-      power = strategy_for(c).total_power
-      level = c.level_rank_count
-      opponent = opponent_for(c)
-      other_level = opponent.is_a?(Pet) ? opponent.level_rank_count : 1
-      
-      experience = Combat.calculate_experience(power, level, other_level, did_win)
-      c.award_experience!(experience)
+      c.award_experience! experience_for_combatant(c)
     end
+  end
+  
+  def experience_for_combatant(c)
+    return 0 unless c.is_a?(Pet)
+    
+    did_win = !combatant_defeated?(c)
+    power = strategy_for(c).total_power
+    level = c.level_rank_count
+    opponent = opponent_for(c)
+    other_level = opponent.is_a?(Pet) ? opponent.level_rank_count : 1
+    
+    experience = Combat.calculate_experience(power, level, other_level, did_win)
+    strategy = strategy_for(c)
+    strategy_bonus = did_win ? strategy.favorite_action_experience_bonus : 0
+    
+    return experience + strategy_bonus
   end
   
   def save_combatants

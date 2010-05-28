@@ -174,6 +174,29 @@ class CombatTest < ActiveSupport::TestCase
     end
   end
   
+  def test_experience_for_combatant
+    base = 5
+    flexmock(Combat).should_receive(:calculate_experience).and_return(base)
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        next unless c.is_a?(Pet)
+        assert_equal base, m.experience_for_combatant(c)
+      end
+    end
+  end
+  
+  def test_strategy_bonus_experience_for_combatant
+    base = 5
+    flexmock(Combat).should_receive(:calculate_experience).and_return(base) 
+    @combat_models.each do |m|
+      m.defender.current_health = 0
+      m.strategy_for(m.attacker).maneuvers.create(:action => m.attacker.breed.favorite_action)
+      
+      assert_equal base + 1, m.experience_for_combatant(m.attacker) if m.attacker.is_a?(Pet)
+      assert_equal base, m.experience_for_combatant(m.defender) if m.defender.is_a?(Pet)
+    end
+  end
+  
   def test_calculate_experience
     winner = Combat.calculate_experience(12, 5, 5, true)
     loser = Combat.calculate_experience(12, 5, 5, false)

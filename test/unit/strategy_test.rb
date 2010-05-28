@@ -5,6 +5,9 @@ class StrategyTest < ActiveSupport::TestCase
     @pet = pets(:siamese)
     @new_strategy = @pet.strategies.build
     @maneuver = @new_strategy.maneuvers.build(:action => actions(:scratch))
+    @favorite_strategy = @pet.strategies.build
+    @favorite_strategy.maneuvers.build(:action => @pet.favorite_action)
+    @favorite_strategy.maneuvers.build(:action => @pet.breed.favorite_action)
   end
   
   def test_set_name
@@ -24,5 +27,12 @@ class StrategyTest < ActiveSupport::TestCase
     end
     assert_operator average, ">", 0
     assert_equal (average / strategy.maneuvers.size), strategy.average_power
+  end
+  
+  def test_favorite_action_experience_bonus
+    assert_equal 0, strategies(:leper_rat_strategy).favorite_action_experience_bonus
+    expected = (AppConfig.experience.favorite_action_bonus * @favorite_strategy.maneuvers.size)
+    assert_operator @favorite_strategy.favorite_action_experience_bonus, ">", 0
+    assert_equal expected, @favorite_strategy.favorite_action_experience_bonus
   end
 end

@@ -20,6 +20,7 @@ siamese:
     pack: alpha
     level: siamese_2
     actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+    favorite_action: leap
     
 persian:
     breed: persian

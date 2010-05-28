@@ -36,6 +36,19 @@ class Strategy < ActiveRecord::Base
     return power
   end
   
+  def action_count_for(aid)
+    return maneuvers.select{|m| m.action_id == aid}.size
+  end
+  
+  def favorite_action_experience_bonus
+    return 0 if maneuvers.blank? || !combatant.is_a?(Pet)
+    
+    bonus = AppConfig.experience.favorite_action_bonus
+    exp = action_count_for(combatant.breed.favorite_action_id) * bonus
+    exp = exp + (action_count_for(combatant.favorite_action_id) * bonus) unless combatant.favorite_action_id.blank?
+    return exp
+  end  
+  
   def set_name
     maneuvers.each do |m|
       (self.name ||= "") << m.action.power.to_s
