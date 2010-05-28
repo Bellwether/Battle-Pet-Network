@@ -7,6 +7,13 @@ class TameTest < ActiveSupport::TestCase
     @kenneled = @pet.tames.kenneled
     @human = humans(:sarah)
   end
+
+  def test_validates_max_tames
+    @pet.update_attribute(:affection, @pet.tames.kenneled.size)
+    tame = @pet.tames.new(:human_id => humans(:oscar).id)
+    tame.save
+    assert tame.errors.on(:human_id).include?("max number of humans already tamed")
+  end
   
   def test_validates_exclusivity
     tame = @pet.tames.new(:human_id => @tamed.human.id)

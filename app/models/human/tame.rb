@@ -7,7 +7,7 @@ class Tame < ActiveRecord::Base
     
   validates_inclusion_of :status, :in => %w(kenneled enslaved)
 
-  validate :validates_exclusivity
+  validate :validates_exclusivity, :validates_max_tames
   
   named_scope :kenneled, :conditions => "tames.status = 'kenneled'" do
     def release(id)
@@ -54,6 +54,10 @@ class Tame < ActiveRecord::Base
     val = 1 + rand(100)
     chance = chance.to_f * AppConfig.humans.kills_neighbor_modifier.to_f
     return val <= chance
+  end
+  
+  def validates_max_tames
+    errors.add(:human_id, "max number of humans already tamed") unless human && pet.tames.kenneled.size < pet.max_tames
   end
   
   def validates_exclusivity

@@ -3,6 +3,8 @@ class Human < ActiveRecord::Base
   
   has_many :tames
   
+  validates_inclusion_of :status, :in => %w(active disbanded insolvent)
+    
   cattr_reader :per_page
   @@per_page = 10
   

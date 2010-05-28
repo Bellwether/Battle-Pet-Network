@@ -113,6 +113,10 @@ class Pet < ActiveRecord::Base
     intelligence
   end
   
+  def max_tames
+    affection
+  end
+  
   def affection_bonus
     0
   end
