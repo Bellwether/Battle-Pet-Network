@@ -37,12 +37,14 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "actions_pets", ["pet_id", "action_id"], :name => "index_actions_pets_on_pet_id_and_action_id", :unique => true
 
   create_table "activity_streams", :force => true do |t|
-    t.integer  "actor_id",             :null => false
-    t.string   "actor_type",           :null => false
+    t.integer  "actor_id"
+    t.string   "actor_type"
     t.integer  "object_id"
     t.string   "object_type"
     t.integer  "indirect_object_id"
     t.string   "indirect_object_type"
+    t.string   "category",             :limit => 32
+    t.string   "namespace",            :limit => 128
     t.text     "activity_data"
     t.datetime "created_at"
   end

@@ -1,2 +1,53 @@
 class ActivityStream < ActiveRecord::Base
+  belongs_to :actor, :polymorphic => true
+  belongs_to :object, :polymorphic => true
+  belongs_to :indirect_object, :polymorphic => true
+
+  validates_presence_of :category, :namespace
+  validates_inclusion_of :category, :in => %w(analytics)
+  
+  after_validation_on_create :set_polymorph_data
+  after_validation_on_create :set_description_data
+  after_create :send_notifications
+  
+  def after_initialize(*args)
+    self.activity_data ||= {}
+  end
+  
+  def set_description_data
+    actor_name = activity_data[:actor_name]
+    object_name = activity_data[:object_name]
+    self.activity_data[:description] = 
+      case category
+        when 'analytics'
+          case namespace
+            when 'registration'
+              "#{actor_name} entered the world."
+            when 'referer'
+              "#{object_name} entered the world on your recommendation."
+            when 'daily-login'
+              "#{actor_name} found #{AppConfig.awards.daily_login} kibble after signing in."
+            when 'invitation'
+              "#{actor_name} invited #{object_name} to join."
+          end
+      end
+  end
+  
+  def set_polymorph_data
+    ['actor','object','indirect_object'].each do |model|
+      m = self.send(model.to_sym)
+      next if m.blank?
+      
+      self.activity_data["#{model}_name".to_sym] = 
+        case m.class.name
+          when 'User'
+            send(model.to_sym).normalized_name
+          when 'Pet'
+            send(model.to_sym).name
+        end
+    end
+  end
+  
+  def send_notifications
+  end
 end

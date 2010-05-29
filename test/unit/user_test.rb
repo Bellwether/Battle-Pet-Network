@@ -36,4 +36,13 @@ class UserTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_normalized_name
+    username = User.new(:username => 'un')
+    assert_equal 'un', username.normalized_name
+    fullname = User.new(:first_name => 'first', :last_name => 'last')
+    assert_equal 'first last', fullname.normalized_name
+    mysterio = User.new
+    assert_equal 'mysterio', mysterio.normalized_name
+  end
 end

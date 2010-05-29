@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def normalized_name
+    username || (first_name.blank? ? "mysterio" : "#{first_name} #{last_name}")
+  end
+  
   def facebook_friend_ids
     []
   end
