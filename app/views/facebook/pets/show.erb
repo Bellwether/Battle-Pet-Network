@@ -38,11 +38,11 @@
 	  <td rowspan="6">
 		<table>
 		  <tr><td>Leaderboard Rank:</td><td></td></tr>
-		  <tr><td>Total Battles:</td><td></td></tr>
-		  <tr><td>Wins:</td><td></td></tr>
-		  <tr><td>Loses:</td><td></td></tr>
-		  <tr><td>Draws:</td><td></td></tr>
-		  <tr><td>Favorite Actions:</td><td></td></tr>
+		  <tr><td>Total Battles:</td><td><%= @pet.battles_count %></td></tr>
+		  <tr><td>Wins:</td><td><%= @pet.wins_count %></td></tr>
+		  <tr><td>Loses:</td><td><%= @pet.loses_count %></td></tr>
+		  <tr><td>Draws:</td><td><%= @pet.draws_count %></td></tr>
+		  <tr><td>Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
 		</table>
 	  </td>	
 	</tr>
