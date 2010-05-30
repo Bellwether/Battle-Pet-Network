@@ -16,6 +16,19 @@ class Sign < ActiveRecord::Base
       SIGNINGS
     end
   end
+  
+  def verb
+    return case sign_type
+    when 'play'
+      'played with'
+    when 'hiss'
+      'hissed at'
+    when 'purr'
+      'purred to'
+    when 'groom'
+      'groomed'
+    end
+  end
 
   def validates_endurance_cost
     errors.add(:sender_id, "not enough endurance") if sender && 

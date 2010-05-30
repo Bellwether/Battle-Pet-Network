@@ -12,7 +12,7 @@
 	<tbody>
 	<tr>
 	  <td rowspan="6">
-		<div id="breed-details-image" class="<%="avatar-#{@pet.breed.slug}-mid" if @pet.breed %>"></div>
+		<%= avatar_image(@pet,'large') %>
 	  </td>
 	  <td>Health:</td><td><%=@pet.health%></td>
 	  <td rowspan="6">

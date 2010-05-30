@@ -51,6 +51,10 @@ module Facebook::FacebookHelper
   def render_breed_picker(form)
     render :partial => '/facebook/breed_picker', :locals => {:form => form}
   end
+  
+  def render_breed_details(breed)
+    render :partial => '/facebook/breed_details', :locals => {:breed => breed}
+  end
 
   def render_item_picker(items,form=nil,attribute=nil)
     render :partial => '/facebook/item_picker', :locals => {:items => items, :form => form, :attribute => attribute}

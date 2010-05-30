@@ -17,6 +17,7 @@ class Facebook::PetsController < Facebook::FacebookController
   
   def profile
     @pet = current_user_pet
+    @signs = @pet.signs
   end
   
   def show

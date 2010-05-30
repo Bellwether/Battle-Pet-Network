@@ -2,6 +2,62 @@
 
 <div class="sidebox slim right">
   <%= render_bio_box(@pet) %>
+
+  <div class="box slim biography">
+    <h4>Signs</h4>
+    <p class="em">When other pets visit you, you can interact in a variety of ways.</p>
+	<% if @signs.size > 0 %>
+	  <p>Indeed, some pets have visited:</p>
+	  <ul id="signs">
+		<% @signs.each do |sign| %>
+		  <li class="sign">
+			<% facebook_link_to sender.name, facebook_pet_path(sender) %> <%= "#{sign.verb} you" %>
+			<%= "#{time_ago_in_words(sign.created_at)} ago" %>
+		  </li>
+		<% end %>
+	  </ul>
+	<% else %>
+	  <p>No pets have visited you in the last three days.
+	<% end %>
+  </div>
+
+  <div class="box slim messages">
+    <h4>Messages</h4>
+  </div>
+</div>
+
+<div class="box">
+  <h4 class="right"><%="Level #{@pet.level_rank_count} #{@pet.breed_name}"%></h4>
+  <h3><%= @pet.name %></h3>
+
+  <table class='pet'>
+	<tbody>
+	<tr>
+	  <td rowspan="6">
+		<%= avatar_image(@pet,'large') %>
+	  </td>
+	  <td>Health:</td><td><%=@pet.health%></td>
+	  <td rowspan="6">
+		<table>
+		  <tr><td>Leaderboard Rank:</td><td></td></tr>
+		  <tr><td>Total Battles:</td><td><%= @pet.battles_count %></td></tr>
+		  <tr><td>Wins:</td><td><%= @pet.wins_count %></td></tr>
+		  <tr><td>Loses:</td><td><%= @pet.loses_count %></td></tr>
+		  <tr><td>Draws:</td><td><%= @pet.draws_count %></td></tr>
+		  <tr><td>Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
+		</table>
+	  </td>	
+	</tr>
+	<tr><td>Endurance:</td><td><%= @pet.endurance %></td></tr>
+	<tr><td>Fortitude:</td><td><%= @pet.fortitude %></td></tr>
+	<tr><td>Power:</td><td><%= @pet.power %></td></tr>
+	<tr><td>Intelligence:</td><td><%= @pet.intelligence %></td></tr>
+	<tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
+    </tbody>
+  </table>	
+  <p class="right">
+    <%= facebook_link_to "View Your Combat Profile", combat_facebook_pet_profile(@pet) %>
+  </p>
 </div>
 
 stats/pic/bio
