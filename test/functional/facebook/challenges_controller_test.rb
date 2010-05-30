@@ -28,6 +28,8 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       :tag => "span", :attributes => { :class => "right button" },  
       :tag => "span", :attributes => { :class => "left button" }
     }
+    
+    puts @controller.response.body
   end
   
   def test_show

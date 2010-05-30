@@ -24,18 +24,31 @@ set :chmod755, "app config db lib public vendor script script/* public/disp*"
 set :use_sudo, false
 set :keep_releases, 2
 
+# Helpers
+
+def environment
+  if exists?(:stage)
+    stage
+  elsif exists?(:rails_env)
+    rails_env
+  elsif(ENV['RAILS_ENV'])
+    ENV['RAILS_ENV']
+  else
+    "production"
+  end
+end
+
+def run_rake(task)
+  run "cd #{current_path} && rake #{task} RAILS_ENV=#{environment}"
+end
+
 #	Post Deploy Hooks
 
 namespace :deploy do
- 
   desc "Runs after every successful deployment"
   task :after_default do
     cleanup # removes the old deploys
   end
- 
-  # after "deploy:setup", "configure:create_shared_directories"
-  # after "deploy:update_code", "configure:link_database_yml"
-  # after "deploy:symlink", "bundlr:redeploy_gems"
 end
 
 #	Passenger

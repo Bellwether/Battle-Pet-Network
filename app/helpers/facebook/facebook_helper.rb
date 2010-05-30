@@ -84,19 +84,20 @@ module Facebook::FacebookHelper
       return ""
   end
   
-  def cell_table(array,cols=3,options = {})
+  def cell_table(array, cols=3, options = {}, &proc)
     if array.blank?
-      render :text => "" 
-      return 
+      concat("", proc.binding)
     end
     
-    render :text => "<table class='#{(options[:class] || '')}'><tbody>"
+    output = "<table class='#{(options[:class] || '')}'><tbody>"
+    concat(output, proc.binding)
+    
     array.each_with_index do |row,idx|
-  	  render :text => "<tr>" if idx % cols == 0
-      yield row, idx
-      render :text =>  "</tr>" if idx % cols == (cols - 1)
+      concat("<tr>", proc.binding) if idx % cols == 0
+      proc.call(row, idx)
+      concat("</tr>", proc.binding) if idx % cols == (cols - 1) || idx == (array.size - 1)
     end
-    render :text => "</tbody></table>"
+    concat("</tbody></table>", proc.binding)
   end  
   
   def show_for_pet(other_pet=nil)

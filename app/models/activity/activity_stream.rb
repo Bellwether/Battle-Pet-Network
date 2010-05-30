@@ -31,6 +31,12 @@ class ActivityStream < ActiveRecord::Base
     self.activity_data[:description] = 
       case category
         when 'combat'
+          case namespace
+            when 'challenge-1v1'
+              "#{actor_name} challenged #{object_name} to batttle."
+            when 'challenge-1v0'
+              "#{actor_name} made an open challenge to battle."
+          end
         when 'analytics'
           case namespace
             when 'registration'
