@@ -61,6 +61,8 @@ class ActiveSupport::TestCase
                                 :message => "Success",
                                 :params => {}) 
                                 
+    @purchase = flexmock(:token => "1234")                            
+                                
     @pending_po = payment_orders(:user_two_pending_po)                            
     @token_details = flexmock(:params => {"ack" => "Success",
                                          "first_name" => "Test",
@@ -76,7 +78,9 @@ class ActiveSupport::TestCase
 
     @gateway_mock = flexmock(EXPRESS_GATEWAY)
     @gateway_mock.should_receive(:details_for).and_return(@token_details)
-    @gateway_mock.should_receive(:purchase).and_return(@gateway_response)    
+    @gateway_mock.should_receive(:purchase).and_return(@gateway_response)
+    @gateway_mock.should_receive(:setup_purchase).and_return(@purchase)
+    @gateway_mock.should_receive(:redirect_url_for).and_return('')
   end
 
   def mock_user_facebooking(facebook_id="2147483647")

@@ -21,7 +21,7 @@
   <% @sentients.each do |sentient| %>
   <table class="sentients">
 	<tr>
-	  <td rowspan="5"><div class="<%="sentient-#{sentient.slug}-mid" %>"></div></td>
+	  <td rowspan="5"><%= avatar_image(sentient,'medium') %></td>
 	  <th><%= facebook_link_to sentient.name, facebook_sentient_path(sentient) %></th>
 	</tr>
 	<tr><td>Health: <label><%= sentient.health %></label></td></tr>

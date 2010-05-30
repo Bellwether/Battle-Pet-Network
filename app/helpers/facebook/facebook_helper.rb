@@ -44,6 +44,10 @@ module Facebook::FacebookHelper
     render :partial => '/facebook/kibble_box'
   end
 
+  def render_bio_box(pet)
+    render :partial => '/facebook/bio_box', :locals => {:pet => pet}
+  end
+
   def render_breed_picker(form)
     render :partial => '/facebook/breed_picker', :locals => {:form => form}
   end

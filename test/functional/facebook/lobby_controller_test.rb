@@ -7,19 +7,37 @@ class Facebook::LobbyControllerTest  < ActionController::TestCase
     mock_user_facebooking
   end
   
-  def test_should_get_index
+  def test_index
     facebook_get :index, :fb_sig_user => nil
     assert_response :success
     assert_template 'index'
   end
+
+  def test_tos
+    facebook_get :tos, :fb_sig_user => nil
+    assert_response :success
+    assert_template 'tos'
+  end
+
+  def test_staff
+    facebook_get :staff, :fb_sig_user => nil
+    assert_response :success
+    assert_template 'staff'
+  end
+
+  def test_contact
+    facebook_get :contact, :fb_sig_user => nil
+    assert_response :success
+    assert_template 'contact'
+  end
   
-  def test_should_get_about
+  def test_about
     facebook_get :about, :fb_sig_user => nil
     assert_response :success
     assert_template 'about'
   end
   
-  def test_should_get_guide
+  def test_guide
     facebook_get :guide, :fb_sig_user => nil
     assert_response :success
     assert_template 'guide'

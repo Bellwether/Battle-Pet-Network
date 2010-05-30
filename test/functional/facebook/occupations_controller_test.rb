@@ -4,8 +4,8 @@ class Facebook::OccupationsControllerTest < ActionController::TestCase
   include Facebooker::Rails::TestHelpers
   
   def setup
-    @user = users(:two)
-    @pet = @user.pet
+    @pet = pets(:siamese)
+    @user = @pet.user
   end
 
   def test_index
@@ -15,7 +15,6 @@ class Facebook::OccupationsControllerTest < ActionController::TestCase
     assert_template 'index'
     assert !assigns(:occupations).blank?
     Occupation.all.each do |o|
-      assert_tag :tag => "div", :attributes => { :class => "occupation-#{o.slug}-mid" }      
       if o.pet_doing?(@controller.current_user_pet)
         assert_no_tag :tag => "span", :attributes => { :id => "#{@controller.current_user_pet.occupation.slug}-btn" }
       else  

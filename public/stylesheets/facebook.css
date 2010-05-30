@@ -5,6 +5,10 @@ h2 {
   margin: 5px 0 10px 0;	
 }
 
+tr {
+  vertical-align: top;	
+}
+
 #contents { 
   font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
   font-size:11px; 

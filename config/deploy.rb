@@ -22,7 +22,7 @@ default_run_options[:pty] = true  # Forgo errors when deploying from windows
 ssh_options[:keys] = %w(/Users/travidunn/.ssh/id_rsa)
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
 set :use_sudo, false
-set :keep_releases, 2
+set :keep_releases, 3
 
 # Helpers
 
@@ -62,5 +62,25 @@ namespace :deploy do
   [:start, :stop].each do |t|
     desc "#{t} task is a no-op with mod_rails"
     task t, :roles => :app do ; end
+  end
+end
+
+# Logs
+
+namespace :log do
+  desc "Display last 250 lines of application log file for the specified environment, e.g. cap staging log:recent"
+  task :recent, :roles => :app do
+    run "tail -250 #{shared_path}/log/#{environment}.log" do |channel, stream, data|
+      puts "#{channel[:host]}: #{data}"
+      break if stream == :err
+    end
+  end
+
+  desc "Tail application log file for the specified environment, e.g. cap staging log:tail"
+  task :tail, :roles => :app do
+    run "tail -f #{shared_path}/log/#{environment}.log" do |channel, stream, data|
+      puts "#{channel[:host]}: #{data}"
+      break if stream == :err
+    end
   end
 end

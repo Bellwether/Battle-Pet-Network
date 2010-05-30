@@ -10,6 +10,9 @@ ActionController::Routing::Routes.draw do |map|
       lobby.index 'index', :action => 'index'
       lobby.about 'about', :action => 'about'
       lobby.guide 'guide', :action => 'guide'
+      lobby.staff 'staff', :action => 'staff'
+      lobby.tos 'tos', :action => 'tos'
+      lobby.contact 'contact', :action => 'contact'
       lobby.invite 'invite', :action => 'invite'
     end
     

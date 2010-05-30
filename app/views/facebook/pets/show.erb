@@ -1,27 +1,7 @@
 <% content_for :page_title do %><h2>Pet Profile</h2><% end %>
 
 <div class="sidebox slim right">
-  <% unless @pet.biography.blank? %>	
-    <div class="box slim biography">
-      <h4>Kennel</h4>
-	  <p><strong>Description:<strong><%= @pet.biography.description %></p>
-	  <div><label>Temperament:</label><strong><%= @pet.biography.temperament %></strong></div>
-	  <div><label>Lifestyle:</label><strong><%= @pet.biography.lifestyle %></strong></div>
-	  <div><label>Circadian:</label><strong><%= @pet.biography.circadian %></strong></div>
-	  <div><label>Gender:</label><strong><%= @pet.biography.gender %></strong></div>
-	  <div><label>Favorite Color:</label><strong><%= @pet.biography.favorite_color %></strong></div>
-	  <div><label>Favorite Food:</label><strong><%= @pet.biography.favorite_food %></strong></div>
-	  <div><label>Favorite Pastime:</label><strong><%= @pet.biography.favorite_pastime %></strong></div>
-	  <div><label>Favorite Season:</label><strong><%= @pet.biography.favorite_season %></strong></div>
-	  <div><label>Favorite Composer:</label><strong><%= @pet.biography.favorite_composer %></strong></div>
-	  <div><label>Favorite Philosopher:</label><strong><%= @pet.biography.favorite_philosopher %></strong></div>
-	  <div><label>Pedigree:</label><strong><%= @pet.biography.pedigree %></strong></div>
-	  <div><label>Voice:</label><strong><%= @pet.biography.voice %></strong></div>
-	  <div><label>Zodiac:</label><strong><%= @pet.biography.zodiac %></strong></div>
-	  <div><label>Siblings:</label><strong><%= @pet.biography.siblings %></strong></div>
-	  <div><label>Birthday:</label><strong><%= @pet.biography.birthday.strftime("%B %d") %></strong></div>
-    </div>
-  <% end %>
+  <%= render_bio_box(@pet) %>
 </div>
 
 <div class="box">

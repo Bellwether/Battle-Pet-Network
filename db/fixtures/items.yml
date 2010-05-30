@@ -1,3 +1,15 @@
+soft_beetle:
+  name: Soft Beetle
+  description: An unfortunate victim of change, the soft beetle's carapace has transformed from a protective shell into a chewy, flavorful snack. These poor insects can be readily found throughout urban ruins.
+  item_type: Food
+  power: 5
+  required_rank: 1
+  cost: 2
+  rarity: 1
+  stock: 200
+  stock_cap: 200
+  restock_rate: 25
+      
 cat_grass:
   name: Cat Grass
   description: Coarse, oaty cereal grass rich with antioxidants and vitamins. Can be found anywhere in the creaveses of the urban landscape.
@@ -6,6 +18,54 @@ cat_grass:
   required_rank: 1
   cost: 5
   rarity: 3
+  stock: 75
+  stock_cap: 75
+  restock_rate: 10
+  
+mega_grub:
+  name: Mega Grub
+  description: A lumbering, bloated grub with great burrowing mandables and seventy seven thousand legs. When extracted from its root grotto and stripped to the meat, it becomes a nutritious meal.
+  item_type: Food
+  power: 30
+  required_rank: 1
+  cost: 30
+  rarity: 25
+  stock: 50
+  stock_cap: 50
+  restock_rate: 5
+  
+dairy_milk:
+  name: Dairy Milk
+  description: When the dairy cows revoluted, fresh milk become a valuable luxury. A thick bottle of dairy milk is sure to sate any pet.
+  item_type: Food
+  power: 30
+  required_rank: 1
+  cost: 30
+  rarity: 40
+  stock: 25
+  stock_cap: 25
+  restock_rate: 5  
+  
+leviathon_salmon:
+  name: Leviathon Salmon
+  description: Evolution's hand has made a monstrosity of the stream salmon, multiplying its size and apendages, creating a hybrid capable of effortless upstream travel and fins that smash through river dams. The leviathon is one of the greatest freshwater meals.
+  item_type: Food
+  power: 50
+  required_rank: 3
+  cost: 25
+  rarity: 40
+  stock: 25
+  stock_cap: 25
+  restock_rate: 5  
+  
+glass_tuna:
+  name: Glass Tuna
+  description: Succulent and rich in nutriants, glass tuna have evolved to a disorienting transulcent state that lets them hide from predators. If they can be spotted and caught, they provide an excellent meal.
+  item_type: Food
+  power: 20
+  required_rank: 1
+  cost: 10
+  rarity: 20
   stock: 75
   stock_cap: 75
   restock_rate: 10

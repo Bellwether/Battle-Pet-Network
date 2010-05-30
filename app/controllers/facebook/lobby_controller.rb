@@ -10,6 +10,12 @@ class Facebook::LobbyController < Facebook::FacebookController
   def guide
   end
   
+  def tos
+  end
+  
+  def contact
+  end
+  
   def invite
     @exclude_ids = current_user.facebook_friend_ids
   end

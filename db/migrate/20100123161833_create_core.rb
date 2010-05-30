@@ -403,6 +403,7 @@ class CreateCore < ActiveRecord::Migration
     add_index :messages, [:recipient_id,:created_at]
     
     create_table :activity_streams do |t|
+      t.boolean :new, :null => false, :default => false
       t.belongs_to :actor, :polymorphic => true
       t.belongs_to :object, :polymorphic => true
       t.belongs_to :indirect_object, :polymorphic => true
