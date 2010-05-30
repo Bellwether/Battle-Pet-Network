@@ -23,7 +23,7 @@
 		  </div>
 		  <div>
 			<label>Charms</label>
-		    <p class="em">Your pet can acquire various charms to help please and control wild humans.<
+		    <p class="em">Your pet can acquire various charms to help please and control wild humans.</p>
 			<% if current_user_pet.belongings.type_is('Charm').count > 0 %>
 			  <ul id='charms'>
 			  <% current_user_pet.belongings.type_is('Charm').each do |c| %>

@@ -10,7 +10,7 @@ class Facebook::FacebookController < ApplicationController
   after_filter :store_location
   
   def has_pet?
-    current_user_pet != nil
+    current_user_pet && current_user_pet != nil
   end
 
   def has_shop?

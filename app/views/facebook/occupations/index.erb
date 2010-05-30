@@ -13,7 +13,7 @@
 	  <table>
 		<tr>
 		<td>
-		  <div class="<%="occupation-#{o.slug}-mid" %>"></div>
+		  <%= avatar_image(o,'medium') %>
 		  <% if o.cost > 0 && o.pet_can?(current_user_pet) %>
 			<p>
 			  <span class="occupation-button">
