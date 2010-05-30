@@ -5,13 +5,13 @@
     <%= fb_tab_item "Shop", '', :align => :left if has_shop? %>
   <% end %>
   <%= fb_tab_item (has_pet? ? "Rival Pets" : "Pets"), '', :align => :left %>
-  <%= fb_tab_item (has_pack? ? "Rival Packs" : "Packs"), nested_facebook_url(facebook_packs_path), :align => :left %>
-  <%= fb_tab_item (has_pet? ? "Hunting" : "Sentients"), nested_facebook_url(facebook_sentients_path), :align => :left %>
-  <%= fb_tab_item "Humans", nested_facebook_url(facebook_humans_path), :align => :left %>
-  <%= fb_tab_item "Market", nested_facebook_url(facebook_items_path), :align => :left %>
+  <%= fb_tab_item (has_pack? ? "Rival Packs" : "Packs"), facebook_nested_url(facebook_packs_path), :align => :left %>
+  <%= fb_tab_item (has_pet? ? "Hunting" : "Sentients"), facebook_nested_url(facebook_sentients_path), :align => :left %>
+  <%= fb_tab_item "Humans", facebook_nested_url(facebook_humans_path), :align => :left %>
+  <%= fb_tab_item "Market", facebook_nested_url(facebook_items_path), :align => :left %>
 
   <%= fb_tab_item "Lobby", '', :align => :right %>
-  <%= fb_tab_item "About", nested_facebook_url(facebook_about_path), :align => :right %>
-  <%= fb_tab_item "Guide", nested_facebook_url(facebook_guide_path), :align => :right %>
-  <%= fb_tab_item "Leaderboard", nested_facebook_url(facebook_leaderboards_path), :align => :right %>
+  <%= fb_tab_item "About", facebook_nested_url(facebook_about_path), :align => :right %>
+  <%= fb_tab_item "Guide", facebook_nested_url(facebook_guide_path), :align => :right %>
+  <%= fb_tab_item "Leaderboard", facebook_nested_url(facebook_leaderboards_path), :align => :right %>
 <% end %>

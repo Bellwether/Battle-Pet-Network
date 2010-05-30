@@ -10,6 +10,5 @@ class FacebookControllerTest < ActionController::IntegrationTest
     assert_response :success
     assert_tag :tag => "fb:tabs"
     assert_tag :tag => "fb:bookmark"
-    assert_tag :tag => "fb:fan"
   end
 end

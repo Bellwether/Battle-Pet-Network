@@ -6,6 +6,16 @@ class ActivityStreamTest < ActiveSupport::TestCase
     @user = users(:one)
   end
   
+  def test_log
+    activity = ActivityStream.log!('cat','ns',@pet,@pet,@pet,{:logged => 'test'})
+    assert_equal 'cat', activity.category
+    assert_equal 'ns', activity.namespace
+    assert_equal @pet, activity.actor
+    assert_equal @pet, activity.object
+    assert_equal @pet, activity.indirect_object
+    assert_equal 'test', activity.activity_data[:logged]
+  end
+  
   def test_set_polymorph_data
     [@pet,@user].each do |m|
       ['actor','object','indirect_object'].each do |a|

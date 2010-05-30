@@ -1,5 +1,10 @@
 /* layout */
 
+h2 {
+  font-size: 15px;
+  margin: 5px 0 10px 0;	
+}
+
 #contents { 
   font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
   font-size:11px; 
@@ -19,6 +24,7 @@
 #contents .box { 
   background:#F7F7F7 none repeat scroll 0 0; 
   border:1px solid #BDC7D8; 
+  margin-bottom: 15px;
   padding:5px; 
   width: 475px; 
 }

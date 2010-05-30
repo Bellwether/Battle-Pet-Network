@@ -11,12 +11,12 @@ module Facebook::FacebookHelper
     image_tag "#{request.protocol}#{request.host_with_port}/images/#{path}"
   end
   
-  def facebook_link_to(text,url, options = {})
-    link_to text, "#{url}", options
+  def facebook_link_to(text, url, options = {})
+    link_to text, facebook_nested_url(url), options
   end
   
   def facebook_nested_url(url)
-    return url.gsub(/facebook\//i,'') 
+    return url.gsub(/facebook\/*/i,'') 
   end
   
   def avatar_image(model,size='small')
@@ -79,7 +79,9 @@ module Facebook::FacebookHelper
   end
     
   def fb_fan_button
-   "<fb:fan profile_id=\"#{AppConfig.facebook.app_id}\" stream=\"0\" connections=\"0\" width=\"200\" height=\"64\" logobar=\"false\"></fb:fan>"
+    # should be replaced by 'like' button but doesn't work with new fb api
+    # "<fb:fan profile_id=\"#{AppConfig.facebook.app_id}\" stream=\"0\" connections=\"0\" width=\"200\" height=\"64\" logobar=\"false\"></fb:fan>"
+      return ""
   end
   
   def cell_table(array,cols=3,options = {})

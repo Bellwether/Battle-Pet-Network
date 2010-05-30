@@ -4,11 +4,22 @@ class ActivityStream < ActiveRecord::Base
   belongs_to :indirect_object, :polymorphic => true
 
   validates_presence_of :category, :namespace
-  validates_inclusion_of :category, :in => %w(analytics)
+  validates_inclusion_of :category, :in => %w(analytics combat)
   
   after_validation_on_create :set_polymorph_data
   after_validation_on_create :set_description_data
   after_create :send_notifications
+  
+  class << self
+    def log!(category,namespace,actor=nil,object=nil,indirect_object=nil,data={})
+      return create(:category => category, 
+                    :namespace => namespace, 
+                    :actor => actor,
+                    :object => object,
+                    :indirect_object => indirect_object,
+                    :activity_data => data)
+    end
+  end
   
   def after_initialize(*args)
     self.activity_data ||= {}
@@ -19,6 +30,7 @@ class ActivityStream < ActiveRecord::Base
     object_name = activity_data[:object_name]
     self.activity_data[:description] = 
       case category
+        when 'combat'
         when 'analytics'
           case namespace
             when 'registration'
