@@ -1,6 +1,59 @@
 <% content_for :page_title do %><h2>Wild Humans</h2><% end %>
 
 <div class="sidebox slim right">
+  <div class="box slim">
+    <h4>Human Taming</h4>
+    <p class="em">Humans are mistrusting creatures who must be found and domesticated before they can be kenneled 
+	and put to good use. Taming humans is a two step process:</p>
+	<p><strong>First</strong>, the pet must search for and find a wild human among the wastes. Some humans are more cunning 
+	than others or else nearly extinct, while others can be found with relative ease.</p>
+	<p><strong>Second</strong>, the pet must win the affections of the human, tricking it into submission and service.</p>
+	<p class="em note-bene"><strong>NOTE:</strong> Humans are prone to infighting, and keeping too many kenneled together 
+	may result in the creatures attempting to destroy each other.</p>
+	
+	<% if has_pet? %>
+	  <div id="tame-human">
+		  <div>
+			<span class='strong right'><%= (current_user_pet.affection + current_user_pet.affection_bonus) %></span>
+			<label>Odds of Success:</label>
+		  </div>
+		  <div>
+			<span class='strong right'><%= current_user_pet.affection %></span>
+			<label>Pet's Affection:</label>
+		  </div>
+		  <div>
+			<label>Charms</label>
+		    <p class="em">Your pet can acquire various charms to help please and control wild humans.<
+			<% if current_user_pet.belongings.type_is('Charm').count > 0 %>
+			  <ul id='charms'>
+			  <% current_user_pet.belongings.type_is('Charm').each do |c| %>
+			    <li>
+			      <div class="left"><%= avatar_image(c.item'small') %></div>
+			      <div>
+				    <label><%= c.item.name %></label><br />
+				    <label>+<%= c.item.power %> Bonus</label>
+				  </div>
+			    </li>
+			  <% end %>
+			  </ul>
+			<% else %>
+			  <p class="em">Your pet currently has no charms.</p>
+			<% end %>
+		  </div>
+		  <div>
+			<span class='strong right'><%= @occupation.cost %></span>
+			<label>Endurance Cost:</label>
+		  </div>
+		  <% if @occupation.pet_can?(current_user_pet) %>
+			<p>
+			  <span class="occupation-button">
+			  <%= facebook_link_to "Try to Find and Tame a Human", attempt_facebook_occupation_path(@occupation) %>
+			  </span>
+			</p>
+		  <% end %>		
+	  </div>
+	<% end %>
+  </div>
 </div>
 
 <div class="box">

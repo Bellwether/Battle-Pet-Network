@@ -2,6 +2,7 @@ class Occupation < ActiveRecord::Base
   has_many :pets
   
   named_scope :scavenging, :conditions => "name LIKE 'Scavenging'", :limit => 1  
+  named_scope :taming, :conditions => "name LIKE 'Human Taming'", :limit => 1    
   
   validates_inclusion_of :status, :in => ['Prowling','Scavenging','Human Taming','Shopkeeping']
     

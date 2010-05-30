@@ -24,6 +24,8 @@ module Facebook::FacebookHelper
     if model.is_a?(Pet)
       breed_path = model.breed.name.downcase.pluralize
       path = "#{breed_path}/#{path}"
+    elsif model.is_a?(Item)
+      path = "#{path}/types" if size != 'medium' # medium show item detail, otherwise show type
     end
     filename = model.name.downcase.gsub(/\s/,'-')
     path = "#{path}/#{size}/#{filename}.png"
@@ -86,18 +88,18 @@ module Facebook::FacebookHelper
   
   def cell_table(array, cols=3, options = {}, &proc)
     if array.blank?
-      concat("", proc.binding)
+      concat("")
     end
     
     output = "<table class='#{(options[:class] || '')}'><tbody>"
-    concat(output, proc.binding)
+    concat(output)
     
     array.each_with_index do |row,idx|
-      concat("<tr>", proc.binding) if idx % cols == 0
+      concat("<tr>") if idx % cols == 0
       proc.call(row, idx)
-      concat("</tr>", proc.binding) if idx % cols == (cols - 1) || idx == (array.size - 1)
+      concat("</tr>") if idx % cols == (cols - 1) || idx == (array.size - 1)
     end
-    concat("</tbody></table>", proc.binding)
+    concat("</tbody></table>")
   end  
   
   def show_for_pet(other_pet=nil)
