@@ -6,7 +6,7 @@
   <div class="box slim">	
     <h4>Specialist Pet Shops</h4>
     <% if @shops.blank? %>
-      <p class="empty em">Hmm. None of the <% facebook_link_to 'other pet shops', facebook_shops_path %> are specializing in 
+      <p class="empty em">Hmm. None of the <%= facebook_link_to 'other pet shops', facebook_shops_path %> are specializing in 
 	  these items.</p>
     <% else %>
       <table id="shops">
