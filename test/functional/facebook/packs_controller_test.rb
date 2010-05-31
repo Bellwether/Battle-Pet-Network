@@ -12,6 +12,13 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     @member = pack_members(:alpha_member).pet
   end
   
+  def test_index
+    mock_user_facebooking
+    facebook_get :index, :fb_sig_user => nil
+    assert_response :success
+    assert_template 'index'
+  end
+  
   def test_get_pack
     mock_user_facebooking
     facebook_get :show, :id => packs(:alpha).id, :fb_sig_user => nil

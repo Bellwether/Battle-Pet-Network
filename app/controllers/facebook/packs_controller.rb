@@ -1,5 +1,8 @@
 class Facebook::PacksController < Facebook::FacebookController
-  before_filter :ensure_application_is_installed_by_facebook_user, :ensure_has_pet, :except => [:show]
+  before_filter :ensure_application_is_installed_by_facebook_user, :ensure_has_pet, :except => [:show, :index]
+  
+  def index
+  end
   
   def show
     @pack = Pack.include_pack_members.find(params[:id])

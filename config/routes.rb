@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
       p.resources :signs, :only => [:create]
     end
     
-    f.resources :packs, :only => [:new,:create,:show] do |p|
+    f.resources :packs, :only => [:index,:new,:create,:show] do |p|
     end
     
     f.resources :sentients, :only => [:index,:show] do |s|
