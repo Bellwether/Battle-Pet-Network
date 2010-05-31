@@ -2,17 +2,21 @@
 <div class="right">
   <div class="box half">
     <h3>Strongest Fighters</h3>
-    <table class="leaderboard">
+    <table class="leaderboard" id="strongest">
 	  <tbody>
 		<tr><th>Rank</th><th>Wins</th><th>Name</th><th>Level</th><th>Record</th></tr>
-		<% @strongest.ranks.each do |r| %>
-		<tr class="ranking">
-		  <td><%= r.rank %></td>
-		  <td><%= r.rankable.challenges.wins.count %></td>
-		  <td><%= r.rankable.name %></td>
-		  <td><%= r.rankable.level_rank_count %></td>
-		  <td><%= r.rankable.battle_record %></td>
-		</tr>
+		<% if @strongest.blank? %>
+		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
+		<% else %>
+		  <% @strongest.ranks.each do |r| %>
+		    <tr class="ranking">
+		      <td><%= r.rank %></td>
+		      <td><%= r.rankable.challenges.wins.count %></td>
+		      <td><%= r.rankable.name %></td>
+		      <td><%= r.rankable.level_rank_count %></td>
+		      <td><%= r.rankable.battle_record %></td>
+		    </tr>
+		  <% end %>
 		<% end %>
 	  </tbody>
 	</table>
@@ -21,17 +25,21 @@
 <div class="left">
   <div class="box half">
     <h3>Indefatigable Fighters</h3>
-    <table class="leaderboard">
+    <table class="leaderboard" id="indefatigable">
 	  <tbody>
 		<tr><th>Rank</th><th>Battles</th><th>Name</th><th>Level</th><th>Record</th></tr>
-		<% @indefatigable.ranks.each do |r| %>
-		<tr class="ranking">
-		  <td><%= r.rank %></td>
-		  <td><%= r.rankable.challenges.recent.count %></td>
-		  <td><%= r.rankable.name %></td>
-		  <td><%= r.rankable.level_rank_count %></td>
-		  <td><%= r.rankable.battle_record %></td>
-		</tr>
+		<% if @indefatigable.blank? %>
+		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
+		<% else %>
+		  <% @indefatigable.ranks.each do |r| %>
+		    <tr class="ranking">
+		      <td><%= r.rank %></td>
+		      <td><%= r.rankable.challenges.recent.count %></td>
+		      <td><%= r.rankable.name %></td>
+		      <td><%= r.rankable.level_rank_count %></td>
+		      <td><%= r.rankable.battle_record %></td>
+		    </tr>
+		  <% end %>
 		<% end %>
 	  </tbody>
 	</table>
