@@ -2,11 +2,7 @@
   <%= facebook_stylesheet_link_tag "facebook" %>
   <%= facebook_javascript_tag "facebooker" %>
 
-  <% fb_dashboard do %>		
-    <div id="hooks right">
-	  <%= fb_bookmark_button %>
-  	  <%= fb_fan_button %>
-    </div>
+  <% fb_dashboard do %>	
   <% end %>
 
   <div id="contents">
@@ -17,6 +13,10 @@
 	</p>
 	
 	<div id="header">
+      <div id="hooks right">
+	    <%= fb_bookmark_button %>
+  	    <%= fb_fan_button %>
+      </div>
 	  <div id="tabs">
 		<%= render_tabs %>
 	  </div>

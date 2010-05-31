@@ -20,7 +20,7 @@ breeds.push(<%=b.to_json(:include => [:favorite_action])%>);
 function breedSelected(idx,avatar) { 
   var breed = breeds[idx].breed;
 
-  document.getElementById('pet-breed-id').setValue(breed.id);
+  document.getElementById('pet_breed_id').setValue(breed.id);
   document.getElementById('breed-details-name').setTextValue(breed.name); 	
   document.getElementById('breed-details-intelligence').setTextValue(breed.intelligence);
   document.getElementById('breed-details-fortitude').setTextValue(breed.fortitude);

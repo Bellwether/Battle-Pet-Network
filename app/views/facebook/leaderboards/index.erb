@@ -5,7 +5,7 @@
     <table class="leaderboard">
 	  <tbody>
 		<tr><th>Rank</th><th>Wins</th><th>Name</th><th>Level</th><th>Record</th></tr>
-		<% @strongest.rankings.first.ranks.each do |r| %>
+		<% @strongest.ranks.each do |r| %>
 		<tr class="ranking">
 		  <td><%= r.rank %></td>
 		  <td><%= r.rankable.challenges.wins.count %></td>
@@ -24,7 +24,7 @@
     <table class="leaderboard">
 	  <tbody>
 		<tr><th>Rank</th><th>Battles</th><th>Name</th><th>Level</th><th>Record</th></tr>
-		<% @indefatigable.rankings.first.ranks.each do |r| %>
+		<% @indefatigable.ranks.each do |r| %>
 		<tr class="ranking">
 		  <td><%= r.rank %></td>
 		  <td><%= r.rankable.challenges.recent.count %></td>
