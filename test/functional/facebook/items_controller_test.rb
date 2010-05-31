@@ -24,7 +24,9 @@ class Facebook::ItemsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'store'
     assert !assigns(:items).blank?
+    assert !assigns(:shops).blank?
     assert_tag :tag => "h3", :attributes => { :id => "food-store-title" }
+    assert_tag :tag => "table", :attributes => { :id => "shops" }
     assert_no_tag :tag => "span", :attributes => { :class => "shopping-button" }
   end
   

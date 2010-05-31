@@ -20,7 +20,7 @@ module Facebook::FacebookHelper
   end
   
   def avatar_image(model,size='small')
-    path = model.class.name.downcase.pluralize
+    path = "#{model.class.name.downcase}s"
     if model.is_a?(Pet)
       breed_path = model.breed.name.downcase.pluralize
       path = "#{breed_path}/#{path}"

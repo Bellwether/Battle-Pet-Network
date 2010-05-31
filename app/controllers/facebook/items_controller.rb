@@ -6,6 +6,7 @@ class Facebook::ItemsController < Facebook::FacebookController
   
   def store
     @items = Item.marketable.type_is(params[:id]).paginate(:order => 'items.stock DESC', :page => params[:page])
+    @shops = Shop.specialists(params[:id])
   end
   
   def purchase

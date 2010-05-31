@@ -3,7 +3,18 @@
 <div class="sidebox slim right">
   <%= render_kibble_box %>
 
-  <div class="box slim">
+  <div class="box slim">	
+    <h4>Specialist Pet Shops</h4>
+    <% if @shops.blank? %>
+      <p class="empty em">Hmm. None of the <% facebook_link_to 'other pet shops', facebook_shops_path %> are specializing in 
+	  these items.</p>
+    <% else %>
+      <table id="shops">
+	    <% @shops.each do |shop| %>
+	      <tr><td><%= facebook_link_to shop.name, facebook_shop_path(shop) %></td><td>(<%= shop.inventories_count %>)</td></tr>
+	    <% end %>
+	  </table>
+	<% end %>
   </div>
 </div>
 
@@ -15,7 +26,7 @@
 	  <table class="item">
 		<tr><th colspan="2"><%= i.name %></th></tr>
 		<tr>
-		  <td rowspan="5"><div class='item-#{i.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
+		  <td rowspan="5"><%= avatar_image(i,'medium') %></td>
 		  <td>
 			<% if has_pet? %>
 			  <% if current_user_pet.kibble >= i.cost && i.stock > 0 %>

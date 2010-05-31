@@ -15,6 +15,7 @@ class Shop < ActiveRecord::Base
   after_create :set_shopkeeper
       
   named_scope :include_pet, :include => [:pet]
+  named_scope :specialists, lambda { |specialty|  { :conditions => ["specialty LIKE ? ", specialty], :limit => 10, :order => 'inventories_count DESC' } }
   named_scope :has_item_named, lambda { |name|
     {
       :conditions => ["items.name LIKE ?", "%#{name}%"],
