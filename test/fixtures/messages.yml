@@ -5,3 +5,11 @@ first:
   body: message test here.
   status: new
   created_at: 2010-1-1
+  
+second:
+  sender: burmese
+  recipient: siamese
+  subject: hello message
+  body: message test here.
+  status: new
+  created_at: 2010-3-3

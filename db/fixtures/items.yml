@@ -21,10 +21,22 @@ cat_grass:
   stock: 75
   stock_cap: 75
   restock_rate: 10
+
+scrambled_lizard:
+  name: Scrambled Lizard
+  description: Crushed, clawed, gutted, diced, splattered, exploded, smashed - there are many ways to find scrambled lizard as these abundant little morsels are dashed by a dangerous world.
+  item_type: Food
+  power: 5
+  required_rank: 1
+  cost: 3
+  rarity: 20
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
   
 mega_grub:
   name: Mega Grub
-  description: A lumbering, bloated grub with great burrowing mandables and seventy seven thousand legs. When extracted from its root grotto and stripped to the meat, it becomes a nutritious meal.
+  description: A lumbering bloated grub with great burrowing mandables and seventy seven thousand legs. When extracted from its root grotto and stripped to the meat it becomes a nutritious meal.
   item_type: Food
   power: 30
   required_rank: 1
@@ -36,7 +48,7 @@ mega_grub:
   
 dairy_milk:
   name: Dairy Milk
-  description: When the dairy cows revoluted, fresh milk become a valuable luxury. A thick bottle of dairy milk is sure to sate any pet.
+  description: When the dairy cows revoluted, fresh milk become a valuable luxury. A thick bottle of pastorized dairy milk is sure to sate any pet.
   item_type: Food
   power: 30
   required_rank: 1

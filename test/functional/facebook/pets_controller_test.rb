@@ -146,4 +146,14 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert flash[:error]
     assert_equal claw.id, @pet.reload.favorite_action_id
   end
+  
+  def test_profile
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :profile, :fb_sig_user => @user.facebook_id
+    assert_response :success
+    assert_template 'profile'
+    assert !assigns(:pet).blank?
+    assert !assigns(:messages).blank?
+    assert !assigns(:signs).blank?
+  end
 end

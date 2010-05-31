@@ -3,15 +3,17 @@
 <div class="sidebox slim right">
   <%= render_bio_box(@pet) %>
 
-  <div class="box slim biography">
+  <%= render_occupation_picker(@pet) %>
+
+  <div class="box slim signs">
     <h4>Signs</h4>
-    <p class="em">When other pets visit you, you can interact in a variety of ways.</p>
+    <p class="em">When other pets visit, you can interact in a variety of ways.</p>
 	<% if @signs.size > 0 %>
 	  <p>Indeed, some pets have visited:</p>
 	  <ul id="signs">
 		<% @signs.each do |sign| %>
 		  <li class="sign">
-			<% facebook_link_to sender.name, facebook_pet_path(sender) %> <%= "#{sign.verb} you" %>
+			<% facebook_link_to sign.sender.name, facebook_pet_path(sign.sender) %> <%= "#{sign.verb} you" %>
 			<%= "#{time_ago_in_words(sign.created_at)} ago" %>
 		  </li>
 		<% end %>
@@ -23,6 +25,26 @@
 
   <div class="box slim messages">
     <h4>Messages</h4>
+    <p>
+	  <strong><%= facebook_link_to 'Go to Inbox', inbox_facebook_messages_path %></strong>  |  
+	  <%= facebook_link_to 'Go to Outbox', outbox_facebook_messages_path %>
+	</p>
+	<% if @messages.size > 0 %>
+      <table class="messages">
+	  <tbody>
+		<% @messages.each do |message| %>
+		  <tr>
+			<td><%= message_icon(message) %></td>
+			<td><%= facebook_link_to message.sender.name, facebook_pet_path(message.sender) %></td>
+			<td><%= facebook_link_to message.subject, facebook_message_url(message) %></td>
+  			<td><%= "#{time_ago_in_words(message.created_at)} ago" %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+      </table>
+	<% else %>
+	  <p class="empty">You have no messages in your inbox</p>
+	<% end %>
   </div>
 </div>
 
@@ -56,7 +78,7 @@
     </tbody>
   </table>	
   <p class="right">
-    <%= facebook_link_to "View Your Combat Profile", combat_facebook_pet_profile(@pet) %>
+    <%= facebook_link_to "View Your Combat Profile", combat_facebook_pet_path(@pet) %>
   </p>
 </div>
 

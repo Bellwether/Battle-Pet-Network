@@ -1,5 +1,6 @@
 class Facebook::PetsController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show]
+  before_filter :ensure_has_pet, :only => [:combat,:profile,:update]
   
   def index
     scope = Pet.include_user
@@ -17,6 +18,7 @@ class Facebook::PetsController < Facebook::FacebookController
   
   def profile
     @pet = current_user_pet
+    @messages = current_user_pet.inbox(:limit => 5)
     @signs = @pet.signs
   end
   
