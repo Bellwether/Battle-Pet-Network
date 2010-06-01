@@ -1,6 +1,7 @@
 rat_hunt:
   sentient: leper_rat
   created_at: <%= Time.now - 1.hour %>
+  updated_at: 2009-8-4 13:30:00
   
 omega_rat_hunt:
   sentient: omega_rat

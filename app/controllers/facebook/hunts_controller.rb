@@ -25,6 +25,6 @@ class Facebook::HuntsController < Facebook::FacebookController
   
   def show
     @hunt = current_user_pet.hunters.find_by_hunt_id(params[:id])
-    @hunts = current_user_pet.hunters.all(:limit => 12)
+    @hunts = current_user_pet.hunters.all(:limit => 12).map(&:hunt)
   end
 end

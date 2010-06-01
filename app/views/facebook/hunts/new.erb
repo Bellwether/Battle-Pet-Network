@@ -13,6 +13,7 @@
 </table>
 
 <% form_for @hunt, :url => facebook_nested_url(facebook_sentient_hunts_path(@sentient)), :html => { :method => :post} do |f| %>	
+<%= facebook_form_errors 'hunt' %>
 <table class="comparison-table">
   <tbody>
 	<tr>

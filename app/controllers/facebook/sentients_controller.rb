@@ -5,6 +5,6 @@ class Facebook::SentientsController < Facebook::FacebookController
   
   def show
     @sentient = Sentient.threats.find(params[:id])
-    @hunts = @sentient.hunts(:limit => 12)
+    @hunts = @sentient.hunts.all(:limit => 12)
   end
 end

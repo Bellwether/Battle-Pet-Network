@@ -21,6 +21,7 @@
 <div class="box full">
   <h4>Your Pet's Battle Strategy</h4>
   <% form_for @challenge, :url => facebook_nested_url(facebook_challenges_path), :html => { :method => :post} do |f| %>	
+    <%= facebook_form_errors 'challenge' %>
     <div class="challenge">
 	  <%= render_strategy_picker(f) %>
 	</div>

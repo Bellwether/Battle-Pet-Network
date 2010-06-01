@@ -24,6 +24,7 @@
 	become "insolvent" and members will loose all benefits until the pack's treasury is replenished.</p>
 
   <% form_for @pack, :url => facebook_nested_url(facebook_packs_path), :html => { :method => :post} do |f| %>
+  <%= facebook_form_errors 'pack' %>
   <table class='form'>
     <tbody>
     <tr>
