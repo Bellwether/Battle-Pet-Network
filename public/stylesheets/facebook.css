@@ -25,9 +25,9 @@ tr {
   width:100%;
 }
 #hooks div {
-  margin:0 10px 0 0;
+  margin:0 10px 10px 0;
   text-align: right;
-  width:250px;
+  width:100%;
 }
 
 #contents .box { 
@@ -116,3 +116,12 @@ td.radio-cell .input:hover {
 .full { width: 740px !important;}
 .slim { margin-right:15px; width: 250px !important;}
 .half { width: 360px !important;}
+
+/* avatar backgrounds */
+
+.avatar-bg-siamese { background: url(../images/pets/cats/siamese.png) no-repeat; }
+.avatar-bg-shorthair { background: url(../images/pets/cats/shorthair.png) no-repeat; }
+.avatar-bg-russian_blue { background: url(../images/pets/cats/russian-blue.png) no-repeat; }
+.avatar-bg-persian { background: url(../images/pets/cats/persian.png) no-repeat; }
+.avatar-bg-burmese { background: url(../images/pets/cats/burmese.png) no-repeat; }
+.avatar-bg-maine_coon { background: url(../images/pets/cats/maine-coon.png) no-repeat; }

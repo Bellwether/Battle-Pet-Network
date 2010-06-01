@@ -10,17 +10,21 @@ class Facebook::ChallengesController < Facebook::FacebookController
   def new
     @pet = Pet.find(params[:pet_id])
     @challenge = Challenge.new(:attacker => current_user_pet, :defender => @pet)
-    @challenge.challenge_type = "1v1"
+    @gear = @pet.belongings.battle_ready
+  end
+  
+  def open
+    @pet = current_user_pet
+    @challenge = Challenge.new(:attacker => current_user_pet)
     @gear = @pet.belongings.battle_ready
   end
   
   def create
-    @pet = Pet.find(params[:pet_id])
+    @pet = Pet.find_by_id(params[:pet_id])
     @challenge = Challenge.new(params[:challenge])
     @challenge.attacker = current_user_pet
     @challenge.attacker_strategy.combatant = @challenge.attacker unless @challenge.attacker_strategy.blank?
     @challenge.defender = @pet
-    @challenge.challenge_type = "1v1"
     
     if @challenge.save
       flash[:notice] = "Challenge sent!"

@@ -67,4 +67,14 @@ class ChallengeTest < ActiveSupport::TestCase
       assert_not_nil challenge.description
     end
   end
+  
+  def test_set_challenge_type
+    one_on_one = Challenge.new(:attacker => pets(:siamese), :defender => pets(:persian))
+    one_on_one.set_challenge_type
+    assert_equal "1v1", one_on_one.challenge_type
+    
+    open = Challenge.new(:attacker => pets(:siamese))
+    open.set_challenge_type
+    assert_equal "1v0", open.challenge_type
+  end
 end

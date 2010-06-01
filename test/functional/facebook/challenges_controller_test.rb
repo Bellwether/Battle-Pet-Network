@@ -44,7 +44,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     }
   end
   
-  def test_get_new
+  def test_new
     mock_user_facebooking(@user.facebook_id)
     facebook_get :new, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id
     assert_response :success
@@ -59,7 +59,20 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     }
   end
   
-  def test_create
+  def test_open
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :open, :fb_sig_user => @user.facebook_id
+    assert_response :success
+    assert_template 'open'
+    assert !assigns(:challenge).blank?
+    assert !assigns(:pet).blank?
+    assert !assigns(:gear).blank?
+    assert_tag :tag => "form", :descendant => {
+      :tag => "input", :attributes => { :type => "submit" }
+    }
+  end
+  
+  def test_create_1v1
     Challenge.destroy_all
     mock_user_facebooking(@user.facebook_id)   
     assert_difference ['Challenge.count','Strategy.count'], +1 do

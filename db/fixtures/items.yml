@@ -58,17 +58,41 @@ dairy_milk:
   stock_cap: 25
   restock_rate: 5  
   
+lost_caviar
+  name: Lost Caviar
+  description: Top-shelf delicacy of salty black roe, richly preserved by human canning technology. Rarely are taste and nutrition so exquisitely married in one dish!  
+  item_type: Food
+  power: 60
+  required_rank: 2
+  cost: 20
+  rarity: 35
+  stock: 25
+  stock_cap: 25
+  restock_rate: 5 
+  
 leviathon_salmon:
   name: Leviathon Salmon
   description: Evolution's hand has made a monstrosity of the stream salmon, multiplying its size and apendages, creating a hybrid capable of effortless upstream travel and fins that smash through river dams. The leviathon is one of the greatest freshwater meals.
   item_type: Food
-  power: 50
+  power: 70
   required_rank: 3
   cost: 25
   rarity: 40
   stock: 25
   stock_cap: 25
-  restock_rate: 5  
+  restock_rate: 5 
+
+mre:
+  name: M.R.E. (Meal, Ready-to-Eat)
+  description: Human field rations once used by their armies and which can generally be scavenged from the ruins of war camps. The contents are stale and questionable (even for humans), but can be picked clean of the choicest tidbits (like cheese).
+  item_type: Food
+  power: 40
+  required_rank: 3
+  cost: 25
+  rarity: 30
+  stock: 25
+  stock_cap: 25
+  restock_rate: 5
   
 glass_tuna:
   name: Glass Tuna

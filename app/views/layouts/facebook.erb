@@ -2,10 +2,9 @@
   <%= facebook_stylesheet_link_tag "facebook" %>
   <%= facebook_javascript_tag "facebooker" %>
 
-  <% fb_dashboard do %>	
-  <% end %>
-
   <div id="contents">
+    <%= render_dashboard_header %>
+
 	<p id="beta">
 	  <strong>DEVELOPMENT WARNING:</strong> The Battle Pet Network is currently under furious development and, in the mad 
 	  rush to version 1.0, the Facebook UI will undergo frequent changes, user data may be reset, and the game's stability 

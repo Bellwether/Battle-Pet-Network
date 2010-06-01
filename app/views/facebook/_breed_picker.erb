@@ -1,9 +1,7 @@
 <fb:editor-custom>
 <div class='breed-picker'>
 <% cell_table(@breeds) do |b,idx| %>
-  <td onclick="return breedSelected(<%="#{idx},'#{b.slug}'"%>);" 
-	  class="radio-cell avatar-<%=b.slug %>-small" 
-	  id="breed-<%=idx%>">
+  <td onclick="return breedSelected(<%="#{idx},'#{b.slug}'"%>);" class="radio-cell avatar-bg-<%=b.slug %>" id="breed-<%=idx%>">
 	<%= radio_button_tag("pet-breed", b.id, (b.id == @pet.breed_id), {:class => "input"}) %>
     <span><%= b.name %></span>
   </td>	
@@ -26,6 +24,8 @@ function breedSelected(idx,avatar) {
   document.getElementById('breed-details-fortitude').setTextValue(breed.fortitude);
   document.getElementById('breed-details-health').setTextValue(breed.health);
   document.getElementById('breed-details-endurance').setTextValue(breed.endurance);
+  document.getElementById('breed-details-power').setTextValue(breed.power);
+  document.getElementById('breed-details-affection').setTextValue(breed.affection);
   document.getElementById('breed-details-action').setTextValue(breed.favorite_action.name);
 	
   avatar = "avatar-"+avatar+"-mid";

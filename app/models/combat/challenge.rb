@@ -20,6 +20,8 @@ class Challenge < ActiveRecord::Base
   
   validate :validates_different_combatants, :validates_no_existing_challenge, :validates_prowling
   
+  before_validation_on_create :set_challenge_type  
+  
   named_scope :issued, :conditions => "status = 'issued'"
   named_scope :resolved, :conditions => "status = 'resolved'"  
   named_scope :for_attacker, lambda { |attacker_id| 
@@ -75,5 +77,13 @@ class Challenge < ActiveRecord::Base
   def battle!
     return if attacker_strategy_id.blank? || defender_strategy_id.blank?
     create_battle
+  end
+  
+  def set_challenge_type
+    if attacker_id && defender_id
+      self.challenge_type = "1v1"
+    elsif attacker_id && defender_id.blank?
+      self.challenge_type = "1v0"
+    end
   end
 end
