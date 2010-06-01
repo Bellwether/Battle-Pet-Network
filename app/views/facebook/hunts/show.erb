@@ -1,19 +1,7 @@
 <% content_for :page_title do %><h2>Human Profile</h2><% end %>
 
 <div class="sidebox slim right">
-  <div class="box slim">	
-    <h4>Recent Hunts</h4>
-    <p class="em">Hunting is the easiest way the earn kibble while testing your battle strategies 
-	and keeping the lands safe from sentient threats.</p>
-	<ul id="recent-hunts">
-	<% @hunts.each do |h| %>
-	  <li class="hunt">
-		<%= "#{time_ago_in_words(h.hunt.updated_at)} ago" %> you hunted a 
-		<%= h.hunt.sentient.name %> and <label><%= facebook_link_to h.outcome, facebook_hunt_path(h.hunt) %></label>.
-	  </li>
-	<% end %>
-	</ul>
-  </div>
+  <%= render_hunts_box @hunts %>
 </div>
 
 <div class="box">

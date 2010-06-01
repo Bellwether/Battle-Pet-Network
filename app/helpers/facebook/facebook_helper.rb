@@ -47,6 +47,10 @@ module Facebook::FacebookHelper
   def render_bio_box(pet)
     render :partial => '/facebook/bio_box', :locals => {:pet => pet}
   end
+
+  def render_hunts_box(hunts)
+    render :partial => '/facebook/hunts_box', :locals => {:hunts => hunts}
+  end
   
   def render_occupation_picker(pet)
     render :partial => '/facebook/occupation_picker', :locals => {:pet => pet}

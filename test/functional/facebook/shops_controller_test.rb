@@ -39,7 +39,9 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     facebook_get :index, :fb_sig_user => nil, :filter => filter
     assert !assigns(:shops).blank?
     assigns(:shops).each do |shop|
-      assert shop.inventories.map(&:item).map(&:item_type).join(' ').downcase.include?(filter.downcase)
+      if shop.inventories.size > 0
+        assert shop.inventories.map(&:item).map(&:item_type).join(' ').downcase.include?(filter.downcase)
+      end
     end
   end
 

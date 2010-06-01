@@ -20,7 +20,7 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
     assert_template 'show'
     assert !assigns(:hunt).blank?
     assert !assigns(:hunts).blank?
-    assert_tag :tag => "ul", :attributes => {:id => 'recent-hunts'}, :descendant => {
+    assert_tag :tag => "ul", :attributes => {:class => 'hunts'}, :descendant => {
       :tag => "li", :attributes => { :class => "hunt" }
     }
     assert_tag :tag => "ul", :attributes => {:class => 'logs'}, :descendant => {
