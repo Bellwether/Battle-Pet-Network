@@ -10,7 +10,7 @@
 </div>
 
 <div class="box half">
-  <% form_for @pet, :url => facebook_nested_url(facebook_pet_path) do |f| %>
+  <% form_for @pet, :url => facebook_nested_url(facebook_pets_path) do |f| %>
   <%= f.hidden_field :breed_id %>
   <table class='form'>
     <tbody>
