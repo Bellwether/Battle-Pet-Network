@@ -1,0 +1,19 @@
+siamese:
+  breed: siamese
+  user: travis_dunn
+  name: domino
+  slug: domino
+  current_health: 10
+  current_endurance: 75
+  health: 14
+  endurance: 75
+  fortitude: 4
+  intelligence: 4
+  affection: 4
+  power: 1
+  level_rank_count: 1
+  experience: 0
+  occupation: prowling
+  pack: alpha
+  level: siamese_1
+  actions: scratch,slash,claw,bite,swat,flank,dodge,leap

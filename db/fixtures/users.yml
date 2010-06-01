@@ -1,0 +1,15 @@
+travis_dunn:
+  username: Travis Dunn
+  email: cmd@travisdunn.com
+  gender: male
+  facebook_id: "608302347"
+  persistence_token: <%= Authlogic::Random.friendly_token %>
+  created_at: 2010-06-01 01:01:00
+  
+becca_graver:
+  username: Becca Graver
+  email: apps+303486038573.512970013.eda97628e680381f9916639bb16e518d@proxymail.facebook.com
+  gender: female
+  facebook_id: "512970013"
+  persistence_token: <%= Authlogic::Random.friendly_token %>
+  created_at: 2010-06-01 01:01:00  
