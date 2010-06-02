@@ -47,9 +47,9 @@
 		<tr>
 		  <td colspan="3">
 			<div>Your Pet's Hunting Strategy</div>
-	        <% form.fields_for :hunters do |h| %>
-	          <% form.fields_for :strategy do |h| %>
-			    <%= render_strategy_picker(f,'strategy') %>
+	        <% f.fields_for :hunters do |h| %>
+	          <% h.fields_for :strategy do |s| %>
+			    <%= render_strategy_picker(s,'strategy') %>
 			  <% end %>
 			<% end %>
 		  </td>

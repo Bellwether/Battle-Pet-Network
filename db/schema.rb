@@ -171,6 +171,31 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "comments", ["parent_id", "parent_type", "created_at"], :name => "index_comments_on_parent_id_and_parent_type_and_created_at"
   add_index "comments", ["pet_id"], :name => "index_comments_on_pet_id"
 
+  create_table "forum_posts", :force => true do |t|
+    t.integer  "topic_id",   :null => false
+    t.integer  "user_id"
+    t.text     "body",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forum_topics", :force => true do |t|
+    t.integer  "forum_id",                      :null => false
+    t.integer  "user_id",                       :null => false
+    t.integer  "last_poster_id",                :null => false
+    t.string   "title",          :limit => 128, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forums", :force => true do |t|
+    t.integer  "last_poster_id",                :null => false
+    t.string   "title",          :limit => 128, :null => false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "humans", :force => true do |t|
     t.string  "name",          :limit => 64,                  :null => false
     t.string  "human_type",    :limit => 32,                  :null => false
