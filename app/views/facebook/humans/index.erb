@@ -47,7 +47,7 @@
 		  <% if @occupation.pet_can?(current_user_pet) %>
 			<p>
 			  <span class="occupation-button">
-			  <%= facebook_link_to "Try to Find and Tame a Human", attempt_facebook_occupation_path(@occupation) %>
+			  <%= facebook_link_to "Try to Find and Tame a Human", attempt_facebook_occupation_path(@occupation), :method=>:put %>
 			  </span>
 			</p>
 		  <% end %>		

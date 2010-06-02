@@ -20,7 +20,7 @@
 	<td class="tleft">
 	  <table class="dotbox">
 		<tr>
-		  <td rowspan="5"><%= avatar_image(current_user_pet,'large') %></td>
+		  <td rowspan="5"><%= avatar_image(current_user_pet,'medium') %></td>
 		  <td><%= percentage_bar [current_user_pet.current_health,@sentient.health] %></td>
 		  <td><%= current_user_pet.current_health %></td>
 		</tr>
@@ -61,7 +61,8 @@
 		<tr><td>Intelligence</td></tr>
 		<tr><td>&nbsp;</td><tr>
 		<tr><th>Combat</th></tr>
-		<tr><td><%= submit_tag "Begin the Hunt"%></td></tr>
+		<tr><td><%= submit_tag "Begin the Hunt"%></td>
+	  </table>
 	</td>	
 	<td class="rightbox">
 	  <table class="dotbox">
@@ -69,7 +70,7 @@
 		  <td><%= @sentient.health %></td>
 		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health] %></td>
 		  <td rowspan="5">
-			<%= avatar_image(@sentient,'large') %>
+			<%= avatar_image(@sentient,'medium') %>
 			<span class="right strong">Population: <%= @sentient.population %></span>
 		  </td>
 		</tr>
