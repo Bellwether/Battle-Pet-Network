@@ -51,7 +51,7 @@ class Pet < ActiveRecord::Base
     end
   end
   
-  validates_presence_of :name, :slug, :status, :current_health, :current_endurance, :health, :endurance,
+  validates_presence_of :name, :breed_id, :status, :current_health, :current_endurance, :health, :endurance,
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,
                         :wins_count, :loses_count, :draws_count, :level_rank_count
   validates_length_of :name, :within => 3..64

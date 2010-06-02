@@ -91,7 +91,12 @@ function push_action(idx) {
   maneuvers[action_dom_id] = action;
 
   // create rails model params element
-  var input_html = "<input type='hidden' value='"+action.id+"' name='challenge[<%=strategy_name%>_attributes][maneuvers_attributes]["+cnt+"][action_id]' />";
+  <% if defined?(@hunt) %>
+    var input_html = "<input type='hidden' value='"+action.id+"' name='hunt[hunters_attributes][0][strategy_attributes][maneuvers_attributes]["+cnt+"][action_id]' />";
+  <% else %>
+    var input_html = "<input type='hidden' value='"+action.id+"' name='challenge[<%=strategy_name%>_attributes][maneuvers_attributes]["+cnt+"][action_id]' />";
+  <% end %>
+
   li.setInnerXHTML(input_html); 
 
   // create display elements 

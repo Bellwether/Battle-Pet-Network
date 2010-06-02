@@ -112,7 +112,7 @@ td.radio-cell .input:hover {
   width: 100%;	
 }
 
-.comparison-table .left {
+.comparison-table .tleft {
   width: 45%;
 }
 
@@ -120,7 +120,7 @@ td.radio-cell .input:hover {
   width: 10%;
 }
 
-.comparison-table .right {
+.comparison-table .tright {
   width: 45%;
 }
 /* icons */
