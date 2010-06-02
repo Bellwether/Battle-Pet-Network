@@ -32,5 +32,10 @@ class Facebook::SentientsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'show'
     assert !assigns(:sentient).blank?
+    assert !assigns(:hunts).blank?
+    assert !assigns(:tactics).blank?
+    assert_tag :tag => "ul", :attributes => { :class => "tactics" }, :descendant => {
+      :tag => "li", :attributes => { :class => "tactic" }
+    }
   end
 end

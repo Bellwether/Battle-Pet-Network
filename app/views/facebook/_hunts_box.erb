@@ -7,7 +7,7 @@
 	<% @hunts.each do |h| %>
 	  <% hunt = h.is_a?(Hunt) ? h : h.hunt%>
 	  <li class="hunt">
-		<%= "#{time_ago_in_words(hunt.updated_at)} ago" %> <%= hunt.hunter.name%> hunted a 
+		<%= "#{time_ago_in_words(hunt.updated_at)} ago" %> <%= hunt.hunter.name %> hunted a 
 		<%= hunt.sentient.name %> and <label><%= facebook_link_to hunt.hunter.outcome, facebook_hunt_path(hunt) %></label>.
 	  </li>
 	<% end %>

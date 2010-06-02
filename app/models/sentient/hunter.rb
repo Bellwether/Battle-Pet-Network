@@ -19,6 +19,10 @@ class Hunter < ActiveRecord::Base
     errors.add(:strategy_id, "unknown strategy") if strategy && pet_id != strategy.combatant_id
   end
   
+  def name
+    pet.blank? ? nil : pet.name
+  end
+  
   def set_outcome
     self.outcome = "won"
   end
