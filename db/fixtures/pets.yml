@@ -14,6 +14,5 @@ siamese:
   level_rank_count: 1
   experience: 0
   occupation: prowling
-  pack: alpha
   level: siamese_1
   actions: scratch,slash,claw,bite,swat,flank,dodge,leap

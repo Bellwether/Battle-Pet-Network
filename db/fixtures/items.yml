@@ -58,7 +58,7 @@ dairy_milk:
   stock_cap: 25
   restock_rate: 5  
   
-lost_caviar
+lost_caviar:
   name: Lost Caviar
   description: Top-shelf delicacy of salty black roe, richly preserved by human canning technology. Rarely are taste and nutrition so exquisitely married in one dish!  
   item_type: Food
