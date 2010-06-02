@@ -28,7 +28,8 @@
 		<ul class="tactics">
 		  <% @tactics.each do |t| %>
 		    <li class="tactic">
-			  <span><% t.action.name %></span>
+			  <span class="strong"><%= t.action.power %></span>
+			  <span><%= t.action.name %></span>
 		      <span class="right"><% t.rank.times do %>*<% end %></span>
 		    </li>
 		  <% end %>

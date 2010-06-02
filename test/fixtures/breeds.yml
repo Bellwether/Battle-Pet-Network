@@ -1,6 +1,6 @@
 siamese:
     name: Siamese
-    species: Cat
+    species: cat
     health: 14
     endurance: 75
     fortitude: 4
@@ -11,7 +11,7 @@ siamese:
     
 shorthair:
     name: Shorthair
-    species: Cat
+    species: cat
     health: 16
     endurance: 45
     fortitude: 7
@@ -22,8 +22,8 @@ shorthair:
     
 persian:
     name: Persian
-    species: Cat
-    health: 14
+    species: cat
+    health: 12
     endurance: 50
     fortitude: 3
     intelligence: 6
@@ -33,7 +33,7 @@ persian:
     
 russian_blue:
     name: Russian Blue
-    species: Cat
+    species: cat
     health: 12
     endurance: 30
     fortitude: 10
@@ -44,7 +44,7 @@ russian_blue:
 
 maine_coon:        
     name: Maine Coon
-    species: Cat
+    species: cat
     health: 25
     endurance: 50
     fortitude: 4
@@ -55,7 +55,7 @@ maine_coon:
     
 burmese:
     name: Burmese
-    species: Cat
+    species: cat
     health: 10
     endurance: 40
     fortitude: 5

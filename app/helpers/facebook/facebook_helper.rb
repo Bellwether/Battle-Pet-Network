@@ -26,7 +26,7 @@ module Facebook::FacebookHelper
   def avatar_image(model,size='small')
     path = "#{model.class.name.downcase}s"
     if model.is_a?(Pet)
-      breed_path = model.breed.species.name.downcase.pluralize
+      breed_path = model.breed.species.slug
       path = "#{path}/#{breed_path}"
     elsif model.is_a?(Item)
       path = "#{path}/types" if size != 'medium' # medium show item detail, otherwise show type
