@@ -28,10 +28,13 @@ module Facebook::FacebookHelper
     if model.is_a?(Pet)
       breed_path = model.breed.species.slug
       path = "#{path}/#{breed_path}"
+      filename = model.breed.slug
     elsif model.is_a?(Item)
       path = "#{path}/types" if size != 'medium' # medium show item detail, otherwise show type
+      filename = model.name.downcase.gsub(/\s/,'-')
+    else
+      filename = model.name.downcase.gsub(/\s/,'-')
     end
-    filename = model.name.downcase.gsub(/\s/,'-')
     path = "#{path}/#{size}/#{filename}.png"
     return facebook_image_tag(path)
   end

@@ -1,4 +1,4 @@
-siamese:
+domino:
   breed: siamese
   user: travis_dunn
   name: domino
