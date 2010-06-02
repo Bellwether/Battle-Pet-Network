@@ -5,9 +5,9 @@
 <table class="comparison-table">
 <tbody>
   <tr>
-	<th class="leftbox"><%= current_user_pet.name %></th>
-	<td>is hunting the</td>
-	<th><%= @sentient.name %></th>
+	<th class="tleft"><h3><%= current_user_pet.name %></h3></th>
+	<td class="tcenter"><h5>is hunting the</h5></td>
+	<th class="tright"><h3><%= @sentient.name %></h3></th>
   </tr>
 </tbody>
 </table>
@@ -17,7 +17,7 @@
 <table class="comparison-table">
   <tbody>
 	<tr>
-	<td class="leftbox">
+	<td class="tleft">
 	  <table class="dotbox">
 		<tr>
 		  <td rowspan="5"><%= avatar_image(current_user_pet,'large') %></td>
@@ -64,8 +64,6 @@
 		<tr><th>Combat</th></tr>
 		<tr><td><%= submit_tag "Begin the Hunt"%></td></tr>
 	</td>	
-	</tr>	
-	<tr>
 	<td class="rightbox">
 	  <table class="dotbox">
 		<tr>

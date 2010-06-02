@@ -72,6 +72,9 @@ tr {
 .hidden {display:none;}
 .right {float:right;}
 .left {float:left;}
+.tleft {text-align:left;}
+.tcenter {text-align:center;}
+.tright {text-align:right;}
 .em {font-style:italic;}
 .strong {float-weight:bold;}
 
@@ -103,6 +106,23 @@ td.radio-cell .input:hover {
   text-decoration: underline;
 }
 
+/* blocks */
+
+.comparison-table {
+  width: 100%;	
+}
+
+.comparison-table .left {
+  width: 45%;
+}
+
+.comparison-table .tcenter {
+  width: 10%;
+}
+
+.comparison-table .right {
+  width: 45%;
+}
 /* icons */
 
 .new-message, .read-message, .deleted-message {

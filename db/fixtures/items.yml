@@ -9,7 +9,19 @@ soft_beetle:
   stock: 200
   stock_cap: 200
   restock_rate: 25
-      
+  
+carrion_giblets:
+  name: Carrion Giblets
+  description: A delictable heap of visceral organs, steaming hot and surgically emptied from the guts of an unfortunate fowl. These can be found ready-made, but taste best when prepared fresh.
+  item_type: Food
+  power: 15
+  required_rank: 2
+  cost: 10
+  rarity: 10
+  stock: 100
+  stock_cap: 100
+  restock_rate: 25
+        
 cat_grass:
   name: Cat Grass
   description: Coarse, oaty cereal grass rich with antioxidants and vitamins. Can be found anywhere in the creaveses of the urban landscape.
