@@ -139,9 +139,16 @@ td.radio-cell .input:hover {
 
 /* avatar backgrounds */
 
-.avatar-bg-siamese { background: url(../images/pets/cats/siamese.png) no-repeat; }
-.avatar-bg-shorthair { background: url(../images/pets/cats/shorthair.png) no-repeat; }
-.avatar-bg-russian_blue { background: url(../images/pets/cats/russian-blue.png) no-repeat; }
-.avatar-bg-persian { background: url(../images/pets/cats/persian.png) no-repeat; }
-.avatar-bg-burmese { background: url(../images/pets/cats/burmese.png) no-repeat; }
-.avatar-bg-maine_coon { background: url(../images/pets/cats/maine-coon.png) no-repeat; }
+.avatar-bg-siamese { background: url(../images/pets/cats/small/siamese.png) no-repeat; }
+.avatar-bg-shorthair { background: url(../images/pets/cats/small/shorthair.png) no-repeat; }
+.avatar-bg-russian_blue { background: url(../images/pets/cats/small/russian-blue.png) no-repeat; }
+.avatar-bg-persian { background: url(../images/pets/cats/small/persian.png) no-repeat; }
+.avatar-bg-burmese { background: url(../images/pets/cats/small/burmese.png) no-repeat; }
+.avatar-bg-maine_coon { background: url(../images/pets/cats/small/maine-coon.png) no-repeat; }
+
+.breed-details .avatar-bg-siamese { background: url(../images/pets/cats/medium/siamese.png) no-repeat; }
+.breed-details .avatar-bg-shorthair { background: url(../images/pets/cats/medium/shorthair.png) no-repeat; }
+.breed-details .avatar-bg-russian_blue { background: url(../images/pets/cats/medium/russian-blue.png) no-repeat; }
+.breed-details .avatar-bg-persian { background: url(../images/pets/cats/medium/persian.png) no-repeat; }
+.breed-details .avatar-bg-burmese { background: url(../images/pets/cats/medium/burmese.png) no-repeat; }
+.breed-details .avatar-bg-maine_coon { background: url(../images/pets/cats/medium/maine-coon.png) no-repeat; }
