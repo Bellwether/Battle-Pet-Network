@@ -26,7 +26,7 @@ class Facebook::FacebookController < ApplicationController
   end
   
   def facebook_redirect_to(url)
-    redirect_to url.blank? '' : url.gsub('facebook/','')
+    redirect_to url.blank? ? '' : url.gsub('facebook/','')
   end  
   
   def store_location
