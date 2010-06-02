@@ -474,6 +474,9 @@ class CreateCore < ActiveRecord::Migration
   def self.down
     drop_table :payment_order_transactions
     drop_table :payment_orders
+    drop_table :forum_posts
+    drop_table :forum_topics
+    drop_table :forums
     drop_table :activity_streams
     drop_table :messages
     drop_table :signs

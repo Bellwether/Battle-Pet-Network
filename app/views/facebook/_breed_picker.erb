@@ -28,7 +28,7 @@ function breedSelected(idx,avatar) {
   document.getElementById('breed-details-affection').setTextValue(breed.affection);
   document.getElementById('breed-details-favorite-action-name').setTextValue(breed.favorite_action.name);
 	
-  avatar = "avatar-"+avatar+"-mid";
+  avatar = "avatar-bg-"+avatar;
   document.getElementById('breed-details-image').setClassName(avatar);
   return false;
 } 

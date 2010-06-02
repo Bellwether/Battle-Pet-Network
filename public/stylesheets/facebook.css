@@ -123,6 +123,7 @@ td.radio-cell .input:hover {
 .comparison-table .tright {
   width: 45%;
 }
+
 /* icons */
 
 .new-message, .read-message, .deleted-message {
@@ -130,12 +131,22 @@ td.radio-cell .input:hover {
   width: 20px;	
 }
 
-
 /* spacing */
 
 .full { width: 740px !important;}
 .slim { margin-right:15px; width: 250px !important;}
 .half { width: 360px !important;}
+
+/* Errors */
+
+.errorExplanation {
+}
+
+.errorExplanation p {
+}
+
+.errorExplanation ul li {
+}
 
 /* avatar backgrounds */
 

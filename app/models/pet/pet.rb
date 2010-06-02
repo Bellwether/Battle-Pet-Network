@@ -55,7 +55,7 @@ class Pet < ActiveRecord::Base
                         :power, :intelligence, :fortitude, :affection, :experience, :kibble, :occupation_id,
                         :wins_count, :loses_count, :draws_count, :level_rank_count
   validates_length_of :name, :within => 3..64
-  validates_length_of :slug, :within => 3..8
+  validates_length_of :slug, :within => 3..8, :allow_blank => true
   validates_numericality_of :kibble, :greater_than_or_equal_to => 0
   validates_numericality_of :experience, :greater_than_or_equal_to => 0
   validates_inclusion_of :status, :in => %w(active abandoned)
