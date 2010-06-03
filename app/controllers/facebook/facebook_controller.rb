@@ -33,18 +33,28 @@ class Facebook::FacebookController < ApplicationController
   # overrides to handle facebook routing and the 'facebook' routes namespace  
   # # #  
   
+  def facebook_path_scrub(url)
+    return url.gsub('facebook/', '').gsub('/facebook', '')
+  end
+  
+  def facebook_app_path
+    Facebooker.current_adapter.facebooker_config['canvas_page_name']
+  end
+  
   def facebook_redirect_to(url)
-    redirect_to url.blank? ? '' : url.replace('facebook/','')
+    redirect_to url.blank? ? '' : facebook_path_scrub(url)
   end  
   
   def store_location
-    logger.info "+++++++ store_location: request_uri will be #{request.request_uri.gsub('facebook/', '')} if #{(request.method.to_s == 'get')} (#{request.method.to_s})"
-    session[:return_to] = request.request_uri.gsub('facebook/', '') if request.method.to_s == 'get'
+    app_root = facebook_app_path
+    fb_path = facebook_path_scrub(request.request_uri)
+    stored = "#{app_root}#{fb_path}"
+    session[:return_to] = stored if request.method.to_s == 'get'
   end
 
   def stored_location
     logger.info "+++++++ stored_location: session has #{session[:return_to]} (default: #{facebook_root_path.gsub('facebook/','')})"
-    session[:return_to] ||= facebook_root_path.gsub('facebook/','')
+    return session[:return_to] || facebook_root_path.gsub('facebook/','')
   end
 
   def redirect_facebook_back
