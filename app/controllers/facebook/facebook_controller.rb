@@ -26,17 +26,18 @@ class Facebook::FacebookController < ApplicationController
   end
   
   def facebook_redirect_to(url)
-    redirect_to url.blank? ? '' : url.gsub('facebook/','')
+    redirect_to url.blank? ? '' : url.replace('facebook/','')
   end  
   
   def store_location
+    logger.info "method = #{request.method}"
     logger.info "+++++++ request.request_uri = #{request.request_uri}"
-    session[:return_to] = request.request_uri.gsub('facebook/',facebook_root_path)
+    session[:return_to] = request.request_uri.replace('facebook/', '') if request.method == 'get'
     logger.info "+++++++ stored_location for #{stored_location} == #{session[:return_to]}"
   end
 
   def stored_location
-    session[:return_to] ||= facebook_root_path
+    session[:return_to] ||= facebook_root_path.replace('facebook/','')
   end
 
   def redirect_facebook_back
