@@ -108,8 +108,12 @@ td.radio-cell .input:hover {
 
 /* blocks */
 
-.comparison-table {
+.comparison-table, .comparison-table table {
   width: 100%;	
+}
+
+.comparison-table td {
+  min-height: 20px; 
 }
 
 .comparison-table .tleft {

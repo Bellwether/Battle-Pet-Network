@@ -20,7 +20,7 @@
 	<td class="tleft">
 	  <table class="dotbox">
 		<tr>
-		  <td rowspan="5"><%= avatar_image(current_user_pet,'medium') %></td>
+		  <td rowspan="5" class="tright"><%= avatar_image(current_user_pet,'medium') %></td>
 		  <td><%= percentage_bar [current_user_pet.current_health,@sentient.health] %></td>
 		  <td><%= current_user_pet.current_health %></td>
 		</tr>
@@ -74,7 +74,7 @@
 		  <td><%= @sentient.health %></td>
 		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health] %></td>
 		  <td rowspan="5">
-			<%= avatar_image(@sentient,'medium') %>
+			<%= avatar_image(@sentient,'large') %><br />
 			<span class="right strong">Population: <%= @sentient.population %></span>
 		  </td>
 		</tr>

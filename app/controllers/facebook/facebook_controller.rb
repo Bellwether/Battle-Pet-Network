@@ -86,7 +86,7 @@ class Facebook::FacebookController < ApplicationController
   end
   
   # # #
-  # handling various invalid requests gracefully in faacebook
+  # handling various invalid requests gracefully in facebook
   # # #
     
   rescue_from ActionController::MethodNotAllowed, :with => :rescue_from_missing_method
