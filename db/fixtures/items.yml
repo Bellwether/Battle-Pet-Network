@@ -129,6 +129,18 @@ cheezburger:
   stock: 50
   stock_cap: 50
   restock_rate: 10
+  
+chocolate_chip_cookie:
+  name: Chocolate Chip Cookie
+  description: Made just for you and, as of yet, totally uneaten. Nom, nom.
+  item_type: Treat
+  power: 1
+  required_rank: 1
+  cost: 30
+  rarity: 70
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10  
 
 fiberboard_pillar: 
   name: Fiberboard Pillar

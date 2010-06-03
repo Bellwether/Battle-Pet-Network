@@ -30,7 +30,9 @@ class Facebook::FacebookController < ApplicationController
   end  
   
   def store_location
+    logger.info "+++++++ request.request_uri = #{request.request_uri}"
     session[:return_to] = request.request_uri.gsub('facebook/',facebook_root_path)
+    logger.info "+++++++ stored_location for #{stored_location} == #{session[:return_to]}"
   end
 
   def stored_location
@@ -38,6 +40,7 @@ class Facebook::FacebookController < ApplicationController
   end
 
   def redirect_facebook_back
+    logger.info "+++++++ stored_location = #{stored_location}"
     redirect_to stored_location, :status => :ok
   end
   
