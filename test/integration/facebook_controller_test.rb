@@ -21,7 +21,7 @@ class FacebookControllerTest < ActionController::IntegrationTest
     ['facebook/index','/facebook/index', 'facebook', 'facebook/index/'].each do |p|
       scrubbed = @controller.facebook_path_scrub('facebook/index')
       assert !scrubbed.include?('facebook')
-      assert !scrubbed.include?('//')      
+      assert !scrubbed.include?('//')
     end
   end
   

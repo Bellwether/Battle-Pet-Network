@@ -53,12 +53,10 @@ class Facebook::FacebookController < ApplicationController
   end
 
   def stored_location
-    logger.info "+++++++ stored_location: session has #{session[:return_to]} (default: #{facebook_root_path.gsub('facebook/','')})"
     return session[:return_to] || facebook_path_scrub(facebook_root_path)
   end
 
   def redirect_facebook_back
-    logger.info "+++++++ redirect_facebook_back: stored location is #{stored_location}"
     redirect_to stored_location, :status => :ok
   end
   
