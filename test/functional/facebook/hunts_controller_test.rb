@@ -36,6 +36,7 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
     assert !assigns(:sentient).blank?
     assert !assigns(:hunt).blank?
     assert !assigns(:hunt).hunters.blank?
+    assert !assigns(:hunt).hunter.strategy.blank?
     assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
     assert_tag :tag => "form", :descendant => { 
       :tag => "table", :attributes => { :class => "comparison-table" },

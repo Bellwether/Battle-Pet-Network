@@ -3,7 +3,9 @@ class Facebook::HuntsController < Facebook::FacebookController
   
   def new
     @sentient = Sentient.find(params[:sentient_id])
-    @hunt = @sentient.hunts.build(:hunters_attributes => {"0" => { :pet_id => current_user_pet.id }})
+    
+    defaults = {:hunters_attributes => {"0" => { :pet_id => current_user_pet.id, :strategy_attributes => {} }}}
+    @hunt = @sentient.hunts.build(defaults)
   end
   
   def create

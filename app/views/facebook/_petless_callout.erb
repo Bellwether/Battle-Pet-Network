@@ -1,4 +1,4 @@
-<% unless controller == 'facebook/pets' && action == 'new' %>
+<% unless controller.downcase == 'facebook/pets' && action.downcase == 'new' %>
 <div id="petless" class="box full info">
   <h4>You survived the collapse of civilization, but there's no place in the future for humans without a pet.</h4> 
   <ul>  
