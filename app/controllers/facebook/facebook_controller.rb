@@ -48,13 +48,13 @@ class Facebook::FacebookController < ApplicationController
   def store_location
     app_root = facebook_app_path
     fb_path = facebook_path_scrub(request.request_uri)
-    stored = "#{app_root}#{fb_path}"
+    stored = "/#{app_root}#{fb_path}"
     session[:return_to] = stored if request.method.to_s == 'get'
   end
 
   def stored_location
     logger.info "+++++++ stored_location: session has #{session[:return_to]} (default: #{facebook_root_path.gsub('facebook/','')})"
-    return session[:return_to] || facebook_root_path.gsub('facebook/','')
+    return session[:return_to] || facebook_path_scrub(facebook_root_path)
   end
 
   def redirect_facebook_back
