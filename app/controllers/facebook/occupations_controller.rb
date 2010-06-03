@@ -25,5 +25,6 @@ class Facebook::OccupationsController < Facebook::FacebookController
     end
     
     redirect_facebook_back
+    return false
   end
 end
