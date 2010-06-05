@@ -4,7 +4,7 @@ class Facebook::FacebookController < ApplicationController
   layout 'facebook'
   
   helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?, 
-                :facebook_redirect_to, :stored_location
+                :facebook_redirect_to, :stored_location, :facebook_app_path
   
   before_filter :ensure_facebook_request, :set_facebook_user
   after_filter :store_location
