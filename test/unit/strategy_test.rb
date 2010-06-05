@@ -1,4 +1,5 @@
 require 'test_helper'
+require "#{RAILS_ROOT}/lib/ruby/array"
 
 class StrategyTest < ActiveSupport::TestCase
   def setup
@@ -34,5 +35,28 @@ class StrategyTest < ActiveSupport::TestCase
     expected = (AppConfig.experience.favorite_action_bonus * @favorite_strategy.maneuvers.size)
     assert_operator @favorite_strategy.favorite_action_experience_bonus, ">", 0
     assert_equal expected, @favorite_strategy.favorite_action_experience_bonus
+  end
+  
+  def test_random_maneuver
+    strategy = @pet.strategies.build
+    assert_nil strategy.random_maneuver
+    strategy.maneuvers.build(:action => actions(:scratch), :rank => 1)
+    strategy.maneuvers.build(:action => actions(:claw), :rank => 2)
+    strategy.maneuvers.build(:action => actions(:bite), :rank => 7)
+    counts = {}
+    counts['1'] = 0
+    counts['2'] = 0
+    counts['7'] = 0
+    
+    100.times do
+      r = strategy.random_maneuver
+      counts[r.rank.to_s] += 1
+    end
+    a_exp = 10
+    b_exp = 20
+    c_exp = 70
+    assert_in_delta(a_exp, counts['1'], 0.5*a_exp)
+    assert_in_delta(b_exp, counts['2'], 0.5*b_exp)
+    assert_in_delta(c_exp, counts['7'], 0.5*c_exp)
   end
 end

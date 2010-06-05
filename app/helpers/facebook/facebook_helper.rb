@@ -48,7 +48,7 @@ module Facebook::FacebookHelper
   end
   
   def render_petless_callout
-    render :partial => '/facebook/petless_callout'
+    render :partial => '/facebook/petless_callout' unless params[:controller]  == 'facebook/pets' && params[:action]  == 'new'
   end
 
   def render_kibble_box

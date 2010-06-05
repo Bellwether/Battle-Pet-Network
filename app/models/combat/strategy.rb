@@ -1,3 +1,5 @@
+require "#{RAILS_ROOT}/lib/ruby/array"
+      
 class Strategy < ActiveRecord::Base
   belongs_to :combatant, :polymorphic => true
   has_many :maneuvers, :validate => false, :order => 'rank DESC'
@@ -15,6 +17,14 @@ class Strategy < ActiveRecord::Base
   def after_initialize(*args)
     self.status ||= 'used'
   end  
+  
+  def random_maneuver
+    if maneuvers.blank?
+      return nil
+    else
+      return maneuvers.random(maneuvers.map(&:rank))
+    end
+  end
   
   def average_power
     return 0 if maneuvers.blank?

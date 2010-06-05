@@ -19,7 +19,7 @@ class CombatTest < ActiveSupport::TestCase
   end
   
   def test_attr_accessors
-    accessors = [:current_round,:attacker_damage,:defender_damage]
+    accessors = [:current_round,:attacker_damage,:defender_damage,:attacker_action,:defender_action]
     @combat_models.each do |m|
       accessors.each do |a|
         assert m.respond_to?(a), "#{m.class.name} didn't respond to #{a}"
@@ -126,6 +126,15 @@ class CombatTest < ActiveSupport::TestCase
     end
   end
   
+  def test_reset_actions
+    @combat_models.each do |m|
+      m.defender_action = m.attacker_action = actions(:claw)
+      m.reset_actions
+      assert_nil m.attacker_action
+      assert_nil m.defender_action
+    end
+  end
+  
   def test_exhaust_combatants
     action = actions(:claw)
     @combat_models.each do |m|
@@ -218,6 +227,37 @@ class CombatTest < ActiveSupport::TestCase
         c.experience = c.experience + 1
         m.save_combatants
         assert_operator c.updated_at, ">", timestamp
+      end
+    end
+  end
+  
+  def test_action_for_cache
+    expected = actions(:scratch)
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        if c == m.attacker
+          m.attacker_action = expected
+        else
+          m.defender_action = expected
+        end
+        assert_equal expected, m.action_for(c)
+      end
+    end
+  end
+  
+  def test_action_for
+    expected = actions(:scratch)
+    strategy_mock = flexmock(:maneuvers => [flexmock(:action=>expected),flexmock(:action=>expected)] )
+    
+    @combat_models.each do |m|
+      flexmock(m).should_receive(:strategy_for).and_return( strategy_mock )
+      m.current_round = 1
+      m.combatants.each do |c|
+        if c.is_a?(Sentient)
+          assert c.strategy.maneuvers.map(&:action).include?( m.action_for(c) )
+        else
+          assert_equal expected, m.action_for(c)
+        end
       end
     end
   end

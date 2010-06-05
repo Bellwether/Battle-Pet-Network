@@ -9,6 +9,7 @@ module Combat
   end
   
   attr_accessor :current_round
+  attr_accessor :attacker_action, :defender_action
   attr_accessor :attacker_damage, :defender_damage
   
   class << self
@@ -31,6 +32,8 @@ module Combat
     @current_round = 0
     @attacker_damage = 0
     @defender_damage = 0
+    @attacker_action = nil
+    @defender_action = nil
   end
     
   def attacker
@@ -69,6 +72,7 @@ module Combat
     initialize_combat
     
     while combat_in_progress?
+      reset_actions
       @current_round = @current_round + 1
       exhaust_combatants
       
@@ -84,6 +88,11 @@ module Combat
     set_outcome if respond_to?(:set_outcome)
     log_outcome
     respond_to?(:award!) ? award! : award_combatants
+  end
+  
+  def reset_actions
+    @attacker_action = nil
+    @defender_action = nil
   end
   
   def exhaust_combatants
@@ -160,8 +169,23 @@ module Combat
   end
   
   def action_for(combatant)
-    maneuvers = strategy_for(combatant).maneuvers
-    return maneuvers[ @current_round % maneuvers.size ].action
+    # cached actions
+    return @attacker_action if (combatant == attacker) && !@attacker_action.nil?
+    return @defender_action if (combatant == defender) && !@defender_action.nil?
+    
+    action = if combatant.is_a?(Sentient)
+      combatant.strategy.random_maneuver.action
+    else 
+      maneuvers = strategy_for(combatant).maneuvers
+      maneuvers[ @current_round % maneuvers.size ].action
+    end
+    if (combatant == attacker)
+      @attacker_action = action
+    elsif (combatant == defender)
+      @defender_action = action
+    end
+    
+    return action
   end
   
   def strategy_for(combatant)
