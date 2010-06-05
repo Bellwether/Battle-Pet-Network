@@ -16,7 +16,7 @@
 		  <td>Pet's Favorite Action:</td>
 		  <td>
 		  <% if @pet.favorite_action_id.blank? %>
-		    <% form_for :pet, @pet, :url => "#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
+		    <% form_for :pet, @pet, :url => "/#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
 			  <%= f.collection_select(:favorite_action_id, @pet.actions, :id, :name, {:include_blank => true}) %>
 			  <%= f.submit 'Save' %> 
 			<% end %>
@@ -122,11 +122,9 @@
 	    <h5>Level <%=@pet.level_rank_count %></h5>
 	  </td>
 	  <td>
-		<label>Current Experience:</label> <label class="strong"><% @pet.experience %></label>
+		<label>Current Experience:</label> <label class="strong"><%= @pet.experience %></label>
 		<br />
-		<% if next_level = @pet.level.next_level %>
-		  <label>Current Experience:</label> <label class="strong"><% next_level.experience %></label>
-		<% end %>
+		<label>Level <%= @pet.level.next_level.rank %>:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
 	  </td>
 	  <td>
 		<%= experience_bar @pet.level %>
@@ -140,7 +138,7 @@
 		<td><%= l.rank %></td>
 		<td><%= l.experience %></td>
 		<td><%= "+#{l.advancement_amount} #{l.advancement_type}"%></td>
-		<td><%= @pet.level_rank_count >= idx ? 'YES' : 'NO'%></td>
+		<td><%= @pet.level_rank_count >= idx + 1 ? 'YES' : 'NO'%></td>
 	  </tr>
 	<% end %>
   </table>
