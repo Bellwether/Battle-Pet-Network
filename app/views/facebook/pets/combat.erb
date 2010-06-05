@@ -16,7 +16,7 @@
 		  <td>Pet's Favorite Action:</td>
 		  <td>
 		  <% if @pet.favorite_action_id.blank? %>
-		    <% form_for :pet, @pet, :url => "#{facebook_app_path}/facebook/pets/home/pet", :html => { :method => :put} do |f| %>
+		    <% form_for :pet, @pet, :url => "#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
 			  <%= f.collection_select(:favorite_action_id, @pet.actions, :id, :name, {:include_blank => true}) %>
 			  <%= f.submit 'Save' %> 
 			<% end %>
