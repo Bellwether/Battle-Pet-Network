@@ -106,7 +106,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
   
   def test_combat_profile
     mock_user_facebooking(@user.facebook_id)
-    facebook_get :combat, :id => pets(:persian).id, :fb_sig_user => @user.facebook_id
+    facebook_get :combat, :fb_sig_user => @user.facebook_id
     assert_response :success
     assert_template 'combat'
     assert !assigns(:pet).blank?
