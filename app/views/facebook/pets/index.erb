@@ -27,7 +27,7 @@
 	  <% @pets.each_with_index do |pet,idx| %>
 		<% odd_row = (idx % 2 == 0 ? "" : "odd") %>
 		<tr class='<%=odd_row%>'>
-		<td><%= avatar_image(pet) %></td>
+		<td><%= avatar_image(pet, 'tiny') %></td>
 		<td><%= facebook_link_to pet.name, facebook_pet_path(pet) %></td>
 		<td><%= pet.breed.name %></td>
 		<td><%= pet.level_rank_count %></td>

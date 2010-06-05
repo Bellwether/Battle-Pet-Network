@@ -4,6 +4,18 @@ leper_rat_strategy:
   name: LRS
   status: active
   
+omega_rat_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :omega_rat %>
+  name: ORS
+  status: active  
+  
+gila_monstrosity_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :gila_monstrosity %>
+  name: GMS
+  status: active
+  
 siamese_strategy:
   combatant_type: Pet
   combatant_id: <%= Fixtures.identify :siamese %>      
