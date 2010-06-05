@@ -105,6 +105,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
   end
   
   def test_combat_profile
+    @pet.update_attribute(:favorite_action_id,nil)
     mock_user_facebooking(@user.facebook_id)
     facebook_get :combat, :fb_sig_user => @user.facebook_id
     assert_response :success
@@ -117,6 +118,9 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :id => "combat-profile" }
     assert_tag :tag => "table", :attributes => { :id => "advancements" }
     assert_tag :tag => "div", :attributes => { :class => "box gear" }
+    assert_tag :tag => "form", :descendant => {
+      :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
+    }
   end
   
   def test_update
