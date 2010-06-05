@@ -9,7 +9,7 @@
 </tr>
 
 <% if pet.occupation.cost > 0 && pet.occupation.pet_can?(pet) %>
-  <% form_for current_pet, 
+  <% form_for current_user_pet, 
 	:url => facebook_nested_url(attempt_facebook_occupation(p.occupation)), 
 	:html => { :method => :post} do |f| %>
     <tr>

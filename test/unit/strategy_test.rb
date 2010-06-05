@@ -59,4 +59,15 @@ class StrategyTest < ActiveSupport::TestCase
     assert_in_delta(b_exp, counts['2'], 0.5*b_exp)
     assert_in_delta(c_exp, counts['7'], 0.5*c_exp)
   end
+  
+  def test_set_ranks
+    strategy = @pet.strategies.build
+    3.times do 
+      strategy.maneuvers.build(:action => actions(:scratch), :rank => 0)
+    end
+    strategy.set_ranks
+    strategy.maneuvers.each_with_index do |m,idx|
+      assert_equal idx, m.rank
+    end
+  end
 end

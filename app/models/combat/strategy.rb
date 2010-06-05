@@ -10,7 +10,7 @@ class Strategy < ActiveRecord::Base
   validates_inclusion_of :combatant_type, :in => %w(Pet Sentient)
   validates_inclusion_of :status, :in => %w(active saved used)
   
-  before_validation_on_create :set_name
+  before_validation_on_create :set_name, :set_ranks
   
   named_scope :active, :conditions => ["strategies.status = 'active'"]
   
@@ -69,5 +69,11 @@ class Strategy < ActiveRecord::Base
     month_part = Time.now.month
     
     self.name = "#{name_part}#{day_part}#{month_part}"
+  end
+  
+  def set_ranks
+    maneuvers.each_with_index do |m,idx|
+      m.rank = idx unless (m.rank != idx && m.rank > 0)
+    end
   end
 end
