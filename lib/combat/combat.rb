@@ -80,11 +80,15 @@ module Combat
       
       results = CombatActions::Resolution.new(attacker, action_for(attacker), defender, action_for(defender))
       
+      logger.info "combat: results - #{results.inspect}"
+      
       attacker.current_health = [attacker.current_health - results.second_damage,0].max
       defender.current_health = [defender.current_health - results.first_damage,0].max
       logger.info "combat: attacker health #{attacker.current_health}, defender health #{defender.current_health}"
       
       log_round(results)
+      logger.info "combat: logs - #{self.logs.inspect}"
+      logger.info "combat: logs - #{@logs.inspect}"
     end
     
     restore_combatants_condition
