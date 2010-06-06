@@ -1,7 +1,7 @@
 namespace :db do
   desc "Raise an error if the RAILS_ENV is production"
   task :production_filter do
-    raise "Database cannot be rebuilt in production!" if RAILS_ENV == 'production'
+    # raise "Database cannot be rebuilt in production!" if RAILS_ENV == 'production'
   end
   
   desc "Drop, create, migrate then seed the database"
