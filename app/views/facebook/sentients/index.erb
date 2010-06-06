@@ -30,9 +30,7 @@
 	<tr><td>Award: <strong><%= sentient.kibble %> Kibble</strong></td></tr>
 	<tr>
 	  <td>
-	    <% if has_pet? %>
-	      <span class='hunt-button'><%= facebook_link_to 'Hunt It', new_facebook_sentient_hunt_path(sentient) %></span>
-	    <% end %>
+        <%= "<span class='hunt-button'>#{link_to_hunt(sentient)}</span>" if has_pet? %>
 	  </td>
 	  <td>Population: <strong><%= sentient.population %></strong></td>
 	</tr>

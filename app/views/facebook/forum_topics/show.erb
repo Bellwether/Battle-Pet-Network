@@ -1,0 +1,7 @@
+<% content_for :page_title do %>
+  <h2>
+	<%= facebook_link_to 'Forums', facebook_forums_path %> : 
+	<%= facebook_link_to @forum.name, facebook_forum_path(@forum) %> : 
+	<%= @topic.name %>
+  </h2>
+<% end %>

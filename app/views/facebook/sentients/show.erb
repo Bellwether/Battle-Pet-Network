@@ -19,7 +19,7 @@
 	<tr>
 	  <td>
 		<p><label>Population:</label> <strong><%=@sentient.population%></strong></p>
-		<span class='hunt-button'><%= facebook_link_to 'Hunt It', new_facebook_sentient_hunt_path(@sentient) %></span>
+		<%= "<span class='hunt-button'>#{link_to_hunt(!sentient)}</span>" if has_pet? %>
 	  </td>
 	  <td>&nbsp;</td>
 	  <td>
