@@ -7,14 +7,14 @@
 </div>
 
 <div class="box">
-  <% form_for @message, :url => facebook_nested_url(new_facebook_message_path) do |f| %>	
+  <% form_for @message, :url => facebook_nested_url(facebook_messages_path) do |f| %>	
   <%= facebook_form_errors 'message' %>
   <%= f.hidden_field :reply_to_id %>
   <table class="message">
 	<tbody>
 	  <tr>
 	    <td><%= f.label :recipient_name, 'To' %></td>
-	    <td><%= f.text_field :recipient_name %></td>
+	    <td><%= f.text_field :recipient_name %> <span class="em">(enter another pet's name)</span></td>
 	  </tr>
 	  <tr>
 	    <td><%= f.label :subject, 'Subject' %></td>
@@ -25,7 +25,7 @@
         <td rowspan="2"><%= text_area(:message, :body, :size => "50x15")%></td>
 	  </tr>
 	  <tr>	
-	    <td colspan="2">
+	    <td rowspan="4">
 	      <%= f.submit 'Send Message' %> 
 	      <%= facebook_link_to "Nevermind", inbox_facebook_messages_path %>
 	    </td>

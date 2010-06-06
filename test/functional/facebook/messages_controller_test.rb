@@ -39,11 +39,13 @@ class Facebook::MessagesControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'new'
     assert assigns(:message)
-    assert_tag :tag => "form", :descendant => { 
-      :tag => "input", :attributes => { :name => "message[recipient_name]", :type => "text" },
-      :tag => "input", :attributes => { :name => "message[subject]", :type => "text" },
-      :tag => "textarea", :attributes => { :name => "message[body]" },
-      :tag => "input", :attributes => { :type => "submit" }
+    assert_tag :tag => "form", 
+      :attributes => {:action => "/#{@controller.facebook_app_path}/pets/home/messages", :method => "post"}, 
+      :descendant => { 
+        :tag => "input", :attributes => { :name => "message[recipient_name]", :type => "text" },
+        :tag => "input", :attributes => { :name => "message[subject]", :type => "text" },
+        :tag => "textarea", :attributes => { :name => "message[body]" },
+        :tag => "input", :attributes => { :type => "submit" }
     }
   end
   
