@@ -17,7 +17,7 @@ class Facebook::HuntsController < Facebook::FacebookController
       @hunt.hunter.strategy.combatant = current_user_pet
     end
 
-    if @hunt.save
+    if @hunt.save && @hunt.battle!
       flash[:notice] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"
       facebook_redirect_to facebook_sentients_path
     else

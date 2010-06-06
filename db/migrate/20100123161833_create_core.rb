@@ -417,10 +417,12 @@ class CreateCore < ActiveRecord::Migration
     add_index :activity_streams, [:indirect_object_id, :indirect_object_type, :created_at], :name => :activity_streams_by_indirect
     
     create_table :forums, :force => true do |t|
-      t.belongs_to :last_poster, :null => false
-      t.string :title, :limit => 128, :null => false
+      t.belongs_to :last_post, :null => false
+      t.string :name, :limit => 128, :null => false
       t.string :description, :limit => 255
-      t.timestamps
+      t.integer :forum_topics_count, :default => 0
+      t.integer :rank, :default => 0      
+      t.datetime :created_at
     end
 
     create_table :forum_topics, :force => true do |t|
@@ -428,6 +430,10 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :user, :null => false
       t.belongs_to :last_poster, :null => false
       t.string :title, :null => false, :limit => 128
+      t.integer :forum_posts_count, :default => 0
+      t.integer :views_count, :default => 0
+      t.boolean :locked, :default => false
+      t.boolean :sticky, :default => false
       t.timestamps
     end
 

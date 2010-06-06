@@ -35,3 +35,6 @@ Rails::Initializer.run do |config|
     config.load_paths += Dir["#{RAILS_ROOT}/#{path}/*"].find_all { |f| File.stat(f).directory? }
   end    
 end
+
+# enables detailed logging
+ActiveRecord::Base.logger.level = Logger::DEBUG

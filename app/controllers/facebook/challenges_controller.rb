@@ -61,7 +61,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     @pet = current_user_pet
     @challenge = current_user_pet.challenges.responding_to(params[:id])
     
-    if @challenge.update_attributes(params[:challenge]) && @challenge.battle!
+    if @challenge.update_attributes(params[:challenge])
       facebook_redirect_to facebook_challenges_path
     else
       flash[:error] = "Couldn't respond to challenge. :("

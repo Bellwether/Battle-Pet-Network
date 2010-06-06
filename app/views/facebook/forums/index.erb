@@ -1,0 +1,26 @@
+<div class="box">
+  <table class="forums">
+  <tr>
+    <th width="70%" colspan="3">Forum</th>
+    <th width="5%">Topics</th>
+    <th width="5%">Posts</th>
+    <th class="la" width="30%" colspan="1">Last Post</th>
+  </tr>
+  <% @forums.each do |forum| %>	
+    <tr class="forum">
+    <td></td>	
+    <td></td>
+    <td><%= link_to forum.name, facebook_forum_path(forum), :class => "title" %></td>
+    <td></td>
+    <td></td>
+    <td>
+      <% if forum.last_post %>	
+        in <strong>(<%= link_to forum.last_post.topic.title, topic_path(:forum_id => forum, :id => forum.last_post.topic_id, :anchor => dom_id(forum.last_post)) %>)</strong>
+		<br />
+        <%= time_ago_in_words(forum.last_post.created_at) %>
+        by <strong><%= forum.last_post.user.name %></strong>
+      <% end %>
+    </td>
+    </tr>
+  <% end %>
+</table>

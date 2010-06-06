@@ -180,20 +180,25 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   end
 
   create_table "forum_topics", :force => true do |t|
-    t.integer  "forum_id",                      :null => false
-    t.integer  "user_id",                       :null => false
-    t.integer  "last_poster_id",                :null => false
-    t.string   "title",          :limit => 128, :null => false
+    t.integer  "forum_id",                                            :null => false
+    t.integer  "user_id",                                             :null => false
+    t.integer  "last_poster_id",                                      :null => false
+    t.string   "title",             :limit => 128,                    :null => false
+    t.integer  "forum_posts_count",                :default => 0
+    t.integer  "views_count",                      :default => 0
+    t.boolean  "locked",                           :default => false
+    t.boolean  "sticky",                           :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "forums", :force => true do |t|
-    t.integer  "last_poster_id",                :null => false
-    t.string   "title",          :limit => 128, :null => false
+    t.integer  "last_post_id",                                     :null => false
+    t.string   "name",               :limit => 128,                :null => false
     t.string   "description"
+    t.integer  "forum_topics_count",                :default => 0
+    t.integer  "rank",                              :default => 0
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "humans", :force => true do |t|
