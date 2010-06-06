@@ -68,18 +68,21 @@ module Combat
   end
   
   def run_combat
+    logger.info "combat: run_combat: #{combat_needs_to_occur?} && #{validates_combat}"
     return unless combat_needs_to_occur? && validates_combat
     initialize_combat
     
     while combat_in_progress?
       reset_actions
       @current_round = @current_round + 1
+      logger.info "combat: round #{@current_round}"
       exhaust_combatants
       
       results = CombatActions::Resolution.new(attacker, action_for(attacker), defender, action_for(defender))
       
       attacker.current_health = [attacker.current_health - results.second_damage,0].max
       defender.current_health = [defender.current_health - results.first_damage,0].max
+      logger.info "combat: attacker health #{attacker.current_health}, defender health #{defender.current_health}"
       
       log_round(results)
     end
