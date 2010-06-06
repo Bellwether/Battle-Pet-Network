@@ -1,6 +1,7 @@
 class ForumTopic < ActiveRecord::Base
   belongs_to :forum, :counter_cache => true
   belongs_to :user
+  belongs_to :last_post, :class_name => "ForumPost"
   has_many :forum_posts, :order => "created_at DESC"
   
   def touch_views!
@@ -10,4 +11,12 @@ class ForumTopic < ActiveRecord::Base
   def editable_by?(user)
     user && (user.id == user_id)
   end  
+  
+  def sticky?
+    return self.sticky
+  end  
+  
+  def locked?
+    return self.locked
+  end
 end

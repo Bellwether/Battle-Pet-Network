@@ -1,0 +1,35 @@
+<% content_for :page_title do %>
+  <h2><%= facebook_link_to 'Forums', facebook_forums_path %> : <%= @forum.name %></h2>
+<% end %>
+
+<div class="box">
+  <table border="0" cellspacing="0" cellpadding="0" class="topics">
+    <tr>
+      <th colspan="2">Topic</th>
+	  <th width="1%">Posts</th>
+	  <th width="1%">Views</th>
+	  <th>Last Post</th>
+	</tr>
+	<% @topics.each do |topic| %>
+	<tr class="topic">
+	  <td></td>
+	  <td>
+        <%= "<strong>[sticky]</strong>" if topic.sticky? %>
+        <%= "<strong>[locked]</strong>" if topic.locked? %>
+		<%= facebook_link_to topic.title, facebook_forum_forum_topic_path(@forum,topic) %>
+	  </td>
+	  <td><%= topic.forum_posts_count %></td>
+	  <td><%= topic.views_count %></td>
+	  <td>
+      <% if topic.last_post %>	
+        <strong>(<%= link_to time_ago_in_words(topic.last_post.created_at), facebook_forum_forum_topic_path(:forum_id => @forum.id, :id => topic.id, :anchor => dom_id(topic.last_post.id)) %>)</strong>
+		<br />
+        by <strong><%= topic.last_post.user.username %></strong>
+      <% end %>
+	  </td>
+	</tr>
+	<% end %>
+  </table>
+  <div class="right"><%= facebook_link_to 'New topic', new_facebook_forum_forum_topic_path(@forum) %></div>
+  <p class="center"><%= will_paginate @topics %></p>
+</div>

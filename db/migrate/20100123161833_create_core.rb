@@ -421,6 +421,7 @@ class CreateCore < ActiveRecord::Migration
       t.string :name, :limit => 128, :null => false
       t.string :description, :limit => 255
       t.integer :forum_topics_count, :default => 0
+      t.integer :forum_posts_count, :default => 0
       t.integer :rank, :default => 0      
       t.datetime :created_at
     end
@@ -428,7 +429,7 @@ class CreateCore < ActiveRecord::Migration
     create_table :forum_topics, :force => true do |t|
       t.belongs_to :forum, :null => false
       t.belongs_to :user, :null => false
-      t.belongs_to :last_poster, :null => false
+      t.belongs_to :last_post, :null => false
       t.string :title, :null => false, :limit => 128
       t.integer :forum_posts_count, :default => 0
       t.integer :views_count, :default => 0
