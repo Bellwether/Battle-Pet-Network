@@ -1,4 +1,4 @@
-/* layout */
+/* html */
 
 h2 {
   font-size: 15px;
@@ -8,6 +8,18 @@ h2 {
 tr {
   vertical-align: top;	
 }
+
+.breaker {clear:both;display:block;margin-bottom:10px;}
+.hidden {display:none;}
+.right {float:right;}
+.left {float:left;}
+.tleft {text-align:left;}
+.tcenter {text-align:center;}
+.tright {text-align:right;}
+.em {font-style:italic;}
+.strong {float-weight:bold;}
+
+/* layout */
 
 #contents { 
   font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
@@ -68,15 +80,11 @@ tr {
   padding:3px 0 0 15px; 
 } 
 
-.breaker {clear:both;display:block;margin-bottom:10px;}
-.hidden {display:none;}
-.right {float:right;}
-.left {float:left;}
-.tleft {text-align:left;}
-.tcenter {text-align:center;}
-.tright {text-align:right;}
-.em {font-style:italic;}
-.strong {float-weight:bold;}
+#footer #online-pets {
+  width: 300px;	
+}
+
+
 
 /* controls */
 

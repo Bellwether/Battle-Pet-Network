@@ -71,6 +71,10 @@ class Pet < ActiveRecord::Base
   named_scope :searching, lambda { |term| 
     { :conditions => ["slug LIKE ? OR name LIKE ?", "%#{term}%", "%#{term}%"] }
   }
+  named_scope :online, :conditions => "users.current_login_at >= DATE_ADD(NOW(), INTERVAL -15 MINUTE)",  
+                       :joins => "INNER JOIN users ON pets.user_id = users.id" ,
+                       :order => "users.current_login_at DESC ",
+                       :limit => 20
   
   class << self
     def recover!

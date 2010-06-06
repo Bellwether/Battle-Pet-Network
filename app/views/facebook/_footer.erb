@@ -1,0 +1,23 @@
+<div id="footer">
+  <div id="online-pets">
+	<h6>Online Pets</h6>
+	<ul>
+	<% Pet.online.all.each do |pet| %>
+	  <li><%= facebook_link_to pet.name, facebook_pet_path(pet) %></li>
+	<% end %>
+	</ul>
+  </div>
+  <div id="announcements">
+  </div>
+  <div id="links">
+	<ul>
+	  <li><%=facebook_link_to "about", facebook_about_path %></li>
+	  <li><%=facebook_link_to "invite friends", facebook_invite_path %></li>
+	  <li><%=facebook_link_to "contact", facebook_contact_path %></li>
+	  <li><%=facebook_link_to "staff", facebook_staff_path %></li>
+	  <li><%=facebook_link_to "terms of service", facebook_tos_path %></li>
+	  <li><%=facebook_link_to "privacy", ''%></li>
+	</ul>
+	
+  </div>
+</div>
