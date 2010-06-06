@@ -55,6 +55,7 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
       assert !assigns(:hunt).hunters.blank?
       assert !assigns(:hunt).hunter.strategy.blank?
       assert !assigns(:hunt).hunter.strategy.maneuvers.blank?
+      assert !assigns(:hunt).logs.blank?
       
       assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
     end    
