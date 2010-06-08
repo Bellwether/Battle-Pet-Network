@@ -4,6 +4,13 @@ class BattleTest < ActiveSupport::TestCase
   def setup
     @issued_challenge = challenges(:siamese_burmese_issued)
   end
+
+  def test_initializes_logs
+    new_battle = Battle.new
+    build_battle = @issued_challenge.build_battle
+    assert_equal Combat::CombatLogger::LOG_STRUCT, new_battle.logs
+    assert_equal Combat::CombatLogger::LOG_STRUCT, build_battle.logs
+  end
   
   def test_updates_challenge_status
     mock_combat

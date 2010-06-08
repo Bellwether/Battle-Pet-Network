@@ -48,20 +48,35 @@ class Facebook::PetsController < Facebook::FacebookController
 
   def update
     if params[:pet]
-      action_id = params[:pet][:favorite_action_id]
+      action = params[:pet][:favorite_action_id]
+      occupation = params[:pet][:occupation_id]
       success = true
-      
-      if action_id
-        if current_user_pet.update_favorite_action!(action_id)
-          flash[:notice] = "You're favorite action is now to #{current_user_pet.favorite_action.name}"
-        else
-          flash[:error] = "Couldn't update favorite action: #{current_user_pet.errors.full_messages}"
-        end
+    
+      if action
+        update_favorite_action(action)
+      elsif occupation
+        update_occupation(occupation)
+      else
+        flash[:alert] = "Nothing to update"
       end
-    else
-      flash[:alert] = "Nothing to update"
     end
     
     redirect_facebook_back
+  end
+  
+  def update_favorite_action(action_id)
+    if current_user_pet.update_favorite_action!(action_id)
+      flash[:notice] = "Your favorite action is now to #{current_user_pet.favorite_action.name}"
+    else
+      flash[:error] = "Couldn't update favorite action: #{current_user_pet.errors.full_messages}"
+    end
+  end
+  
+  def update_occupation(occupation_id)
+    if current_user_pet.update_occupation!(occupation_id)
+      flash[:notice] = "Your pet is now #{current_user_pet.occupation.name}"
+    else
+      flash[:error] = "Couldn't update occupation: #{current_user_pet.errors.full_messages}"
+    end
   end
 end

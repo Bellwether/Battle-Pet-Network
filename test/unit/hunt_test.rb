@@ -6,6 +6,13 @@ class HuntTest < ActiveSupport::TestCase
     @pet = pets(:persian)
   end
   
+  def test_initializes_logs
+    new_hunt = Hunt.new
+    build_hunt = @sentient.hunts.build
+    assert_equal Combat::CombatLogger::LOG_STRUCT, new_hunt.logs
+    assert_equal Combat::CombatLogger::LOG_STRUCT, build_hunt.logs
+  end
+  
   def test_required_rank
     assert_operator @pet.level_rank_count, "<", @sentient.required_rank
     hunt = @sentient.hunts.create(:hunters_attributes => { "0" => {:pet_id => @pet.id }})
