@@ -6,11 +6,6 @@ module Combat::CombatLogger
                 :outcome => nil, 
                 :attacker_awards => {:experience => []}, 
                 :defender_awards => {:experience => []}}
-
-  # def logs
-  #   @logs ||= LOG_STRUCT
-  #   return @logs
-  # end
   
   def log_advancement(pet)
     log = "#{pet.name} obtained level #{pet.level_rank_count} " <<

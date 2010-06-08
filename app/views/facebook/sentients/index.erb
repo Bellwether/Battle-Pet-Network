@@ -22,14 +22,14 @@
   <table class="sentients">
 	<tr>
 	  <td rowspan="7"><%= avatar_image(sentient,'large') %></td>
-	  <th>
+	  <th colspan="2">	
         <%= "<span class='right hunt-button'>#{link_to_hunt(sentient)}</span>" if has_pet? %>
 		<h6><%= facebook_link_to sentient.name, facebook_sentient_path(sentient) %></h6>
 	  </th>
 	</tr>
 	<tr>
 	  <td>Health: <label><%= sentient.health %></label></td>
-	  <td colspan="6" class="em"><%= sentient.description %></td>
+	  <td rowspan="6" class="em"><%= sentient.description %></td>
 	</tr>
 	<tr><td>Endurance: <label><%= sentient.endurance %></label></td></tr>
 	<tr><td>Power: <strong><%= sentient.power %></strong></td></tr>

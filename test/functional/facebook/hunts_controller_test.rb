@@ -56,12 +56,9 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
       assert !assigns(:hunt).hunter.strategy.blank?
       assert !assigns(:hunt).hunter.strategy.maneuvers.blank?
       assert !assigns(:hunt).logs.blank?
-      logger.info "*********"
       h = Hunt.find(assigns(:hunt).id)
-      puts h.logs.inspect
       h.logs[:outcome] = "test"
       h.save!
-      puts h.reload.logs.inspect
       assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
     end    
     assert flash[:notice]

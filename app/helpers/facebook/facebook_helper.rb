@@ -54,6 +54,10 @@ module Facebook::FacebookHelper
   def render_kibble_box
     render :partial => '/facebook/kibble_box'
   end
+  
+  def render_favorite_action_box(pet)
+    render :partial => '/facebook/favorite_action_box', :locals => {:pet => pet}
+  end  
 
   def render_bio_box(pet)
     render :partial => '/facebook/bio_box', :locals => {:pet => pet}

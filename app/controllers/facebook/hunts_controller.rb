@@ -22,7 +22,6 @@ class Facebook::HuntsController < Facebook::FacebookController
       facebook_redirect_to facebook_sentients_path
     else
       flash[:error] = "Couldn't start hunt. :("
-      logger.info "model errors: #{@hunt.errors.full_messages}" unless @hunt.errors.empty?
       
       @hunt = @sentient.hunts.build(@defaults.merge(params[:hunt]) )
       render :action => :new

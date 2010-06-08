@@ -18,4 +18,13 @@
     </tr>
   <% end %>
 <% end %>
+
+<tr><td colspan="3"><hr /></td></tr>
+<tr>
+<% form_for :pet, pet, :url => "/#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
+  <td colspan="2">
+    <%= f.collection_select(:occupation_id, Occupation.ordered, :id, :name, {:include_blank => true}) %>
+  </td>
+  <td><%= f.submit 'Update' %> </td>
+<% end %>
 </table>
