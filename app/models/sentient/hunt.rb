@@ -7,7 +7,7 @@ class Hunt < ActiveRecord::Base
   
   accepts_nested_attributes_for :hunters, :allow_destroy => false
   
-  validates_presence_of :sentient_id, :status, :logs
+  validates_presence_of :sentient_id, :status
   validates_inclusion_of :status, :in => %w(gathering started ended)
   
   validates_presence_of :hunters
@@ -16,6 +16,7 @@ class Hunt < ActiveRecord::Base
   
   def after_initialize(*args)
     self.status ||= 'started'
+    self.logs ||= Combat::CombatLogger::LOG_STRUCT
   end
   
   def validates_required_rank

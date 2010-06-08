@@ -1,12 +1,16 @@
 class Battle < ActiveRecord::Base
   include Combat
-  serialize :logs, Hash
+  serialize :logs
   
   belongs_to :challenge
   belongs_to :winner, :class_name => "Pet", :foreign_key => "winner_id", :select => Pet::SELECT_BASICS
   
   after_create :resolve_challenge, :update_combatant_counters
-
+  
+  def after_initialize(*args)
+    self.logs ||= Combat::CombatLogger::LOG_STRUCT
+  end
+  
   def resolve_challenge
     challenge.update_attribute(:status,"resolved")
   end

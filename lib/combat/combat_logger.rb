@@ -3,13 +3,14 @@ module Combat::CombatLogger
   include ActionView::Helpers::AssetTagHelper
   
   LOG_STRUCT = {:rounds => [], 
-                :outcome => "", 
+                :outcome => nil, 
                 :attacker_awards => {:experience => []}, 
                 :defender_awards => {:experience => []}}
 
-  def logs
-    (@logs ||= LOG_STRUCT)
-  end
+  # def logs
+  #   @logs ||= LOG_STRUCT
+  #   return @logs
+  # end
   
   def log_advancement(pet)
     log = "#{pet.name} obtained level #{pet.level_rank_count} " <<

@@ -1,5 +1,5 @@
 discussion_rules_1:
-  topic: discussion_rules
+  forum_topic: discussion_rules
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
@@ -10,7 +10,7 @@ discussion_rules_1:
       Play nice!
   
 development_rules_1:
-  topic: development_rules
+  forum_topic: development_rules
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>

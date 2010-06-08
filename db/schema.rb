@@ -172,9 +172,9 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "comments", ["pet_id"], :name => "index_comments_on_pet_id"
 
   create_table "forum_posts", :force => true do |t|
-    t.integer  "topic_id",   :null => false
+    t.integer  "forum_topic_id", :null => false
     t.integer  "user_id"
-    t.text     "body",       :null => false
+    t.text     "body",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

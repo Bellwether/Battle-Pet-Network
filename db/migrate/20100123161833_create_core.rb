@@ -439,7 +439,7 @@ class CreateCore < ActiveRecord::Migration
     end
 
     create_table :forum_posts, :force => true do |t|
-      t.belongs_to :topic, :null => false
+      t.belongs_to :forum_topic, :null => false
       t.belongs_to :user
       t.text :body, :null => false
       t.timestamps

@@ -5,3 +5,30 @@
 	<%= @topic.name %>
   </h2>
 <% end %>
+
+<div class="box full">
+  <table class="topic">
+  <% @posts.each do |p| %>	
+    <tr class="post">
+	  <td>
+		<p class="strong"><%= p.pet.user.username %></p>
+		<p>
+		  <div class="left"><%= avatar_image(p.pet,'small') %></div>
+		  <div><%= facebook_link_to p.pet.name, facebook_pet_path(p.pet) %></div>
+		  <div><%= "Level #{p.pet.level_rank_count} #{p.pet.breed.name}" %></div>
+		  <div><%= p.battle_record %></div>
+		</p>
+	  </td>
+	  <td>
+		<p><%= p.body %></p>
+		<hr />
+		<p class="em"><%= "#{time_ago_in_words(p.created_at)} ago on #{(Time.now).strftime("%Y-%m-%d %H:%M")}" %></p>
+	  </td>
+    </tr>
+  <% end %>
+  </table>
+  <p class="center"><%= will_paginate @posts %></p>
+</div>
+
+<div class="box full">
+</div>

@@ -20,7 +20,7 @@ class Facebook::ForumsControllerTest  < ActionController::TestCase
   end
   
   def test_show
-    facebook_get :show, :id => @forum, :fb_sig_user => nil
+    facebook_get :show, :id => @forum.id, :fb_sig_user => nil
     assert_response :success
     assert_template 'show'
     assert !assigns(:forum).blank?

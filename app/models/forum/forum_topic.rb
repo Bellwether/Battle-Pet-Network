@@ -2,7 +2,9 @@ class ForumTopic < ActiveRecord::Base
   belongs_to :forum, :counter_cache => true
   belongs_to :user
   belongs_to :last_post, :class_name => "ForumPost"
-  has_many :forum_posts, :order => "created_at DESC"
+  has_many :posts, :class_name => "ForumPost", 
+                   :foreign_key => "forum_topic_id", 
+                   :order => "created_at DESC"
   
   def touch_views!
     update_attribute(:views, views + 1)
