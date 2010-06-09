@@ -26,5 +26,7 @@ class Facebook::ForumTopicsController < Facebook::FacebookController
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.find(params[:id])
     @posts = @topic.posts.paginate :page => params[:page]
+    
+    @topic.touch_views!
   end
 end

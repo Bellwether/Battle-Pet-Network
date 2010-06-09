@@ -18,7 +18,7 @@
       <% f.fields_for :post do |pf| %>
 	  <tr>	
 	    <td rowspan="2"><%= pf.label :body %></td>
-	    <td rowspan="2"><%= text_area(:post, :body, :size => "50x15")%></td>
+	    <td rowspan="2"><%= text_area('forum_topic[post_attributes][body]', :body, :size => "50x15")%></td>
 	  </tr>
       <% end %>	
 	  <tr>	

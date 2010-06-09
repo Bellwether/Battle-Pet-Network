@@ -11,7 +11,9 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
   end
   
   def test_show
-    facebook_get :show, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => nil
+    assert_difference '@topic.reload.views_count', +1 do    
+      facebook_get :show, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => nil
+    end
     assert_response :success
     assert_template 'show'
     assert !assigns(:forum).blank?

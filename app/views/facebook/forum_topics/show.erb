@@ -32,5 +32,7 @@
   <p class="center"><%= will_paginate @posts %></p>
 </div>
 
+<% unless @topic.locked? %>
 <div class="box full">
 </div>
+<% end %>

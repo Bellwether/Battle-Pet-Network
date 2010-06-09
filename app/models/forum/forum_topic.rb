@@ -12,7 +12,7 @@ class ForumTopic < ActiveRecord::Base
   accepts_nested_attributes_for :posts, :allow_destroy => false  
   
   def touch_views!
-    update_attribute(:views, views + 1)
+    update_attribute(:views_count, views_count + 1)
   end
     
   def editable_by?(user)
