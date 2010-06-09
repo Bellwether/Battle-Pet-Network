@@ -14,7 +14,14 @@
 	<tbody>
 	  <tr>
 	    <td><%= f.label :recipient_name, 'To' %></td>
-	    <td><%= f.text_field :recipient_name %> <span class="em">(enter another pet's name)</span></td>
+	    <td>
+		  <% if @recipient %>
+            <%= f.hidden_field :recipient_id, {:value => @recipient.id} %>		
+		    <label><%= @recipient.name %></label>
+		  <% else %>
+			<%= f.text_field :recipient_name %> <span class="em">(enter another pet's name)</span>
+		  <% end %>
+		</td>
 	  </tr>
 	  <tr>
 	    <td><%= f.label :subject, 'Subject' %></td>

@@ -38,7 +38,7 @@ class Facebook::MessagesControllerTest  < ActionController::TestCase
     facebook_get :new, :fb_sig_user => users(:two).facebook_id
     assert_response :success
     assert_template 'new'
-    assert assigns(:message)
+    assert !assigns(:message).blank?
     assert_tag :tag => "form", 
       :attributes => {:action => "/#{@controller.facebook_app_path}/pets/home/messages", :method => "post"}, 
       :descendant => { 
@@ -47,6 +47,18 @@ class Facebook::MessagesControllerTest  < ActionController::TestCase
         :tag => "textarea", :attributes => { :name => "message[body]" },
         :tag => "input", :attributes => { :type => "submit" }
     }
+  end
+  
+  def test_new_message_with_recipient
+    recipient = users(:three).pet
+    mock_user_facebooking(users(:two).facebook_id)
+    facebook_get :new, :fb_sig_user => users(:two).facebook_id, :pet_id => recipient.id
+    assert_response :success
+    assert_template 'new'
+    assert !assigns(:message).blank?
+    assert !assigns(:recipient).blank?
+    assert_tag :tag => "input", :attributes => { :type => "hidden", :name => "message[recipient_id]", :value => "#{recipient.id}"}
+    assert_no_tag :tag => "input", :attributes => { :type => "text", :name => "message[recipient_name]" }    
   end
   
   def test_create_message

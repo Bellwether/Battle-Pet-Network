@@ -15,6 +15,8 @@ class Facebook::MessagesController < Facebook::FacebookController
   
   def new
     @message = current_user_pet.outbox.new(:reply_to_id => params[:reply_to_id])
+    @recipient = Pet.find_by_id(params[:pet_id]) if params[:pet_id]
+    @message.recipient = @recipient if @recipient
   end
   
   def create

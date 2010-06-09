@@ -45,7 +45,7 @@
 		<% end %>
 	  <% end %>
     </div>
-    <span class="sign-button message right"><%= facebook_link_to 'Message', new_facebook_message_path %></span>
+    <span class="sign-button message right"><%= facebook_link_to 'Message', new_facebook_message_path(:pet_id => @pet.id) %></span>
     <span class="sign-button right"><%= facebook_link_to "Challenge to Battle", new_facebook_pet_challenge_path(@pet) %></span>
   </div>
   <% end %>

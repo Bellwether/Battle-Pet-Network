@@ -132,7 +132,7 @@ cheezburger:
   
 chocolate_chip_cookie:
   name: Chocolate Chip Cookie
-  description: Made just for you and, as of yet, totally uneaten. Nom, nom.
+  description: Made just for you, and totally uneaten. Nom, nom.
   item_type: Treat
   power: 1
   required_rank: 1

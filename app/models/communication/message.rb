@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :recipient, :class_name => "Pet", :foreign_key => "recipient_id"
   
   validates_presence_of :sender_id, :recipient_id, :subject, :body, :status, :message_type
-  validates_length_of :subject, :within => 3..128
+  validates_length_of :subject, :within => 2..128
   validates_length_of :body, :within => 1..4096  
   validates_inclusion_of :status, :in => %w(new read deleted)
   validates_inclusion_of :message_type, :in => %w(personal membership system)

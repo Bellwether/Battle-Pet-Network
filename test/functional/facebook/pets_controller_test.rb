@@ -27,6 +27,9 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_template 'show'
     assert assigns(:pet)
     assert_tag :tag => "span", :attributes => { :class => "sign-button left" }
+    assert_tag :tag => "a", :attributes => { 
+                              :href => "/#{@controller.facebook_app_path}/pets/home/messages/new?pet_id=#{pets(:persian).id}" 
+                            }
   end
     
   def test_get_new_pet
