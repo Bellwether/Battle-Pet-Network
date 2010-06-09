@@ -1,4 +1,11 @@
-<% unless pet.biography.blank? %>	
+<% if pet.biography.blank? && show_hook %>	
+<div class="box slim biography">
+  <h4>Write Biography</h4>
+  <p class="em">Your pet's history are personality are a mystery. Record their biography and earn Kibble stat bonuses for 
+  their life's journeys.</p>
+  <p><span class="button"><%= facebook_link_to "Record Pet Biography", new_facebook_biography_path %></span></p>
+</div>
+<% else %>
 <div class="box slim biography">
   <h4>Kennel</h4>
   <p><strong>Description:<strong><%= pet.biography.description %></p>

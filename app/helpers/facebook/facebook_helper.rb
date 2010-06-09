@@ -59,8 +59,8 @@ module Facebook::FacebookHelper
     render :partial => '/facebook/favorite_action_box', :locals => {:pet => pet}
   end  
 
-  def render_bio_box(pet)
-    render :partial => '/facebook/bio_box', :locals => {:pet => pet}
+  def render_bio_box(pet, show_hook=false)
+    render :partial => '/facebook/bio_box', :locals => {:pet => pet, :show_hook => show_hook}
   end
 
   def render_hunts_box(hunts)
