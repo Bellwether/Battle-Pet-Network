@@ -3,7 +3,7 @@ class ForumPost < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :body
-  validates_presence_of :user_id, :forum_topic_id  
+  validates_presence_of :user_id
   
   after_create :touch_parents
   

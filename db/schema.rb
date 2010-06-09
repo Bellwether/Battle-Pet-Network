@@ -182,7 +182,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   create_table "forum_topics", :force => true do |t|
     t.integer  "forum_id",                                            :null => false
     t.integer  "user_id",                                             :null => false
-    t.integer  "last_post_id",                                        :null => false
+    t.integer  "last_post_id"
     t.string   "title",             :limit => 128,                    :null => false
     t.integer  "forum_posts_count",                :default => 0
     t.integer  "views_count",                      :default => 0

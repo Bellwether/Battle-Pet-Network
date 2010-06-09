@@ -23,8 +23,8 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
   end 
   
   def test_new
-    mock_user_facebooking(users(:two).facebook_id)
-    facebook_get :new, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => users(:two).facebook_id
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :new, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => @user.facebook_id
     assert_response :success
     assert_template 'new'
     assert !assigns(:forum).blank?
@@ -39,4 +39,27 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     }
   end
   
+  def test_create
+    mock_user_facebooking(@user.facebook_id)
+    forum_topic_params = {:title=>"text", :posts_attributes => { '0' => {:body=>'TEST\nTEST\nTEST'} }}
+    assert_difference ['ForumTopic.count','ForumPost.count'], +1, "message should create normally" do
+      facebook_post :create, :forum_id => @forum.id, :forum_topic => forum_topic_params, :fb_sig_user => @user.facebook_id
+      assert_response :success
+      assert !assigns(:forum).blank?
+      assert !assigns(:topic).blank?
+      assert flash[:notice]
+    end
+  end
+
+  def test_fail_create
+    mock_user_facebooking(@user.facebook_id)
+    forum_topic_params = {:posts_attributes => { '0' => {:body=>''} }}
+    assert_no_difference ['ForumTopic.count','ForumPost.count'], "message should create normally" do
+      facebook_post :create, :forum_id => @forum.id, :forum_topic => forum_topic_params, :fb_sig_user => @user.facebook_id
+      assert_response :success
+      assert !assigns(:forum).blank?
+      assert !assigns(:topic).blank?
+      assert flash[:error]
+    end
+  end
 end

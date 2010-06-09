@@ -11,8 +11,9 @@ class Facebook::ForumTopicsController < Facebook::FacebookController
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.new(params[:forum_topic])
     @topic.user = current_user
+    @topic.posts.first.user = @topic.user unless @topic.posts.blank?
     
-    if @pack.save
+    if @topic.save
       flash[:notice] = "Topic created"
       facebook_redirect_to facebook_forum_forum_topic_path(@forum,@topic)
     else
