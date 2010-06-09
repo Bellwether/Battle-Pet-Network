@@ -149,6 +149,26 @@ td.radio-cell .input:hover {
 .slim { margin-right:15px; width: 250px !important;}
 .half { width: 360px !important;}
 
+/* flash messages */
+
+.flash-notice, .flash-error, .flash-alert, .flash-success {
+  border: 1px solid #666;
+  padding: 8px;
+  width: 100%;	
+}
+
+.flash-notice {
+}
+
+.flash-error {
+}
+
+.flash-alert {
+}
+
+.flash-success {
+}
+
 /* Errors */
 
 .errorExplanation {
