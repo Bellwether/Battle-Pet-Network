@@ -38,12 +38,12 @@
   <table class="message">
 	<tbody>
 	  <tr>	
-	    <td><%= f.label :body %></td>
-	    <td><%= f.text_area(:body, :size => "50x15")%></td>
+	    <td><%= f.label :body, 'Post Reply' %></td>
+	    <td><%= f.text_area(:body, :size => "50x5")%></td>
 	  </tr>
 	  <tr>	
 		<td>&nbsp;</td>
-	    <td><%= f.submit 'Post Reply' %></td>
+	    <td><%= f.submit 'Save' %></td>
 	  </tr>
 	</tbody>
   </table>
