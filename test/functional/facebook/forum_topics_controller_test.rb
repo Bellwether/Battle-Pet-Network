@@ -24,7 +24,7 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :class => "topic"}, :descendant => { 
       :tag => "tr", :attributes => { :class => "post" }
     }
-    post_url = @controller.facebook_nested_url(facebook_forum_forum_topic_forum_posts_path(@forum,@topic))
+    post_url = "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics/#{@topic.id}/forum_posts"
     assert_tag :tag => "form", :attributes => {:action => post_url, :method => "post"} 
     assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_post[body]" } }
   end 
