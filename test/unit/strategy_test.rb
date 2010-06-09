@@ -11,6 +11,12 @@ class StrategyTest < ActiveSupport::TestCase
     @favorite_strategy.maneuvers.build(:action => @pet.breed.favorite_action)
   end
   
+  def test_validates_presence_of_maneuvers
+    invalid = @pet.strategies.build
+    assert !invalid.save
+    assert invalid.errors.on(:maneuvers)
+  end
+  
   def test_set_name
     assert_nil @new_strategy.name
     @new_strategy.save

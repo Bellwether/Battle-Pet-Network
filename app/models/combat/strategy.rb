@@ -6,7 +6,7 @@ class Strategy < ActiveRecord::Base
   
   accepts_nested_attributes_for :maneuvers, :allow_destroy => false
 
-  validates_presence_of :combatant_id, :combatant_type, :name, :status
+  validates_presence_of :combatant_id, :combatant_type, :name, :status, :maneuvers
   validates_inclusion_of :combatant_type, :in => %w(Pet Sentient)
   validates_inclusion_of :status, :in => %w(active used)
   
