@@ -14,7 +14,6 @@ class Pet < ActiveRecord::Base
   belongs_to :user, :foreign_key => "user_id", 
                     :select => "id, facebook_id, facebook_session_key, username, last_login_at, current_login_at"
   has_one :biography
-  has_one :shop  
 
   has_many :tames, :include => [:human]
     

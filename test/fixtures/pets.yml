@@ -67,6 +67,7 @@ burmese:
     pack: alpha  
     level: burmese_1
     actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+    shop: first
   
 russian_blue:
     breed: russian_blue
