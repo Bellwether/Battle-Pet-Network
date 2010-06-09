@@ -120,6 +120,10 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert assigns(:gear)
     assert_tag :tag => "table", :attributes => { :id => "combat-profile" }
     assert_tag :tag => "table", :attributes => { :id => "advancements" }
+    assert_tag :tag => "table", :attributes => { :class => "challenge" }, :descendant => {
+      :tag => "a", :attributes => { :href => "/#{@controller.facebook_app_path}/pets/home/challenges/#{assigns(:challenges).first.id}/refuse"},
+      :tag => "a", :attributes => { :href => "/#{@controller.facebook_app_path}/pets/home/challenges/#{assigns(:challenges).first.id}/edit"}
+    }
     assert_tag :tag => "div", :attributes => { :class => "box gear" }
     assert_tag :tag => "form", :descendant => {
       :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }

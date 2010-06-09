@@ -5,6 +5,10 @@
 
   <div class="box slim">	
     <h4>Strategies</h4>
+  </div>
+
+  <div class="box slim">	
+    <h4>Strategies</h4>
     <p class="em">
 	  <% if @strategies.blank? %>
 	  You haven't saved any strategies yet. Whenever you plan a strategy, you'll have the option to save it for future battles 
@@ -112,3 +116,30 @@
 	<% end %>
   </table>
 </div>
+
+<% unless @challenges.blank? %>
+<div class="box">
+  <h3>Open Challenges Against You</h3>
+
+  <% cell_table(@challenges, 4) do |c,idx| %>
+  <td>
+    <table class="challenge">
+	  <tbody>
+		<tr>
+		  <td rowspan="4"><%= avatar_image(c.attacker,'medium') %></td>
+		  <th><%= facebook_link_to c.attacker.name, facebook_pet_path(c.attacker)%></th>
+		</tr>
+		<tr>
+		  <td><label>Level <%= c.attacker.level_rank_count %><%= c.attacker.breed.name %></label></td>
+		  <td><label>Record: <% c.attacker.battle_record %></label></td>
+		  <td>
+			<span class="right button"><%= facebook_link_to "Decline", refuse_facebook_challenge_path(c) %></span>
+			<span class="left button"><%= facebook_link_to "Accept", edit_facebook_challenge_path(c) %></span>
+		  </td>
+		</tr>
+	  </tbody>	
+	</table>
+  </td>	
+  <% end %>
+</div>
+<% end %>

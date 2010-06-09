@@ -118,18 +118,6 @@ glass_tuna:
   stock_cap: 75
   restock_rate: 10
 
-cheezburger:
-  name: Cheezburger
-  description: Ya, u can haz cheezburger.
-  item_type: Treat
-  power: 2
-  required_rank: 2
-  cost: 35
-  rarity: 85
-  stock: 50
-  stock_cap: 50
-  restock_rate: 10
-  
 chocolate_chip_cookie:
   name: Chocolate Chip Cookie
   description: Made just for you, and totally uneaten. Nom, nom.
@@ -141,6 +129,30 @@ chocolate_chip_cookie:
   stock: 50
   stock_cap: 50
   restock_rate: 10  
+  
+cheezburger:
+  name: Cheezburger
+  description: Ya, u can haz cheezburger.
+  item_type: Treat
+  power: 2
+  required_rank: 2
+  cost: 35
+  rarity: 85
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
+
+fishliver_oil:
+  name: Fishliver Oil
+  description: Three claws of stiff, pungent, fishliver oil, lapped up in a shot for a powerful burst of pure marine energy!
+  item_type: Treat
+  power: 3
+  required_rank: 3
+  cost: 75
+  rarity: 150
+  stock: 20
+  stock_cap: 20
+  restock_rate: 5
 
 fiberboard_pillar: 
   name: Fiberboard Pillar
