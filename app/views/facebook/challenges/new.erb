@@ -19,7 +19,7 @@
 	<td class="leftbox">
 	  <table class="dotbox">
 		<tr>
-		  <td rowspan="5"><%= avatar_image(@challenge.defender,'large') %></td>
+		  <td rowspan="5"><%= avatar_image(@challenge.attacker,'large') %></td>
 		  <td>&nbsp;</td>
 		  <td><%= @challenge.attacker.breed.name %></td>
 		</tr>
@@ -59,8 +59,7 @@
 		  </td>
 		</tr>
 	  </table>
-	</td>
-	<tr>	
+	</td>	
 	<td class="middlebox">
 	  <table class="dotbox">
 		<tr><td>Breed</td></tr>
@@ -75,8 +74,6 @@
 		<tr><th>Combat</th></tr>
 		<tr><td><%= submit_tag "Challenge"%></td></tr>
 	</td>	
-	</tr>	
-	<tr>
 	<td class="rightbox">
 	  <table class="dotbox">
 		<tr>
