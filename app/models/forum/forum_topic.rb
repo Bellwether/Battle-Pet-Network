@@ -6,6 +6,11 @@ class ForumTopic < ActiveRecord::Base
                    :foreign_key => "forum_topic_id", 
                    :order => "created_at DESC"
   
+  validates_presence_of :forum_id, :user_id, :title
+  validates_length_of :title, :in => 3..128
+  
+  accepts_nested_attributes_for :posts, :allow_destroy => false  
+  
   def touch_views!
     update_attribute(:views, views + 1)
   end

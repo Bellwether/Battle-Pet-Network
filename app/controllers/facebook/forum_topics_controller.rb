@@ -4,6 +4,7 @@ class Facebook::ForumTopicsController < Facebook::FacebookController
   def new
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.new
+    @post = @topic.posts.build
   end
   
   def create

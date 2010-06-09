@@ -9,5 +9,5 @@ class Forum < ActiveRecord::Base
   belongs_to :last_post, :class_name => "ForumPost"
   
   named_scope :ranked, :order => "rank ASC"  
-  named_scope :include_last_post, :include => {:last_post => :topic}
+  named_scope :include_last_post, :include => {:last_post => :forum_topic}
 end

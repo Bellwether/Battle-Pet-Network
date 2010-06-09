@@ -3,5 +3,5 @@ class ForumPost < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :body
-  validates_presence_of :user_id, :topic_id
+  validates_presence_of :user_id, :forum_topic_id  
 end

@@ -33,7 +33,7 @@ class Facebook::MessagesControllerTest  < ActionController::TestCase
     }
   end
     
-  def test_get_new_message
+  def test_new_message
     mock_user_facebooking(users(:two).facebook_id)
     facebook_get :new, :fb_sig_user => users(:two).facebook_id
     assert_response :success

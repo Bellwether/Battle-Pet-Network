@@ -20,5 +20,23 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :class => "topic"}, :descendant => { 
       :tag => "tr", :attributes => { :class => "post" }
     }
-  end  
+  end 
+  
+  def test_new
+    mock_user_facebooking(users(:two).facebook_id)
+    facebook_get :new, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => users(:two).facebook_id
+    assert_response :success
+    assert_template 'new'
+    assert !assigns(:forum).blank?
+    assert !assigns(:topic).blank?
+    assert !assigns(:post).blank?
+    assert_tag :tag => "form", 
+      :attributes => {:action => "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics", :method => "post"}, 
+      :descendant => { 
+        :tag => "input", :attributes => { :name => "forum_topic[title]", :type => "text" },
+        :tag => "textarea", :attributes => { :name => "forum_topic[post_attributes][body]" },
+        :tag => "input", :attributes => { :type => "submit" }
+    }
+  end
+  
 end

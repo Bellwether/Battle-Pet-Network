@@ -2,7 +2,7 @@
   <h2>
 	<%= facebook_link_to 'Forums', facebook_forums_path %> : 
 	<%= facebook_link_to @forum.name, facebook_forum_path(@forum) %> : 
-	<%= @topic.name %>
+	<%= @topic.title %>
   </h2>
 <% end %>
 
@@ -11,12 +11,14 @@
   <% @posts.each do |p| %>	
     <tr class="post">
 	  <td>
-		<p class="strong"><%= p.pet.user.username %></p>
+		<p class="strong"><%= p.user.username %></p>
 		<p>
-		  <div class="left"><%= avatar_image(p.pet,'small') %></div>
-		  <div><%= facebook_link_to p.pet.name, facebook_pet_path(p.pet) %></div>
-		  <div><%= "Level #{p.pet.level_rank_count} #{p.pet.breed.name}" %></div>
-		  <div><%= p.battle_record %></div>
+		  <% if p.user.pet %>	
+		    <div class="left"><%= avatar_image(p.user.pet,'small') %></div>
+		    <div><%= facebook_link_to p.user.pet.name, facebook_pet_path(p.user.pet) %></div>
+		    <div><%= "Level #{p.user.pet.level_rank_count} #{p.user.pet.breed.name}" %></div>
+		    <div><%= p.user.pet.battle_record %></div>
+		  <% end %>
 		</p>
 	  </td>
 	  <td>
