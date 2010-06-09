@@ -38,10 +38,11 @@
   <% show_for_pet(@pet) do %>
   <div>
     <div class="signs">
+	  <div class="sign left">
 	  <% Sign.signs_with(current_user_pet, @pet).each do |sign|%>
 	    <% form_for Sign.new, :url => facebook_nested_url(facebook_pet_signs_path(@pet)) do |f| %>	
-	    <%= f.hidden_field :sign_type, {:value => sign} %> %>
-		<span class="sign-button left"><%= f.submit sign.upcase %></span>
+	    <%= f.hidden_field :sign_type, {:value => sign} %>
+		<span class="sign-button"><%= f.submit sign.upcase %></span>
 		<% end %>
 	  <% end %>
     </div>

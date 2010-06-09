@@ -26,10 +26,10 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'show'
     assert assigns(:pet)
-    assert_tag :tag => "span", :attributes => { :class => "sign-button left" }
-    assert_tag :tag => "a", :attributes => { 
-                              :href => "/#{@controller.facebook_app_path}/pets/home/messages/new?pet_id=#{pets(:persian).id}" 
-                            }
+    Sign.signs_with(@user.pet, pets(:persian).id).each do |sign|
+      assert_tag :tag => "form", :attributes => {:method => "post", :action => @controller.facebook_nested_url(facebook_pet_signs_path(pets(:persian))) }
+    end
+    assert_tag :tag => "a", :attributes => { :href => "/#{@controller.facebook_app_path}/pets/home/messages/new?pet_id=#{pets(:persian).id}" }
   end
     
   def test_get_new_pet
@@ -178,5 +178,9 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert !assigns(:pet).blank?
     assert !assigns(:messages).blank?
     assert !assigns(:signs).blank?
+    assert_tag :tag => "div", :attributes => { :class => "box slim biography" }
+    assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/home/pet"}, :descendant => {
+      :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
+    }
   end
 end
