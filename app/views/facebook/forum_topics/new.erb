@@ -17,12 +17,12 @@
 	  </tr>
       <% f.fields_for :posts do |pf| %>
 	  <tr>	
-	    <td rowspan="2"><%= pf.label :body %></td>
-	    <td rowspan="2"><%= text_area(:post, :body, :size => "50x15")%></td>
+	    <td><%= pf.label :body %></td>
+	    <td><%= pf.text_area(:body, :size => "50x15")%></td>
 	  </tr>
       <% end %>	
 	  <tr>	
-	    <td rowspan="4">
+	    <td rowspan="2">
 	      <%= f.submit 'Post Topic' %> 
 	    </td>
 	  </tr>

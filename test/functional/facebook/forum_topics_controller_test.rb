@@ -32,13 +32,10 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert !assigns(:forum).blank?
     assert !assigns(:topic).blank?
     assert !assigns(:post).blank?
-    assert_tag :tag => "form", 
-      :attributes => {:action => "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics", :method => "post"}, 
-      :descendant => { 
-        :tag => "input", :attributes => { :name => "forum_topic[title]", :type => "text" },
-        :tag => "textarea", :attributes => { :name => "forum_topic[post_attributes][body]" },
-        :tag => "input", :attributes => { :type => "submit" }
-    }
+    assert_tag :tag => "form", :attributes => {:action => "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics", :method => "post"} 
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :name => "forum_topic[title]", :type => "text" } }
+    assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_topic[posts_attributes][0][body]" } }
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" } }
   end
   
   def test_create
