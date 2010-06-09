@@ -225,6 +225,17 @@ calico_cloak:
   stock_cap: 2
   restock_rate: 1
   
+choke_chain:
+  name: Choke Chain
+  description: A yoke of leather and mail, these collars were once used to discipline pets but are now worn freely as a restyled gothic armor-piece.
+  item_type: Collar
+  power: 1
+  cost: 2500
+  rarity: 500
+  stock: 5
+  stock_cap: 5
+  restock_rate: 1
+  
 cordura_collar:    
   name: Cordura Collar
   item_type: Collar

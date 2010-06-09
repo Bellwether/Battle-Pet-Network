@@ -8,9 +8,9 @@ class Hunt < ActiveRecord::Base
   accepts_nested_attributes_for :hunters, :allow_destroy => false
   
   validates_presence_of :sentient_id, :status
-  validates_inclusion_of :status, :in => %w(gathering started ended)
-  
   validates_presence_of :hunters
+  validates_inclusion_of :status, :in => %w(gathering started ended)
+  validates_associated :hunters
     
   validate :validates_required_rank
   

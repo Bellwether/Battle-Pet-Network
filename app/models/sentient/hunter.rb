@@ -7,6 +7,7 @@ class Hunter < ActiveRecord::Base
   
   validates_presence_of :pet_id, :outcome
   validates_inclusion_of :outcome, :in => %w(undecided won lost deadlocked)
+  validates_associated :strategy
   
   before_validation_on_create :set_outcome  
   validate :validates_pet_strategy

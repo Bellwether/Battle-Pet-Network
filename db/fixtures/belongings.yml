@@ -1,0 +1,17 @@
+domino_choke_chain:
+  pet: domino
+  item: choke_chain    
+  source: award    
+  status: active
+  
+pearl_choke_chain:
+  pet: pearl
+  item: choke_chain    
+  source: award    
+  status: active
+  
+nova_choke_chain:
+  pet: nova
+  item: choke_chain    
+  source: award    
+  status: active
