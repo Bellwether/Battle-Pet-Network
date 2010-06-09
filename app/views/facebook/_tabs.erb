@@ -4,11 +4,11 @@
     <%= fb_tab_item "Combat", facebook_nested_url(combat_facebook_pet_path), :align => :left %>
     <%= fb_tab_item "Shop", '', :align => :left if has_shop? %>
   <% end %>
-  <%= fb_tab_item (has_pet? ? "Rival Pets" : "Pets"), facebook_nested_url(facebook_pets_path), :align => :left %>
-  <%= fb_tab_item (has_pack? ? "Rival Packs" : "Packs"), facebook_nested_url(facebook_packs_path), :align => :left %>
+  <%= fb_tab_item "Pets", facebook_nested_url(facebook_pets_path), :align => :left %>
   <%= fb_tab_item (has_pet? ? "Hunting" : "Sentients"), facebook_nested_url(facebook_sentients_path), :align => :left %>
   <%= fb_tab_item "Humans", facebook_nested_url(facebook_humans_path), :align => :left %>
   <%= fb_tab_item "Market", facebook_nested_url(facebook_items_path), :align => :left %>
+  <%= fb_tab_item "Shops", facebook_nested_url(facebook_shops_path), :align => :left %>
 
   <%= fb_tab_item "Lobby", facebook_nested_url(facebook_root_path), :align => :right %>
   <%= fb_tab_item "Forums", facebook_nested_url(facebook_forums_path), :align => :right %>

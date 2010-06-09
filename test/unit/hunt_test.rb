@@ -50,7 +50,9 @@ class HuntTest < ActiveSupport::TestCase
     hunt.set_outcome
     assert_difference ['hunt.hunter.pet.kibble'], +hunt.sentient.kibble do
       hunt.award!
+      assert !hunt.logs[:attacker_awards][:kibble].blank?
     end
+    
     hunt.sentient.current_health = 10
     hunt.hunter.pet.current_health = 0
     hunt.set_outcome

@@ -49,7 +49,10 @@ class Hunt < ActiveRecord::Base
   
   def award!
     hunters.each do |h|
-      h.pet.update_attribute(:kibble, h.pet.kibble + sentient.kibble) if h.outcome == "won"
+      if h.outcome == "won"
+        h.pet.update_attribute(:kibble, h.pet.kibble + sentient.kibble) 
+        log_kibble(h.pet,sentient.kibble)
+      end
     end
   end
 end

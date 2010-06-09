@@ -4,7 +4,7 @@ module Combat::CombatLogger
   
   LOG_STRUCT = {:rounds => [], 
                 :outcome => nil, 
-                :attacker_awards => {:experience => []}, 
+                :attacker_awards => {:experience => [], :kibble => []}, 
                 :defender_awards => {:experience => []}}
   
   def log_advancement(pet)
@@ -15,6 +15,12 @@ module Combat::CombatLogger
     elsif pet == defender
       logs[:defender_awards][:experience] << log
     end
+    return log
+  end
+  
+  def log_kibble(pet,kibble)
+    log = "#{pet.name} earned #{kibble} kibble"
+    logs[:attacker_awards][:kibble] << log if pet == attacker
     return log
   end
   

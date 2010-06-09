@@ -35,3 +35,23 @@ pearl:
   occupation: prowling
   level: persian_1
   actions: scratch,slash,claw,bite,swat,flank,dodge,leap  
+  
+nova:  
+  breed: burmese
+  user: candy_anderson
+  name: nova
+  slug: nova
+  current_health: 10
+  current_endurance: 40
+  health: 10
+  endurance: 40
+  fortitude: 5
+  intelligence: 3
+  affection: 4
+  power: 1
+  level_rank_count: 1
+  experience: 0
+  occupation: shopkeeping
+  level: burmese_1
+  actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+  shop: nova_shop

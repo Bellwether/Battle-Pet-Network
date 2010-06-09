@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  TYPES = ['Food', 'Treat', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensor', 'Ornament', 'Mantle', 'Charm', 'Standard']
+  TYPES = ['Food', 'Treat', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensor', 'Ornament', 'Mantle', 'Charm', 'Standard', 'Medicine']
   BATTLE_TYPES = ['Collar', 'Weapon', 'Sensor', 'Mantle']
   FOODSTUFFS = ['Food', 'Treat']  
   

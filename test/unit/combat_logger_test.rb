@@ -36,6 +36,12 @@ class CombatLoggerTest < ActiveSupport::TestCase
        end
      end
    end
+   
+   def test_log_kibble
+     award = @hunt.sentient.kibble
+     log = @hunt.log_kibble(@hunt.attacker,award)
+     assert_equal "#{@hunt.attacker.name} earned #{award} kibble", @hunt.logs[:attacker_awards][:kibble].last
+   end
   
   def test_log_outcome
     @combat_models.each do |m|
