@@ -22,10 +22,6 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :class => "topic"}, :descendant => { 
       :tag => "tr", :attributes => { :class => "post" }
     }
-    # assert_tag :tag => "form", 
-    #   :attributes => {:action => "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics", :method => "post"}, 
-    #   :descendant => {
-    # }
   end 
   
   def test_new

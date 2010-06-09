@@ -15,10 +15,10 @@
 	    <td><%= f.label :title %></td>
 	    <td><%= f.text_field :title %></td>
 	  </tr>
-      <% f.fields_for :post do |pf| %>
+      <% f.fields_for :posts do |pf| %>
 	  <tr>	
 	    <td rowspan="2"><%= pf.label :body %></td>
-	    <td rowspan="2"><%= text_area('forum_topic[post_attributes][body]', :body, :size => "50x15")%></td>
+	    <td rowspan="2"><%= text_area(:post, :body, :size => "50x15")%></td>
 	  </tr>
       <% end %>	
 	  <tr>	
