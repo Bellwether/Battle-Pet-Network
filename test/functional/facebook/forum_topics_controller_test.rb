@@ -11,6 +11,7 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
   end
   
   def test_show
+    @topic.update_attribute(:locked,false)
     assert_difference '@topic.reload.views_count', +1 do    
       facebook_get :show, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => nil
     end
@@ -19,9 +20,13 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert !assigns(:forum).blank?
     assert !assigns(:topic).blank?
     assert !assigns(:posts).blank?
+    assert !assigns(:post).blank?
     assert_tag :tag => "table", :attributes => { :class => "topic"}, :descendant => { 
       :tag => "tr", :attributes => { :class => "post" }
     }
+    post_url = @controller.facebook_nested_url(facebook_forum_forum_topic_forum_posts_path(@forum,@topic))
+    assert_tag :tag => "form", :attributes => {:action => post_url, :method => "post"} 
+    assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_post[body]" } }
   end 
   
   def test_new

@@ -34,5 +34,19 @@
 
 <% unless @topic.locked? %>
 <div class="box full">
+  <% form_for @post, :url => facebook_nested_url(facebook_forum_forum_topic_forum_posts_path(@forum,@topic)) do |f| %>
+  <table class="message">
+	<tbody>
+	  <tr>	
+	    <td><%= f.label :body %></td>
+	    <td><%= f.text_area(:body, :size => "50x15")%></td>
+	  </tr>
+	  <tr>	
+		<td>&nbsp;</td>
+	    <td><%= f.submit 'Post Reply' %></td>
+	  </tr>
+	</tbody>
+  </table>
+  <% end %>	
 </div>
 <% end %>

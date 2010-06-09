@@ -1,7 +1,7 @@
 class Facebook::ForumPostsController < Facebook::FacebookController
   def create
     @forum = Forum.find(params[:forum_id])
-    @topic = @forum.topics.find(params[:id])
+    @topic = @forum.topics.find(params[:forum_topic_id])
     @post = @topic.posts.build(params[:forum_post])
     @post.user = current_user
     
