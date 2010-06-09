@@ -8,7 +8,7 @@ class Strategy < ActiveRecord::Base
 
   validates_presence_of :combatant_id, :combatant_type, :name, :status
   validates_inclusion_of :combatant_type, :in => %w(Pet Sentient)
-  validates_inclusion_of :status, :in => %w(active saved used)
+  validates_inclusion_of :status, :in => %w(active used)
   
   before_validation_on_create :set_name, :set_ranks
   

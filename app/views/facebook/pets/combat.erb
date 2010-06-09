@@ -7,10 +7,10 @@
     <h4>Strategies</h4>
     <p class="em">
 	  <% if @strategies.blank? %>
-	  You haven't saved any strategies yet. When you issue or respond to a challenge and select a strategy, you'll have the 
-	  option to save it for quick access before battle. 
+	  You haven't saved any strategies yet. Whenever you plan a strategy, you'll have the option to save it for future battles 
+	  and use it as your pet's 'combat reflexes' when fighting open combat.
 	  <% else %>
-	  You've saved the following strategies for quick access before battle. 
+	  You've saved the following strategies for quick access in battle and as combat reflexes. 
 	  <% end %>
 	</p>
 	<% unless @strategies.blank? %>
@@ -20,8 +20,7 @@
 			<td></td>
 			<td><%= strategy.name %></td>
 			<td><%= strategy.average_power %></td>
-			<td>
-			</td>
+			<td><%= facebook_link_to "[delete]", facebook_strategy_path(strategy), :method => :delete %></td>
 		  </tr>
 		<% end %>
 	  </table>	

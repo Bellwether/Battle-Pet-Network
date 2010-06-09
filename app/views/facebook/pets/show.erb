@@ -107,7 +107,7 @@
 		<tbody>
 		<tr><th colspan="3"><%= tame.human.name %></th></tr>
 		<tr>
-		  <td><div class="<%="human-#{tame.human.slug}-mid" %>"></div></td>
+		  <td><%= avatar_image(tame.human, 'small') %></td>
 		  <td>
 			<div>Type: <strong><%= tame.human.human_type %></strong></div>
 			<div>Power: <strong><%= tame.human.power %></strong></div>

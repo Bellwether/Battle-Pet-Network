@@ -73,7 +73,7 @@ class Facebook::MessagesControllerTest  < ActionController::TestCase
     end
   end
   
-  def test_delete_message
+  def test_destroy
     message = messages(:first)
     pet = message.recipient
     mock_user_facebooking(pet.user.facebook_id)

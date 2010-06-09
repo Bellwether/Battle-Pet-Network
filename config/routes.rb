@@ -61,6 +61,7 @@ ActionController::Routing::Routes.draw do |map|
       home.resource :pack, :only => [:edit,:update], :member => {:invite => :post} do |pack|
         pack.resources :spoils, :only => [:create,:update]
       end
+      home.resources :strategies, :only => [:destroy]
       home.resources :belongings, :only => [:index,:update]
       home.resource :pet, :as => 'pet', :controller => 'pets', :only => [:update], :member => {:profile => :get, :combat => :get}
     end

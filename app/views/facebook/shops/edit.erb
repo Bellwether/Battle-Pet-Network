@@ -31,7 +31,7 @@
 	  <td><% facebook_link_to "Remove from Inventory", facebook_shop_inventory_path(i), :method => :delete %></td>
 	</tr>
 	<tr>
-	  <td rowspan="5"><div class="<%="item-#{i.item.slug}-mid" %>"></div></td>
+	  <td rowspan="5"><%= avatar_image(i.item, 'medium') %></td>
 	  <td colspan="2">Type: <strong><%= i.item.item_type %></strong></td>
 	</tr>
 	<tr><td colspan="2">Rarity: <strong><%= i.item.rarity %></strong></td></tr>
