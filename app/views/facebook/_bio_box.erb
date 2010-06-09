@@ -5,7 +5,7 @@
   their life's journeys.</p>
   <p><span class="button"><%= facebook_link_to "Record Pet Biography", new_facebook_biography_path %></span></p>
 </div>
-<% else %>
+<% elsif pet.biography %>
 <div class="box slim biography">
   <h4>Kennel</h4>
   <p><strong>Description:<strong><%= pet.biography.description %></p>
