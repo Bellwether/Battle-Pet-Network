@@ -1,0 +1,19 @@
+nova_shop_mega_grub_1:
+  shop: nova_shop
+  item: mega_grub
+  cost: 25
+  
+nova_shop_carrion_giblets_1:
+  shop: nova_shop
+  item: carrion_giblets
+  cost: 5
+
+nova_shop_cat_grass_1:
+  shop: nova_shop
+  item: cat_grass
+  cost: 10
+  
+nova_shop_cat_grass_2:
+  shop: nova_shop
+  item: cat_grass
+  cost: 10
