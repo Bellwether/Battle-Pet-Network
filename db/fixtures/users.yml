@@ -32,3 +32,4 @@ candy_anderson:
   facebook_id: "840585612"
   persistence_token: <%= Authlogic::Random.friendly_token %>
   created_at: 2010-06-01 01:01:00
+  pet: nova

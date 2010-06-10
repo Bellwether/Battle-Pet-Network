@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     
     f.resources :shops, :only => [:index, :show] do |s|
-      s.resources :inventory, :only => [], :member => {:purchase => :post}
+      s.resources :inventories, :as => :inventory, :only => [], :member => {:purchase => :post}
     end
     
     f.resources :leaderboards, :only => [:index]

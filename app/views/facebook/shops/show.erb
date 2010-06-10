@@ -24,7 +24,7 @@
   <h4 class="right">Specialty: <%= @shop.specialty%></h4>
   <h3><%= @shop.name %></h3>
 
-  <% cell_table(@inventory,4) do |i,idx| %>
+  <% cell_table(@inventory) do |i,idx| %>
     <td>
 	  <table class="item">
 		<tr><th colspan="2"><%= i.item.name %></th></tr>
