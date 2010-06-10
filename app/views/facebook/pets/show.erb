@@ -8,15 +8,15 @@
   <h4 class="right"><%="Level #{@pet.level_rank_count} #{@pet.breed_name}"%></h4>
   <h3><%= @pet.name %></h3>
 
-  <table class='pet'>
+  <table class='pet' width='100%'>
 	<tbody>
 	<tr>
 	  <td rowspan="6">
 		<%= avatar_image(@pet,'large') %>
 	  </td>
 	  <td>Health:</td><td><%=@pet.health%></td>
-	  <td rowspan="6" class="tright">
-		<table>
+	  <td rowspan="6">
+		<table class="right">
 		  <tr><td class="tright">Leaderboard Rank:</td><td></td></tr>
 		  <tr><td class="tright">Total Battles:</td><td><%= @pet.battles_count %></td></tr>
 		  <tr><td class="tright">Wins:</td><td><%= @pet.wins_count %></td></tr>
