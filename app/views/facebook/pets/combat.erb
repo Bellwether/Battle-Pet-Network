@@ -74,7 +74,7 @@
 
   <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
     <td class='battle-gear'>
-	  <div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+	  <div class="left"><%= avatar_image(c.attacker,'medium') %></div>
 	  <label class="strong"><%= b.item.name %></label> 
 	  <br />
 	  <label class="em">Power: <%= b.item.power %></label>
@@ -82,36 +82,6 @@
   <% end %>
 </div>
 <% end %>
-
-<div class="box">
-  <table>	
-	<tr>
-	  <td>
-	    <h4>Advancement</h4>
-	    <h5>Level <%=@pet.level_rank_count %></h5>
-	  </td>
-	  <td>
-		<label>Current Experience:</label> <label class="strong"><%= @pet.experience %></label>
-		<br />
-		<label>Level <%= @pet.level.next_level.rank %>:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
-	  </td>
-	  <td>
-		<%= experience_bar @pet.level %>
-	  </td>
-	</tr>
-  </table>
-  <table id="advancements">
-	<tr><th>Level</th><th>Experience</th><th>Advancement</th><th>Obtained</th></tr>
-	<% @pet.breed.levels.each_with_index do |l,idx| %>
-	  <tr class="<%= @pet.level_rank_count >= idx ? 'complete' : 'incomplete'%>">
-		<td><%= l.rank %></td>
-		<td><%= l.experience %></td>
-		<td><%= "+#{l.advancement_amount} #{l.advancement_type}"%></td>
-		<td><%= @pet.level_rank_count >= idx + 1 ? 'YES' : 'NO'%></td>
-	  </tr>
-	<% end %>
-  </table>
-</div>
 
 <div class="box">
   <h3><%= facebook_link_to 'Challenges', facebook_challenges_path %></h3>
@@ -146,4 +116,34 @@
 	Challenges can only be issued while your pet is <%= facebook_link_to 'prowling', facebook_occupations_path %>.
   </p>
   <span class="button"><%= facebook_link_to "Issue Open Challenge", open_facebook_challenges_path %></span>	
+</div>
+
+<div class="box">
+  <table>	
+	<tr>
+	  <td>
+	    <h4>Advancement</h4>
+	    <h5>Level <%=@pet.level_rank_count %></h5>
+	  </td>
+	  <td>
+		<label>Current Experience:</label> <label class="strong"><%= @pet.experience %></label>
+		<br />
+		<label>Level <%= @pet.level.next_level.rank %>:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
+	  </td>
+	  <td>
+		<%= experience_bar @pet.level %>
+	  </td>
+	</tr>
+  </table>
+  <table id="advancements">
+	<tr><th>Level</th><th>Experience</th><th>Advancement</th><th>Obtained</th></tr>
+	<% @pet.breed.levels.each_with_index do |l,idx| %>
+	  <tr class="<%= @pet.level_rank_count >= idx ? 'complete' : 'incomplete'%>">
+		<td><%= l.rank %></td>
+		<td><%= l.experience %></td>
+		<td><%= "+#{l.advancement_amount} #{l.advancement_type}"%></td>
+		<td><%= @pet.level_rank_count >= idx + 1 ? 'YES' : 'NO'%></td>
+	  </tr>
+	<% end %>
+  </table>
 </div>

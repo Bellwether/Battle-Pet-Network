@@ -4,7 +4,7 @@ class ForumTopic < ActiveRecord::Base
   belongs_to :last_post, :class_name => "ForumPost"
   has_many :posts, :class_name => "ForumPost", 
                    :foreign_key => "forum_topic_id", 
-                   :order => "created_at DESC"
+                   :order => "created_at ASC"
   
   validates_presence_of :forum_id, :user_id, :title
   validates_length_of :title, :in => 3..128
