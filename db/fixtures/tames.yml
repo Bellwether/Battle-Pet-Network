@@ -1,0 +1,10 @@
+shadow_beatrice:
+  pet: shadow
+  human: beatrice
+  status: kenneled    
+
+shadow_ichabod:
+  pet: shadow
+  human: ichabod
+  status: kenneled    
+

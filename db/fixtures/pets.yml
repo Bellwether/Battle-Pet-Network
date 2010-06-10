@@ -1,3 +1,22 @@
+shadow:
+  breed: shorthair
+  user: renita_orellana
+  name: shadow
+  slug: shadow
+  current_health: 16
+  current_endurance: 45
+  health: 17
+  endurance: 45
+  fortitude: 7
+  intelligence: 3
+  affection: 3
+  power: 2
+  level_rank_count: 3
+  experience: 100
+  occupation: prowling
+  level: shorthair_3
+  actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+  
 domino:
   breed: siamese
   user: travis_dunn

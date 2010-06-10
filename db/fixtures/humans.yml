@@ -29,6 +29,14 @@ lestor:
     power: 1
     cost: 9000
     required_rank: 3
+    
+beatrice: 
+    name: Beatrice
+    human_type: collector
+    difficulty: 5
+    power: 2
+    cost: 15000
+    required_rank: 3
 
 bruno:
     name: Bruno
