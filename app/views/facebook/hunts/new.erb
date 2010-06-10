@@ -72,7 +72,7 @@
 	  <table class="dotbox">
 		<tr>
 		  <td><%= @sentient.health %></td>
-		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health] %></td>
+		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health], :reverse => 1 %></td>
 		  <td rowspan="5" class="tleft">
 			<%= avatar_image(@sentient,'large') %><br />
 			<span class="strong">Population: <%= @sentient.population %></span>
@@ -80,19 +80,19 @@
 		</tr>
 		<tr>
 		  <td><%= @sentient.endurance %></td>
-		  <td><%= percentage_bar [@sentient.endurance,current_user_pet.current_endurance] %></td>
+		  <td><%= percentage_bar [@sentient.endurance,current_user_pet.current_endurance], :reverse => 1 %></td>
 		</tr>
 		<tr>
 		  <td><%= @sentient.power %></td>
-		  <td><%= percentage_bar [@sentient.power,current_user_pet.power] %></td>
+		  <td><%= percentage_bar [@sentient.power,current_user_pet.power], :reverse => 1 %></td>
 		</tr>
 		<tr>
 		  <td><%= @sentient.fortitude %></td>
-		  <td><%= percentage_bar [@sentient.fortitude,current_user_pet.fortitude] %></td>
+		  <td><%= percentage_bar [@sentient.fortitude,current_user_pet.fortitude], :reverse => 1 %></td>
 		</tr>
 		<tr>
 		  <td><%= @sentient.intelligence %></td>
-		  <td><%= percentage_bar [@sentient.intelligence,current_user_pet.intelligence] %></td>
+		  <td><%= percentage_bar [@sentient.intelligence,current_user_pet.intelligence], :reverse => 1 %></td>
 		</tr>
 		  <th colspan="2">Kibble Award for Defeating this Creature: <%= @sentient.kibble %></th>
 		</tr>

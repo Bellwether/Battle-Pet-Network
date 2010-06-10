@@ -117,7 +117,8 @@ module Facebook::FacebookHelper
       percent = ( v.to_f / sum.to_f ) * 100
       width = (bar_width.to_f * (percent / 100.0) ).floor
       next if width < 1
-      html = html + "<div class='bar color-#{idx}' style='width:#{width}px;'>"
+      color_tag = options[:reverse] ? v.size - idx : idx
+      html = html + "<div class='bar color-#{idx}' style='width:#{percent}%;'>"
       html = html + "</div>"
     end
     html = html + "</div>"

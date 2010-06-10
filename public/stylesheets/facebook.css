@@ -193,7 +193,8 @@ td.radio-cell .input:hover {
 .percentage-bar .bar {
   display: inline-block;
   height: 10px;
-  top: 0px;	
+  position: relative;
+  top: -1px;	
 }
 
 .percentage-bar .color-0 {	
