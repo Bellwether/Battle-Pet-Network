@@ -106,24 +106,23 @@ module Facebook::FacebookHelper
   end
   
   def percentage_bar(values,options={})
-    percent = ( values.first.to_f / values.last.to_f ) * 100
-    percent = format("%0.2f", percent).to_f
-    fraction = "#{current}/#{max}"
-    display = "#{fraction} or <em>#{percent}%</em>"
+    sum = 0
+    values.each do |v|
+      sum = sum + v
+    end
     
     bar_width = options[:width] || 150
-    width = (bar_width * (percent / 100.0) )
-    hide_full = width == 0 ? "hidden" : ""
-    hide_empty = width == bar_width ? "hidden" : ""
-    hide_full_pad = width == 0 ? "padding-right:5px" : ""
-    hide_empty_pad = (width == bar_width) ? "padding-right:5px" : ""
-    
-    return "<div class='bar active #{hide_full}' style='width:#{width}px;#{hide_empty_pad};'>" +
-    (percent >= 50 ? "#{display}" : "") +
-    "</div>" +
-    "<div class='bar #{hide_empty}' style='width:#{(bar_width - width)}px;#{hide_full_pad};'>" +
-    (percent < 50 ? "#{display}" : "") +
-    "</div>"    
+    html = "<div class='percentage-bar'>"
+    values.each do |v|
+      percent = ( v.to_f / sum.to_f ) * 100
+      width = (bar_width * (percent / 100.0) )
+      next if width < 1
+      html = html + "<div class='bar' style='width:#{width}px;'>"
+      html = html + "</div>"
+    end
+    html = html + "</div>"
+        
+    return html
   end
   
   def graph_bar(values,options={})

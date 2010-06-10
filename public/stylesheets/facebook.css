@@ -180,7 +180,14 @@ td.radio-cell .input:hover {
 
 /* graphs */
 
+.percentage-bar {
+  background-color: #999;
+  border: 1px solid #333;
+}
 
+.percentage-bar .bar {
+  top: 0px;	
+}
 
 /* avatar backgrounds */
 
