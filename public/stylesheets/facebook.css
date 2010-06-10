@@ -13,9 +13,9 @@ tr {
 .hidden {display:none;}
 .right {float:right;}
 .left {float:left;}
-.tleft {text-align:left;}
-.tcenter {text-align:center;}
-.tright {text-align:right;}
+.tleft, table.tleft td {text-align:left;}
+.tcenter, table.tcenter td {text-align:center;}
+.tright, table.tright td {text-align:right;}
 .em {font-style:italic;}
 .strong {float-weight:bold;}
 
