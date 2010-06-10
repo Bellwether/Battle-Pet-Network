@@ -161,7 +161,7 @@ class Pet < ActiveRecord::Base
   end
   
   def last_seen
-    return nil if user_id.blank?
+    return nil unless user
     
     seen_at = user.current_login_at || user.last_login_at
     return seen_at
