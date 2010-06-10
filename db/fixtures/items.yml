@@ -69,6 +69,18 @@ dairy_milk:
   stock: 25
   stock_cap: 25
   restock_rate: 5  
+ 
+buttermilk_canteen:
+  name: Buttermilk Canteen
+  description: A military grade steel cateen brimming with frothy, rich buttermilk. Embittered over the years, this is the super fuel of the feline system, with ample supply to restore even the weakest soldier.
+  item_type: Food
+  power: 50
+  required_rank: 3
+  cost: 40
+  rarity: 75
+  stock: 20
+  stock_cap: 20
+  restock_rate: 5 
   
 lost_caviar:
   name: Lost Caviar

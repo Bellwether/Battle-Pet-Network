@@ -44,7 +44,8 @@ class InventoryTest < ActiveSupport::TestCase
       assert_difference ['Inventory.count'], -1 do
         assert_difference ['pet.kibble'], -@inventory.cost do
           assert_difference ['@shop.pet.reload.kibble'], +@inventory.cost do
-            @inventory.purchase_for!(pet)
+            belonging = @inventory.purchase_for!(pet)
+            assert_equal 'holding', belonging.status
           end
         end
       end

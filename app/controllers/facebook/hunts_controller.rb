@@ -19,7 +19,7 @@ class Facebook::HuntsController < Facebook::FacebookController
 
     if @hunt.save
       flash[:notice] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"
-      facebook_redirect_to facebook_sentients_path
+      facebook_redirect_to facebook_hunt_path(@hunt)
     else
       flash[:error] = "Couldn't start hunt. :("
       

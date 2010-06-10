@@ -74,3 +74,4 @@ nova:
   level: burmese_1
   actions: scratch,slash,claw,bite,swat,flank,dodge,leap
   shop: nova_shop
+  pack: alpha

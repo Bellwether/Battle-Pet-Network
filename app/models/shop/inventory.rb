@@ -37,7 +37,7 @@ class Inventory < ActiveRecord::Base
   end
   
   def purchase_for!(pet)
-    belonging = pet.belongings.build(:item => item, :source => 'purchased')
+    belonging = pet.belongings.build(:item => item, :source => 'purchased', :status => 'holding')
     belonging.errors.add_to_base("too expensive") if pet.kibble < cost
     belonging.errors.add_to_base("too high level for pet") if pet.level_rank_count < item.required_rank
     

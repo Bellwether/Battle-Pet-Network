@@ -36,6 +36,17 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} challenged #{object_name} to batttle."
             when 'challenge-1v0'
               "#{actor_name} made an open challenge to battle."
+            when 'refused'
+              "#{actor_name} refused to battle #{object_name}."
+          end
+        when 'shopping'
+          case namespace
+            when 'purchase'  
+              "#{actor_name} got a #{object_name} from #{indirect_object.name}'s shop."
+            when 'stocking'
+              "#{actor_name} added a #{object_name} to their shop."
+            when 'unstocking'
+              "#{actor_name} removed a #{object_name} from their shop."
           end
         when 'analytics'
           case namespace
@@ -46,7 +57,7 @@ class ActivityStream < ActiveRecord::Base
             when 'daily-login'
               "#{actor_name} found #{AppConfig.awards.daily_login} kibble after signing in."
             when 'invitation'
-              "#{actor_name} invited #{object_name} to join."
+              "#{actor_name} invited friends to join."
           end
       end
   end
