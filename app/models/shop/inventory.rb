@@ -35,4 +35,17 @@ class Inventory < ActiveRecord::Base
     self.destroy 
     return true
   end
+  
+  def purchase_for!(pet)
+    belonging = pet.belongings.build(:item => item, :source => 'purchased')
+    belonging.errors.add_to_base("too expensive") if pet.kibble < cost
+    belonging.errors.add_to_base("too high level for pet") if pet.level_rank_count < item.required_rank
+    
+    if belonging.errors.empty? && belonging.save
+      pet.update_attribute(:kibble, pet.kibble - cost)
+      shop.pet.update_attribute(:kibble, shop.pet.kibble + cost)
+      self.destroy
+    end
+    return belonging
+  end
 end

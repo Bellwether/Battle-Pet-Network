@@ -4,6 +4,7 @@ class InventoryTest < ActiveSupport::TestCase
   def setup
     @shop = shops(:first)
     @belonging = belongings(:four_grass)
+    @inventory = @shop.inventories.first
   end
   
   def test_intialize_from_belonging
@@ -27,11 +28,41 @@ class InventoryTest < ActiveSupport::TestCase
   
   def test_unstock
     pet = @shop.pet
-    inventory = @shop.inventories.first
     assert_difference ['pet.belongings.count'], +1 do
       assert_difference ['@shop.inventories.count'], -1 do
-        inventory.unstock!
+        @inventory.unstock!
       end
     end
+  end
+  
+  def test_purchase_for
+    pet = pets(:siamese)
+    pet.update_attribute(:kibble, @inventory.cost + 1)
+    pet.update_attribute(:level_rank_count, @inventory.item.required_rank + 1)
+    
+    assert_difference ['pet.belongings.count'], +1 do
+      assert_difference ['Inventory.count'], -1 do
+        assert_difference ['pet.kibble'], -@inventory.cost do
+          assert_difference ['@shop.pet.reload.kibble'], +@inventory.cost do
+            @inventory.purchase_for!(pet)
+          end
+        end
+      end
+    end
+  end
+  
+  def test_purchase_fail
+    pet = pets(:siamese)
+    pet.update_attribute(:kibble, 0)
+    pet.update_attribute(:level_rank_count, @inventory.item.required_rank - 1)
+    belonging = nil
+    
+    assert_no_difference ['Inventory.count','pet.belongings.count'] do
+      belonging = @inventory.purchase_for!(pet)
+    end
+    assert belonging.new_record?
+    assert !belonging.errors.empty?
+    assert belonging.errors.full_messages.include?("too expensive")
+    assert belonging.errors.full_messages.include?("too high level for pet")
   end
 end

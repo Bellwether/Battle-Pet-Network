@@ -25,6 +25,21 @@ class Facebook::InventoriesController < Facebook::FacebookController
     redirect_facebook_back
   end
   
+  def purchase
+    @shop = Shop.find(params[:shop_id])
+    @inventory = @shop.inventories.find(params[:id])
+    
+    @purchase = @inventory.purchase_for!(current_user_pet)
+    @purchase_errors = @purchase.errors.on_base
+
+    if @purchase_errors.blank?
+      flash[:notice] = "You bought the #{@inventory.item.name}!"
+    else    
+      flash[:notice] = "Couldn't purchase item: #{@purchase_errors}"
+    end
+    redirect_facebook_back
+  end
+  
   def destroy
     @shop = current_user_pet.shop
     @inventory = @shop.inventories.find(params[:id])
