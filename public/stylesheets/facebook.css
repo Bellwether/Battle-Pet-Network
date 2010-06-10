@@ -118,7 +118,11 @@ td.radio-cell .input:hover {
   width: 100%;	
 }
 
-.comparison-table td {
+.comparison-table table.dotbox {
+  min-height:175px
+}
+
+.comparison-table tr {
   min-height: 20px; 
 }
 
@@ -183,10 +187,20 @@ td.radio-cell .input:hover {
 .percentage-bar {
   background-color: #999;
   border: 1px solid #333;
+  height: 10px;
 }
 
 .percentage-bar .bar {
+  display: inline-block;
+  height: 10px;
   top: 0px;	
+}
+
+.percentage-bar .color-0 {	
+  background-color: #1E90FF;
+}
+.percentage-bar .color-1 {
+  background-color: #66CDAA;
 }
 
 /* avatar backgrounds */

@@ -111,13 +111,13 @@ module Facebook::FacebookHelper
       sum = sum + v
     end
     
-    bar_width = options[:width] || 150
+    bar_width = options[:width] || 125
     html = "<div class='percentage-bar'>"
-    values.each do |v|
+    values.each_with_index do |v,idx|
       percent = ( v.to_f / sum.to_f ) * 100
-      width = (bar_width * (percent / 100.0) )
+      width = (bar_width.to_f * (percent / 100.0) ).floor
       next if width < 1
-      html = html + "<div class='bar' style='width:#{width}px;'>"
+      html = html + "<div class='bar color-#{idx}' style='width:#{width}px;'>"
       html = html + "</div>"
     end
     html = html + "</div>"

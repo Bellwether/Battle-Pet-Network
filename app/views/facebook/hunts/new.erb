@@ -5,9 +5,9 @@
 <table class="comparison-table">
 <tbody>
   <tr>
-	<th class="tleft"><h3><%= current_user_pet.name %></h3></th>
+	<th class="tleft" width="45%"><h3><%= current_user_pet.name %></h3></th>
 	<td class="tcenter"><h5>is hunting the</h5></td>
-	<th class="tright"><h3><%= @sentient.name %></h3></th>
+	<th class="tright" width="45%"><h3><%= @sentient.name %></h3></th>
   </tr>
 </tbody>
 </table>
@@ -17,7 +17,7 @@
 <table class="comparison-table">
   <tbody>
 	<tr>
-	<td class="tleft">
+	<td class="tleft" width="45%">
 	  <table class="dotbox">
 		<tr>
 		  <td rowspan="5" class="tright"><%= avatar_image(current_user_pet,'medium') %></td>
@@ -68,14 +68,14 @@
 		<tr><td><%= submit_tag "Begin the Hunt"%></td>
 	  </table>
 	</td>	
-	<td class="rightbox">
+	<td class="rightbox" width="45%">
 	  <table class="dotbox">
 		<tr>
 		  <td><%= @sentient.health %></td>
 		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health] %></td>
-		  <td rowspan="5">
+		  <td rowspan="5" class="tleft">
 			<%= avatar_image(@sentient,'large') %><br />
-			<span class="right strong">Population: <%= @sentient.population %></span>
+			<span class="strong">Population: <%= @sentient.population %></span>
 		  </td>
 		</tr>
 		<tr>
@@ -94,8 +94,7 @@
 		  <td><%= @sentient.intelligence %></td>
 		  <td><%= percentage_bar [@sentient.intelligence,current_user_pet.intelligence] %></td>
 		</tr>
-		  <th><%= @sentient.kibble %></th>
-		  <td>&nbsp;</td>
+		  <th colspan="2">Kibble Award for Defeating this Creature: <%= @sentient.kibble %></th>
 		</tr>
 		<tr>
 		  <td colspan="3">
