@@ -80,7 +80,11 @@ tr {
   padding:3px 0 0 15px; 
 } 
 
-#footer #online-pets {
+.footer {
+  width: 740px;	
+}
+
+.online-pets {
   width: 300px;	
 }
 

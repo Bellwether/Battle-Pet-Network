@@ -18,9 +18,8 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert !assigns(:shops).blank?
     assert !assigns(:shop_filter_types).blank?
     assert !assigns(:filters).blank?
-    assert_tag :tag => "table", :attributes => { :id => "shops" }, :descendant => { 
-      :tag => "label", :attributes => { :class => "shop" }
-    }
+    assert_tag :tag => "table", :attributes => { :id => "shops" }, :descendant => { :tag => "label", :attributes => { :class => "shop" }}
+    assert_tag :tag => "table", :attributes => { :id => "shops" }, :descendant => { :tag => "label", :attributes => { :href => "shopkeeper" }}
   end
   
   def test_index_search

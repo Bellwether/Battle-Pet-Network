@@ -1,5 +1,5 @@
-<div id="footer">
-  <div id="online-pets">
+<div class="footer">
+  <div class="online-pets">
 	<h6>Online Pets</h6>
 	<ul>
 	<% Pet.online.all.each do |pet| %>
@@ -18,6 +18,9 @@
 	  <li><%=facebook_link_to "terms of service", facebook_tos_path %></li>
 	  <li><%=facebook_link_to "privacy", ''%></li>
 	</ul>
-	
+	<p>
+	  <%= link_to '@battlepet', 'http://www.twitter.com/battlepet', :class => "right" %>
+	  <%= link_to 'www.battlepet.net', 'http://www.battlepet.net' %>
+	</p>
   </div>
 </div>

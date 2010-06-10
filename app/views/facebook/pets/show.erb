@@ -15,14 +15,14 @@
 		<%= avatar_image(@pet,'large') %>
 	  </td>
 	  <td>Health:</td><td><%=@pet.health%></td>
-	  <td rowspan="6">
+	  <td rowspan="6" class="tright">
 		<table>
-		  <tr><td>Leaderboard Rank:</td><td></td></tr>
-		  <tr><td>Total Battles:</td><td><%= @pet.battles_count %></td></tr>
-		  <tr><td>Wins:</td><td><%= @pet.wins_count %></td></tr>
-		  <tr><td>Loses:</td><td><%= @pet.loses_count %></td></tr>
-		  <tr><td>Draws:</td><td><%= @pet.draws_count %></td></tr>
-		  <tr><td>Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
+		  <tr><td class="tright">Leaderboard Rank:</td><td></td></tr>
+		  <tr><td class="tright">Total Battles:</td><td><%= @pet.battles_count %></td></tr>
+		  <tr><td class="tright">Wins:</td><td><%= @pet.wins_count %></td></tr>
+		  <tr><td class="tright">Loses:</td><td><%= @pet.loses_count %></td></tr>
+		  <tr><td class="tright">Draws:</td><td><%= @pet.draws_count %></td></tr>
+		  <tr><td class="tright">Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
 		</table>
 	  </td>	
 	</tr>
@@ -38,15 +38,16 @@
   <% show_for_pet(@pet) do %>
   <div>
     <div class="signs">
-	  <div class="sign">
 	  <% Sign.signs_with(current_user_pet, @pet).each do |sign|%>
-	    <% form_for Sign.new, :url => facebook_nested_url(facebook_pet_signs_path(@pet)) do |f| %>	
-	    <%= f.hidden_field :sign_type, {:value => sign} %>
-		<span class="sign-button"><%= f.submit sign.upcase %></span>
-		<% end %>
+	    <div class="sign">
+	      <% form_for Sign.new, :url => facebook_nested_url(facebook_pet_signs_path(@pet)) do |f| %>	
+	        <%= f.hidden_field :sign_type, {:value => sign} %>
+		    <span class="sign-button"><%= f.submit sign.upcase %></span>
+		  <% end %>
+	    </div>
 	  <% end %>
     </div>
-    <span class="sign-button message right"><%= facebook_link_to 'Message', new_facebook_message_path(:pet_id => @pet.id) %></span>
+    <span class="sign-button message right"><%= facebook_link_to 'Message', new_facebook_message_path(:pet_id => @pet.id) %></span> 
     <span class="sign-button right"><%= facebook_link_to "Challenge to Battle", new_facebook_pet_challenge_path(@pet) %></span>
   </div>
   <% end %>
