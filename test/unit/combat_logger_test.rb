@@ -57,4 +57,36 @@ class CombatLoggerTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_log_round
+    resolutions = 
+      [Combat::CombatActions::Resolution::Description::ALL_ATTACK,
+      Combat::CombatActions::Resolution::Description::ALL_DEFEND,
+      Combat::CombatActions::Resolution::Description::ONE_DEFEND_CUT_TWO_ATTACK,
+      Combat::CombatActions::Resolution::Description::ONE_ATTACK_HIT_TWO_DEFEND,
+      Combat::CombatActions::Resolution::Description::ONE_ATTACK_CUT_TWO_DEFEND,
+      Combat::CombatActions::Resolution::Description::ONE_ATTACK_HIT_TWO_DEFENDED,
+      Combat::CombatActions::Resolution::Description::TWO_DEFEND_CUT_TWO_ATTACK,
+      Combat::CombatActions::Resolution::Description::TWO_ATTACK_HIT_TWO_DEFEND,
+      Combat::CombatActions::Resolution::Description::TWO_ATTACK_CUT_TWO_DEFEND,
+      Combat::CombatActions::Resolution::Description::TWO_ATTACK_HIT_TWO_DEFENDED]
+    
+    first = actions(:claw)  
+    second = actions(:scratch)
+    @combat_models.each do |m|
+      resolutions.each do |r|
+        res_mock = flexmock(:description => r, 
+                            :first_action => first, 
+                            :second_action => second, 
+                            :first => m.attacker, 
+                            :second => m.defender, 
+                            :first_damage => 2, 
+                            :second_damage => 2)
+        log = m.log_round(res_mock)
+        assert_not_nil log[:description]
+        assert_equal first.id, log[:attacker_action]
+        assert_equal second.id, log[:defender_action]
+      end
+    end
+  end
 end

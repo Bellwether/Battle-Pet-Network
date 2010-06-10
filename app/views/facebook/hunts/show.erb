@@ -1,4 +1,4 @@
-<% content_for :page_title do %><h2>Human Profile</h2><% end %>
+<% content_for :page_title do %><h2>Sentient Hunt</h2><% end %>
 
 <div class="sidebox slim right">
   <%= render_hunts_box @hunts %>
@@ -40,7 +40,7 @@
 		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
 		    <li class="log"><%= log %></li>
 		  <% end %>
-		  <% @hunt.hunt.logs[:attacker_awards].each do |log| %>
+		  <% @hunt.hunt.logs[:attacker_awards].each_pair do |key,log| %>
 		    <li class="log award"><%= log %></li>
 		  <% end %>
 		</ul>
