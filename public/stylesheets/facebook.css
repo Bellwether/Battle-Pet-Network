@@ -84,8 +84,6 @@ tr {
   width: 300px;	
 }
 
-
-
 /* controls */
 
 td.radio-cell {
@@ -179,6 +177,10 @@ td.radio-cell .input:hover {
 
 .errorExplanation ul li {
 }
+
+/* graphs */
+
+
 
 /* avatar backgrounds */
 

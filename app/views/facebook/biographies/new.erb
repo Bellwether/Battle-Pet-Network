@@ -45,7 +45,7 @@
 		</tr>
 		<tr>
 	      <td rowspan="2"><%= f.label :description %></td>
-	      <td rowspan="2"><%= text_area(:biography, :description, :size => "30x8")%></td>
+	      <td rowspan="2"><%= text_area(:biography, :description, :size => "20x5")%></td>
 	      <td><%= f.label :favorite_composer %></td>
 	      <td><%= f.collection_select(:favorite_composer, Biography::COMPOSERS, :to_s, :to_s, {:include_blank => true}) %></td>		  
 		</tr>

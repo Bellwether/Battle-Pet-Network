@@ -38,7 +38,7 @@
   <% show_for_pet(@pet) do %>
   <div>
     <div class="signs">
-	  <div class="sign left">
+	  <div class="sign">
 	  <% Sign.signs_with(current_user_pet, @pet).each do |sign|%>
 	    <% form_for Sign.new, :url => facebook_nested_url(facebook_pet_signs_path(@pet)) do |f| %>	
 	    <%= f.hidden_field :sign_type, {:value => sign} %>
@@ -58,7 +58,7 @@
 
   <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
     <td class='battle-gear'>
-	  <div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+	  <%= avatar_image(i.item,'small') %>
 	  <label class="strong"><%= b.item.name %></label> 
 	  <br />
 	  <label class="em">Power: <%= b.item.power %></label>
