@@ -27,7 +27,7 @@ class Facebook::SentientsControllerTest  < ActionController::TestCase
     assert_tag :tag => "span", :attributes => { :class => "right hunt-button" }
   end
   
-  def test_get_sentient
+  def test_get
     facebook_get :show, :id => @sentient.id, :fb_sig_user => nil
     assert_response :success
     assert_template 'show'
@@ -37,5 +37,17 @@ class Facebook::SentientsControllerTest  < ActionController::TestCase
     assert_tag :tag => "ul", :attributes => { :class => "tactics" }, :descendant => {
       :tag => "li", :attributes => { :class => "tactic" }
     }
+    assert_no_tag :tag => 'span', :attributes => {:class => 'hunt-button'}
+  end
+  
+  def test_get_with_pet
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :show, :id => @sentient.id, :fb_sig_user => @user.facebook_id
+    assert_response :success
+    assert_template 'show'
+    assert !assigns(:sentient).blank?
+    assert !assigns(:hunts).blank?
+    assert !assigns(:tactics).blank?
+    assert_tag :tag => 'span', :attributes => {:class => 'hunt-button'}
   end
 end

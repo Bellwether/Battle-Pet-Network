@@ -41,6 +41,11 @@ class ActivityStream < ActiveRecord::Base
             when 'battled'
               indirect_object.outcome
           end
+        when 'hunting'
+          case namespace
+            when 'hunted'
+              "#{actor_name} hunted a #{object_name} and #{indirect_object.hunter.outcome}."
+          end
         when 'shopping'
           case namespace
             when 'purchase'  
