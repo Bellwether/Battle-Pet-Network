@@ -83,7 +83,7 @@ module Combat::CombatLogger
         "#{named(res.second)} #{verbed(res.second_action)} for #{res.second_damage} as " <<
         "#{named(res.first)} #{verbed(res.first_action)} in defense."
     end
-    log = {:attacker_action => res.first_action.id, :defender_action => res.second_action.id, :description => log}
+    log = {:attacker_action => res.first_action.slug, :defender_action => res.second_action.slug, :description => log}
     logs[:rounds] << log
     return log
   end

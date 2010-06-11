@@ -38,6 +38,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} made an open challenge to battle."
             when 'refused'
               "#{actor_name} refused to battle #{object_name}."
+            when 'battled'
+              indirect_object.outcome
           end
         when 'shopping'
           case namespace

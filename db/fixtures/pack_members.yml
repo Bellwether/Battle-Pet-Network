@@ -2,3 +2,8 @@ alpha_founder:
   pack: alpha
   pet: nova
   position: leader
+
+alpha_member:
+  pack: alpha
+  pet: pearl
+  position: member

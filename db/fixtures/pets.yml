@@ -54,6 +54,7 @@ pearl:
   occupation: prowling
   level: persian_1
   actions: scratch,slash,claw,bite,swat,flank,dodge,leap  
+  pack: alpha
   
 nova:  
   breed: burmese

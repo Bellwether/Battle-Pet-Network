@@ -38,7 +38,9 @@
 	  <td colspan="2">
 		<ul class="logs">
 		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
-		    <li class="log"><%= log %></li>
+		    <li class="log">
+			  <%= log[:description] %>
+			</li>
 		  <% end %>
 		  <% @hunt.hunt.logs[:attacker_awards].each_pair do |key,log| %>
 		    <li class="log award"><%= log %></li>

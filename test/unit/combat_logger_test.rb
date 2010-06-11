@@ -84,8 +84,8 @@ class CombatLoggerTest < ActiveSupport::TestCase
                             :second_damage => 2)
         log = m.log_round(res_mock)
         assert_not_nil log[:description]
-        assert_equal first.id, log[:attacker_action]
-        assert_equal second.id, log[:defender_action]
+        assert_equal first.slug, log[:attacker_action]
+        assert_equal second.slug, log[:defender_action]
       end
     end
   end

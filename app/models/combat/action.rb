@@ -9,6 +9,10 @@ class Action < ActiveRecord::Base
   validates_numericality_of :power, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 8
   validates_inclusion_of :action_type, :in => %w(offensive defensive)
   
+  def slug
+    name.downcase.gsub(/\s/,'-')
+  end
+  
   def endurance_cost
     defensive? ? power : power * 2
   end
