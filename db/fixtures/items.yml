@@ -107,8 +107,8 @@ leviathon_salmon:
   restock_rate: 5 
 
 mre:
-  name: M.R.E. (Meal, Ready-to-Eat)
-  description: Human field rations once used by their armies and which can generally be scavenged from the ruins of war camps. The contents are stale and questionable (even for humans), but can be picked clean of the choicest tidbits (like cheese).
+  name: MRE 
+  description: Meal, Ready-to-Eat - Human field rations once used by their armies and which can generally be scavenged from the ruins of war camps. The contents are stale and questionable (even for humans), but can be picked clean of the choicest tidbits (like cheese).
   item_type: Food
   power: 40
   required_rank: 3

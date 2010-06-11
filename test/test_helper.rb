@@ -54,6 +54,11 @@ class ActiveSupport::TestCase
     @hunt_mock.new_instances.should_receive(:run_combat)
   end
   
+  def mock_activity
+    @activity_mock = flcokmock(ActivityStream)
+    @activity_mock.new_instances.should_receive(:log!).and_return(true)
+  end
+  
   def mock_merchant
     @gateway_response = flexmock(:token => "1234", 
                                 :success? => true, 

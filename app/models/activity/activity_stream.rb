@@ -54,10 +54,16 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} challenged #{object_name} to batttle."
             when 'challenge-1v0'
               "#{actor_name} made an open challenge to battle."
+            when 'challenge-1vG'
+              "#{actor_name} challenged pack #{object_name} to battle."
             when 'refused'
               "#{actor_name} refused to battle #{object_name}."
             when 'battled'
               indirect_object.outcome
+          end
+        when 'humans'
+          case namespace
+            when "#{actor_name}"
           end
         when 'hunting'
           case namespace
@@ -72,6 +78,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} paid dues for its members."
             when 'unpaid-dues'
               "#{actor_name} could not pay kibble for its members and became insolvent."
+            when 'request'
+              "#{actor_name} wishes to join the pack #{object_name}."
           end
         when 'social'
           case namespace
@@ -87,6 +95,8 @@ class ActivityStream < ActiveRecord::Base
           end
         when 'shopping'
           case namespace
+            when 'market'
+              "#{actor_name} got a #{object_name} from the market."
             when 'purchase'  
               "#{actor_name} got a #{object_name} from #{indirect_object.name}'s shop."
             when 'stocking'
@@ -95,6 +105,15 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} removed a #{object_name} from their shop."
             when 'opened'
               "#{actor_name} opened a shop named #{object_name}."
+          end
+        when 'world'
+          case namespace
+            when 'repopulation'
+              "Sentient numbers repopulated."
+            when 'restock'
+              "Market stores restocked inventory."
+            when 'leaderboards'
+              "Pet leaderboard rankings updated."
           end
         when 'analytics'
           case namespace
