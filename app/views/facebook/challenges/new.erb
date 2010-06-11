@@ -19,7 +19,7 @@
 	<td class="leftbox">
 	  <table class="dotbox">
 		<tr>
-		  <td rowspan="5"><%= avatar_image(@challenge.attacker,'large') %></td>
+		  <td rowspan="6"><%= avatar_image(@challenge.attacker,'large') %></td>
 		  <td>&nbsp;</td>
 		  <td><%= @challenge.attacker.breed.name %></td>
 		</tr>
@@ -32,7 +32,7 @@
 		  <td rowspan="3">
 			<% cell_table(@challenge.attacker.belongings.battle_ready) do |b,idx| %>
 			  <td class='battle-gear'>
-				<div class='i.item-#{b.item.slug.downcase.gsub(/\s/,'-')}-small left'></div>
+				<%= avatar_image(i.item,'small') %>
 				<label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
 			  </td>
 			<% end %>

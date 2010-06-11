@@ -32,9 +32,9 @@
 	<% @shops.each do |shop| %>
 	  <tr>
 		<td><label class="shop"><%= facebook_link_to shop.name, facebook_shop_path(shop) %></label></td>
-		<td><label class="shopkeeper"><%= facebook_link_to shop.pet.name, facebook_pet_path(shop.pet) %></label></td>
 		<td><%= shop.specialty %></td>
 		<td><%= shop.last_restock %></td>
+		<td><label class="shopkeeper"><%= facebook_link_to shop.pet.name, facebook_pet_path(shop.pet) %></label></td>
 	  </tr>	
 	<% end %>
   </table>	
