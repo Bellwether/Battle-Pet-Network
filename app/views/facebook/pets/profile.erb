@@ -110,3 +110,26 @@
   <% end %>
 </div>
 <% end %>
+
+<div class="box">
+  <h3><%= facebook_link_to 'Belongings', facebook_belongings_path %></h3>
+  <% unless @items.blank? %>	
+    <% cell_table(@items, 4, :class => "belongings") do |i,idx| %>
+	    <td>
+		  <table class="item">
+			<tr>
+			  <td rowspan="4"><%= avatar_image(i.item,'small') %></td>
+			  <th><%= i.item.name %></th>	
+			</tr>
+			<tr><td><label>Type: <%= i.item.item_type %></label></td></tr>
+			<tr><td><label>Power: <%= i.item.power %></label></td></tr>
+			<tr><td><label>Required Rank: <%= i.item.required_rank %></label></td></tr>
+			<tr><td><%= link_to_belonging(i) %></td></tr>
+		  </table>	
+		</td>
+    <% end %>
+  <% else %>
+    <p class="em">Your pet doesn't own any items right now, but you can always go shopping at 
+	<%= facebook_link_to 'the market', facebook_items_path %> or try to <%= facebook_link_to 'scavenge', facebook_occupations_path %> what luck may uncover from the ruined lands.</p>
+  <% end %>
+</div>

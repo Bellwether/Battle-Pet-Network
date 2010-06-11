@@ -17,7 +17,7 @@
     <td>
 	  <table class="item">
 		<tr>
-		  <td rowspan="4"><div class='item-#{i.item.slug.downcase.gsub(/\s/,'-')}-mid left'></div></td>
+		  <td rowspan="4"><%= avatar_image(i.item,'small') %></td>
 		  <th><%= i.item.name %></th>	
 		</tr>
 		<tr><td><label>Type: <%= i.item.item_type %></label></td></tr>
@@ -26,7 +26,6 @@
 		<tr><td><%= link_to_belonging(i) %></td></tr>
 	  </table>	
 	</td>
-	
   <% end %>
   <p class="center"><%= will_paginate @items %></p>
 <% else %>

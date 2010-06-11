@@ -21,6 +21,7 @@ class Facebook::PetsController < Facebook::FacebookController
     @messages = current_user_pet.inbox(:limit => 5)
     @signs = @pet.signs
     @challenges = current_user_pet.challenges.issued.defending
+    @items = current_user_pet.belongings.holding.all(:limit => 9)
   end
   
   def show

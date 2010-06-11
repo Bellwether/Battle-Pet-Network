@@ -178,6 +178,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert !assigns(:pet).blank?
     assert !assigns(:messages).blank?
     assert !assigns(:signs).blank?
+    assert !assigns(:items).blank?
     assert_tag :tag => "div", :attributes => { :class => "box slim biography" }
     assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/home/pet"}, :descendant => {
       :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }

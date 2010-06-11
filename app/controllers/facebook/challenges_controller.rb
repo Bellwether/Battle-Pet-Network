@@ -28,7 +28,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     
     if @challenge.save
       flash[:notice] = "Challenge sent!"
-      redirect_facebook_back
+      facebook_redirect_to facebook_pet_path(@pet)
     else
       flash[:error] = "Couldn't send challenge. :("
       render :action => :new

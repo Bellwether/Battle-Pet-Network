@@ -1,3 +1,9 @@
+two_grass:
+  pet: siamese
+  item: cat_grass    
+  source: purchased    
+  status: holding
+
 three_grass:
   pet: persian
   item: cat_grass    

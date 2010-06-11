@@ -9,7 +9,7 @@
 	  <ul id='issued-challenges' class='challenges'>
 	  <% @issued.each do |challenge| %>
 	    <li>
-		  <%= avatar_image(challenge.defender,'large') %>
+		  <%= avatar_image(challenge.defender,'tiny') %>
 		  <div>
 			<span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
 			<br />
