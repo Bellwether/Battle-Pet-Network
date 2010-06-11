@@ -12,7 +12,7 @@
 </tbody>
 </table>
 
-<% form_for @challenge, :url => facebook_nested_url(new_facebook_pet_challenge_path(@pet)), :html => { :method => :post} do |f| %>	
+<% form_for @challenge, :url => facebook_nested_url(facebook_pet_challenges_path(@pet)), :html => { :method => :post} do |f| %>	
 <table class="comparison-table">
   <tbody>
 	<tr>

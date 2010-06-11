@@ -51,12 +51,10 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert_template 'new'
     assert !assigns(:challenge).blank?
     assert !assigns(:pet).blank?
-    assert_tag :tag => "form", :descendant => { 
-      :tag => "table", :attributes => { :class => "comparison-table" },
-      :tag => "table", :attributes => { :class => "battle-gear" },
-      :tag => "td", :attributes => { :class => "battle-gear" },
-      :tag => "input", :attributes => { :type => "submit" }
-    }
+    assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/#{@defender.id}/challenges", :method => 'post' }
+    assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "comparison-table" }}
+    assert_tag :tag => "form", :descendant => { :tag => "td", :attributes => { :class => "battle-gear" }}
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" }}
   end
   
   def test_open
