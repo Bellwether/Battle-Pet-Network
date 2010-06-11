@@ -24,6 +24,24 @@ class ActivityStream < ActiveRecord::Base
   def after_initialize(*args)
     self.activity_data ||= {}
   end
+
+  def set_polymorph_data
+    ['actor','object','indirect_object'].each do |model|
+      m = self.send(model.to_sym)
+      next if m.blank?
+
+      self.activity_data["#{model}_name".to_sym] = 
+        case m.class.name
+          when 'User'
+            send(model.to_sym).normalized_name
+          when 'Pet'
+            send(model.to_sym).name
+        end
+    end
+  end
+
+  def send_notifications
+  end
   
   def set_description_data
     actor_name = activity_data[:actor_name]
@@ -46,6 +64,27 @@ class ActivityStream < ActiveRecord::Base
             when 'hunted'
               "#{actor_name} hunted a #{object_name} and #{indirect_object.hunter.outcome}."
           end
+        when 'packs'
+          case namespace
+            when 'founded'
+              "#{actor_name} founded a pack."
+            when 'paid-dues'
+              "#{actor_name} paid dues for its members."
+            when 'unpaid-dues'
+              "#{actor_name} could not pay kibble for its members and became insolvent."
+          end
+        when 'social'
+          case namespace
+            when 'message'
+              "#{actor_name} sent a message to #{object_name}."
+            when 'sign'
+              "#{actor_name} #{indext_object.verb} #{object_name}."
+          end
+        when 'awards'
+          case namespace
+            when 'leveled'  
+              "#{actor_name} advanced to level #{object.rank} and gained #{object.advancement_amount} #{object.advancement_type}."
+          end
         when 'shopping'
           case namespace
             when 'purchase'  
@@ -54,6 +93,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} added a #{object_name} to their shop."
             when 'unstocking'
               "#{actor_name} removed a #{object_name} from their shop."
+            when 'opened'
+              "#{actor_name} opened a shop named #{object_name}."
           end
         when 'analytics'
           case namespace
@@ -67,23 +108,5 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} invited friends to join."
           end
       end
-  end
-  
-  def set_polymorph_data
-    ['actor','object','indirect_object'].each do |model|
-      m = self.send(model.to_sym)
-      next if m.blank?
-      
-      self.activity_data["#{model}_name".to_sym] = 
-        case m.class.name
-          when 'User'
-            send(model.to_sym).normalized_name
-          when 'Pet'
-            send(model.to_sym).name
-        end
-    end
-  end
-  
-  def send_notifications
   end
 end
