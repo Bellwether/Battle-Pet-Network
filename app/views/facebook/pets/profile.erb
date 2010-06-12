@@ -133,3 +133,14 @@
 	<%= facebook_link_to 'the market', facebook_items_path %> or try to <%= facebook_link_to 'scavenge', facebook_occupations_path %> what luck may uncover from the ruined lands.</p>
   <% end %>
 </div>
+
+<div class="box">
+  <h3><%= @humans.blank? ? 'Wild Humans' : facebook_link_to('Human Kennels', facebook_kennel_index_path) %></h3>
+  <% unless @humans.blank? %>
+    
+  <% else %>
+    <p class="em">Wild humans roam the lands, but though mindless they still feel love and can be tamed by a pet's affection. 
+	Domesticated humans are kept in free range kennels and serve their master with their given special ability. Once your pet grows 
+	weary of the company, they can simply place the human into slavery, working tirelessly to gather kibble from the lands.
+  <% end %>
+</div>

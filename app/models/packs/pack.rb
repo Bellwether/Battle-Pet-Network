@@ -20,8 +20,8 @@ class Pack < ActiveRecord::Base
   validate :validates_founder, :validates_founding_fee, :validates_standard
   
   named_scope :include_pack_members, :include => {:pack_members => :pet}
-  named_scope :active, :conditions => "status = 'active' AND leader_id IS NOT NULL"
-  named_scope :credited, :conditions => "status <> 'disbanded'"
+  named_scope :active, :conditions => "packs.status = 'active' AND leader_id IS NOT NULL"
+  named_scope :credited, :conditions => "packs.status <> 'disbanded'"
 
   attr_accessor :kibble_contribution
   

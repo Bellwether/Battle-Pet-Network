@@ -5,3 +5,4 @@ alpha:
   leader: nova
   kibble: 300
   status: active
+  pack_members_count: 2

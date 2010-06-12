@@ -44,7 +44,7 @@
 			  <%= log[:description] %>
 			</li>
 		  <% end %>
-		  <li class="log strong"><%= log[:outcome] %></li>
+		  <li class="log strong"><%= @hunt.hunt.logs[:outcome] %></li>
 		  <% @hunt.hunt.logs[:attacker_awards].each_pair do |key,log| %>
 		    <li class="log award"><%= log %></li>
 		  <% end %>

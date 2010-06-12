@@ -4,7 +4,7 @@ class Pet < ActiveRecord::Base
   SELECT_BASICS = "id,status,kibble,experience,level_rank_count,breed_id"
   
   belongs_to :occupation, :foreign_key => "occupation_id", :select => "id,name,cost" 
-  belongs_to :breed, :foreign_key => "breed_id", :select => "id, name, favorite_action_id,species_id"
+  belongs_to :breed, :foreign_key => "breed_id", :select => "id,name,favorite_action_id,species_id"
   belongs_to :level
   belongs_to :favorite_action, :class_name => "Action"
   belongs_to :shop  
