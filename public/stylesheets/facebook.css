@@ -105,7 +105,7 @@ tr {
 
 /* buttons */
 
-a.button{
+a.button {
   display:block;
   background-position: 6px;
   background-repeat:no-repeat;
@@ -129,6 +129,14 @@ a.button:hover{
 .delete {
   background-image:url('../images/ui/delete.png');
 }
+
+.maneuver-button {
+  height: 20px;
+  margin:0 15px 0 0;
+  text-decoration: none; 
+  width: 60px;	
+}
+.maneuver_button span { display: block; height:14px; position: relative;}
 
 /* controls */
 
