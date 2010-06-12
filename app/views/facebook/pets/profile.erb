@@ -137,7 +137,26 @@
 <div class="box">
   <h3><%= @humans.blank? ? 'Wild Humans' : facebook_link_to('Human Kennels', facebook_kennel_index_path) %></h3>
   <% unless @humans.blank? %>
-    
+	  <table class="kennels">
+		<tbody>
+		<% @tames.each do |tame| %>
+		<tr>
+		  <table class='domesticated-human'>
+			<tbody>
+			<tr><th colspan="3"><%= tame.human.name %></th></tr>
+			<tr>
+			  <td><%= avatar_image(tame.human, 'medium') %></td>
+			  <td>
+				<div>Type: <strong><%= tame.human.human_type %></strong></div>
+				<div>Power: <strong><%= tame.human.power %></strong></div>
+				<div>Required Level: <strong><%= tame.human.required_rank %></strong></div>
+				<div>Rarity: <strong><%= tame.human.difficulty %></strong></div>
+			  </td>
+			</tr>
+			</tbody>
+		  </table>
+		</tr>
+		<% end %>    
   <% else %>
     <p class="em">Wild humans roam the lands, but though mindless they still feel love and can be tamed by a pet's affection. 
 	Domesticated humans are kept in free range kennels and serve their master with their given special ability. Once your pet grows 
