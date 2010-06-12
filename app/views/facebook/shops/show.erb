@@ -1,8 +1,6 @@
 <% content_for :page_title do %><h2>Pet Shop</h2><% end %>
 	
 <div class="sidebox slim right">
-  <%= render_kibble_box %>
-
   <div class="box slim">	
     <h4>Shopkeeper: <%= facebook_link_to @shop.pet.name, facebook_pet_path(@shop.pet) %></h4>
     <table class="shopkeeper">
@@ -18,6 +16,8 @@
 	  </tbody>
 	</table>
   </div>
+
+  <%= render_kibble_box %>
 </div>
 
 <div class="box">
