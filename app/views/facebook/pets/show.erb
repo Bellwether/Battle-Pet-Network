@@ -21,29 +21,29 @@
 		  <tr>
 			<td class="tright">Total Battles:</td>
 			<td>
-			  <%= percentage_bar [1,1], :width => 100, :fill => true %>
-			  <%= @pet.battles_count %>
+			  <span class="left"><%= @pet.battles_count %></span>
+			  <%= percentage_bar [1,1], :width => 75, :fill => true %>
 			</td>
 		  </tr>
 		  <tr>
 			<td class="tright">Wins:</td>
 			<td>
-			  <%= percentage_bar [@pet.wins_count,@pet.battles_count], :width => 100, :fill => true %>
-			  <%= @pet.wins_count %>
+			  <span class="left"><%= @pet.wins_count %></span>
+			  <%= percentage_bar [@pet.wins_count,@pet.battles_count], :width => 75, :fill => true %>
 			</td>
 		  </tr>
 		  <tr>
 			<td class="tright">Loses:</td>
 			<td>
-			  <%= percentage_bar [@pet.loses_count,@pet.battles_count], :width => 100, :fill => true %>
-			  <%= @pet.loses_count %>
+			  <span class="left"><%= @pet.loses_count %></span>
+			  <%= percentage_bar [@pet.loses_count,@pet.battles_count], :width => 75, :fill => true %>
 			</td>
 		  </tr>
 		  <tr>
 			<td class="tright">Draws:</td>
 			<td>
-			  <%= percentage_bar [@pet.draws_count,@pet.battles_count], :width => 100, :fill => true %>
-			  <%= @pet.draws_count %>
+			  <span class="left"><%= @pet.draws_count %></span>
+			  <%= percentage_bar [@pet.draws_count,@pet.battles_count], :width => 75, :fill => true %>
 			</td>
 		  </tr>
 		  <tr><td class="tright">Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
@@ -60,17 +60,18 @@
 
   <div class="occupation">Occupied With <strong><%= @pet.occupation.name %></strong></div>
   <% show_for_pet(@pet) do %>
+
   <div>
-    <div class="signs">
+    <p class="signs">
 	  <% Sign.signs_with(current_user_pet, @pet).each do |sign|%>
-	    <div class="sign">
+	    <div class="sign left">
 	      <% form_for Sign.new, :url => facebook_nested_url(facebook_pet_signs_path(@pet)) do |f| %>	
 	        <%= f.hidden_field :sign_type, {:value => sign} %>
 		    <span class="sign-button"><%= f.submit sign.upcase %></span>
 		  <% end %>
 	    </div>
 	  <% end %>
-    </div>
+    </p>
     <span class="sign-button message right"><%= facebook_link_to 'Message', new_facebook_message_path(:pet_id => @pet.id) %></span> 
     <span class="sign-button right"><%= facebook_link_to "Challenge to Battle", new_facebook_pet_challenge_path(@pet) %></span>
   </div>
