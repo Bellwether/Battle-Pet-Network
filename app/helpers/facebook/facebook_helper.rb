@@ -30,8 +30,13 @@ module Facebook::FacebookHelper
       path = "#{path}/#{breed_path}"
       filename = model.breed.slug
     elsif model.is_a?(Item)
-      path = "#{path}/types" if size != 'medium' && size != 'small' # medium show item detail, otherwise show type
-      filename = model.name.downcase.gsub(/\s/,'-')
+      wants_item_type = (size == 'tiny')
+      if wants_item_type
+        path = "#{path}/types"
+        filename = model.item_type.downcase.gsub(/\s/,'-')
+      else
+        filename = model.name.downcase.gsub(/\s/,'-')
+      end
     else
       filename = model.name.downcase.gsub(/\s/,'-')
     end
