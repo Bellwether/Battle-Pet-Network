@@ -46,6 +46,7 @@ class ActivityStream < ActiveRecord::Base
   def set_description_data
     actor_name = activity_data[:actor_name]
     object_name = activity_data[:object_name]
+    indirect_object_name = activity_data[:indirect_object_name]
     self.activity_data[:description] = 
       case category
         when 'combat'
@@ -63,7 +64,12 @@ class ActivityStream < ActiveRecord::Base
           end
         when 'humans'
           case namespace
-            when "#{actor_name}"
+            when 'discover'
+              "#{actor_name} discovered the human called #{object_name}, but could not tame them."
+            when 'tame'
+              "#{actor_name} discovered the human called #{object_name} and tamed them."
+            when 'murder'
+              "#{actor_name}'s kenneled humans grew violent, and #{indirect_object_name} killed #{object_name}."
           end
         when 'hunting'
           case namespace

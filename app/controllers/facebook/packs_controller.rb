@@ -28,7 +28,7 @@ class Facebook::PacksController < Facebook::FacebookController
   
   def edit
     @pack = current_user_pet.pack
-    @items = current_user_pet.belongings.sellable.collect(&:items)
+    @items = current_user_pet.belongings.sellable.collect(&:item)
   end
   
   def update

@@ -1,6 +1,7 @@
 <% content_for :page_title do %><h2>The Sentient Threat</h2><% end %>
 
 <div class="sidebox slim right">
+  <%= render_hunts_box @hunts unless !has_pet? || @hunts.blank? %>
 </div>
 
 <div class="box">
@@ -19,7 +20,7 @@
 <div class="box">
   <h3>Active Sentients</h3>
   <% @sentients.each do |sentient| %>
-  <table class="sentients">
+  <table width="100%" class="sentients">
 	<tr>
 	  <td rowspan="7"><%= avatar_image(sentient,'large') %></td>
 	  <th colspan="2">	
@@ -28,7 +29,7 @@
 	  </th>
 	</tr>
 	<tr>
-	  <td>Health: <label><%= sentient.health %></label></td>
+	  <td width="150">Health: <label><%= sentient.health %></label></td>
 	  <td rowspan="6" class="em"><%= sentient.description %></td>
 	</tr>
 	<tr><td>Endurance: <label><%= sentient.endurance %></label></td></tr>
