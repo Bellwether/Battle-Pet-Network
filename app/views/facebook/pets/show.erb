@@ -18,10 +18,34 @@
 	  <td rowspan="6">
 		<table class="right">
 		  <tr><td class="tright">Leaderboard Rank:</td><td></td></tr>
-		  <tr><td class="tright">Total Battles:</td><td><%= @pet.battles_count %></td></tr>
-		  <tr><td class="tright">Wins:</td><td><%= @pet.wins_count %></td></tr>
-		  <tr><td class="tright">Loses:</td><td><%= @pet.loses_count %></td></tr>
-		  <tr><td class="tright">Draws:</td><td><%= @pet.draws_count %></td></tr>
+		  <tr>
+			<td class="tright">Total Battles:</td>
+			<td>
+			  <%= percentage_bar [1,1], :width => 100, :fill => true %>
+			  <%= @pet.battles_count %>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tright">Wins:</td>
+			<td>
+			  <%= percentage_bar [@pet.wins_count,@pet.battles_count], :width => 100, :fill => true %>
+			  <%= @pet.wins_count %>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tright">Loses:</td>
+			<td>
+			  <%= percentage_bar [@pet.loses_count,@pet.battles_count], :width => 100, :fill => true %>
+			  <%= @pet.loses_count %>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tright">Draws:</td>
+			<td>
+			  <%= percentage_bar [@pet.draws_count,@pet.battles_count], :width => 100, :fill => true %>
+			  <%= @pet.draws_count %>
+			</td>
+		  </tr>
 		  <tr><td class="tright">Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
 		</table>
 	  </td>	
