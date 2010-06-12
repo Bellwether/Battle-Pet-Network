@@ -49,7 +49,7 @@
 			<p>Your Pet's Hunting Strategy</p>
 	        <% f.fields_for :hunters do |h| %>
 	          <% h.fields_for :strategy do |s| %>
-			    <%= render_strategy_picker(s,'strategy') %>
+			    <%= render_strategy_picker(s,'strategy', h) %>
 			  <% end %>
 			<% end %>
 		  </td>

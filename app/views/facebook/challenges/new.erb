@@ -44,7 +44,7 @@
 		  <td>
 			<% cell_table(@challenge.defender.belongings.battle_ready) do |b,idx| %>
 			  <td class='battle-gear'>
-				<%= avatar_image(b.item,'small') %>
+				<%= avatar_image(b.item,'tiny') %>
 				<label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
 			  </td>
 			<% end %>

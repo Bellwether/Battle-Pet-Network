@@ -39,8 +39,8 @@
 		<ul class="logs">
 		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
 		    <li class="log">
-			  <%= facebook_image_tag "actions/tiny/#{log[:attacker_action]}" %>
-			  <%= facebook_image_tag "actions/tiny/#{log[:defender_action]}" %> 
+			  <%= facebook_image_tag "actions/tiny/#{log[:attacker_action]}.png" %>
+			  <%= facebook_image_tag "actions/tiny/#{log[:defender_action]}.png" %> 
 			  <%= log[:description] %>
 			</li>
 		  <% end %>

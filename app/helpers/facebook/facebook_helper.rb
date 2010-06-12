@@ -79,8 +79,8 @@ module Facebook::FacebookHelper
     render :partial => '/facebook/item_picker', :locals => {:items => items, :form => form, :attribute => attribute}
   end
 
-  def render_strategy_picker(form,strategy_name='attacker_strategy')
-    render :partial => '/facebook/strategy_picker', :locals => {:form =>form,:strategy_name=>strategy_name}
+  def render_strategy_picker(form,strategy_name='attacker_strategy',parent_form=nil)
+    render :partial => '/facebook/strategy_picker', :locals => {:form =>form,:strategy_name=>strategy_name,:parent_form=>parent_form}
   end
 
   def breed_details_row(label,model,attribute)
