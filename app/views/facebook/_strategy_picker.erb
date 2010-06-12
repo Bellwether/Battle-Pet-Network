@@ -30,6 +30,7 @@
 	<% end %>
 	
 	<td>
+	  <div class="maneuver-button">	
 		<a href="#" onclick="push_action(<%=idx%>); return false;" class="maneuver-button">
 		<span class="maneuver-label">
 		  <%= avatar_image(action,'small') %><br />
@@ -38,6 +39,7 @@
 		  <span class="maneuver-type"><%= action.action_type %></span>
 		</span>
 		</a>
+	  </div>
 	</td>	
 		
 	<% cell_count = cell_count + 1 %>
