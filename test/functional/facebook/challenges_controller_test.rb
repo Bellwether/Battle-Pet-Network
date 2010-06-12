@@ -21,13 +21,11 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert !assigns(:challenges).blank?
     assert !assigns(:issued).blank?
     assert !assigns(:resolved).blank?
-    assert_tag :tag => "ul", :attributes => { :id => 'issued-challenges'}, :descendant => {
-      :tag => "a"
-    }
-    assert_tag :tag => "table", :attributes => {:class => 'challenge'}, :descendant => {
-      :tag => "span", :attributes => { :class => "right button" },  
-      :tag => "span", :attributes => { :class => "left button" }
-    }
+    assert !assigns(:open).blank?
+    assert_tag :tag => "ul", :attributes => { :id => 'issued-challenges'}, :descendant => { :tag => "a" }
+    assert_tag :tag => "table", :attributes => {:class => 'challenge'}, :descendant => { :tag => "span", :attributes => { :class => "right button" } }
+    assert_tag :tag => "table", :attributes => {:class => 'challenge'}, :descendant => { :tag => "span", :attributes => { :class => "left button" } }
+    assert_tag :tag => "ul", :attributes => { :id => 'open-challenges' }
   end
   
   def test_show
@@ -80,6 +78,22 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       assert !assigns(:pet).blank?
     end    
     assert flash[:notice]
+  end
+  
+  def test_create_by_saved_strategy
+    Challenge.destroy_all
+    strategy = @attacker.strategies.active.first
+    params = {:attacker_strategy_id => strategy.id}
+    mock_user_facebooking(@user.facebook_id)   
+    assert_no_difference ['Strategy.count'] do
+      assert_difference ['Challenge.count'], +1 do
+        facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => params
+        assert_response :success
+        assert !assigns(:challenge).blank?
+        puts assigns(:challenge).errors.full_messages
+      end  
+    end
+    assert_equal assigns(:challenge).attacker_strategy_id, strategy.id
   end
   
   def test_fail_create

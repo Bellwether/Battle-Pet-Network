@@ -20,6 +20,8 @@
 	  </ul>
     <% end %>
   </div>
+
+  <%= render_open_challenges_box(@open) unless @open.blank? %>
 </div>
 
 <% unless @challenges.blank? %>

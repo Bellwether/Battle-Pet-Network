@@ -22,6 +22,7 @@ class Challenge < ActiveRecord::Base
   
   before_validation_on_create :set_challenge_type  
   
+  named_scope :open, :conditions => "status = 'issued' AND challenge_type = '1v0'", :order => 'created_at DESC'
   named_scope :issued, :conditions => "status = 'issued'"
   named_scope :resolved, :conditions => "status = 'resolved'"  
   named_scope :for_attacker, lambda { |attacker_id| 

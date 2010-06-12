@@ -11,8 +11,8 @@ module Facebook::FacebookHelper
     error_messages_for params
   end
   
-  def facebook_image_tag(path)
-    image_tag "#{request.protocol}#{request.host_with_port}/images/#{path}"
+  def facebook_image_tag(path, options= {})
+    image_tag "#{request.protocol}#{request.host_with_port}/images/#{path}", options
   end
   
   def facebook_link_to(text, url, options = {})
@@ -23,7 +23,7 @@ module Facebook::FacebookHelper
     return url.gsub(/facebook\/*/i,'') 
   end
   
-  def avatar_image(model,size='small')
+  def avatar_image(model, size='small', options = {})
     path = "#{model.class.name.downcase}s"
     if model.is_a?(Pet)
       breed_path = model.breed.species.slug.pluralize
@@ -58,6 +58,10 @@ module Facebook::FacebookHelper
 
   def render_kibble_box
     render :partial => '/facebook/kibble_box'
+  end
+  
+  def render_open_challenges_box(challenges)
+    render :partial => '/facebook/open_challenges_box', :locals => {:challenges => challenges}
   end
   
   def render_favorite_action_box(pet)

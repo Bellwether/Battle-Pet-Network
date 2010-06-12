@@ -5,6 +5,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     @challenges = current_user_pet.challenges.issued.defending
     @issued = current_user_pet.challenges.issued.attacking
     @resolved = current_user_pet.challenges.resolved.all
+    @open = Challenge.open.issued
   end
   
   def new

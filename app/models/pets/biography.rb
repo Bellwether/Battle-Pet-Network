@@ -6,7 +6,7 @@ class Biography < ActiveRecord::Base
   CIRCADIAN = ['Nocturnal','Diurnal','Crepuscular']
   PEDIGREES = ['Thoroughbred','Purebred','Mongrel']
   SEASONS = ['Spring','Summer','Autumn','Winter']
-  VOICES = ['Smooth','Galloping','Stentorian','Gentle','Silky']
+  VOICES = ['Smooth','Galloping','Stentorian','Gentle','Silky','Shrill']
   FOODS = ['Fresh Fish','Dairy','Plants','Delicacies','Red Meat','Treats','Pate']
   TEMPERAMENTS = ['Aloof','Headstrong','Inquisitive','Mischievous','Neurotic','Paranoid','Somber','Violent']
   ZODIAC = ['Mouser','Arch','Mittens','Crook-Tail']

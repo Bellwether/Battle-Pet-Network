@@ -39,3 +39,9 @@ siamese_burmese_old:
   defender_strategy: persian_strategy
   challenge_type: 1v1
   status: resolved  
+  
+burmese_open:
+  attacker: burmese   
+  attacker_strategy: burmese_strategy  
+  challenge_type: 1v0
+  status: issued 
