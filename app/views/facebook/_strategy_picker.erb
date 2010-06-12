@@ -81,11 +81,13 @@ actions.push(<%=a.to_json%>);
 <% end %>
 
 function toggle_selector(sel) {
+	alert(sel.selectedIndex);
   if (sel.selectedIndex > 0) {
     document.getElementById('strategy-builder').setClassName('hidden');
   } else {
     document.getElementById('strategy-builder').setClassName('');
   }
+	alert(sel.selectedIndex);
 }
 
 function push_action(idx) {
