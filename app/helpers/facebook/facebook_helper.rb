@@ -30,7 +30,7 @@ module Facebook::FacebookHelper
       path = "#{path}/#{breed_path}"
       filename = model.breed.slug
     elsif model.is_a?(Item)
-      path = "#{path}/types" if size != 'medium' # medium show item detail, otherwise show type
+      path = "#{path}/types" if size != 'medium' && size != 'small' # medium show item detail, otherwise show type
       filename = model.name.downcase.gsub(/\s/,'-')
     else
       filename = model.name.downcase.gsub(/\s/,'-')
@@ -66,10 +66,6 @@ module Facebook::FacebookHelper
   def render_hunts_box(hunts)
     render :partial => '/facebook/hunts_box', :locals => {:hunts => hunts}
   end
-  
-  def render_occupation_picker(pet)
-    render :partial => '/facebook/occupation_picker', :locals => {:pet => pet}
-  end  
 
   def render_breed_picker(form)
     render :partial => '/facebook/breed_picker', :locals => {:form => form}

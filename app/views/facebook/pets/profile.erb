@@ -3,10 +3,6 @@
 <div class="sidebox slim right">
   <%= render_bio_box(@pet,true) %>
 
-  <div class="box slim occupation">
-    <%= render_occupation_picker(@pet) %>
-  </div>
-
   <div class="box slim signs">
     <h4>Signs</h4>
     <p class="em">When other pets visit, you can interact in a variety of ways.</p>
@@ -112,6 +108,39 @@
 <% end %>
 
 <div class="box">
+  <h3><%= facebook_link_to 'Occupations', facebook_occupations_path %></h3>
+  <table>
+	<tr><td colspan="3"><em>How is your pet currently occupying themselves?</em></td></tr>
+	<tr><td colspan="3"><hr /></td></tr>
+	<tr>
+	  <td colspan="3">
+		<label><%= "#{@pet.name} is #{@pet.occupation.name.downcase}" %></label>
+	  </td>
+	</tr>
+
+	<% if @pet.occupation.cost > 0 && @pet.occupation.pet_can?(@pet) %>
+	  <% form_for @pet, 
+		:url => facebook_nested_url(attempt_facebook_occupation_path(@pet.occupation)), 
+		:html => { :method => :post} do |f| %>
+	    <tr>
+	      <td colspan="2">Do now for <%=@pet.occupation.cost%> endurance</td>
+	      <td><%= submit_tag 'perform'%></td>
+	    </tr>
+	  <% end %>
+	<% end %>
+
+	<tr><td colspan="3"><hr /></td></tr>
+	<tr>
+	<% form_for :pet, @pet, :url => "/#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
+	  <td colspan="2">
+	    <%= f.collection_select(:occupation_id, Occupation.ordered, :id, :name, {:include_blank => true}) %>
+	  </td>
+	  <td><%= f.submit 'Update' %> </td>
+	<% end %>
+  </table>
+</div>
+
+<div class="box">
   <h3><%= facebook_link_to 'Belongings', facebook_belongings_path %></h3>
   <% unless @items.blank? %>	
     <% cell_table(@items, 4, :class => "belongings") do |i,idx| %>
@@ -161,5 +190,7 @@
     <p class="em">Wild humans roam the lands, but though mindless they still feel love and can be tamed by a pet's affection. 
 	Domesticated humans are kept in free range kennels and serve their master with their given special ability. Once your pet grows 
 	weary of the company, they can simply place the human into slavery, working tirelessly to gather kibble from the lands.
+	</p>
+	<p class="em">You can try to find and tame humans by setting your pet's occupation to <strong>Human Taming</strong>.</p>
   <% end %>
 </div>
