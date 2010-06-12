@@ -85,6 +85,7 @@
   <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
     <td class='battle-gear'>
 	  <%= avatar_image(b.item,'small') %>
+	  <br />
 	  <label class="strong"><%= b.item.name %></label> 
 	  <br />
 	  <label class="em">Power: <%= b.item.power %></label>

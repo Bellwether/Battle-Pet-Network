@@ -54,6 +54,10 @@ tr {
   margin-right:15px	
 }
 
+#contents .fillbox {
+  width:100%;	
+}
+
 .info h4 { 
   margin-bottom:10px; 
   padding:5px 0 0 5px; 
@@ -119,6 +123,10 @@ a.button:hover{
 }
 
 /* controls */
+
+td.tbox {
+  width: 75px;	
+}
 
 td.radio-cell {
   cursor:pointer;

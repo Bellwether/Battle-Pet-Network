@@ -75,9 +75,7 @@
 	<tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
     </tbody>
   </table>	
-  <p class="right">
-    <%= facebook_link_to "View Your Combat Profile", combat_facebook_pet_path %>
-  </p>
+  <p class="tright fillbox"><%= facebook_link_to "View Combat Profile", combat_facebook_pet_path %></p>
 </div>
 
 <% unless @challenges.blank? %>

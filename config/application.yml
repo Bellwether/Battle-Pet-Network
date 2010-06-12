@@ -1,4 +1,5 @@
 name: Battle Cat
+logging: true
 awards:
   daily_login: 5    
   biography: 50

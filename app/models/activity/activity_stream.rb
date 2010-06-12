@@ -98,6 +98,8 @@ class ActivityStream < ActiveRecord::Base
           end
         when 'awards'
           case namespace
+            when 'ranked'
+              "#{actor_name} ranked ##{object.rank} on the #{indirect_object_name} leaderboard"
             when 'leveled'  
               "#{actor_name} advanced to level #{object.rank} and gained #{object.advancement_amount} #{object.advancement_type}."
           end
