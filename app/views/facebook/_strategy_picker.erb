@@ -1,5 +1,10 @@
 <p class="strategy-selector">
-  <%= (parent_form || form).collection_select("#{strategy_name}_id", current_user_pet.strategies.active, :id, :name, {:include_blank => true}) %>
+  <%= (parent_form || form).collection_select( "#{strategy_name}_id", 
+											   current_user_pet.strategies.active, 
+											   :id, 
+											   :name, 
+											   {:include_blank => true},
+											   {:onchange => "toggle_selector(this)" }) %>
 </p>
 <table id="strategy-builder">
 <tbody>
@@ -74,6 +79,14 @@ var actions = [];
 <% current_user_pet.actions.each do |a| %>
 actions.push(<%=a.to_json%>);
 <% end %>
+
+function toggle_selector(sel) {
+  if (sel.selectedIndex > 0) {
+    document.getElementById('strategy-builder').setClassName('hidden');
+  } else {
+    document.getElementById('strategy-builder').setClassName('');
+  }
+}
 
 function push_action(idx) {
   var list = document.getElementById('maneuver_list');
