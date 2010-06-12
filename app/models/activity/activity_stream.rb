@@ -70,6 +70,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} discovered the human called #{object_name} and tamed them."
             when 'murder'
               "#{actor_name}'s kenneled humans grew violent, and #{indirect_object_name} killed #{object_name}."
+            when 'scavenged'
+              "#{actor_name} scavenged a #{object_name }for #{indirect_object_name}."
           end
         when 'hunting'
           case namespace
