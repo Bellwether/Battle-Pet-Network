@@ -67,8 +67,9 @@ class Strategy < ActiveRecord::Base
     weekday_part = Time.now.wday.to_s[0,2]
     day_part = Time.now.day
     month_part = Time.now.month
+    numbers_part = name || "#{day_part}#{month_part}"
     
-    self.name = "#{name_part}#{day_part}#{month_part}"
+    self.name = "#{name_part}-#{numbers_part}"
   end
   
   def set_ranks

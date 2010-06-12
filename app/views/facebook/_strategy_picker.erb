@@ -32,9 +32,9 @@
 	<td>
 		<a href="#" onclick="push_action(<%=idx%>); return false;" class="maneuver-button">
 		<span class="maneuver-label">
-		  <span class="maneuver_name"><%= action.name %></span>
-		  <span class="maneuver_power"><%= action.power %></span><br />
-		  <span class="maneuver_type"><%= action.action_type %></span>
+		  <span class="maneuver-name"><%= action.name %></span>
+		  <span class="maneuver-power"><%= action.power %></span><br />
+		  <span class="maneuver-type"><%= action.action_type %></span>
 		</span>
 		</a>
 	</td>	
@@ -196,11 +196,14 @@ function calculate_experience() {
 function calculate_fav_action_bonus() {
   var label = document.getElementById('strategy_action_bonus');
   var bonus = 0;
+
+  var breed_favorite = <%= current_user_pet.breed.favorite_action_id %>;
+  var pet_favorite = <%= current_user_pet.favorite_action_id.blank? ? 0 : current_user_pet.favorite_action_id %>;
 	
   for (var key in maneuvers) {
 	var action = maneuvers[key];
 	if (action != null) {
-	  if (action.id == 'favorite action') {
+	  if (action.id == breed_favorite || action.id == pet_favorite) {
 		bonus = bonus + 1;
 	  }
     }
