@@ -110,7 +110,7 @@ module Facebook::FacebookHelper
     bar_width = options[:width] || 125
     html = "<div class='percentage-bar' style='width:#{bar_width}px;'>"
     values.each_with_index do |v,idx|
-      next if (options[:fill] == true && idx == values.size - 1)
+      next if (options[:fill] == true && idx == values.size - 1) || (sum == 0) # guard clauses
       
       percent = ( v.to_f / sum.to_f ) * 100
       width = (bar_width.to_f * (percent / 100.0) ).floor
