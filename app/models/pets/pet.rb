@@ -1,5 +1,6 @@
 class Pet < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
+  include Pet::ProfileCacheColumns
   
   SELECT_BASICS = "id,status,kibble,experience,level_rank_count,breed_id"
   

@@ -17,7 +17,7 @@ class LeaderboardTest < ActiveSupport::TestCase
   end
   
   def test_rankables_for_overlords
-    rankables = Leaderboard.rankables_for_overlords
+    rankables, ranking = Leaderboard.rankables_for_overlords
     rankables.each do |pet|
       assert_equal "active", pet.status
       assert_operator pet.user.last_login_at, ">=", Time.now - 1.week

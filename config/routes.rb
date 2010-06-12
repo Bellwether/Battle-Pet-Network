@@ -2,7 +2,9 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.with_options :controller => 'main' do |l|
       l.logs 'logs', :action => 'logs'
-    end    
+    end
+    
+    admin.resources :activity_streams, :only => [:index]
   end
   
   map.namespace :facebook do |f|

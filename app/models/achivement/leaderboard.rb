@@ -29,6 +29,13 @@ class Leaderboard < ActiveRecord::Base
     end
 
     def rank_overlords
+      rankables, ranking = rankables_for_overlords
+      # (total_wins / weeks) * (total_wins / total_battles)
+      # sum_kenneled_human_count_level
+      # pack_members_count * 2
+      # level * 1.5
+      # sum_gear_level
+      # shop * 5
     end
 
     def rank_strongest
@@ -53,9 +60,11 @@ class Leaderboard < ActiveRecord::Base
     end      
     
     def rankables_for_overlords
+      leaderboard = Leaderboard.overlords.first
       sql_joins = "INNER JOIN users ON pets.user_id = users.id "
       conditions = "users.last_login_at >= DATE_ADD(NOW(), INTERVAL -7 DAY)"
-      return Pet.active.all(:joins => sql_joins, :conditions => conditions)
+      overlords = Pet.active.all(:joins => sql_joins, :conditions => conditions)
+      return overlords, leaderboard.rankings.build
     end
     
     def rankables_for_strongest
