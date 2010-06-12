@@ -1,6 +1,7 @@
 class Facebook::SentientsController < Facebook::FacebookController
   def index
     @sentients = Sentient.threats.paginate(:page => params[:page], :order => :power)
+    @hunts = current_user_pet.hunters.all(:limit => 12).map(&:hunt) if has_pet?
   end
   
   def show

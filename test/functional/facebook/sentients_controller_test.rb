@@ -14,7 +14,7 @@ class Facebook::SentientsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'index'
     assert !assigns(:sentients).blank?
-    assert_tag :tag => "table", :attributes => { :class => "sentients" }
+    assert_tag :tag => "table", :attributes => { :class => "sentients dotbox" }
     assert_no_tag :tag => "span", :attributes => { :class => "right hunt-button" }
   end
 
@@ -24,7 +24,9 @@ class Facebook::SentientsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'index'
     assert !assigns(:sentients).blank?
+    assert !assigns(:hunts).blank?
     assert_tag :tag => "span", :attributes => { :class => "right hunt-button" }
+    assert_tag :tag => "ul", :attributes => { :class => "hunts" }
   end
   
   def test_get
