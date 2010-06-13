@@ -76,7 +76,8 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     facebook_get :new, :fb_sig_user => user.facebook_id
     assert_response :success
     assert_template 'new'
-    assert assigns(:shop)
+    assert !assigns(:shop).blank?
+    assert !assigns(:shop).pet.blank?
     assert_tag :tag => "form", :attributes => { :method => 'post', :action => @controller.facebook_nested_url(new_facebook_shop_path) }
     assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "form" } }
     assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :id => "inventory-picker" } }

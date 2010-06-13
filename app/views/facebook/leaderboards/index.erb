@@ -47,5 +47,14 @@
 
   <div class="box half">
     <h3>Overlords</h3>
+    <table class="leaderboard" id="overlords">
+	  <tbody>
+		<tr><th>Rank</th><th>Name</th><th>Battles</th><th>Level</th><th>Humans</th><th>Shop</th><th>Pack</th><th>Gear</th></tr>
+		<% if @overlords.blank? %>
+		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
+		<% else %>	
+	    <% end %>
+	  </tbody>
+	</table>
   </div>
 </div>

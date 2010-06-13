@@ -21,7 +21,7 @@
     <% end %>
   </div>
 
-  <%= render_open_challenges_box(@open) unless !@open.blank? || has_pet? %>
+  <%= render_open_challenges_box(@open) if !@open.blank? && has_pet? %>
 </div>
 
 <% unless @challenges.blank? %>

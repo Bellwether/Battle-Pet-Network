@@ -49,7 +49,7 @@
     </tr>
     <tr>
 	  <td><label>Founding Cost</label></td>
-	  <td><%= AppConfig.shops.opening_fee %></td>
+	  <td><%= AppConfig.shops.opening_fee %>k</td>
     </tr>
     <tr>
 	  <td>&nbsp;</td>
@@ -58,7 +58,7 @@
 	      <%= f.submit 'Open Store' %>
 	      <%= facebook_link_to 'Nevermind', stored_location %>
 	    <% else %>
-	      <p class="em">Not enough kibble to open a shop.</p>
+	      <p class="em">Not enough <%= facebook_link_to "kibble", premium_facebook_items_path %> to open a shop right now.</p>
 	    <% end %>
 	  </td>
 	</tr>

@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
       l.logs 'logs', :action => 'logs'
     end
     
-    admin.resources :activity_streams, :only => [:index]
+    admin.resources :activity_streams, :only => [:index], :collection => {:toggle => :put}
   end
   
   map.namespace :facebook do |f|
