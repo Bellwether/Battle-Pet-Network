@@ -1,5 +1,7 @@
 /* html */
 
+a {outline: none;}
+
 h2 {
   font-size: 15px;
   margin: 5px 0 10px 0;	
@@ -127,7 +129,6 @@ a.button:hover{
   width: 60px;	
 }
 .maneuver-button a { text-decoration: none; }
-.maneuver-button a:active {border: none;}
 .maneuver-button span { display: inline-block; height:30px; position: relative; z-index:99;}
 .maneuver-name { color: #FFF; font-size: 10px; left: 3px; top: -34px; width:45px;}
 .maneuver-power { color: #00CED1; font-size:15px; right: 5px; top: -34px; }
@@ -138,7 +139,9 @@ a.button:hover{
 .maneuvers span { display:inline-block; }
 .maneuvers li { background-color: #C0C0C0; height: 24px; margin: 1px; }
 .maneuver-item-type { width: 60px;}
-.maneuver-item-power { width: 75px;}
+.maneuver-item-power { width: 50px;}
+.maneuver-item-name { width: 90px;}
+.maneuver-item-remove { left: 115px; position:relative;}
 	
 /* controls */
 

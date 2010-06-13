@@ -60,9 +60,8 @@ class Strategy < ActiveRecord::Base
   end  
   
   def set_name
-    maneuvers.each do |m|
-      (self.name ||= "") << m.action.power.to_s
-    end
+    self.name = maneuvers.blank? ? "" : maneuvers.map(&:action).map(&:power).join('-')
+    
     name_part = combatant.respond_to?(:name) ? combatant.name[0, [3, combatant.name.size].min ] : "ANON"
     weekday_part = Time.now.wday.to_s[0,2]
     day_part = Time.now.day
