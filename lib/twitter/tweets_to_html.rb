@@ -34,8 +34,6 @@ class Twitter::TweetsToHtml
       tid = (st/'id').first.inner_html
       text = parse_tweet(text)
       
-      
-      
       html << "<a href=\"#{URL_PREFIX}#{tid}\"><li class='tweet'>#{text}</a></li>"
     end
     return "<ul class='tweets'>#{html}</ul>"
