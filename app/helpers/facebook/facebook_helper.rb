@@ -1,4 +1,21 @@
 module Facebook::FacebookHelper
+  
+  def display_facebook_flash(type = nil)
+    html = ""
+    if type.nil?
+      ApplicationHelper::FLASH_TYPES.each { |name| html << display_flash(name) }
+    else
+      if type.to_s == 'error'
+        return flash[type].blank? ? "" : fb_error(flash[:error])
+      elsif type.to_s == 'notice'
+        return flash[type].blank? ? "" : fb_success(flash[:notice])
+      else
+        return flash[type].blank? ? "" : fb_explanation(flash[type])
+      end
+    end
+    html
+  end
+  
   def facebook_stylesheet_link_tag(path)
     "<link type='text/css' media='screen' href='#{request.protocol}#{request.host_with_port}#{stylesheet_path(path)}?v=1.0' />"
   end
@@ -138,6 +155,10 @@ module Facebook::FacebookHelper
   end
   
   def graph_bar(values,options={})
+  end
+  
+  def fb_add_profile_tab
+    "<fb:add-profile-tab />"
   end
     
   def fb_fan_button

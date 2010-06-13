@@ -1,6 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  FLASH_TYPES = [:error, :warning, :success, :notice]
+  FLASH_TYPES = [:error, :alert, :success, :notice]
   
   def display_flash(type = nil)
     html = ""
