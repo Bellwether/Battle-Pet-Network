@@ -85,16 +85,16 @@ tr {
 
 .footer { width: 740px;	}
 .footer .announcements { left: 325px; position: relative; top: -20px; width: 300px; }
-.footer ul.tweets { width: 300px;}
+.footer ul.tweets { width: 200px;}
 .footer ul.tweets li { margin: 5px 0 2px 0;}
 
 .online-pets {
-  width: 300px;	
+  width: 200px;	
 }
 
-.footer-links { position: relative; top: -20px; width: 300px;}
+.footer-links { position: relative;; top: -20px; width: 300px;}
 
-.footer-links ul { margin: 0; padding: 0; width: 100%; }
+.footer-links ul { margin: 0; padding: 0; text-align: right width: 100%; }
 .footer-links li { display: inline;	font-size: 9px; text-align: center;}
 
 /* buttons */
