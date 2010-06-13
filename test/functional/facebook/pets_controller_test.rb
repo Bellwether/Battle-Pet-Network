@@ -53,7 +53,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_difference 'Pet.count', +1, "pet should create under expected normal conditions but had errors" do
       facebook_post :create, :pet => pet_params, :fb_sig_user => users(:one).facebook_id
       assert_response :success
-      assert flash[:notice]
+      assert flash[:success]
     end
   end
 
@@ -71,6 +71,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
       assert assigns(:breed)
       assert_template 'new'
       assert flash[:error]
+      assert flash[:error_message]
     end
   end
 

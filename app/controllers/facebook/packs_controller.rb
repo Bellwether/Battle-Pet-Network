@@ -17,10 +17,11 @@ class Facebook::PacksController < Facebook::FacebookController
     @pack = current_user_pet.build_pack(params[:pack])
 
     if @pack.save
-      flash[:notice] = "Today will be remembered in history as the founding of your pack!"
+      flash[:success] = "Today will be remembered in history as the founding of your pack!"
       facebook_redirect_to facebook_pack_path(@pack)
     else
       flash[:error] = "Couldn't found pack! :("
+      flash[:error_message] = @pack.errors.full_messages.join(', ')
       @standards = current_user_pet.belongings.standards
       render :action => :new
     end    
@@ -50,7 +51,8 @@ class Facebook::PacksController < Facebook::FacebookController
     
     message = @pack.invite_membership(current_user_pet,@pet)
     if message.new_record?
-      flash[:error] = "Couldn't send invite - #{message.errors.full_messages}"
+      flash[:error] = "Couldn't send invite :("
+      flash[:error_message] = message.errors.full_messages.join(', ')
     else
       flash[:notice] = "Invited #{params[:invittee]} to join"
     end

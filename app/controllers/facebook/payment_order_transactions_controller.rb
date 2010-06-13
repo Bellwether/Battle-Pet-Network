@@ -6,10 +6,10 @@ class Facebook::PaymentOrderTransactionsController < Facebook::FacebookControlle
     @po.ip_address = request.remote_ip
     
     if @po.save_and_purchase
-      flash[:notice] = "Thanks! You purchased a #{@po.item.name}."
+      flash[:success] = "Thanks! You purchased a #{@po.item.name}."
     else
-      flash[:notice] = "There was a problem with your order."
-      flash[:error] = @po.errors.full_messages
+      flash[:error] = "There was a problem with your order."
+      flash[:error_message] = @po.errors.full_messages.join(', ')
     end
   end
 end

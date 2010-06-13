@@ -102,9 +102,9 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert_difference 'Shop.count', +1 do
       facebook_post :create, :shop => @params, :fb_sig_user => @user.facebook_id
       assert_response :success
-      assert flash[:notice]
       assert !assigns(:shop).blank?
-    end
+    end  
+    assert flash[:success]
   end
   
   def test_fail_create
@@ -114,7 +114,9 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
       facebook_post :create, :shop => @params, :fb_sig_user => @user.facebook_id
       assert_response :success
       assert !assigns(:shop).blank?
-    end
+    end  
+    assert flash[:error]
+    assert flash[:error_message]
   end
   
   def test_edit

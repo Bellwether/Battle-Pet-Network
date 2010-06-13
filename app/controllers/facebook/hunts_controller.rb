@@ -19,10 +19,12 @@ class Facebook::HuntsController < Facebook::FacebookController
     end
 
     if @hunt.save
-      flash[:notice] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"
+      flaash_key = @hunt.hunters.first.outcome == "won" ? :success : :notice
+      flash[flaash_key] = "The hunt for the #{@sentient.name} was #{@hunt.hunters.first.outcome}"
       facebook_redirect_to facebook_hunt_path(@hunt)
     else
       flash[:error] = "Couldn't start hunt. :("
+      flash[:error_message] = @hunt.errors.full_messages.join(", ")
       
       @hunt = @sentient.hunts.build(@defaults.merge(params[:hunt]) )
       render :action => :new

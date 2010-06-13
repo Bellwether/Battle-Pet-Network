@@ -25,5 +25,6 @@ class Facebook::PaymentOrdersControllerTest  < ActionController::TestCase
       assert_response :success
     end    
     assert flash[:error]
+    assert flash[:error_message]
   end  
 end

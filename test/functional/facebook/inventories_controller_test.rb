@@ -27,7 +27,8 @@ class Facebook::InventoriesControllerTest  < ActionController::TestCase
     assert_no_difference ['Inventory.count','@shop.inventories.count'] do
       facebook_post :create, :inventory => @params, :fb_sig_user => @user.facebook_id
       assert_response :success
-      assert flash[:alert]
+      assert flash[:error]
+      assert flash[:error_message]
     end
   end
   
@@ -50,6 +51,7 @@ class Facebook::InventoriesControllerTest  < ActionController::TestCase
       facebook_put :update, :inventory => {:cost => cost}, :fb_sig_user => @user.facebook_id, :id => inventory.id
       assert_response :success
       assert flash[:error]
+      assert flash[:error_message]
     end
   end
   
@@ -80,7 +82,7 @@ class Facebook::InventoriesControllerTest  < ActionController::TestCase
         assert assigns(:purchase_errors).blank?
       end
     end
-    assert flash[:notice]
+    assert flash[:success]
   end
   
   def test_fail_purchase
@@ -97,6 +99,7 @@ class Facebook::InventoriesControllerTest  < ActionController::TestCase
         assert assigns(:purchase_errors)
       end
     end
-    assert flash[:notice]
+    assert flash[:error]
+    assert flash[:error_message]
   end
 end

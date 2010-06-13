@@ -71,7 +71,7 @@ class Facebook::PacksControllerTest < ActionController::TestCase
       assert_response :success
       assert !assigns(:pack).blank?
     end    
-    assert flash[:notice]
+    assert flash[:success]
     assert_equal assigns(:pack).id, @pet.reload.pack_id
   end
 
@@ -84,6 +84,7 @@ class Facebook::PacksControllerTest < ActionController::TestCase
       assert !assigns(:pack).blank?
     end    
     assert flash[:error]
+    assert flash[:error_message]
   end
   
   def test_get_edit

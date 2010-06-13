@@ -25,6 +25,7 @@ class Facebook::SignsControllerTest  < ActionController::TestCase
       facebook_post :create, :pet_id => @recipient.id, :fb_sig_user => @user.facebook_id
       assert_response :success
       assert flash[:error]
+      assert flash[:error_message]
     end
   end
 end

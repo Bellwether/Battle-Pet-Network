@@ -28,9 +28,11 @@ class Facebook::ShopsController < Facebook::FacebookController
     @shop = current_user_pet.build_shop(params[:shop])
 
     if @shop.save
-      flash[:notice] = "Today marks the grand opening of your pet shop!"
+      flash[:success] = "Today marks the grand opening of your pet shop!"
       facebook_redirect_to facebook_shop_path(@shop)
     else
+      flash[:error] = "Couldn't open shop :("
+      flash[:error_message] = @shop.errors.full_messages.join(', ')
       render :action => :new
     end
   end

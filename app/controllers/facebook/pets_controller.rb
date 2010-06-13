@@ -38,10 +38,11 @@ class Facebook::PetsController < Facebook::FacebookController
     @pet = current_user.pets.new(params[:pet])
     
     if @pet.save
-      flash[:notice] = "Pet befriended!"
+      flash[:success] = "Pet befriended!"
       facebook_redirect_to home_facebook_pets_path
     else
       flash[:error] = "Couldn't befriend pet! :("
+      flash[:error_message] = @pet.errors.full_messages.join(', ')
       @breeds = Breed.all
       @breed = Breed.find_by_id(@pet.breed_id)
       render :action => :new
@@ -59,7 +60,7 @@ class Facebook::PetsController < Facebook::FacebookController
       elsif occupation
         update_occupation(occupation)
       else
-        flash[:alert] = "Nothing to update"
+        flash[:notice] = "Nothing to update"
       end
     end
     
@@ -70,7 +71,8 @@ class Facebook::PetsController < Facebook::FacebookController
     if current_user_pet.update_favorite_action!(action_id)
       flash[:notice] = "Your favorite action is now to #{current_user_pet.favorite_action.name}"
     else
-      flash[:error] = "Couldn't update favorite action: #{current_user_pet.errors.full_messages}"
+      flash[:error] = "Couldn't update favorite action :("
+      flash[:error_message] = current_user_pet.errors.full_messages.join(', ')
     end
   end
   
@@ -78,7 +80,8 @@ class Facebook::PetsController < Facebook::FacebookController
     if current_user_pet.update_occupation!(occupation_id)
       flash[:notice] = "Your pet is now #{current_user_pet.occupation.name}"
     else
-      flash[:error] = "Couldn't update occupation: #{current_user_pet.errors.full_messages}"
+      flash[:error] = "Couldn't update occupation :("
+      flash[:error_message] = current_user_pet.errors.full_messages.join(', ')
     end
   end
 end

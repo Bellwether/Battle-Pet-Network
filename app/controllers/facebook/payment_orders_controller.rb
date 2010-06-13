@@ -15,7 +15,8 @@ class Facebook::PaymentOrdersController < Facebook::FacebookController
       )
       redirect_to EXPRESS_GATEWAY.redirect_url_for(res.token)    
     else
-      flash[:error] = "Could not start purchase: #{@payment_order.errors.full_messages}"
+      flash[:error] = "Could not start purchase."
+      flash[:error_message] = @payment_order.errors.full_messages.join(', ')
       redirect_facebook_back
     end
   end

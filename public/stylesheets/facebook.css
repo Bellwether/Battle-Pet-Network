@@ -18,6 +18,7 @@ tr {
 .tright, table.tright td {text-align:right;}
 .em {font-style:italic;}
 .strong {float-weight:bold;}
+.avg-line { height: 20px;}
 
 /* layout */
 

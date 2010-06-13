@@ -48,7 +48,7 @@ class Facebook::ItemsControllerTest < ActionController::TestCase
       assert_response :success
       assert assigns(:purchase_errors).blank?
     end
-    assert flash[:notice]
+    assert flash[:success]
   end
   
   def test_fail_purchase
@@ -60,7 +60,8 @@ class Facebook::ItemsControllerTest < ActionController::TestCase
       assert_response :success
       assert assigns(:purchase_errors)
     end
-    assert flash[:notice]
+    assert flash[:error]
+    assert flash[:error_message]
   end
   
   def test_premium

@@ -19,7 +19,7 @@ class Facebook::ForumPostsControllerTest  < ActionController::TestCase
       assert !assigns(:forum).blank?
       assert !assigns(:topic).blank?
       assert !assigns(:post).blank?
-      assert flash[:notice]
+      assert flash[:success]
     end
   end
 
@@ -32,6 +32,7 @@ class Facebook::ForumPostsControllerTest  < ActionController::TestCase
       assert !assigns(:topic).blank?
       assert !assigns(:post).blank?
       assert flash[:error]
+      assert flash[:error_message]
     end
   end
 end

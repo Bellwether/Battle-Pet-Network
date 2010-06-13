@@ -16,7 +16,7 @@ class Facebook::PaymentOrderTransactionsControllerTest  < ActionController::Test
       assert_response :success
       assert_template 'new'
       assert !assigns(:po).blank?
-      assert flash[:notice]
+      assert flash[:success]
     end
   end
 end

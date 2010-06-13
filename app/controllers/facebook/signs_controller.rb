@@ -9,7 +9,8 @@ class Facebook::SignsController < Facebook::FacebookController
     if @sign.save
       flash[:notice] = "Sent #{@sign.sign_type}."
     else
-      flash[:error] = "Couldn't send sign! :( #{@sign.errors.full_messages}"
+      flash[:error] = "Couldn't send sign! :("
+      flash[:error_message] = @sign.errors.full_messages.join(', ')
     end
     redirect_facebook_back
   end

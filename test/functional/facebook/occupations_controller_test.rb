@@ -42,4 +42,16 @@ class Facebook::OccupationsControllerTest < ActionController::TestCase
       assert flash[:notice]
     end
   end
+    
+  def test_attempt_fail
+    occupation = occupations(:scavenging)
+    mock_user_facebooking(@user.facebook_id)
+    @pet.update_attribute(:current_endurance, 0)
+    assert_no_difference '@pet.belongings.count', +1 do
+      facebook_put :attempt, :fb_sig_user => @user.facebook_id, :id => occupation.id
+      assert_response :success
+    end  
+    assert flash[:error]
+    assert flash[:error_message]
+  end
 end

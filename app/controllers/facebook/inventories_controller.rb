@@ -8,7 +8,8 @@ class Facebook::InventoriesController < Facebook::FacebookController
     if @inventory.save
       flash[:notice] = "Item added to your inventory"
     else
-      flash[:alert] = "Couldn't add item to inventory! :("
+      flash[:error] = "Couldn't add item to inventory! :("
+      flash[:error_message] = @inventory.errors.full_messages.join(", ")
     end
     redirect_facebook_back
   end
@@ -20,7 +21,8 @@ class Facebook::InventoriesController < Facebook::FacebookController
     if @inventory.update_attributes(params[:inventory])
       flash[:notice] = "Inventory updated"
     else    
-      flash[:error] = "Couldn't update inventory. #{@inventory.errors.full_messages}"
+      flash[:error] = "Couldn't update inventory. :(" 
+      flash[:error_message] = @inventory.errors.full_messages.join(", ")
     end
     redirect_facebook_back
   end
@@ -33,9 +35,10 @@ class Facebook::InventoriesController < Facebook::FacebookController
     @purchase_errors = @purchase.errors.on_base
 
     if @purchase_errors.blank?
-      flash[:notice] = "You bought the #{@inventory.item.name}!"
+      flash[:success] = "You bought the #{@inventory.item.name}!"
     else    
-      flash[:notice] = "Couldn't purchase item: #{@purchase_errors}"
+      flash[:error] = "Couldn't purchase item :("
+      flash[:error_message] = @inventory.errors.full_messages.join(", ")
     end
     redirect_facebook_back
   end

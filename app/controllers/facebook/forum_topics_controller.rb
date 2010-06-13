@@ -14,10 +14,11 @@ class Facebook::ForumTopicsController < Facebook::FacebookController
     @topic.posts.first.user = @topic.user unless @topic.posts.blank?
     
     if @topic.save
-      flash[:notice] = "Topic created"
+      flash[:success] = "Topic created"
       facebook_redirect_to facebook_forum_forum_topic_path(@forum,@topic)
     else
       flash[:error] = "Couldn't create topic! :("
+      flash[:error_message] = @topic.errors.full_messages.join(', ')
       render :action => :new
     end    
   end

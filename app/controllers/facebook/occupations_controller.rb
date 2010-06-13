@@ -21,7 +21,8 @@ class Facebook::OccupationsController < Facebook::FacebookController
       @occupation.do_for_pet!(current_user_pet)
       flash[:notice] = "You tried #{@occupation.name.downcase}"
     else  
-      flash[:notice] = "Could not do #{@occupation.name.downcase}"
+      flash[:error] = "Could not do #{@occupation.name.downcase}"
+      flash[:error_message] = @occupation.errors.full_messages.join(', ')
     end
     
     redirect_facebook_back

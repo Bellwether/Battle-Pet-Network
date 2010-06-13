@@ -69,7 +69,7 @@ class Facebook::MessagesControllerTest  < ActionController::TestCase
       facebook_post :create, :message => message_params, :fb_sig_user => users(:two).facebook_id
       assert_response :success
       assert assigns(:message)
-      assert flash[:notice], assigns(:message).errors.full_messages
+      assert flash[:success]
     end
   end
   

@@ -7,12 +7,15 @@ class Hunt < ActiveRecord::Base
   
   accepts_nested_attributes_for :hunters, :allow_destroy => false
   
+  after_create :depopulate
+  
   validates_presence_of :sentient_id, :status
   validates_presence_of :hunters
   validates_inclusion_of :status, :in => %w(gathering started ended)
   validates_associated :hunters
     
   validate :validates_required_rank
+  
   
   def after_initialize(*args)
     self.status ||= 'started'
@@ -52,6 +55,15 @@ class Hunt < ActiveRecord::Base
       if h.outcome == "won"
         h.pet.update_attribute(:kibble, h.pet.kibble + sentient.kibble) 
         log_kibble(h.pet,sentient.kibble)
+      end
+    end
+  end
+  
+  def depopulate
+    hunters.each do |h|
+      if h.outcome == "won"
+        sentient.update_attribute(:population, [sentient.population - 1, 0].max)
+        break;
       end
     end
   end

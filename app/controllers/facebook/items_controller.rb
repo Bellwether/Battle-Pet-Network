@@ -15,9 +15,10 @@ class Facebook::ItemsController < Facebook::FacebookController
     @purchase_errors = @purchase.errors.on_base
         
     if @purchase_errors.blank?
-      flash[:notice] = "You bought the #{@item.name}!"
+      flash[:success] = "You bought the #{@item.name}!"
     else    
-      flash[:notice] = "Couldn't purchase item: #{@purchase_errors}"
+      flash[:error] = "Couldn't purchase item: #{@purchase_errors}"
+      flash[:error_message] = @item.errors.full_messages.join(', ')
     end
     redirect_facebook_back
   end

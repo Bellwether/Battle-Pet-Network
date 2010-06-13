@@ -23,10 +23,11 @@ class Facebook::MessagesController < Facebook::FacebookController
     @message = current_user_pet.outbox.new(params[:message])
     
     if @message.save
-      flash[:notice] = "Message sent"
+      flash[:success] = "Message sent"
       facebook_redirect_to outbox_facebook_messages_path
     else
       flash[:error] = "Couldn't send message! :("
+      flash[:error_message] = @message.errors.full_messages.join(', ')
       render :action => :new
     end
   end
