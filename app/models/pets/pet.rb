@@ -148,7 +148,7 @@ class Pet < ActiveRecord::Base
   end
   
   def battle_record
-    "#{wins_count}/#{loses_count}/#{draws_count}"
+    return "#{wins_count}/#{loses_count}/#{draws_count}"
   end
   
   def favorite_actions

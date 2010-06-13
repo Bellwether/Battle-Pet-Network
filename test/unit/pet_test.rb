@@ -113,4 +113,8 @@ class PetTest < ActiveSupport::TestCase
     @pet.favorite_action = actions(:leap)
     assert_equal "#{@pet.breed.favorite_action.name} and #{actions(:leap).name}", @pet.favorite_actions
   end
+  
+  def test_battle_record
+    assert @pet.battle_record.match /\d\/\d\/\d/
+  end
 end
