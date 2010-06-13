@@ -4,6 +4,8 @@ require 'test_help'
 require 'flexmock/test_unit'
 
 class ActiveSupport::TestCase
+  include ActionController::TestProcess
+  
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded
@@ -35,6 +37,12 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
   
+  # Network / File IO Mocking
+  def mock_tweets
+    @tweets_xml = fixture_file_upload("files/tweets.xml",'text/xml', false)
+    flexmock(Twitter::TweetsToHtml).new_instances.should_receive(:load_xml).and_return(@tweets_xml)
+  end 
+    
   # A convinience wrapper for the native Rails logger
   def logger
     RAILS_DEFAULT_LOGGER
