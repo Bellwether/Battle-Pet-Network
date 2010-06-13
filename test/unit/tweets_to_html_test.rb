@@ -9,5 +9,7 @@ class TweetsToHtmlTest < ActiveSupport::TestCase
   def test_load_xml
     twitter = Twitter::TweetsToHtml.new
     assert_not_nil twitter.doc
+    
+    puts twitter.to_html
   end
 end

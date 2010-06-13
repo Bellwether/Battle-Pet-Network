@@ -10,6 +10,7 @@ class Twitter::TweetsToHtml
   LOCAL_CACHE = "#{RAILS_ROOT}/tmp/tweets.xml"
   EMPTY_DEFAULT = "<em class='tweets'>No Birdsong</em>"
   EXPIRATION_IN_HOURS = 1
+  COUNT_DEFAULT = 3
 
   attr_accessor :doc
   
@@ -25,13 +26,17 @@ class Twitter::TweetsToHtml
     return EMPTY_DEFAULT if @doc.blank?
     
     html = ""
-    (@doc/'status').each do |st|
+    (@doc/'status').each_with_index do |st,idx|
+      break if idx >= COUNT_DEFAULT
+      
       user = (st/'user name').inner_html
       text = (st/'text').inner_html
-      tid = (st/'id').inner_html
+      tid = (st/'id').first.inner_html
       text = parse_tweet(text)
       
-      html << "<li class='tweet'>#{text} <em><a href=\"#{URL_PREFIX}#{tid}\">#</a></em></li>"
+      
+      
+      html << "<a href=\"#{URL_PREFIX}#{tid}\"><li class='tweet'>#{text}</a></li>"
     end
     return "<ul class='tweets'>#{html}</ul>"
   end
