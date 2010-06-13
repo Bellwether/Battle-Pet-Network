@@ -24,10 +24,6 @@ module Facebook::FacebookHelper
     "<script src='#{request.protocol}#{request.host_with_port}/javascripts/#{path}.js?v=1.0' type='text/javascript'></script>"
   end
   
-  def facebook_form_errors(*params)
-    error_messages_for params
-  end
-  
   def facebook_image_tag(path, options= {})
     image_tag "#{request.protocol}#{request.host_with_port}/images/#{path}", options
   end

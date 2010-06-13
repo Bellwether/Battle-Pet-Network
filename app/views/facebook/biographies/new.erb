@@ -8,7 +8,6 @@
 	  and a stats advance determined by your collective biography.</p>
 
   <% form_for @biography, :url => facebook_nested_url(facebook_biography_path(current_user_pet)) do |f| %>	
-    <%= facebook_form_errors 'biography' %>
     <table class="biography">
 	  <tbody>
 		<tr>

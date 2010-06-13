@@ -73,4 +73,13 @@ class HuntTest < ActiveSupport::TestCase
       hunt.depopulate
     end
   end
+  
+  def test_validates_population
+    mock_combat
+    @sentient.update_attribute(:population, 0)
+    hunt = @sentient.hunts.build(:hunters_attributes => { "0" => {:pet_id => @pet.id }})
+    assert !hunt.valid?
+    assert hunt.errors.on(:sentient_id)
+    assert hunt.errors.on(:sentient_id).include?('currently depopulated')
+  end
 end

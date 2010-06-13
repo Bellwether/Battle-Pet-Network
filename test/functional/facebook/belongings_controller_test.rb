@@ -24,6 +24,6 @@ class Facebook::BelongingsControllerTest  < ActionController::TestCase
     facebook_put :update, :fb_sig_user => @user.facebook_id, :id => belonging.id, :belonging => {:status => 'holding'}
     assert_response :success
     assert_equal 'holding', belonging.reload.status
-    assert flash[:notice]
+    assert flash[:success]
   end
 end

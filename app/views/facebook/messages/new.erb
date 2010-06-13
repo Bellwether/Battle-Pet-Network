@@ -8,7 +8,6 @@
 
 <div class="box">
   <% form_for @message, :url => facebook_nested_url(facebook_messages_path) do |f| %>	
-  <%= facebook_form_errors 'message' %>
   <%= f.hidden_field :reply_to_id %>
   <table class="message">
 	<tbody>

@@ -1,3 +1,27 @@
+tinamou_egg:
+  name: Tinamou Egg
+  description: Lustrous and shiny, the delicious tinamou egg is found in nests through the southern bird kingdoms. The colorful markings given to the eggs make them as satisfying to possess and behold as to devour.
+  item_type: Food
+  power: 10
+  required_rank: 1
+  cost: 10
+  rarity: 35
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
+  
+cormorant_egg:
+  name: Cormorant Egg
+  description: Roughshod and rocky and sheathed in ooze, the eggs of the cormorant can be extracted from cliffside nests, watercaves, and lagoons. Like their dumpy parents, these unplesant looking specimens are in fact quite wholesome to consume.
+  item_type: Food
+  power: 15
+  required_rank: 1
+  cost: 20
+  rarity: 50
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
+
 soft_beetle:
   name: Soft Beetle
   description: An unfortunate victim of change, the soft beetle's carapace has transformed from a protective shell into a chewy, flavorful snack. These poor insects can be readily found throughout urban ruins.

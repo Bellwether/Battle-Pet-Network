@@ -12,7 +12,6 @@
 <div class="box half">
   <% form_for @pet, :url => facebook_nested_url(facebook_pets_path) do |f| %>
   <%= f.hidden_field :breed_id %>
-  <%= facebook_form_errors 'pet' %>
 
   <table class='form'>
     <tbody>

@@ -14,7 +14,7 @@ class Hunt < ActiveRecord::Base
   validates_inclusion_of :status, :in => %w(gathering started ended)
   validates_associated :hunters
     
-  validate :validates_required_rank
+  validate :validates_required_rank, :validates_population
   
   
   def after_initialize(*args)
@@ -27,6 +27,11 @@ class Hunt < ActiveRecord::Base
     hunters.each do |h|
       errors.add(:sentient_id, "required level too high") if h.pet.level_rank_count < sentient.required_rank
     end
+  end
+  
+  def validates_population
+    return if sentient.blank? || sentient.population > 0
+    errors.add(:sentient_id, 'currently depopulated')
   end
   
   def hunter
