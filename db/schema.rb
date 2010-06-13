@@ -391,24 +391,29 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "payment_orders", ["user_id", "created_at"], :name => "index_payment_orders_on_user_id_and_created_at"
 
   create_table "pets", :force => true do |t|
-    t.string   "name",               :limit => 64,                       :null => false
-    t.string   "slug",               :limit => 32,                       :null => false
-    t.string   "status",             :limit => 32, :default => "active", :null => false
-    t.integer  "current_health",                   :default => 0,        :null => false
-    t.integer  "current_endurance",                :default => 0,        :null => false
-    t.integer  "health",                           :default => 0,        :null => false
-    t.integer  "endurance",                        :default => 0,        :null => false
-    t.integer  "power",                            :default => 0,        :null => false
-    t.integer  "intelligence",                     :default => 0,        :null => false
-    t.integer  "fortitude",                        :default => 0,        :null => false
-    t.integer  "affection",                        :default => 0,        :null => false
-    t.integer  "experience",                       :default => 0,        :null => false
-    t.integer  "wins_count",                       :default => 0,        :null => false
-    t.integer  "loses_count",                      :default => 0,        :null => false
-    t.integer  "draws_count",                      :default => 0,        :null => false
-    t.integer  "level_rank_count",                 :default => 1,        :null => false
-    t.integer  "kibble",                           :default => 0,        :null => false
-    t.integer  "breed_id",                                               :null => false
+    t.string   "name",                   :limit => 64,                       :null => false
+    t.string   "slug",                   :limit => 32,                       :null => false
+    t.string   "status",                 :limit => 32, :default => "active", :null => false
+    t.integer  "current_health",                       :default => 0,        :null => false
+    t.integer  "current_endurance",                    :default => 0,        :null => false
+    t.integer  "health",                               :default => 0,        :null => false
+    t.integer  "endurance",                            :default => 0,        :null => false
+    t.integer  "power",                                :default => 0,        :null => false
+    t.integer  "health_bonus_count",                   :default => 0,        :null => false
+    t.integer  "endurance_bonus_count",                :default => 0,        :null => false
+    t.integer  "power_bonus_count",                    :default => 0,        :null => false
+    t.integer  "experience_bonus_count",               :default => 0,        :null => false
+    t.integer  "fortitude_bonus_count",                :default => 0,        :null => false
+    t.integer  "intelligence",                         :default => 0,        :null => false
+    t.integer  "fortitude",                            :default => 0,        :null => false
+    t.integer  "affection",                            :default => 0,        :null => false
+    t.integer  "experience",                           :default => 0,        :null => false
+    t.integer  "wins_count",                           :default => 0,        :null => false
+    t.integer  "loses_count",                          :default => 0,        :null => false
+    t.integer  "draws_count",                          :default => 0,        :null => false
+    t.integer  "level_rank_count",                     :default => 1,        :null => false
+    t.integer  "kibble",                               :default => 0,        :null => false
+    t.integer  "breed_id",                                                   :null => false
     t.integer  "user_id"
     t.integer  "pack_id"
     t.integer  "shop_id"

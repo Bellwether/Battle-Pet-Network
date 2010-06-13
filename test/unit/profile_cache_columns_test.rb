@@ -4,7 +4,13 @@ class ProfileCacheColumnsTest < ActiveSupport::TestCase
   def setup
     @pet = pets(:siamese)
     # @cached_attributes = ['affection','intelligence','health','endurance','power','fortitude','affection','experience','shopkeeping']
-    @cached_attributes = ['health','endurance']
+    @cached_attributes = ['health','endurance','fortitude','power','experience']
+  end
+  
+  def test_column_attributes
+    @cached_attributes.each do |col|
+      assert @pet.respond_to?("#{col}_bonus_count".to_sym)
+    end
   end
   
   def test_column_update_methods

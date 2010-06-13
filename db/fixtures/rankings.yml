@@ -1,0 +1,3 @@
+overlords_ranking:
+  leaderboard: overlords
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>

@@ -106,6 +106,11 @@ class CreateCore < ActiveRecord::Migration
       t.integer :health, :default => 0, :null => false
       t.integer :endurance, :default => 0, :null => false
       t.integer :power, :default => 0, :null => false
+      t.integer :health_bonus_count, :default => 0, :null => false
+      t.integer :endurance_bonus_count, :default => 0, :null => false
+      t.integer :power_bonus_count, :default => 0, :null => false
+      t.integer :experience_bonus_count, :default => 0, :null => false
+      t.integer :fortitude_bonus_count, :default => 0, :null => false
       t.integer :intelligence, :default => 0, :null => false
       t.integer :fortitude, :default => 0, :null => false
       t.integer :affection, :default => 0, :null => false

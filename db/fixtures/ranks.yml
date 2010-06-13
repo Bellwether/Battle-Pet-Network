@@ -1,0 +1,14 @@
+overlords_ranking_shadow:
+  ranking: overlords_ranking
+  rankable: shadow
+  rank: 1
+  
+overlords_ranking_domino:
+  ranking: overlords_ranking
+  rankable: domino
+  rank: 2
+  
+overlords_ranking_pearl:
+  ranking: overlords_ranking
+  rankable: pearl
+  rank: 3
