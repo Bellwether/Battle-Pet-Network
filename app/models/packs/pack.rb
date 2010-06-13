@@ -11,7 +11,7 @@ class Pack < ActiveRecord::Base
 
   before_validation_on_create :set_leader
   before_update :contribute_kibble
-  after_create :update_founder
+  after_create :update_founder, :log_founding
   
   validates_presence_of :founder_id, :standard_id, :name, :kibble, :status
   validates_length_of :name, :within => 3..64
@@ -44,10 +44,12 @@ class Pack < ActiveRecord::Base
         dues = pack.membership_dues
         if pack.kibble < dues
           pack.update_attribute(:status, 'insolvent')
+          ActivityStream.log! 'packs', 'unpaid-dues', pack
         else
           pack.update_attributes(:status => 'active', :kibble => (pack.kibble - dues))
+          ActivityStream.log! 'packs', 'paid-dues', pack
         end
-      end
+      end  
     end
   end  
   
@@ -136,5 +138,9 @@ class Pack < ActiveRecord::Base
     pack_members.update_all( "status = 'disbanded'" )
     Pet.update_all( "pack_id = NULL", "pack_id = #{id}" )
     return true
+  end
+  
+  def log_founding
+    ActivityStream.log! 'packs', 'founded', founder, self
   end
 end

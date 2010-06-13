@@ -22,13 +22,17 @@ class PackTest < ActiveSupport::TestCase
   def test_pay_dues
     starting = 100
     Pack.connection.execute( "UPDATE packs SET kibble = #{starting} " )
-    Pack.pay_dues!
+    assert_difference 'ActivityStream.count', +Pack.credited.count do
+      Pack.pay_dues!
+    end
     Pack.active.all.each do |p|
       assert_equal starting - p.membership_dues, p.kibble
     end
     
     Pack.connection.execute( "UPDATE packs SET kibble = 0 " )
-    Pack.pay_dues!
+    assert_difference 'ActivityStream.count', +Pack.credited.count do
+      Pack.pay_dues!
+    end
     Pack.active.all.each do |p|
       assert_equal 'insolvent', p.status
     end
@@ -145,6 +149,14 @@ class PackTest < ActiveSupport::TestCase
     @pack.pack_members.each do |m|
       assert_equal 'disbanded', m.status
       assert_nil m.pet.pack_id
+    end
+  end
+
+  def test_log_founding
+    pack = Pack.new(@params)
+    @founder.update_attribute(:kibble, AppConfig.packs.founding_fee)
+    assert_difference 'ActivityStream.count', +1 do
+      assert pack.save!
     end
   end
 end

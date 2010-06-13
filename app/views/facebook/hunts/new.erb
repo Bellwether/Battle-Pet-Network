@@ -21,22 +21,22 @@
 	  <table class="dotbox">
 		<tr>
 		  <td rowspan="5" class="tright"><%= avatar_image(current_user_pet,'medium') %></td>
-		  <td><%= percentage_bar [current_user_pet.current_health,@sentient.health] %></td>
-		  <td><%= current_user_pet.current_health %></td>
+		  <td class="avg-line"><%= percentage_bar [current_user_pet.current_health,@sentient.health] %></td>
+		  <td class="avg-line"><%= current_user_pet.current_health %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= percentage_bar [current_user_pet.current_endurance,@sentient.endurance] %></td>
 		  <td><%= current_user_pet.current_endurance %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= percentage_bar [current_user_pet.power,@sentient.power] %></td>
 		  <td><%= current_user_pet.power %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= percentage_bar [current_user_pet.fortitude,@sentient.fortitude] %></td>
 		  <td><%= current_user_pet.fortitude %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= percentage_bar [current_user_pet.intelligence,@sentient.intelligence] %></td>
 		  <td><%= current_user_pet.intelligence %></td>
 		</tr>
@@ -58,13 +58,13 @@
 	</td>	
 	<td class="middlebox">
 	  <table class="dotbox tcenter">
-		<tr><td>Health</td></tr>
-		<tr><td>Endurance</td></tr>
-		<tr><td>Power</td></tr>
-		<tr><td>Fortitude</td></tr>
-		<tr><td>Intelligence</td></tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr><th>Combat</th></tr>
+		<tr class="avg-line"><td>Health</td></tr>
+		<tr class="avg-line"><td>Endurance</td></tr>
+		<tr class="avg-line"><td>Power</td></tr>
+		<tr class="avg-line"><td>Fortitude</td></tr>
+		<tr class="avg-line"><td>Intelligence</td></tr>
+		<tr class="avg-line"><td>&nbsp;</td></tr>
+		<tr class="avg-line"><th>Combat</th></tr>
 		<tr><td style="height:150px;">&nbsp;</td></tr>
 		<tr><td><%= submit_tag "Begin the Hunt"%></td>
 	  </table>
@@ -72,29 +72,30 @@
 	<td class="rightbox" width="43%">
 	  <table class="dotbox">
 		<tr>
-		  <td><%= @sentient.health %></td>
+		  <td class="avg-line"><%= @sentient.health %></td>
 		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health], :reverse => 1 %></td>
 		  <td rowspan="5" class="tleft">
 			<%= avatar_image(@sentient,'large') %><br />
 			<span class="strong">Population: <%= @sentient.population %></span>
 		  </td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= @sentient.endurance %></td>
 		  <td><%= percentage_bar [@sentient.endurance,current_user_pet.current_endurance], :reverse => 1 %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= @sentient.power %></td>
 		  <td><%= percentage_bar [@sentient.power,current_user_pet.power], :reverse => 1 %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= @sentient.fortitude %></td>
 		  <td><%= percentage_bar [@sentient.fortitude,current_user_pet.fortitude], :reverse => 1 %></td>
 		</tr>
-		<tr>
+		<tr class="avg-line">
 		  <td><%= @sentient.intelligence %></td>
 		  <td><%= percentage_bar [@sentient.intelligence,current_user_pet.intelligence], :reverse => 1 %></td>
 		</tr>
+		<tr>
 		  <th colspan="3">Kibble Award for Defeating this Creature: <%= @sentient.kibble %></th>
 		</tr>
 		<tr>
