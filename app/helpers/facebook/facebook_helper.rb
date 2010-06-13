@@ -3,7 +3,7 @@ module Facebook::FacebookHelper
   def display_facebook_flash(type = nil)
     html = ""
     if type.nil?
-      ApplicationHelper::FLASH_TYPES.each { |name| html << display_flash(name) }
+      ApplicationHelper::FLASH_TYPES.each { |name| html << display_facebook_flash(name) }
     else
       if type.to_s == 'error'
         return flash[type].blank? ? "" : fb_error(flash[:error])
