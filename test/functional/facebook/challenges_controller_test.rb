@@ -105,6 +105,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       assert !assigns(:pet).blank?
     end    
     assert flash[:error]
+    assert flash[:error_message]
   end
   
   def test_edit
@@ -122,6 +123,16 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       :tag => "td", :attributes => { :class => "battle-gear" },
       :tag => "input", :attributes => { :type => "submit" }
     }
+  end
+  
+  def test_update
+    challenge = challenges(:siamese_persian_issued)
+    pet = challenge.defender
+    mock_user_facebooking(pet.user.facebook_id)
+    params = {:defender_strategy_attributes => { :maneuvers_attributes => { "0" => {:action_id => actions(:scratch).id}} }}
+    facebook_put :update, :fb_sig_user => pet.user.facebook_id, :id => challenge.id, :challenge => params
+    assert_response :success
+    assert !assigns(:challenge).blank?    
   end
   
   def test_refuse

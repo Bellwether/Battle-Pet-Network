@@ -32,6 +32,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
       facebook_redirect_to facebook_pet_path(@pet)
     else
       flash[:error] = "Couldn't send challenge. :("
+      flash[:error_message] = @challenge.errors.full_messages.join(', ')
       render :action => :new
     end
   end
@@ -61,11 +62,14 @@ class Facebook::ChallengesController < Facebook::FacebookController
   def update
     @pet = current_user_pet
     @challenge = current_user_pet.challenges.responding_to(params[:id])
+    @challenge.attributes = params[:challenge]
+    @challenge.defender_strategy.combatant = @challenge.defender unless @challenge.defender_strategy.blank?
     
-    if @challenge.update_attributes(params[:challenge])
+    if @challenge.save
       facebook_redirect_to facebook_challenges_path
     else
       flash[:error] = "Couldn't respond to challenge. :("
+      flash[:error_message] = @challenge.errors.full_messages.join(', ')
       @gear = @pet.belongings.battle_ready
       render :action => :edit
     end

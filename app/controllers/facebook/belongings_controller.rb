@@ -10,9 +10,10 @@ class Facebook::BelongingsController < Facebook::FacebookController
     @belonging = current_user_pet.belongings.find(params[:id])
         
     if @belonging.use_item
-      flash[:notice] = "Used #{@belonging.item.name}"
+      flash[:success] = "Used #{@belonging.item.name}"
     else    
-      flash[:error] = "Couldn't use #{@belonging.item.name}. #{@belonging.errors.full_messages}"
+      flash[:error] = "Couldn't use #{@belonging.item.name}: "
+      flash[:error_message] = "#{@belonging.errors.full_messages.join(', ')}"
     end
     redirect_facebook_back
   end

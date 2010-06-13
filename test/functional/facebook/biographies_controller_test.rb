@@ -12,7 +12,7 @@ class Facebook::BiographiesControllerTest  < ActionController::TestCase
                :birthday => '2010-1-1', :siblings => 2, :description => 'Test pet. Test pet. Test pet. Test pet. Test pet. Test pet. Test pet.'}    
   end
 
-  def test_should_show_new_bio
+  def test_new
     mock_user_facebooking(@pet.user.facebook_id)
     facebook_get :new, :fb_sig_user => @pet.user.facebook_id
 
@@ -24,12 +24,23 @@ class Facebook::BiographiesControllerTest  < ActionController::TestCase
     }
   end
 
-  def test_should_create_bio
+  def test_create
     mock_user_facebooking(@pet.user.facebook_id)
     assert_difference 'Biography.count', +1 do
       facebook_post :create, :fb_sig_user => @pet.user.facebook_id, :biography => @params
     end
     assert_response :success, "response should be a success"
     assert_not_nil @pet.reload.biography, "biography should create for pet"
+  end
+  
+  def test_fail_create
+    mock_user_facebooking(@pet.user.facebook_id)
+    assert_no_difference 'Biography.count' do
+      facebook_post :create, :fb_sig_user => @pet.user.facebook_id, :biography => {}
+    end
+    assert_response :success
+    assert assigns(:biography).new_record?
+    assert !flash[:error].blank?
+    assert !flash[:error_message].blank?
   end
 end
