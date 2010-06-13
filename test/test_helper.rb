@@ -37,6 +37,8 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
   
+  AppConfig.tweets = 0
+  
   # Network / File IO Mocking
   def mock_tweets
     @tweets_xml = fixture_file_upload("files/tweets.xml",'text/xml', false)

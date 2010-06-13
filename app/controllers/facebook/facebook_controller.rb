@@ -10,7 +10,7 @@ class Facebook::FacebookController < ApplicationController
   after_filter :store_location
   
   def application_tweets_html
-    return "" if AppConfig.tweets != 1
+    return "&nbsp;" if AppConfig.tweets.to_i != 1
     return @application_tweets if defined?(@application_tweets)
     
     twitter = Twitter::TweetsToHtml.new

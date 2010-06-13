@@ -9,6 +9,7 @@ class Twitter::TweetsToHtml
   URL_PREFIX = "http://twitter.com/#{TWITTER_USERNAME}/statuses/"
   LOCAL_CACHE = "#{RAILS_ROOT}/tmp/tweets.xml"
   EMPTY_DEFAULT = "<em class='tweets'>No Birdsong</em>"
+  EXPIRATION_IN_HOURS = 1
 
   attr_accessor :doc
   
@@ -44,7 +45,7 @@ class Twitter::TweetsToHtml
       last_modified = File.mtime(LOCAL_CACHE)
       last_download = Time.now - last_modified
       hours,minutes,seconds,frac = Date.day_fraction_to_time(last_download)
-      if hours > 1 # stale xml
+      if hours > EXPIRATION_IN_HOURS # stale xml
         return nil
       else
         return Hpricot( open( LOCAL_CACHE ) ) 
