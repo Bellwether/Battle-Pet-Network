@@ -42,7 +42,7 @@
 		  <tr><td><label>Power: <%= @pet.power %></label></td></tr>
 		  <tr><td><label>Fortitude: <%= @pet.fortitude %></label></td></tr>
 		  <tr>
-			<td><h5><%= @pet.breed.name %></h5></td>
+			<td><h5><%= "Level #{@pet.level_rank_count} #{@pet.breed.name}" %></h5></td>
 		    <td><label>Intelligence: <%= @pet.intelligence %></label></td>
 		  </tr>
 		</table>

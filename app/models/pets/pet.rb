@@ -19,7 +19,7 @@ class Pet < ActiveRecord::Base
   has_many :tames, :include => [:human]
     
   has_many :belongings, :include => [:item]
-  has_many :hunters, :include => [:hunt]
+  has_many :hunters, :include => [:hunt], :order => 'updated_at ASC'
   has_many :inbox, :class_name => "Message", :foreign_key => "recipient_id", :order => 'created_at ASC'
   has_many :outbox, :class_name => "Message", :foreign_key => "sender_id", :order => 'created_at ASC'
   has_many :signs, :class_name => "Sign", 

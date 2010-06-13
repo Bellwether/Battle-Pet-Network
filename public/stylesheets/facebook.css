@@ -91,17 +91,10 @@ tr {
   width: 300px;	
 }
 
-.footer-links {
-  width: 300px;
-}
+.footer-links { position: relative; top: -20px; width: 300px;}
 
-.footer-links ul {
-  margin: 0;
-  padding: 0;	
-}
-.footer-links li {
-  display: inline;	
-}
+.footer-links ul { margin: 0; padding: 0; width: 100%; }
+.footer-links li { display: inline;	font-size: 9px; text-align: center;}
 
 /* buttons */
 

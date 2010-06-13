@@ -20,6 +20,17 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert !assigns(:filters).blank?
     assert_tag :tag => "table", :attributes => { :id => "shops" }, :descendant => { :tag => "label", :attributes => { :class => "shop" }}
     assert_tag :tag => "table", :attributes => { :id => "shops" }, :descendant => { :tag => "label", :attributes => { :class => "shopkeeper" }}
+    assert_no_tag :tag => "a", :attributes => { :href => @controller.facebook_nested_url(new_facebook_shop_path) }
+  end
+  
+  def test_with_with_pet
+    pet = pets(:siamese)
+    user = pet.user
+    mock_user_facebooking(user.facebook_id)
+    facebook_get :index, :fb_sig_user => user.facebook_id
+    assert_response :success
+    assert_template 'index'
+    assert_tag :tag => "a", :attributes => { :href => @controller.facebook_nested_url(new_facebook_shop_path) }
   end
   
   def test_index_search
