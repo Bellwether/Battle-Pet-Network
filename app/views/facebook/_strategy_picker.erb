@@ -122,10 +122,10 @@ function push_action(idx) {
   var i_remove = document.createElement('a');
   var maneuver_type = action.action_type == "offensive" ? "ATTACK" : "DEFEND";
 
-  i_type.setTextValue(maneuver_type).setClassName('maneuver_item_type ' + maneuver_type);
-  i_power.setTextValue('POW: '+action.power).setClassName('maneuver_item_power');
-  i_name.setTextValue(action.name).setClassName('maneuver_item_name');
-  i_remove.setHref('#').setTextValue('[remove]').setClassName('maneuver_item_remove');
+  i_type.setTextValue(maneuver_type).setClassName('maneuver-item-type ' + maneuver_type);
+  i_power.setTextValue('POW: '+action.power).setClassName('maneuver-item-power');
+  i_name.setTextValue(action.name).setClassName('maneuver-item-name');
+  i_remove.setHref('#').setTextValue('[remove]').setClassName('maneuver-item-remove');
 
   i_remove.addEventListener('click', function(e){ 
 	pop_action(action_dom_id);
