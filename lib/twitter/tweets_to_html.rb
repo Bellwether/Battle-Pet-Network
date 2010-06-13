@@ -28,7 +28,6 @@ class Twitter::TweetsToHtml
   end
   
   def load_xml(path)
-    puts "BAAAD"
     return Hpricot( open( TWEETS_ENDPOINT ) ) 
   end  
   
@@ -38,5 +37,11 @@ class Twitter::TweetsToHtml
     end
     text = linkup_mentions_and_hashtags(text)
     return text
+  end  
+  
+  def linkup_mentions_and_hashtags(text)
+   text.gsub!(/@([\w]+)(\W)?/, '<a href="http://twitter.com/\1">@\1</a>\2')
+   text.gsub!(/#([\w]+)(\W)?/, '<a href="http://twitter.com/search?q=%23\1">#\1</a>\2')
+   return text
   end  
 end

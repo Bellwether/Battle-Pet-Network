@@ -12,18 +12,16 @@
 	<% else %>
     <table id="inventory-picker">
 	  <tbody>
-	  <% f.fields_for :inventories do |item_form| %>	
 	    <% current_user_pet.belongings.sellable.each do |belonging| %>
 	      <tr class='inventory-item'>
 		    <td rowspan="2"><%= check_box_tag( "shop[inventory_ids][][item_id]", belonging.item_id) %></td>
 		    <td class="em">Base Price: <%= belonging.item.cost %></td>
-		    <td rowspan="2"><div class="<%="item-#{human.slug}-small" %>"></div></td>
+		    <td rowspan="2"><%= avatar_image(belonging.item,'small') %></td>
           </tr>
           <tr class='inventory-item'>
 	        <td colspan="2" class="em">Rarity: <%= belonging.item.rarity %></td>
 	      </tr> 
         <% end %>
-	  <% end %>
 	  </tbody>
 	</table>
 	<% end %>
@@ -54,10 +52,14 @@
 	  <td><%= AppConfig.shops.opening_fee %></td>
     </tr>
     <tr>
-	  <td>&nbsp;</td>>
+	  <td>&nbsp;</td>
 	  <td>
-	    <%= f.submit 'Open Store' %>
-	    <%= facebook_link_to 'Nevermind', stored_location %>
+		<% if current_user_pet.kibble >= AppConfig.shops.opening_fee %>
+	      <%= f.submit 'Open Store' %>
+	      <%= facebook_link_to 'Nevermind', stored_location %>
+	    <% else %>
+	      <p class="em">Not enough kibble to open a shop.</p>
+	    <% end %>
 	  </td>
 	</tr>
     </tbody>

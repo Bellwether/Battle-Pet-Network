@@ -10,6 +10,12 @@ three_grass:
   source: purchased    
   status: active    
   
+three_cordura_collar:
+  pet: persian
+  item: cordura_collar    
+  source: purchased   
+  status: holding
+  
 three_standard:
   pet: persian
   item: fiberboard_pillar

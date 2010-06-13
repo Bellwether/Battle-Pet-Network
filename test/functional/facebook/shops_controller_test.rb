@@ -67,22 +67,33 @@ class Facebook::ShopsControllerTest < ActionController::TestCase
     assert_tag :tag => "span", :attributes => { :class => "shopping-button" }
   end
 
-  def test_get_new
+  def test_new
     user = users(:three)
     pet = user.pet
+    pet.update_attribute(:kibble, AppConfig.shops.opening_fee)
 
     mock_user_facebooking(user.facebook_id)
     facebook_get :new, :fb_sig_user => user.facebook_id
     assert_response :success
     assert_template 'new'
     assert assigns(:shop)
-    assert_tag :tag => "form", :descendant => { 
-      :tag => "table", :attributes => { :class => "form" },
-      :tag => "table", :attributes => { :id => "inventory-picker" },
-      :tag => "tr", :attributes => { :class => "inventory-item" },
-      :tag => "select", :attributes => { :name => "shop[:specialty]" },
-      :tag => "input", :attributes => { :type => "submit" }
-    }
+    assert_tag :tag => "form", :attributes => { :method => 'post', :action => @controller.facebook_nested_url(new_facebook_shop_path) }
+    assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "form" } }
+    assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :id => "inventory-picker" } }
+    assert_tag :tag => "form", :descendant => { :tag => "tr", :attributes => { :class => "inventory-item" } }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => { :name => "shop[specialty]" } }
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" } }
+  end
+  
+  def test_new_without_kibble_or_items
+    user = users(:three)
+    pet = user.pet
+    Belonging.destroy_all
+    mock_user_facebooking(user.facebook_id)
+    facebook_get :new, :fb_sig_user => user.facebook_id
+    assert_template 'new'
+    assert_no_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" } }
+    assert_no_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :id => "inventory-picker" } }
   end
   
   def test_create

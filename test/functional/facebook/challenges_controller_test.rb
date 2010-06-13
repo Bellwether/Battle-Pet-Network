@@ -90,7 +90,6 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
         facebook_post :create, :fb_sig_user => @user.facebook_id, :pet_id => @defender.id, :challenge => params
         assert_response :success
         assert !assigns(:challenge).blank?
-        puts assigns(:challenge).errors.full_messages
       end  
     end
     assert_equal assigns(:challenge).attacker_strategy_id, strategy.id

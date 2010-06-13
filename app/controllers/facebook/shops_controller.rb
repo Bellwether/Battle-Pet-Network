@@ -20,7 +20,8 @@ class Facebook::ShopsController < Facebook::FacebookController
   end
   
   def new
-    @shop = current_user_pet.build_shop(params[:shop])
+    @shop = Shop.new(params[:shop])
+    @shop.pet = current_user_pet
   end
   
   def create
