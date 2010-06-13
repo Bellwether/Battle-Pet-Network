@@ -4,6 +4,7 @@ module Combat::CombatLogger
   
   LOG_STRUCT = {:rounds => [], 
                 :outcome => nil, 
+                :gear => [],
                 :attacker_awards => {:experience => [], :kibble => []}, 
                 :defender_awards => {:experience => []}}
   
@@ -15,6 +16,16 @@ module Combat::CombatLogger
     elsif pet == defender
       logs[:defender_awards][:experience] << log
     end
+    return log
+  end
+  
+  def log_gear(pet)
+    return nil unless pet.is_a?(Pet)
+    gear = pet.gear_list
+    return nil if gear.blank?
+
+    log = "#{pet.name} carried #{gear} into battle." 
+    logs[:gear] << log
     return log
   end
   

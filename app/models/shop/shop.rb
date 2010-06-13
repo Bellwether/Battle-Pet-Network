@@ -12,7 +12,7 @@ class Shop < ActiveRecord::Base
   validates_length_of :name, :in => 3..128
   validates_inclusion_of :specialty, :in => SPECIALTIES
   
-  after_create :set_shopkeeper
+  after_create :set_shopkeeper, :log_opening
       
   named_scope :include_pet, :include => [:pet]
   named_scope :specialists, lambda { |specialty|  { :conditions => ["specialty LIKE ? ", specialty], :limit => 10, :order => 'inventories_count DESC' } }
@@ -55,5 +55,9 @@ class Shop < ActiveRecord::Base
   
   def set_shopkeeper
     pet.update_attribute(:shop_id,id) if pet.shop_id.blank?
+  end
+  
+  def log_opening
+    ActivityStream.log! 'shopping', 'opened', pet, self
   end
 end

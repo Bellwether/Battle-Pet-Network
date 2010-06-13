@@ -12,7 +12,7 @@
 		    <tr class="ranking">
 		      <td><%= r.rank %></td>
 		      <td><%= r.rankable.challenges.wins.count %></td>
-		      <td><%= r.rankable.name %></td>
+		      <td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
 		      <td><%= r.rankable.level_rank_count %></td>
 		      <td><%= r.rankable.battle_record %></td>
 		    </tr>
@@ -22,7 +22,7 @@
 	</table>
   </div>
 </div>
-<div class="left">
+<div>
   <div class="box half">
     <h3>Indefatigable Fighters</h3>
     <table class="leaderboard" id="indefatigable">
@@ -35,7 +35,7 @@
 		    <tr class="ranking">
 		      <td><%= r.rank %></td>
 		      <td><%= r.rankable.challenges.recent.count %></td>
-		      <td><%= r.rankable.name %></td>
+		      <td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
 		      <td><%= r.rankable.level_rank_count %></td>
 		      <td><%= r.rankable.battle_record %></td>
 		    </tr>
@@ -49,10 +49,22 @@
     <h3>Overlords</h3>
     <table class="leaderboard" id="overlords">
 	  <tbody>
-		<tr><th>Rank</th><th>Name</th><th>Battles</th><th>Level</th><th>Humans</th><th>Shop</th><th>Pack</th><th>Gear</th></tr>
+		<tr><th>Rank</th><th>Name</th><th>Battles</th><th>Level</th><th>Humans</th><th>Pack</th><th>Shop</th><th>Gear</th></tr>
 		<% if @overlords.blank? %>
 		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
 		<% else %>	
+		  <% @overlords.ranks.each do |r| %>
+		    <tr class="ranking">
+		      <td><%= r.rank %></td>
+		      <td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
+		      <td><%= r.rankable.battles_count %></td>
+		      <td><%= r.rankable.level_rank_count %></td>
+		      <td></td>
+			  <td><%= r.rankable.pack_id.blank? ? 'NO' : 'YES' %></td>
+			  <td><%= r.rankable.shop_id.blank? ? 'NO' : 'YES' %></td>
+			  <td></td>
+		    </tr>
+		  <% end %>
 	    <% end %>
 	  </tbody>
 	</table>

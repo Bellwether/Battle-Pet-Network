@@ -57,9 +57,11 @@ class TameTest < ActiveSupport::TestCase
   
   def test_coexist_kills
     AppConfig.humans.kills_neighbor_modifier = 100
-    assert_difference '@pet.tames.count', -1 do
-      Tame.coexist!(@kenneled)
-    end    
+    assert_difference 'ActivityStream.count', +1 do
+      assert_difference '@pet.tames.count', -1 do
+        Tame.coexist!(@kenneled)
+      end    
+    end
   end
 
   def test_coexist_peace

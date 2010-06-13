@@ -18,6 +18,7 @@ class Sentient < ActiveRecord::Base
       connection.execute "UPDATE sentients " +
                          "SET population = population + repopulation_rate " +
                          "WHERE population < population_cap " # (allows for minor overpopulation)
+      ActivityStream.log! 'world', 'restock'
     end    
   end  
   

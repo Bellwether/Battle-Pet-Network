@@ -4,9 +4,11 @@ class SentientTest < ActiveSupport::TestCase
   def test_populate
     Sentient.all.each do |sentient|
       sentient.update_attribute(:population, 0)
-      assert_difference 'sentient.reload.population', +sentient.repopulation_rate do
-        Sentient.populate
-      end    
+      assert_difference 'ActivityStream.count', +1 do
+        assert_difference 'sentient.reload.population', +sentient.repopulation_rate do
+          Sentient.populate
+        end    
+      end
     end
   end
 end

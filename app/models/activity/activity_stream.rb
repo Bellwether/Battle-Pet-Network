@@ -4,7 +4,7 @@ class ActivityStream < ActiveRecord::Base
   belongs_to :indirect_object, :polymorphic => true
 
   validates_presence_of :category, :namespace
-  validates_inclusion_of :category, :in => %w(analytics combat)
+  validates_inclusion_of :category, :in => %w(analytics combat humans packs social awards shopping world)
   
   after_validation_on_create :set_polymorph_data
   after_validation_on_create :set_description_data
@@ -13,7 +13,7 @@ class ActivityStream < ActiveRecord::Base
   class << self
     def log!(category,namespace,actor=nil,object=nil,indirect_object=nil,data={})
       return true if AppConfig.logging != 1
-      return create(:category => category, 
+      return create!(:category => category, 
                     :namespace => namespace, 
                     :actor => actor,
                     :object => object,
@@ -72,7 +72,7 @@ class ActivityStream < ActiveRecord::Base
             when 'murder'
               "#{actor_name}'s kenneled humans grew violent, and #{indirect_object_name} killed #{object_name}."
             when 'scavenged'
-              "#{actor_name} scavenged a #{object_name }for #{indirect_object_name}."
+              "#{actor_name} scavenged a #{object_name} for #{indirect_object_name}."
           end
         when 'hunting'
           case namespace
@@ -129,6 +129,10 @@ class ActivityStream < ActiveRecord::Base
         when 'analytics'
           case namespace
             when 'registration'
+              "#{actor_name} visited."
+            when 'conversion'
+              "#{actor_name} befriended the pet #{object_name}."
+            when 'pet'
               "#{actor_name} entered the world."
             when 'referer'
               "#{object_name} entered the world on your recommendation."

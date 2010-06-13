@@ -151,6 +151,10 @@ class Pet < ActiveRecord::Base
     return "#{wins_count}/#{loses_count}/#{draws_count}"
   end
   
+  def gear_list
+    return belongings.battle_ready.map(&:name).join(", ")
+  end
+  
   def favorite_actions
     if breed.favorite_action_id == favorite_action_id
       text = "constantly #{favorite_action.name}"

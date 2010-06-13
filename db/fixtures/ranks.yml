@@ -1,3 +1,13 @@
+strongest_ranking_shadow:
+  ranking: strongest_ranking
+  rankable: shadow
+  rank: 1
+
+indefatigable_ranking_shadow:
+  ranking: indefatigable_ranking
+  rankable: shadow
+  rank: 1
+
 overlords_ranking_shadow:
   ranking: overlords_ranking
   rankable: shadow

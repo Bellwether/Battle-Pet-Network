@@ -58,6 +58,23 @@ class CombatLoggerTest < ActiveSupport::TestCase
     end
   end
   
+  def test_log_gear
+    at_least_some_logs = []
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        log = m.log_gear(c)
+        if c.is_a?(Pet) && c.belongings.battle_ready.size > 0
+          assert log.include?(c.gear_list)
+          assert_equal log, m.logs[:gear].last
+          at_least_some_logs << log
+        else  
+          assert_nil log
+        end
+      end
+    end
+    assert !at_least_some_logs.empty?
+  end
+  
   def test_log_round
     resolutions = 
       [Combat::CombatActions::Resolution::Description::ALL_ATTACK,

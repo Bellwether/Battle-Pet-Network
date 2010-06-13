@@ -15,6 +15,7 @@ class Leaderboard < ActiveRecord::Base
       rank_indefatigable
       rank_overlords
       rank_strongest
+      ActivityStream.log! 'world', 'leaderboards'      
     end
     
     def rank_indefatigable

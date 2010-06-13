@@ -39,6 +39,7 @@ class Tame < ActiveRecord::Base
           targets = tames.reject{|t| t.id == tame.id}
           random_target = targets.sort_by{rand}[0]
           random_target.destroy
+          ActivityStream.log! 'humans', 'murder', tame.pet, random_target.human, tame.human
           return false
         end
       end

@@ -11,7 +11,7 @@ class ItemTest < ActiveSupport::TestCase
   def test_purchase_for
     assert_difference '@item.stock', -1 do
       assert_difference '@pet.kibble', -@item.cost do
-        assert_difference '@pet.belongings.count', +1 do
+        assert_difference ['@pet.belongings.count','ActivityStream.count'], +1 do
           belonging = @item.purchase_for!(@pet)
           assert_equal 'purchased', belonging.source
         end    
@@ -70,9 +70,11 @@ class ItemTest < ActiveSupport::TestCase
     Item.all.each do |item|
       next if item.stock_cap < 1
       item.update_attribute(:stock, 0)
-      assert_difference 'item.reload.stock', +item.restock_rate do
-        Item.restock
-      end    
+      assert_difference 'ActivityStream.count', +1 do
+        assert_difference 'item.reload.stock', +item.restock_rate do
+          Item.restock
+        end    
+      end
     end
   end  
 end

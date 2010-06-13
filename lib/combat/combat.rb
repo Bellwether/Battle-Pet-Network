@@ -72,6 +72,7 @@ module Combat
     return unless combat_needs_to_occur? && validates_combat
     initialize_combat
     
+    combatants.each { |c| log_gear(c); }
     while combat_in_progress?
       reset_actions
       @current_round = @current_round + 1

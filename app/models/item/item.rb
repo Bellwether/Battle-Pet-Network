@@ -36,7 +36,7 @@ class Item < ActiveRecord::Base
                          "SET stock = stock + restock_rate " +
                          "WHERE stock_cap > 0 " +
                          "AND stock + restock_rate <= stock_cap "
-      
+      ActivityStream.log! 'world', 'repopulation'
     end
     
     def find_random_item(pet=nil,item=nil)
@@ -99,6 +99,7 @@ class Item < ActiveRecord::Base
     if belonging.errors.empty? && belonging.save
       pet.update_attribute(:kibble, pet.kibble - cost)
       self.update_attribute(:stock, stock - 1)
+      ActivityStream.log! 'shopping', 'market', pet, self
     end
     return belonging
   end  

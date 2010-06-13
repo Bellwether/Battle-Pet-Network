@@ -22,4 +22,11 @@ class ShopTest < ActiveSupport::TestCase
     assert shop.save
     assert_equal shop.id, @pet.reload.shop_id
   end
+  
+  def test_log_opening
+    shop = Shop.new(@params)
+    assert_difference 'ActivityStream.count', +1 do
+      assert shop.save
+    end
+  end
 end
