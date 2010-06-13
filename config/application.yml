@@ -1,5 +1,6 @@
 name: Battle Cat
 logging: 1
+tweets: 1
 awards:
   daily_login: 5    
   biography: 50

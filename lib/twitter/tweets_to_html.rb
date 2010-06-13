@@ -7,14 +7,22 @@ class Twitter::TweetsToHtml
   TWITTER_USERNAME = "battlepet"
   TWEETS_ENDPOINT = "http://api.twitter.com/1/statuses/user_timeline.xml?screen_name=#{TWITTER_USERNAME}"
   URL_PREFIX = "http://twitter.com/#{TWITTER_USERNAME}/statuses/"
+  LOCAL_CACHE = "#{RAILS_ROOT}/tmp/tweets.xml"
+  EMPTY_DEFAULT = "<em class='tweets'>No Birdsong</em>"
 
   attr_accessor :doc
   
   def initialize
-    @doc = load_xml(TWEETS_ENDPOINT)
+    begin
+      @doc = load_xml
+    rescue
+      RAILS_DEFAULT_LOGGER.info "Twitter::TweetsToHtml FAILURE: Could Not Load Tweets"
+    end
   end  
   
   def to_html
+    return EMPTY_DEFAULT if @doc.blank?
+    
     html = ""
     (@doc/'status').each do |st|
       user = (st/'user name').inner_html
@@ -22,14 +30,35 @@ class Twitter::TweetsToHtml
       tid = (st/'id').inner_html
       text = parse_tweet(text)
       
-      html << "<li>#{text} <em><a href=\"#{URL_PREFIX}#{tid}\">#</a></em></li>"
+      html << "<li class='tweet'>#{text} <em><a href=\"#{URL_PREFIX}#{tid}\">#</a></em></li>"
     end
-    return "<ul id='tweets'>#{html}</ul>"
+    return "<ul class='tweets'>#{html}</ul>"
   end
   
-  def load_xml(path)
-    return Hpricot( open( TWEETS_ENDPOINT ) ) 
+  def load_xml
+    return load_from_filesystem || load_from_twitter
   end  
+  
+  def load_from_filesystem
+    if File.exist?(LOCAL_CACHE)
+      last_modified = File.mtime(LOCAL_CACHE)
+      last_download = Time.now - last_modified
+      hours,minutes,seconds,frac = Date.day_fraction_to_time(last_download)
+      if hours > 1 # stale xml
+        return nil
+      else
+        return Hpricot( open( LOCAL_CACHE ) ) 
+      end
+    else
+      return nil
+    end
+  end
+  
+  def load_from_twitter
+    xml = Hpricot( open( TWEETS_ENDPOINT ) ) 
+    File.open(LOCAL_CACHE, 'w') {|f| f.write(xml) } # save twitter file
+    return xml
+  end
   
   def parse_tweet(text)
     URI.extract(text, %w[ http https ftp ]).each do |url|

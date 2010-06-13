@@ -12,7 +12,7 @@ class ActivityStream < ActiveRecord::Base
   
   class << self
     def log!(category,namespace,actor=nil,object=nil,indirect_object=nil,data={})
-      return true if AppConfig.logging == 0
+      return true if AppConfig.logging != 1
       return create(:category => category, 
                     :namespace => namespace, 
                     :actor => actor,

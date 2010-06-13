@@ -4,10 +4,19 @@ class Facebook::FacebookController < ApplicationController
   layout 'facebook'
   
   helper_method :has_pet?, :has_shop?, :has_pack?, :has_facebook_user?, :application_is_installed?, 
-                :facebook_redirect_to, :stored_location, :facebook_app_path
+                :facebook_redirect_to, :stored_location, :facebook_app_path, :application_tweets_html
   
   before_filter :ensure_facebook_request, :set_facebook_user
   after_filter :store_location
+  
+  def application_tweets_html
+    return "" if AppConfig.tweets != 1
+    return @application_tweets if defined?(@application_tweets)
+    
+    twitter = Twitter::TweetsToHtml.new
+    @application_tweets = twitter.to_html
+    return @application_tweets
+  end
   
   # # #
   # pet or user (or anonymous) authentication questions for display
