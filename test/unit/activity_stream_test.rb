@@ -7,9 +7,9 @@ class ActivityStreamTest < ActiveSupport::TestCase
   end
   
   def test_log
-    activity = ActivityStream.log!('cat','ns',@pet,@pet,@pet,{:logged => 'test'})
-    assert_equal 'cat', activity.category
-    assert_equal 'ns', activity.namespace
+    activity = ActivityStream.log!('world','leaderboards',@pet,@pet,@pet,{:logged => 'test'})
+    assert_equal 'world', activity.category
+    assert_equal 'leaderboards', activity.namespace
     assert_equal @pet, activity.actor
     assert_equal @pet, activity.object
     assert_equal @pet, activity.indirect_object

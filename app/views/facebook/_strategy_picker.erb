@@ -1,10 +1,10 @@
 <p class="strategy-selector">
   <%= (parent_form || form).collection_select( "#{strategy_name}_id", 
-											   current_user_pet.strategies.active, 
-											   :id, 
-											   :name, 
-											   {:include_blank => true},
-											   {:onchange => "toggle_selector(this)" }) %>
+										   current_user_pet.strategies.active, 
+										   :id, 
+										   :name, 
+										   {:include_blank => true},
+										   {:onchange => "toggle_selector(this)" }) unless current_user_pet.strategies.active.blank? %>
 </p>
 <table id="strategy-builder">
 <tbody>

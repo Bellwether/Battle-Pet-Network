@@ -37,6 +37,11 @@
 	<tr>
 	  <td colspan="2">
 		<ul class="logs">
+		  <% unless @hunt.hunt.logs[:gear].blank? %>
+		    <% @hunt.hunt.logs[:gear].each do |log| %>	
+		      <li class="log"><%= log %></li>
+		    <% end %>
+		  <% end %>
 		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
 		    <li class="log">
 			  <%= facebook_image_tag "actions/tiny/#{log[:attacker_action]}.png" %>

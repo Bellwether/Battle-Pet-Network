@@ -24,6 +24,10 @@ module Pet::ProfileCacheColumns
   def update_defense_bonus_count(val)
     update_attribute(:defense_bonus_count, [(defense_bonus_count + val), 0].max )
   end
+
+  def update_affection_bonus_count(val)
+    update_attribute(:affection_bonus_count, [(affection_bonus_count + val), 0].max )
+  end
   
   def recalculate_defense_bonus
     

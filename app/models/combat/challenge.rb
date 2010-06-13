@@ -90,6 +90,6 @@ class Challenge < ActiveRecord::Base
   end
   
   def log_challenge
-    log! 'combat',"challenge-#{challenge_type}", attacker, defender
+    ActivityStream.log! 'combat',"challenge-#{challenge_type}", attacker, defender
   end
 end

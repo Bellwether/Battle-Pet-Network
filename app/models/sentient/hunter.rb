@@ -5,7 +5,7 @@ class Hunter < ActiveRecord::Base
   
   accepts_nested_attributes_for :strategy, :allow_destroy => false
   
-  validates_presence_of :pet_id, :outcome
+  validates_presence_of :pet_id, :outcome, :strategy
   validates_inclusion_of :outcome, :in => %w(undecided won lost deadlocked)
   validates_associated :strategy
   

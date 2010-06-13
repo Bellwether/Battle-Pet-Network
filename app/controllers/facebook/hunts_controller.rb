@@ -14,7 +14,8 @@ class Facebook::HuntsController < Facebook::FacebookController
     # ensure current_user_pet is combatant
     unless @hunt.hunters.blank?
       @hunt.hunter.pet = current_user_pet 
-      @hunt.hunter.strategy.combatant = current_user_pet
+      strategy_sent = !@hunt.hunter.strategy.blank? || !@hunt.hunter.strategy_id.blank?
+      @hunt.hunter.strategy.combatant = current_user_pet if strategy_sent
     end
 
     if @hunt.save
