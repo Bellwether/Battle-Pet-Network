@@ -197,18 +197,6 @@ td.radio-cell .input:hover {
   min-height: 20px; 
 }
 
-.comparison-table .tleft {
-  width: 45%;
-}
-
-.comparison-table .tcenter {
-  width: 10%;
-}
-
-.comparison-table .tright {
-  width: 45%;
-}
-
 /* icons */
 
 .new-message, .read-message, .deleted-message {
