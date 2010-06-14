@@ -21,8 +21,10 @@ class InventoryTest < ActiveSupport::TestCase
   
   def test_remove_belonging
     pet = @shop.pet
-    assert_difference ['Belonging.count'], -1 do
-      inventory = Inventory.create!(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)      
+    assert_difference 'ActivityStream.count', +1 do
+      assert_difference ['Belonging.count'], -1 do
+        inventory = Inventory.create!(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)      
+      end
     end
   end
   
@@ -35,12 +37,18 @@ class InventoryTest < ActiveSupport::TestCase
     end
   end
   
+  def test_log_stock
+    assert_difference 'ActivityStream.count', +1 do
+      assert Inventory.create(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)
+    end
+  end  
+  
   def test_purchase_for
     pet = pets(:siamese)
     pet.update_attribute(:kibble, @inventory.cost + 1)
     pet.update_attribute(:level_rank_count, @inventory.item.required_rank + 1)
     
-    assert_difference ['pet.belongings.count'], +1 do
+    assert_difference ['ActivityStream.count','pet.belongings.count'], +1 do
       assert_difference ['Inventory.count'], -1 do
         assert_difference ['pet.kibble'], -@inventory.cost do
           assert_difference ['@shop.pet.reload.kibble'], +@inventory.cost do
@@ -58,7 +66,7 @@ class InventoryTest < ActiveSupport::TestCase
     pet.update_attribute(:level_rank_count, @inventory.item.required_rank - 1)
     belonging = nil
     
-    assert_no_difference ['Inventory.count','pet.belongings.count'] do
+    assert_no_difference ['ActivityStream.count','Inventory.count','pet.belongings.count'] do
       belonging = @inventory.purchase_for!(pet)
     end
     assert belonging.new_record?

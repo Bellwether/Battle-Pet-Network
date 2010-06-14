@@ -11,7 +11,7 @@ class Inventory < ActiveRecord::Base
   @@per_page = 12
   
   validate :validates_belonging
-  after_create :remove_belonging
+  after_create :remove_belonging, :log_stock
   
   def after_initialize(*args)
     if item_id.blank? && !belonging_id.blank?
@@ -32,6 +32,7 @@ class Inventory < ActiveRecord::Base
   def unstock!
     pet = shop.pet
     pet.belongings.create(:item => item, :status => "holding", :source => "inventory")
+    ActivityStream.log! 'shopping', 'unstocking', pet, item, shop.pet
     self.destroy 
     return true
   end
@@ -44,8 +45,13 @@ class Inventory < ActiveRecord::Base
     if belonging.errors.empty? && belonging.save
       pet.update_attribute(:kibble, pet.kibble - cost)
       shop.pet.update_attribute(:kibble, shop.pet.kibble + cost)
+      ActivityStream.log! 'shopping', 'purchase', pet, item, shop.pet
       self.destroy
     end
     return belonging
+  end
+  
+  def log_stock
+    ActivityStream.log! 'shopping', 'stocking', shop.pet, item
   end
 end

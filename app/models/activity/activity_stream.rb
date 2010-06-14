@@ -13,7 +13,7 @@ class ActivityStream < ActiveRecord::Base
   class << self
     def log!(category,namespace,actor=nil,object=nil,indirect_object=nil,data={})
       return true if AppConfig.logging != 1
-      return create(:category => category, 
+      return create!(:category => category, 
                     :namespace => namespace, 
                     :actor => actor,
                     :object => object,
@@ -96,6 +96,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} could not pay kibble for its members and became insolvent."
             when 'request'
               "#{actor_name} wishes to join the pack #{object_name}."
+            when 'spoils'
+              "#{actor_name} handed over a #{object_name} to the spoils of #{indirect_object_name}."
           end
         when 'social'
           case namespace
