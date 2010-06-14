@@ -18,7 +18,7 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :attacker_strategy, :allow_destroy => false
   accepts_nested_attributes_for :defender_strategy, :allow_destroy => false
   
-  validate :validates_different_combatants, :validates_no_existing_challenge, :validates_prowling
+  validate :validates_different_combatants, :validates_no_existing_challenge, :validates_prowling, :validates_status_update
   
   before_validation_on_create :set_challenge_type
   after_validation :log_refusal
@@ -59,6 +59,12 @@ class Challenge < ActiveRecord::Base
       ["status = 'issued' AND ((attacker_id = ? AND defender_id = ?) OR (attacker_id = ? AND defender_id = ?))", 
         attacker_id, defender_id, defender_id, attacker_id])
     errors.add_to_base("existing challenge already issued") if existing_challenge
+  end
+  
+  def validates_status_update
+    return true if new_record? || status != 'issued'
+    errors.add(:defender_strategy_id, "defender strategy maneuvers cannot be empty") if defender_strategy.blank? || 
+                                                                                        defender_strategy.maneuvers.blank?
   end
   
   def description

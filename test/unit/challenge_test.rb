@@ -95,4 +95,14 @@ class ChallengeTest < ActiveSupport::TestCase
       challenge.update_attributes(:status => 'refused')
     end
   end
+  
+  def test_validates_status_update
+    new_challenge = Challenge.new
+    assert new_challenge.validates_status_update
+    refused_challenge = challenges(:siamese_persian_issued)
+    assert new_challenge.validates_status_update
+    challenge = challenges(:siamese_persian_issued)
+    assert !challenge.save
+    assert challenge.errors.on(:defender_strategy_id).include?("defender strategy maneuvers cannot be empty")
+  end
 end
