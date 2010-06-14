@@ -6,15 +6,15 @@
 <table class="comparison-table">
   <tbody>
   <tr>
-	<th width="45%" colspan="2"><%= @challenge.attacker.name %></th>
+	<th width="45%" colspan="3"><%= @challenge.attacker.name %></th>
 	<td width="10%">challenges</td>
-	<th width="45%" colspan="2"><%= @challenge.defender.name %></th>
+	<th width="45%" colspan="3"><%= @challenge.defender.name %></th>
   </tr>	
   <tr>
     <td rowspan="7"><%= avatar_image(@challenge.attacker,'large') %></td>
-    <td><%= @challenge.attacker.breed.name %></td>
+    <td colspan="2"><%= @challenge.attacker.breed.name %></td>
 	<td>Breed</td>
-    <td><%= @challenge.defender.breed.name %></td>
+    <td colspan="2"><%= @challenge.defender.breed.name %></td>
     <td rowspan="7"><%= avatar_image(@challenge.defender,'large') %></td>
   </tr>	
   <tr>
