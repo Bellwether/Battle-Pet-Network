@@ -4,7 +4,7 @@ class ActivityStream < ActiveRecord::Base
   belongs_to :indirect_object, :polymorphic => true
 
   validates_presence_of :category, :namespace
-  validates_inclusion_of :category, :in => %w(analytics combat humans packs social awards shopping world)
+  validates_inclusion_of :category, :in => %w(analytics combat humans packs social awards shopping world items)
   
   after_validation_on_create :set_polymorph_data
   after_validation_on_create :set_description_data
@@ -73,6 +73,13 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name}'s kenneled humans grew violent, and #{indirect_object_name} killed #{object_name}."
             when 'scavenged'
               "#{actor_name} scavenged a #{object_name} for #{indirect_object_name}."
+          end
+        when 'items'
+          case namespace
+            when 'scavenging'
+              "#{actor_name} was out scavenging when they discovered a #{object_name}."
+            when 'scavenged'
+              "#{actor_name} went scavenging and discovered a #{object_name}."
           end
         when 'hunting'
           case namespace

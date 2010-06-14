@@ -80,6 +80,7 @@ class Occupation < ActiveRecord::Base
     item = Item.find_random_item(pet,item) if success
     item = item.first if success && item.is_a?(Array)
     success = pet.belongings.create(:item => item, :source => 'scavenged') if success
+    ActivityStream.log! 'items', 'scavenging', pet, item if success
     return success
   end
   

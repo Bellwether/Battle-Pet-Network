@@ -50,7 +50,9 @@ class OccupationTest < ActiveSupport::TestCase
     
     Pet.update_all( "occupation_id = '#{@scavenging.id}'" )
     Pet.all.each { |pet| pet.belongings.clear }  
-    Occupation.scavenge!
+    assert_difference ['ActivityStream.count'], +Pet.all.count do
+      Occupation.scavenge!
+    end
     Pet.all.each do |p|
       assert_equal 1, p.belongings.size
     end
