@@ -103,4 +103,10 @@ class Facebook::FacebookController < ApplicationController
   def rescue_from_missing_method(exception)
     facebook_redirect_to facebook_root
   end
+  
+protected 
+
+  def render_optional_error_file(status_code) 
+    render :template => "public/500", :status => 500, :layout => false
+  end   
 end

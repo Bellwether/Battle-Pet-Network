@@ -212,7 +212,7 @@ sisal_mast:
   rarity: 600
   stock: 4
   stock_cap: 4
-  restock_rate: 1
+  restock_rate: 1  
   
 hunting_claws:
   name: Hunting Claws
@@ -224,6 +224,18 @@ hunting_claws:
   stock: 5
   stock_cap: 5
   restock_rate: 1 
+  
+sabre_claws:
+  name: Sabre Claws
+  description: Long and tampered to an elegant murder point, sabre claws are the tools of the practiced killer.
+  item_type: Weapon
+  power: 2
+  required_rank: 4
+  cost: 18000
+  rarity: 1500 
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1  
     
 catamount_claws:
   species: cat
@@ -232,8 +244,8 @@ catamount_claws:
   item_type: Weapon
   power: 4
   required_rank: 7
-  cost: 20000
-  rarity: 25
+  cost: 28000
+  rarity: 4000
   stock: 3
   stock_cap: 3
   restock_rate: 1
