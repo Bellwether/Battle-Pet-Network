@@ -63,7 +63,7 @@ class Challenge < ActiveRecord::Base
   
   def validates_status_update
     return true if new_record? || status != 'issued'
-    errors.add(:defender_strategy_id, "defender strategy maneuvers cannot be empty") if defender_strategy.blank? || 
+    errors.add(:defender_strategy_id, "maneuvers cannot be empty") if defender_strategy.blank? || 
                                                                                         defender_strategy.maneuvers.blank?
   end
   

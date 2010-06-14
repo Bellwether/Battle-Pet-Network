@@ -16,8 +16,6 @@ humans:
   slavery_earnings_multiplier: 1
   release_multiplier: 250
   kills_neighbor_modifier: 1
-communication:
-  sign_endurance_cost: 3
 experience:
   handicap_divisor: 10
   double_ko_divisor: 3

@@ -3,18 +3,49 @@ require 'test_helper'
 class SignTest < ActiveSupport::TestCase
   def setup
     @sender = pets(:siamese)
-    @recipient = pets(:persian)
-    @cost = AppConfig.communication.sign_endurance_cost
+    @recipient = pets(:russian_blue)
   end
   
   def test_signs_with
     assert !Sign.signs_with( pets(:siamese), @new_pet).blank?
   end
   
-  def test_exhaust_sender
-    assert_difference '@sender.reload.current_endurance', -@cost do    
-      signing = @sender.signings.build(:recipient => @recipient, :sign_type => 'purr')
-      signing.save(false)
+  def test_hiss
+    assert_difference '@recipient.reload.current_endurance', -5 do
+      assert_difference '@sender.reload.current_endurance', -5 do    
+        signing = @sender.signings.build(:recipient => @recipient, :sign_type => 'hiss')
+        signing.save
+      end
+    end
+  end
+
+  def test_play
+    @recipient.update_attribute(:current_endurance,1)
+    assert_difference '@recipient.reload.current_endurance', +3 do
+      assert_difference '@sender.reload.current_endurance', -3 do    
+        signing = @sender.signings.build(:recipient => @recipient, :sign_type => 'play')
+        signing.save
+      end
+    end
+  end
+
+  def test_purr
+    @recipient.update_attribute(:current_endurance,1)
+    assert_difference '@recipient.reload.current_endurance', +1 do
+      assert_difference '@sender.reload.current_endurance', -1 do    
+        signing = @sender.signings.build(:recipient => @recipient, :sign_type => 'purr')
+        signing.save
+      end
+    end
+  end
+
+  def test_groom
+    @recipient.update_attribute(:current_health,1)
+    assert_difference '@recipient.reload.current_health', +1 do
+      assert_difference '@sender.reload.current_endurance', -3 do    
+        signing = @sender.signings.build(:recipient => @recipient, :sign_type => 'groom')
+        signing.save
+      end
     end
   end
   

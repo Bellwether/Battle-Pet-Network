@@ -103,6 +103,6 @@ class ChallengeTest < ActiveSupport::TestCase
     assert new_challenge.validates_status_update
     challenge = challenges(:siamese_persian_issued)
     assert !challenge.save
-    assert challenge.errors.on(:defender_strategy_id).include?("defender strategy maneuvers cannot be empty")
+    assert challenge.errors.on(:defender_strategy_id).include?("maneuvers cannot be empty")
   end
 end

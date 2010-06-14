@@ -7,13 +7,33 @@ class Sign < ActiveRecord::Base
   validates_presence_of :sign_type, :sender_id, :recipient_id
   validates_inclusion_of :sign_type, :in => SIGNINGS
   
-  validate :validates_endurance_cost, :validates_once_per_day
+  validate :validates_exchange_cost, :validates_once_per_day
   
-  after_create :exhaust_sender
+  after_create :stat_exchange
   
   class << self
     def signs_with(sender,recipient)
       SIGNINGS
+    end
+    
+    def play!(sender,recipient)
+      sender.update_attribute(:current_endurance, [sender.current_endurance - 3, 0].max)
+      recipient.update_attribute(:current_endurance, [recipient.current_endurance + 3, recipient.endurance].min)
+    end
+
+    def hiss!(sender,recipient)
+      sender.update_attribute(:current_endurance, [sender.current_endurance - 5, 0].max)
+      recipient.update_attribute(:current_endurance, [recipient.current_endurance - 5, 0].max)
+    end
+
+    def purr!(sender,recipient)
+      sender.update_attribute(:current_endurance, [sender.current_endurance - 1, 0].max)
+      recipient.update_attribute(:current_endurance, [recipient.current_endurance + 1, recipient.endurance].min)
+    end
+
+    def groom!(sender,recipient)
+      sender.update_attribute(:current_endurance, [sender.current_endurance - 3, 0].max)
+      recipient.update_attribute(:current_health, [recipient.current_health + 1, recipient.health].min)
     end
   end
   
@@ -30,9 +50,18 @@ class Sign < ActiveRecord::Base
     end
   end
 
-  def validates_endurance_cost
-    errors.add(:sender_id, "not enough endurance") if sender && 
-                                                      sender.current_endurance < AppConfig.communication.sign_endurance_cost
+  def validates_exchange_cost
+    cost = case sign_type
+    when 'play'
+      3
+    when 'hiss'
+      5
+    when 'purr'
+      1
+    when 'groom'
+      3
+    end
+    errors.add(:sender_id, "not enough endurance") if sender && sender.current_endurance < cost
   end
 
   def validates_once_per_day
@@ -42,7 +71,16 @@ class Sign < ActiveRecord::Base
     errors.add(:recipient_id, "already sent a sign today") if existing
   end
 
-  def exhaust_sender
-    sender.update_attribute(:current_endurance, sender.current_endurance - AppConfig.communication.sign_endurance_cost)
+  def stat_exchange
+    case sign_type
+      when 'play'
+        Sign.play!(sender,recipient)
+      when 'hiss'
+        Sign.hiss!(sender,recipient)
+      when 'purr'
+        Sign.purr!(sender,recipient)
+      when 'groom'
+        Sign.groom!(sender,recipient)
+    end
   end
 end
