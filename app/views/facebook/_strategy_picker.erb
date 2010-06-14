@@ -84,8 +84,7 @@ actions.push(<%=a.to_json%>);
 function toggle_selector(sel) {
   if (sel.getSelectedIndex() > 0) {
     document.getElementById('strategy-builder').setClassName('hidden');
-    var list = document.getElementById('maneuver_list');
-    while ( list.hasChildNodes ) list.removeChild( list.getLastChild() );
+    document.getElementById('maneuver_list').setTextValue('');
   } else {
     document.getElementById('strategy-builder').setClassName('');
   }
