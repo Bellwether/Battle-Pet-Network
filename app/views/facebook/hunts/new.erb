@@ -12,7 +12,7 @@
   </tr>
   <tr>	
     <td class="tright" rowspan="5"><%= avatar_image(current_user_pet,'medium') %></td>
-    <td class="tright"><%= percentage_bar [current_user_pet.current_health, @sentient.health] %></td>
+    <td class="tright"><div class="right"><%= percentage_bar [current_user_pet.current_health, @sentient.health] %></div></td>
     <td class="tright"><%= current_user_pet.current_health %></td>
 	<td>Health</td>
     <td><%= @sentient.health %></td>
@@ -24,29 +24,29 @@
     </td>
   </tr>
   <tr>	
-    <td><%= percentage_bar [current_user_pet.current_endurance, @sentient.endurance] %></td>
-    <td><%= current_user_pet.current_endurance %></td>
+    <td class="tright"><div class="right"><%= percentage_bar [current_user_pet.current_endurance, @sentient.endurance] %></div></td>
+    <td class="tright"><%= current_user_pet.current_endurance %></td>
 	<td>Endurance</td>
     <td><%= @sentient.endurance %></td>
     <td><%= percentage_bar [current_user_pet.current_endurance, @sentient.endurance], :reverse => true %></td>
   </tr>
   <tr>	
-    <td><%= percentage_bar [current_user_pet.power, @sentient.power] %></td>
-    <td><%= current_user_pet.power %></td>
+    <td class="tright"><div class="right"><%= percentage_bar [current_user_pet.power, @sentient.power] %></div></td>
+    <td class="tright"><%= current_user_pet.power %></td>
 	<td>Power</td>
     <td><%= @sentient.power %></td>
     <td><%= percentage_bar [current_user_pet.power, @sentient.power], :reverse => true %></td>
   </tr>
   <tr>	
-    <td><%= percentage_bar [current_user_pet.fortitude, @sentient.fortitude] %></td>
-    <td><%= current_user_pet.fortitude %></td>
+    <td class="tright"><div class="right"><%= percentage_bar [current_user_pet.fortitude, @sentient.fortitude] %></div></td>
+    <td class="tright"><%= current_user_pet.fortitude %></td>
 	<td>Fortitude</td>
     <td><%= @sentient.fortitude %></td>
     <td><%= percentage_bar [current_user_pet.fortitude, @sentient.fortitude], :reverse => true %></td>
   </tr>
   <tr>	
-    <td><%= percentage_bar [current_user_pet.intelligence, @sentient.intelligence] %></td>
-    <td><%= current_user_pet.intelligence %></td>
+    <td class="tright"><div class="right"><%= percentage_bar [current_user_pet.intelligence, @sentient.intelligence] %></div></td>
+    <td class="tright"><%= current_user_pet.intelligence %></td>
 	<td>Intelligence</td>
     <td><%= @sentient.intelligence %></td>
     <td><%= percentage_bar [current_user_pet.intelligence, @sentient.intelligence], :reverse => true %></td>
