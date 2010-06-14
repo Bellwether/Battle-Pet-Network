@@ -3,7 +3,7 @@
 <div class="box full">
 
 
-<% form_for @challenge, :url => facebook_nested_url(facebook_challenge_path(@challenge)), :html => { :method => :put} do |f| %>	
+<% form_for :challenge, @challenge, :url => facebook_nested_url(facebook_challenge_path(@challenge)), :html => { :method => :put} do |f| %>	
 <table class="comparison-table">
   <tbody>
   <tr>
