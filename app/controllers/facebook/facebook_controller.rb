@@ -107,6 +107,6 @@ class Facebook::FacebookController < ApplicationController
 protected 
 
   def render_optional_error_file(status_code) 
-    render :template => "public/500", :status => 500, :layout => false
+    render :template => "facebook/500", :status => 500, :layout => false
   end   
 end
