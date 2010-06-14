@@ -2,122 +2,97 @@
 
 <div class="box full">
 
+<% form_for @hunt, :url => facebook_nested_url(facebook_sentient_hunts_path(@sentient)), :html => { :method => :post} do |f| %>	
 <table class="comparison-table">
 <tbody>
   <tr>
-	<th class="tleft" width="45%"><h3><%= current_user_pet.name %></h3></th>
-	<td class="tcenter"><h5>is hunting the</h5></td>
-	<th class="tright" width="45%"><h3><%= @sentient.name %></h3></th>
+	<th class="tright" width="45%" colspan="3"><h3><%= current_user_pet.name %></h3></th>
+	<td width="10%" class="tcenter">is hunting the</td>
+	<th width="45%" colspan="3"><h3><%= @sentient.name %></h3></th>
   </tr>
+  <tr>	
+    <td class="tright" rowspan="5"><%= avatar_image(current_user_pet,'medium') %></td>
+    <td class="tright"><%= percentage_bar [current_user_pet.current_health, @sentient.health] %></td>
+    <td class="tright"><%= current_user_pet.current_health %></td>
+	<td>Health</td>
+    <td><%= @sentient.health %></td>
+    <td><%= percentage_bar [current_user_pet.current_health, @sentient.health], :reverse => true %></td>
+    <td rowspan="5">
+	  <%= avatar_image(@sentient,'large') %>
+	  <br />
+	  <span class="strong">Population: <%= @sentient.population %></span>
+    </td>
+  </tr>
+  <tr>	
+    <td><%= percentage_bar [current_user_pet.current_endurance, @sentient.endurance] %></td>
+    <td><%= current_user_pet.current_endurance %></td>
+	<td>Endurance</td>
+    <td><%= @sentient.endurance %></td>
+    <td><%= percentage_bar [current_user_pet.current_endurance, @sentient.endurance], :reverse => true %></td>
+  </tr>
+  <tr>	
+    <td><%= percentage_bar [current_user_pet.power, @sentient.power] %></td>
+    <td><%= current_user_pet.power %></td>
+	<td>Power</td>
+    <td><%= @sentient.power %></td>
+    <td><%= percentage_bar [current_user_pet.power, @sentient.power], :reverse => true %></td>
+  </tr>
+  <tr>	
+    <td><%= percentage_bar [current_user_pet.fortitude, @sentient.fortitude] %></td>
+    <td><%= current_user_pet.fortitude %></td>
+	<td>Fortitude</td>
+    <td><%= @sentient.fortitude %></td>
+    <td><%= percentage_bar [current_user_pet.fortitude, @sentient.fortitude], :reverse => true %></td>
+  </tr>
+  <tr>	
+    <td><%= percentage_bar [current_user_pet.intelligence, @sentient.intelligence] %></td>
+    <td><%= current_user_pet.intelligence %></td>
+	<td>Intelligence</td>
+    <td><%= @sentient.intelligence %></td>
+    <td><%= percentage_bar [current_user_pet.intelligence, @sentient.intelligence], :reverse => true %></td>
+  </tr>
+  <tr>
+    <td>
+	  <% cell_table(current_user_pet.belongings.battle_ready) do |b,idx| %>
+	  <td class='battle-gear'>
+		<%= avatar_image(b.item,'tiny') %>
+		<label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
+	  </td>
+	  <% end %>
+    </td>
+	<td colspan="2" class="tright"><%= current_user_pet.name %> likes to:<br /><%= current_user_pet.favorite_actions %></td>
+	<td class="tcenter">&nbsp;</td>
+	<td colspan="3">Award for Defeating this Creature: <span class="strong"><%= @sentient.kibble %> kibble</span></td>
+  </tr>
+  <tr>
+	<td colspan="3">	
+	  <div>Your Pet's Battle Strategy</div>
+      <% f.fields_for :hunters do |h| %>
+        <% h.fields_for :strategy do |s| %>
+	      <%= render_strategy_picker(s,'strategy', h) %>
+	    <% end %>
+	  <% end %>
+	</td>
+    <th class="tcenter">Combat</th>
+    <td colspan="3">
+	  <div>Sentient's Tactics</div>
+	  <p class="em">
+   	  Sentients fight with a limited set of actions. In battle they'll attack and defend at random,
+	  preferring some maneuvers more often than others.</p>
+	  <p class="em"><%= @sentient.name.pluralize %> like to:</p>
+	  <ul class="tactics">
+	  <% @sentient.strategy.maneuvers.each do |maneuver| %>
+	    <li class="tactic">
+		  <%= avatar_image(maneuver.action,'tiny') %>
+		  <label><%= maneuver.action.action_type.upcase %></label>
+		  <label><%= maneuver.action.name %></label>
+		  <label class="strong"><%= maneuver.action.power %></label>				
+		</li>
+	  <% end %>
+	  </ul>
+    </td>
+  </tr>
+  <tr><td colspan="3">&nbsp;</td><td><%= submit_tag "Begin the Hunt" %></td><td colspan="3">&nbsp;</td></tr>
 </tbody>
-</table>
-
-<% form_for @hunt, :url => facebook_nested_url(facebook_sentient_hunts_path(@sentient)), :html => { :method => :post} do |f| %>	
-<table class="comparison-table">
-  <tbody>
-	<tr>
-	<td class="tleft" width="43%">
-	  <table class="dotbox">
-		<tr>
-		  <td rowspan="5" class="tright"><%= avatar_image(current_user_pet,'medium') %></td>
-		  <td class="avg-line"><%= percentage_bar [current_user_pet.current_health,@sentient.health] %></td>
-		  <td class="avg-line"><%= current_user_pet.current_health %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= percentage_bar [current_user_pet.current_endurance,@sentient.endurance] %></td>
-		  <td><%= current_user_pet.current_endurance %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= percentage_bar [current_user_pet.power,@sentient.power] %></td>
-		  <td><%= current_user_pet.power %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= percentage_bar [current_user_pet.fortitude,@sentient.fortitude] %></td>
-		  <td><%= current_user_pet.fortitude %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= percentage_bar [current_user_pet.intelligence,@sentient.intelligence] %></td>
-		  <td><%= current_user_pet.intelligence %></td>
-		</tr>
-		<tr>
-		  <td>&nbsp;</td>
-		  <td>-</td>
-		</tr>
-		<tr>
-		  <td colspan="3">
-			<p>Your Pet's Hunting Strategy</p>
-	        <% f.fields_for :hunters do |h| %>
-	          <% h.fields_for :strategy do |s| %>
-			    <%= render_strategy_picker(s,'strategy', h) %>
-			  <% end %>
-			<% end %>
-		  </td>
-		</tr>
-	  </table>
-	</td>	
-	<td class="middlebox">
-	  <table class="dotbox tcenter">
-		<tr class="avg-line"><td>Health</td></tr>
-		<tr class="avg-line"><td>Endurance</td></tr>
-		<tr class="avg-line"><td>Power</td></tr>
-		<tr class="avg-line"><td>Fortitude</td></tr>
-		<tr class="avg-line"><td>Intelligence</td></tr>
-		<tr class="avg-line"><td>&nbsp;</td></tr>
-		<tr class="avg-line"><th>Combat</th></tr>
-		<tr><td style="height:150px;">&nbsp;</td></tr>
-		<tr><td><%= submit_tag "Begin the Hunt"%></td>
-	  </table>
-	</td>	
-	<td class="rightbox" width="43%">
-	  <table class="dotbox">
-		<tr>
-		  <td class="avg-line"><%= @sentient.health %></td>
-		  <td><%= percentage_bar [@sentient.health,current_user_pet.current_health], :reverse => 1 %></td>
-		  <td rowspan="5" class="tleft">
-			<%= avatar_image(@sentient,'large') %><br />
-			<span class="strong">Population: <%= @sentient.population %></span>
-		  </td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= @sentient.endurance %></td>
-		  <td><%= percentage_bar [@sentient.endurance,current_user_pet.current_endurance], :reverse => 1 %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= @sentient.power %></td>
-		  <td><%= percentage_bar [@sentient.power,current_user_pet.power], :reverse => 1 %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= @sentient.fortitude %></td>
-		  <td><%= percentage_bar [@sentient.fortitude,current_user_pet.fortitude], :reverse => 1 %></td>
-		</tr>
-		<tr class="avg-line">
-		  <td><%= @sentient.intelligence %></td>
-		  <td><%= percentage_bar [@sentient.intelligence,current_user_pet.intelligence], :reverse => 1 %></td>
-		</tr>
-		<tr>
-		  <th colspan="3">Kibble Award for Defeating this Creature: <%= @sentient.kibble %></th>
-		</tr>
-		<tr>
-		  <td colspan="3">
-			<p>Sentient's Tactics</p>
-			<p class="em">Sentients fight with a limited set of actions. In battle they'll attack and defend at random,
-			preferring some maneuvers more often than others. </p>
-			<p class="em"><%= @sentient.name.pluralize %> like to:</p>
-			<ul class="tactics">
-			  <% @sentient.strategy.maneuvers.each do |maneuver| %>
-			    <li class="tactic">
-				  <span class="<%="action-#{maneuver.action.action_type}-small" %>"></span>
-				  <label><%= maneuver.action.action_type.upcase %></label>
-				  <label><%= maneuver.action.name %></label>
-				  <label class="strong"><%= maneuver.action.power %></label>				
-				</li>
-			  <% end %>
-			</ul>	
-		  </td>
-		</tr>
-	  </table>
-	</td> 	
-	</tr>
-  </tbody>
 </table>
 <% end %>

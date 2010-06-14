@@ -9,7 +9,7 @@
 	<th width="45%" colspan="3" class="tright"><h3><%= @challenge.attacker.name %></h3></th>
 	<td width="10%" class="tcenter">challenges</td>
 	<th width="45%" colspan="3"><h3><%= @challenge.defender.name %></h3></th>
-  </tr>	
+  </tr>
   <tr>
     <td rowspan="7" class="tright"><%= avatar_image(@challenge.attacker,'large') %></td>
     <td colspan="2" class="tright"><%= @challenge.attacker.breed.name %></td>
@@ -94,7 +94,7 @@
 	  </p>
     </td>
   </tr>
-  <tr><td colspan="3">&nbsp;</td><td><%= submit_tag "Challenge"%></td><td colspan="3">&nbsp;</td></tr>	
+  <tr><td colspan="3">&nbsp;</td><td><%= submit_tag "Challenge" %></td><td colspan="3">&nbsp;</td></tr>	
 </tbody>
 </table>
 <% end %>
