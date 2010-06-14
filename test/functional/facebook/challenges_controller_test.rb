@@ -116,13 +116,13 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'edit'
     assert !assigns(:challenge).blank?
-    assert !assigns(:pet).blank?
-    assert_tag :tag => "form", :descendant => { 
-      :tag => "table", :attributes => { :class => "comparison-table" },
-      :tag => "table", :attributes => { :class => "battle-gear" },
-      :tag => "td", :attributes => { :class => "battle-gear" },
-      :tag => "input", :attributes => { :type => "submit" }
+    assert !assigns(:pet).blank?    
+    assert_tag :tag => "form", :attributes => { :action => @controller.facebook_nested_url(facebook_challenge_path) }, :descendant => {
+      :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
     }
+    assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "comparison-table" }}
+    assert_tag :tag => "form", :descendant => { :tag => "td", :attributes => { :class => "battle-gear" }}
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" }}
   end
   
   def test_update
