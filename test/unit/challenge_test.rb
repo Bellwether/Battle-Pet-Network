@@ -77,4 +77,22 @@ class ChallengeTest < ActiveSupport::TestCase
     open.set_challenge_type
     assert_equal "1v0", open.challenge_type
   end
+  
+  def test_log_challenge
+    Challenge.destroy_all
+    challenge = Challenge.new(@params)
+    assert_difference ['ActivityStream.count'], +1 do
+      assert challenge.save
+    end
+  end
+  
+  def test_log_refusal
+    challenge = challenges(:siamese_persian_issued)
+    assert_difference ['ActivityStream.count'], +1 do
+      challenge.update_attributes(:status => 'refused')
+    end
+    assert_no_difference ['ActivityStream.count'] do
+      challenge.update_attributes(:status => 'refused')
+    end
+  end
 end

@@ -21,6 +21,7 @@ class Challenge < ActiveRecord::Base
   validate :validates_different_combatants, :validates_no_existing_challenge, :validates_prowling
   
   before_validation_on_create :set_challenge_type
+  after_validation :log_refusal
   after_create :log_challenge
   
   named_scope :open, :conditions => "status = 'issued' AND challenge_type = '1v0'", :order => 'created_at DESC'
@@ -90,6 +91,11 @@ class Challenge < ActiveRecord::Base
   end
   
   def log_challenge
-    ActivityStream.log! 'combat',"challenge-#{challenge_type}", attacker, defender
+    ActivityStream.log! 'combat',"challenge-#{challenge_type}", attacker, defender, self
+  end
+  
+  def log_refusal
+    return if new_record? || !status_changed? || status_was != 'issued' || status != 'refused'
+    ActivityStream.log! 'combat', 'refused', defender, attacker, self
   end
 end
