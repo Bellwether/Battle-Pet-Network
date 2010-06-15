@@ -41,6 +41,7 @@ domino:
   occupation: prowling
   level: siamese_1
   actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+  shop: morning_star
   
 pearl:
   breed: persian
