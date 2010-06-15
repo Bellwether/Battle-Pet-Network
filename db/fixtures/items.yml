@@ -153,6 +153,17 @@ glass_tuna:
   stock: 75
   stock_cap: 75
   restock_rate: 10
+  
+atomic_truffles:
+  description: Plucked from the roots of trees, these fungi are smaller than their historic cousin and infused with draining nuclear runoffs slakening the scorched earth. Chewy and unpleasant, atomic truffles are highly vitalizing puzzles of accidental science.
+  item_type: Food
+  power: 25
+  required_rank: 2
+  cost: 15
+  rarity: 35
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
 
 chocolate_chip_cookie:
   name: Chocolate Chip Cookie

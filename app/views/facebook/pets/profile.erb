@@ -52,22 +52,21 @@
   </h4>
   <h3><%= @pet.name %></h3>
 
-  <table class='pet'>
+  <table class='pet' width="100%">
 	<tbody>
 	<tr>
 	  <td rowspan="6">
-		<%= avatar_image(@pet,'large') %><br />
-		<label><%= @pet.kibble %> kibble</label>
+		<%= avatar_image(@pet,'large') %>
 	  </td>
 	  <td>Health:</td><td><%=@pet.health%></td>
 	  <td rowspan="6">
-		<table>
-		  <tr><td>Leaderboard Rank:</td><td></td></tr>
-		  <tr><td>Total Battles:</td><td><%= @pet.battles_count %></td></tr>
-		  <tr><td>Wins:</td><td><%= @pet.wins_count %></td></tr>
-		  <tr><td>Loses:</td><td><%= @pet.loses_count %></td></tr>
-		  <tr><td>Draws:</td><td><%= @pet.draws_count %></td></tr>
-		  <tr><td>Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
+		<table width="100%">
+		  <tr><td class="tright">Leaderboard Rank:</td><td></td></tr>
+		  <tr><td class="tright">Total Battles:</td><td><%= @pet.battles_count %></td></tr>
+		  <tr><td class="tright">Wins:</td><td><%= @pet.wins_count %></td></tr>
+		  <tr><td class="tright">Loses:</td><td><%= @pet.loses_count %></td></tr>
+		  <tr><td class="tright">Draws:</td><td><%= @pet.draws_count %></td></tr>
+		  <tr><td class="tright">Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
 		</table>
 	  </td>	
 	</tr>
@@ -76,9 +75,12 @@
 	<tr><td>Power:</td><td><%= @pet.power %></td></tr>
 	<tr><td>Intelligence:</td><td><%= @pet.intelligence %></td></tr>
 	<tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
+	<tr>
+	  <td colspan="2"><label><%= @pet.kibble %> kibble</label></td>
+	  <td colspan="2" class="tright"><%= facebook_link_to "View Combat Profile", combat_facebook_pet_path %></td>
+	</tr>
     </tbody>
   </table>	
-  <p class="tright fillbox"><%= facebook_link_to "View Combat Profile", combat_facebook_pet_path %></p>
 </div>
 
 <% unless @challenges.blank? %>
