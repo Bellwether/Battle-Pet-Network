@@ -116,31 +116,35 @@ class Pet < ActiveRecord::Base
   end
   
   def max_actions
-    intelligence
+    total_intelligence
   end
   
   def max_tames
-    affection
+    total_affection
   end
   
-  def affection_bonus
-    0
+  def total_affection
+    affection + affection_bonus_count
   end
   
-  def health_bonus
-    0
+  def total_power
+    power + power_bonus_count
   end
   
-  def endurance_bonus
-    0
+  def total_health
+    health + health_bonus_count
   end
   
-  def fortitude_bonus
-    0
+  def total_endurance
+    endurance + endurance_bonus_count
   end
   
-  def intelligence_bonus
-    0
+  def total_fortitude
+    forititude + fortitude_bonus_count
+  end
+  
+  def total_intelligence
+    intelligence + intelligence_bonus_count
   end
   
   def battles_count

@@ -20,7 +20,7 @@ class Human < ActiveRecord::Base
     
     def finds_human?(pet)
       div = AppConfig.occupations.find_human_chance_divisor.to_f
-      chance = (pet.affection.to_f + pet.affection_bonus) / div
+      chance = pet.total_affection / div
       val = 1 + rand(100)
       return val <= chance
     end

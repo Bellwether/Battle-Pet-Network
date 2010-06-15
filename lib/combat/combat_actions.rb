@@ -24,40 +24,40 @@ module Combat::CombatActions
     
     def resolve_damage
       if both_attacking?
-        @first_damage = @first_action.power
-        @second_damage = @second_action.power
+        @first_damage = @first_action.power + @first.total_power
+        @second_damage = @second_action.power + @first.total_power
         @description = Description::ALL_ATTACK
       elsif both_defending?  
         @description = Description::ALL_DEFEND
       elsif first_attacking_second?
         if did_undercut?(@first_action, @second_action)
-          @first_damage = @first_action.power * 2
+          @first_damage = (@first_action.power * 2) + @second.total_power
           @description = Description::ONE_DEFEND_CUT_TWO_ATTACK
         elsif second_action_greater?
-          @first_damage = @first_action.power
+          @first_damage = @first_action.power + @first.total_power
           @description = Description::ONE_ATTACK_HIT_TWO_DEFEND
         elsif first_action_greater?
           if did_undercut?(@second_action, @first_action)  
-            @second_damage = @first_action.power * 2
+            @second_damage = (@first_action.power * 2) + @second.total_power
             @description = Description::ONE_ATTACK_CUT_TWO_DEFEND
           else
-            @first_damage = @first_action.power - @second_action.power
+            @first_damage = @first_action.power + @first.total_power - @second_action.power
             @description = Description::ONE_ATTACK_HIT_TWO_DEFENDED
           end
         end  
       elsif second_attacking_first?
         if did_undercut?(@second_action, @first_action)
-          @second_damage = @second_action.power * 2
+          @second_damage = (@second_action.power * 2) + @first.total_power
           @description = Description::TWO_DEFEND_CUT_TWO_ATTACK
         elsif first_action_greater?
-          @second_damage = @second_action.power
+          @second_damage = @second_action.power + @second.total_power
           @description = Description::TWO_ATTACK_HIT_TWO_DEFEND
         elsif second_action_greater?
           if did_undercut?(@first_action, @second_action)
-            @first_damage = @second_action.power * 2
+            @first_damage = (@second_action.power * 2) + @first.total_power
             @description = Description::TWO_ATTACK_CUT_TWO_DEFEND
           else
-            @second_damage = @second_action.power - @first_action.power
+            @second_damage = @second_action.power + @second.total_power - @first_action.power
             @description = Description::TWO_ATTACK_HIT_TWO_DEFENDED
           end
         end

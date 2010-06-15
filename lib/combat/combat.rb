@@ -88,8 +88,6 @@ module Combat
       logger.info "combat: attacker health #{attacker.current_health}, defender health #{defender.current_health}"
       
       log_round(results)
-      logger.info "combat: logs - #{self.logs.inspect}"
-      logger.info "combat: logs - #{@logs.inspect}"
     end
     
     restore_combatants_condition
@@ -114,9 +112,9 @@ module Combat
     combatants.each do |c|
       next unless c.is_a? Pet
       if combatant_defeated?(c)
-        c.current_health = [c.current_health, c.health / 2].max
+        c.current_health = [c.current_health, (c.total_health / 2)].max
       else  
-        c.current_health = c.health
+        c.current_health = c.total_health
       end
     end
   end
@@ -177,7 +175,7 @@ module Combat
   end
   
   def action_for(combatant)
-    # cached actions
+    # cached actions, cleared each round with the reset_actions method
     return @attacker_action if (combatant == attacker) && !@attacker_action.nil?
     return @defender_action if (combatant == defender) && !@defender_action.nil?
     

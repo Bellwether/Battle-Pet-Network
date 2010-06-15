@@ -59,7 +59,7 @@ class ItemTest < ActiveSupport::TestCase
   end
 
   def test_scavenges
-    chance = @pet.intelligence.to_f + @pet.intelligence_bonus.to_f
+    chance = @pet.total_intelligence.to_f
     AppConfig.occupations.scavenge_chance_divisor = chance / 1000
     assert Item.scavenges?(@pet)
     AppConfig.occupations.scavenge_chance_divisor = chance * 1000

@@ -37,7 +37,7 @@ class TameTest < ActiveSupport::TestCase
   end
   
   def pet_tames_human
-    chance = @pet.affection.to_f + @pet.affection_bonus.to_f
+    chance = @pet.total_affection
     AppConfig.occupations.tame_human_chance_divisor = chance / 1000
     assert Tame.pet_tames_human?(@pet,@human)
     AppConfig.occupations.tame_human_chance_divisor = chance * 1000

@@ -7,6 +7,7 @@ class Sentient < ActiveRecord::Base
   
   alias_attribute :current_health, :health
   alias_attribute :current_endurance, :endurance
+  alias_attribute :total_power, :power
   
   cattr_reader :per_page
   @@per_page = 12

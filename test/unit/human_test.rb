@@ -6,7 +6,7 @@ class HumanTest < ActiveSupport::TestCase
   end
   
   def test_finds_human
-    chance = @pet.affection.to_f + @pet.affection_bonus.to_f
+    chance = @pet.total_affection.to_f
     AppConfig.occupations.find_human_chance_divisor = chance / 1000
     assert Human.finds_human?(@pet)
     AppConfig.occupations.find_human_chance_divisor = chance * 1000

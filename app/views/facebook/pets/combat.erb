@@ -84,7 +84,12 @@
 <% end %>
 
 <div class="box">
-  <h3><%= facebook_link_to 'Challenges', facebook_challenges_path %></h3>
+  <h3><%= facebook_link_to 'Challenges', facebook_challenges_path %></h3>	
+  <p class="em">You can directly challenge <%= facebook_link_to 'other pets', facebook_pets_path %> who you think would make a 
+	good match in battle or who you'd just like to beat! <span class="strong">Open Challenges</span> can be issued at any time, 
+	and accepted by any pet who happens by and wants an immediate battle.<br /><br />
+	Challenges can only be issued while your pet is <%= facebook_link_to 'prowling', facebook_occupations_path %>.
+  </p>
 	
   <% unless @challenges.blank? %>	
 	  <h4>Heads up! You Have Open Challenges Against You:</h4>
@@ -93,7 +98,7 @@
 	    <table class="challenge">
 		  <tbody>
 			<tr>
-			  <td rowspan="4"><%= avatar_image(c.attacker,'medium') %></td>
+			  <td rowspan="4"><%= avatar_image(c.attacker,'small') %></td>
 			  <th><%= facebook_link_to c.attacker.name, facebook_pet_path(c.attacker)%></th>
 			</tr>
 			<tr>
@@ -127,11 +132,6 @@
 	</table>
 	<% end %>
 	
-  <p class="em">You can directly challenge <%= facebook_link_to 'other pets', facebook_pets_path %> who you think would make a 
-	good match in battle or who you'd just like to beat! <span class="strong">Open Challenges</span> can be issued at any time, 
-	and accepted by any pet who happens by and wants an immediate battle.<br /><br />
-	Challenges can only be issued while your pet is <%= facebook_link_to 'prowling', facebook_occupations_path %>.
-  </p>
   <span class="button"><%= facebook_link_to "Issue Open Challenge", open_facebook_challenges_path %></span>	
 </div>
 

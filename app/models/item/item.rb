@@ -45,7 +45,7 @@ class Item < ActiveRecord::Base
     
     def scavenges?(pet)
       div = AppConfig.occupations.scavenge_chance_divisor.to_f
-      chance = (pet.intelligence.to_f + pet.intelligence_bonus.to_f) / div
+      chance = (pet.total_intelligence.to_f) / div
       val = 1 + rand(100)
       return val <= chance
     end    
