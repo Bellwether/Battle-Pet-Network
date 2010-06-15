@@ -110,12 +110,19 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
   
   def test_combat_profile
     @pet.update_attribute(:favorite_action_id,nil)
+    c = challenges(:siamese_persian_issued)
+    c.attacker = pets(:persian)
+    c.attacker_strategy = pets(:persian).strategies.first
+    c.defender = pets(:siamese)
+    c.save(false)
+    
     mock_user_facebooking(@user.facebook_id)
     facebook_get :combat, :fb_sig_user => @user.facebook_id
     assert_response :success
     assert_template 'combat'
     assert !assigns(:pet).blank?
     assert !assigns(:levels).blank?
+    assert !assigns(:resolved).blank?
     assert !assigns(:challenges).blank?
     assert assigns(:strategies)
     assert assigns(:gear)

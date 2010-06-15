@@ -109,7 +109,24 @@
 	  </td>	
 	  <% end %>
   <% end %>
-
+	
+  <% unless @challenges.blank? %>	
+    <h4>Recent Battles</h4>
+    <table class="records challenges">
+	  <tbody>
+	  <% @challenges.each do |c,idx| %>
+		<tr>
+		  <td>
+			<%= avatar_image(c.attacker,'tiny') %>
+			<%= avatar_image(c.defender,'tiny') %>
+		  </td>
+		  <td><%= c.description %></td>
+		</tr>
+	  <% end %>
+	  </tbody>	
+	</table>
+	<% end %>
+	
   <p class="em">You can directly challenge <%= facebook_link_to 'other pets', facebook_pets_path %> who you think would make a 
 	good match in battle or who you'd just like to beat! <span class="strong">Open Challenges</span> can be issued at any time, 
 	and accepted by any pet who happens by and wants an immediate battle.<br /><br />

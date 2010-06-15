@@ -13,7 +13,8 @@ class Facebook::PetsController < Facebook::FacebookController
     @strategies = current_user_pet.strategies.active
     @gear = @pet.belongings.battle_ready
     @levels = @pet.breed.levels
-    @challenges = current_user_pet.challenges.resolved.all
+    @challenges = current_user_pet.challenges.issued.defending
+    @resolved = current_user_pet.challenges.resolved.all
   end
   
   def profile
