@@ -13,6 +13,8 @@ class Inventory < ActiveRecord::Base
   validate :validates_belonging
   after_create :remove_belonging, :log_stock
   
+  named_scope :top, :limit => 15
+  
   def after_initialize(*args)
     if item_id.blank? && !belonging_id.blank?
       self.item_id = Belonging.find(belonging_id).item_id

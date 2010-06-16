@@ -2,7 +2,6 @@
   <% if has_pet? %>
     <%= fb_tab_item "Profile", facebook_nested_url(profile_facebook_pet_path), :align => :left %>
     <%= fb_tab_item "Combat", facebook_nested_url(combat_facebook_pet_path), :align => :left %>
-    <%= fb_tab_item "Shop", '', :align => :left if has_shop? %>
   <% end %>
   <%= fb_tab_item "Pets", facebook_nested_url(facebook_pets_path), :align => :left %>
   <%= fb_tab_item (has_pet? ? "Hunting" : "Sentients"), facebook_nested_url(facebook_sentients_path), :align => :left %>

@@ -6,6 +6,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
   def setup
     @pet = pets(:siamese)
     @user = @pet.user
+    @shop = shops(:first)
   end
   
   def test_get_pet
@@ -180,6 +181,8 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
   end
   
   def test_profile
+    @shop.update_attribute(:pet_id, @pet.id)
+    @pet.update_attribute(:shop_id, @shop.id)
     mock_user_facebooking(@user.facebook_id)
     facebook_get :profile, :fb_sig_user => @user.facebook_id
     assert_response :success
@@ -188,7 +191,11 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert !assigns(:messages).blank?
     assert !assigns(:signs).blank?
     assert !assigns(:items).blank?
+    assert !assigns(:shop).blank?
     assert_tag :tag => "div", :attributes => { :class => "box slim biography" }
+    assert_tag :tag => "div", :attributes => { :class => "box shop" }, :descendant => {
+      :tag => "a", :attributes => { :href => @controller.facebook_nested_url(edit_facebook_shop_path) }
+    }
     assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/home/pet"}, :descendant => {
       :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
     }

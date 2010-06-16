@@ -147,6 +147,10 @@ class Pet < ActiveRecord::Base
     intelligence + intelligence_bonus_count
   end
   
+  def total_defense
+    defense_bonus_count
+  end
+  
   def battles_count
     wins_count + loses_count + draws_count
   end

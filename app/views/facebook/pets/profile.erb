@@ -170,6 +170,20 @@
   <% end %>
 </div>
 
+<% if has_shop? %>
+<div class="box shop">
+  <h4 class="right">Specialty: <%= @shop.specialty%></h4>
+  <h3><%= facebook_link_to @shop.name, edit_facebook_shop_path %></h3>
+  <% if @shop.inventories_count < 1 %>
+  <p class="em">Your shop's inventory is empty. Your customers are fleeing to rival vendors!</p>
+  <% else %>
+    <% cell_table(@shop.inventories, 5) do |i,idx| %>
+      <td><span class="small"><%= "#{i.item.name} (#{i.cost})"%></span></td>
+    <% end %>
+  <% end %>
+</div>	
+<% end %>
+
 <div class="box">
   <h3><%= @humans.blank? ? 'Wild Humans' : facebook_link_to('Human Kennels', facebook_kennel_index_path) %></h3>
   <% unless @humans.blank? %>

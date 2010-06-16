@@ -23,6 +23,10 @@ class Sentient < ActiveRecord::Base
     end    
   end  
   
+  def total_defense
+    0
+  end
+  
   def slug
     name.downcase.gsub(/\s/,'-')
   end
