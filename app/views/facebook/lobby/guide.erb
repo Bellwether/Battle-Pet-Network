@@ -1,7 +1,40 @@
 <% content_for :page_title do %><h2>The <%=AppConfig.name%> Guidebook</h2><% end %>
 
-<div class="sidebox slim right">
-</div>
+<div class="box full">
+  <h3 id="combat">Combat</h3>
+  <p>Battle between pets is the centerpiece of the game. Called 'Undercut', the combat system is based around a simple number-guessing game from which many possible strategies emerge. Before combat each pet chooses their actions in secret, trying to predict their opponent's moves in advance and outsmart them with a better tactical response.</p>
+  <p>Pets 'attack' each other by issuing challenges, which the 'defender' can decide to accept or decline at their leisure. Before battle, both pets pick a sequence of actions to form their 'strategy' for that battle, and once strategies are chosen the combat unfolds automatically by comparing the pet's respective actions. Pets can lose the battle through too many wounds, or by sheer exhaustion.</p>
+  <p>After the battle the winning pet receives an 'experience' award for their victory, with additional experience bonuses possible through a variety of means. The more your pet fights, the more experience they will accumulate, and the more powerful they will become in battle.</p>
 
-<div class="box">
+  <h4>Actions</h4>
+  <p>Actions are types of maneuvers your pet can perform in battle, such as slashing with their claws, biting, or dodging to safety. There are two types of actions: offensive and defense. Each action also has a power, ranging from one to eight, where offensive actions are always even-numbered (2, 4, 6, 8) and defensive are always odd-numbered (1, 3, 5, 7).</p>
+  <p>Every pet starts the game with an identical set of the eight main actions, but while difficult it is still possible to learn rare and special actions if your pet is dedicated enough to the art of battle.</p>
+
+  <h4>Favorite Actions</h4>
+  <p>Each pet breed has a favorite action which pets of the breed prefer to fight with, and which characterizes the breed. This is your pet's favorite breed action. Your pet may also choose a personal favorite action, which they wish to characterize their personal fighting style. You can set your pet's favorite action from their profile.</p>
+  <p>Whenever your pet uses strategies including one or more of their favorite actions they will receive a minor experience bonus, regardless of who wins the battle, in recognition of their 'fighting in style'. The bonus is equal to the number of favorite actions appearing in their strategy, so if you use the same favorite action for 3 of the strategy's maneuvers, your pet will receive a bonus 3 experience.</p>
+
+  <h4>Strategies</h4>
+  <p>Before issuing or responding to a challenge, your pet must build a strategy to use in the battle. To build a strategy, you'll simply select a list of actions that your pet wishes to use and order them in the desired sequence. Your opponent will do the same, and then to resolve the battle each fighter's actions will be compared in order (rolling around to the first action if necessary) until one of the fighters has defeated the other.</p>
+  <p>Your pet's strategies can include a number of actions equal to their intelligence. The more actions you include, the more you can diversify your tactics and the more experience you can gain from using your favorite actions. As a consequence, more intelligent pets tend to earn experience quicker if they take full advantage of their intelligence.</p>
+  <p>Once you've built a strategy, it will be saved for your pet and you can select that strategy again for reuse in any future battles. Over time you can experiment with which strategies prove the most victorious for your pet. It's possible to review and delete strategies at any time from your pet's combat profile.</p>
+
+  <h4>The Undercut Combat System</h4>
+  <p>Combat in Undercut revolves around a single idea: try to pick the highest number you can that is still lower than the number your opponent has picked.</p>
+  <p>Because every combat action your pet can perform is assigned a power, in general you'll want to pick the highest powered actions you think that you can get away with. An 'Undercut' occurs when your pet performs an action whose power is exactly one less than their opponent's action - this is the best outcome you can hope for, and not only is your pet's damage doubled for undercuts, but they also receive an experience bonus.</p>
+  <p>When two fighters battle, the actions in their strategies are compared for a number of rounds until the battle ends. If the last action of a fighter's strategy is reached, then the strategy will simply start again from its first action.</p>
+  <p>The outcome each round depends on the type and power of the respective actions, and there are six possible outcomes:</p>
+  <ol>
+	<li>Both defend: nothing happens.</li>
+	<li>Both attack: each fighter deals their action's power in damage to the other.</li>
+	<li>One fighter attacks with higher power, the other defends with lower power: the attacker deals the action's power in damage to the defender, minus the defender's action's power.</li>
+	<li>One fighter attacks with lower power, the other defenders with higher power: the attacker deals their action's power in damage to the defender.</li>
+	<li>Attacker undercuts defender: the attacker deals double their action's power in damage to the defender.</li>
+	<li>Defender undercuts attacker: the defender deals double the attacker's own action's power in damage to the attacker.</li>
+  </ol>
+  <p>There are two ways to loose a battle in undercut:</p>
+  <p>First: When an action deals damage to a fighter, that fighter's health decreases, and when a fighter's health reaches zero they fall unconscious and lose the battle.</p>
+  <p>Second: Whenever a fighter performs an action, that fighter's endurance decreases by an amount equal to the action's power, and when a fighter's endurance reaches zero, they collapse in exhaustion and lose the battle. Note, offensive actions cost twice their power in endurance, while defensive actions only cost their power.</p>
+  <p>A battle continues until one of the fighters reaches zero health or endurance.</p>
+
 </div>
