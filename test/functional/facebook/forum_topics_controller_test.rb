@@ -24,7 +24,7 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :class => "topic"}, :descendant => { 
       :tag => "tr", :attributes => { :class => "post" }
     }
-    post_url = "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics/#{@topic.id}/forum_posts"
+    post_url = "/forums/#{@forum.id}/forum_topics/#{@topic.id}/forum_posts"
     assert_tag :tag => "form", :attributes => {:action => post_url, :method => "post"} 
     assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_post[body]" } }
   end 
@@ -37,7 +37,7 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
     assert !assigns(:forum).blank?
     assert !assigns(:topic).blank?
     assert !assigns(:post).blank?
-    assert_tag :tag => "form", :attributes => {:action => "/#{@controller.facebook_app_path}/forums/#{@forum.id}/forum_topics", :method => "post"} 
+    assert_tag :tag => "form", :attributes => {:action => "/forums/#{@forum.id}/forum_topics", :method => "post"} 
     assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :name => "forum_topic[title]", :type => "text" } }
     assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_topic[posts_attributes][0][body]" } }
     assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" } }

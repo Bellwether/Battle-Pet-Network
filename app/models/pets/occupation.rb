@@ -77,7 +77,7 @@ class Occupation < ActiveRecord::Base
   
   def scavenge_item(pet,item=nil)
     success = Item.scavenges?(pet)
-    item = Item.find_random_item(pet,item) if success
+    item = Item.scavengeable.find_random_item(pet,item) if success
     item = item.first if success && item.is_a?(Array)
     success = pet.belongings.create(:item => item, :source => 'scavenged') if success
     ActivityStream.log! 'items', 'scavenging', pet, item if success

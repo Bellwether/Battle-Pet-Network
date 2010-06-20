@@ -30,7 +30,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     Sign.signs_with(@user.pet, pets(:persian).id).each do |sign|
       assert_tag :tag => "form", :attributes => {:method => "post", :action => @controller.facebook_nested_url(facebook_pet_signs_path(pets(:persian))) }
     end
-    assert_tag :tag => "a", :attributes => { :href => "/#{@controller.facebook_app_path}/pets/home/messages/new?pet_id=#{pets(:persian).id}" }
+    assert_tag :tag => "a", :attributes => { :href => "/pets/home/messages/new?pet_id=#{pets(:persian).id}" }
   end
     
   def test_get_new_pet
@@ -132,10 +132,10 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => { :id => "advancements" }
     assert_tag :tag => "a", :attributes => { :href => @controller.facebook_nested_url(facebook_challenges_path) }
     assert_tag :tag => "table", :attributes => { :class => "challenge" }, :descendant => {
-      :tag => "a", :attributes => { :href => "/#{@controller.facebook_app_path}/pets/home/challenges/#{assigns(:challenges).first.id}/refuse"}
+      :tag => "a", :attributes => { :href => "/pets/home/challenges/#{assigns(:challenges).first.id}/refuse"}
     }
     assert_tag :tag => "table", :attributes => { :class => "challenge" }, :descendant => {
-      :tag => "a", :attributes => { :href => "/#{@controller.facebook_app_path}/pets/home/challenges/#{assigns(:challenges).first.id}/edit"}
+      :tag => "a", :attributes => { :href => "/pets/home/challenges/#{assigns(:challenges).first.id}/edit"}
     }
     assert_tag :tag => "div", :attributes => { :class => "box gear" }
     assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }}
@@ -204,7 +204,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "div", :attributes => { :class => "box shop" }, :descendant => {
       :tag => "a", :attributes => { :href => @controller.facebook_nested_url(edit_facebook_shop_path) }
     }
-    assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/home/pet"}, :descendant => {
+    assert_tag :tag => "form", :attributes => { :action => "/pets/home/pet"}, :descendant => {
       :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
     }
     assert_tag :tag => "div", :attributes => { :class => "box slim retire"}, :descendant => {

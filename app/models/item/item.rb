@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   TYPES = ['Food', 'Treat', 'Kibble', 'Toy', 'Collar', 'Weapon', 'Sensor', 'Ornament', 'Mantle', 'Charm', 'Standard', 'Medicine']
   BATTLE_TYPES = ['Collar', 'Weapon', 'Sensor', 'Mantle']
+  SCAVENGE_TYPES = ['Toy','Collar','Weapon','Sensor','Ornament','Mantle','Charm','Standard','Medicine']
+  FORAGE_TYPES = ['Food', 'Treat']
   FOODSTUFFS = ['Food', 'Treat']  
   
   validates_inclusion_of :item_type, :in => TYPES
@@ -18,7 +20,7 @@ class Item < ActiveRecord::Base
   named_scope :kibble, :conditions => "item_type = 'Kibble'"
   named_scope :premium, :conditions => {:premium => true}
   named_scope :in_stock, :conditions => 'stock > 0'
-  named_scope :marketable, :conditions => 'cost > 0'  
+  named_scope :marketable, :conditions => 'cost > 0'
   named_scope :type_is, lambda { |item_type| 
     { :conditions => ["item_type = ?", item_type] }
   }
@@ -26,6 +28,8 @@ class Item < ActiveRecord::Base
   named_scope :random_for_pet, lambda { |pet| 
     { :conditions => ["rarity > 0 AND required_rank <= ?", pet.level_rank_count], :order => "rarity * RAND() DESC", :limit => 1 }
   }
+  named_scope :scavengeable, :conditions => ["item_type IN (?)", SCAVENGE_TYPES]
+  named_scope :forageable, :conditions => ["item_type IN (?)", FORAGE_TYPES]
     
   cattr_reader :per_page
   @@per_page = 20
