@@ -57,7 +57,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
       assert flash[:success]
     end
   end
-
+  
   def test_fail_create_pet
     mock_user_facebooking(users(:one).facebook_id)
     pet_mock = flexmock(Pet)
@@ -75,7 +75,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
       assert flash[:error_message]
     end
   end
-
+  
   def test_index_without_pet
     mock_user_facebooking
     facebook_get :index
@@ -87,7 +87,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
       :tag => "input", :attributes => { :type => "text" }
     }
   end
-
+  
   def test_index_with_pet
     mock_user_facebooking(users(:one).facebook_id)
     facebook_get :index, :fb_sig_user => users(:one).facebook_id
@@ -179,6 +179,14 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert flash[:error]
     assert_equal claw.id, @pet.reload.favorite_action_id
   end
+
+  def test_retire
+    mock_user_facebooking(@user.facebook_id)
+    facebook_delete :retire, :fb_sig_user => @user.facebook_id
+    assert_response :success
+    assert flash[:notice]    
+    assert_nil @user.reload.pet
+  end
   
   def test_profile
     @shop.update_attribute(:pet_id, @pet.id)
@@ -199,5 +207,16 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/home/pet"}, :descendant => {
       :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
     }
+    assert_tag :tag => "div", :attributes => { :class => "box slim retire"}, :descendant => {
+      :tag => "a", :attributes => { :href => @controller.facebook_nested_url(retire_facebook_pet_path) }
+    }
+  end
+  
+  def test_ensure_no_pet
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :new, :fb_sig_user => @user.facebook_id
+    assert flash[:alert]
+    facebook_get :create, :fb_sig_user => @user.facebook_id
+    assert flash[:alert]
   end
 end

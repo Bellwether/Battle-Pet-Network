@@ -61,7 +61,7 @@ class Sign < ActiveRecord::Base
     when 'groom'
       3
     end
-    errors.add(:sender_id, "not enough endurance") if sender && sender.current_endurance < cost
+    errors.add(:sender_id, "not enough endurance") if sender && sign_type && sender.current_endurance < cost
   end
 
   def validates_once_per_day

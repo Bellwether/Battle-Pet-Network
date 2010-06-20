@@ -44,6 +44,12 @@
 	  <p class="empty">You have no messages in your inbox</p>
 	<% end %>
   </div>
+
+  <div class="box slim retire">
+    <h4>Retire Pet</h4>
+    <p class="em">If you wish to end your current companionship with your pet you can retire them. This <span class="strong">cannot be undone!</span></p>
+	<p><%= facebook_link_to 'Retire', retire_facebook_pet_path, :method => :delete, :confirm => "Are you sure you want to retire your pet?" %></p>
+  </div>
 </div>
 
 <div class="box">

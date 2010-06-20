@@ -10,6 +10,8 @@ class ActivityStream < ActiveRecord::Base
   after_validation_on_create :set_description_data
   after_create :send_notifications
   
+  SQL_RECENT = "created_at >= DATE_ADD(NOW(), INTERVAL -7 DAY)"
+  
   class << self
     def log!(category,namespace,actor=nil,object=nil,indirect_object=nil,data={})
       return true if AppConfig.logging != 1

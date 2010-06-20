@@ -266,6 +266,7 @@ td.radio-cell .input:hover {
 
 .guide {color:#000;}
 .guide ul {padding:12px;}
+.guide ul li {line-height: 18px;}
 .guide a, .guide a:visited {color:red;}
 
 /* avatar backgrounds */

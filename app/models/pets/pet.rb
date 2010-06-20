@@ -58,7 +58,7 @@ class Pet < ActiveRecord::Base
   validates_length_of :slug, :within => 3..8, :allow_blank => true
   validates_numericality_of :kibble, :greater_than_or_equal_to => 0
   validates_numericality_of :experience, :greater_than_or_equal_to => 0
-  validates_inclusion_of :status, :in => %w(active abandoned)
+  validates_inclusion_of :status, :in => %w(active retired)
   
   before_validation_on_create :populate_from_breed, :set_slug, :set_level
   after_create :set_user, :set_actions
@@ -218,6 +218,10 @@ class Pet < ActiveRecord::Base
   
   def advance_level(lvl)
     lvl.advance(self)
+  end
+  
+  def retire!
+    return update_attribute(:status, "retired") && User.find(user_id).update_attribute(:pet_id, nil)
   end
 
   def set_occupation

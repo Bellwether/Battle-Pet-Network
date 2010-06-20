@@ -1,6 +1,7 @@
 class Facebook::PetsController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show]
-  before_filter :ensure_has_pet, :only => [:combat,:profile,:update]
+  before_filter :ensure_has_pet, :only => [:combat,:profile,:update,:destroy]
+  before_filter :ensure_no_pet, :only => [:new,:create]  
   
   def index
     scope = Pet.include_user
@@ -69,6 +70,14 @@ class Facebook::PetsController < Facebook::FacebookController
     redirect_facebook_back
   end
   
+  def retire
+    current_user_pet.retire!
+    flash[:notice] = "All good things must come to an end. You've retired your dear pet."
+    redirect_to new_facebook_pet_path
+  end
+  
+protected
+  
   def update_favorite_action(action_id)
     if current_user_pet.update_favorite_action!(action_id)
       flash[:notice] = "Your favorite action is now to #{current_user_pet.favorite_action.name}"
@@ -84,6 +93,13 @@ class Facebook::PetsController < Facebook::FacebookController
     else
       flash[:error] = "Couldn't update occupation :("
       flash[:error_message] = current_user_pet.errors.full_messages.join(', ')
+    end
+  end
+  
+  def ensure_no_pet
+    if has_pet?
+      flash[:alert] = "You cannot befriend a new pet while you already one; you must first retire your current pet"
+      redirect_facebook_back
     end
   end
 end

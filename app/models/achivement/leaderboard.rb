@@ -22,7 +22,6 @@ class Leaderboard < ActiveRecord::Base
       leaderboard = Leaderboard.indefatigable.first
       ranking = leaderboard.rankings.build
       rankables = rankables_for_indefatigable
-      puts rankables.inspect
       rankables.each_with_index do |r,idx|
         rank = idx + 1
         ranking.ranks.build(:rankable => r, :rank => rank)

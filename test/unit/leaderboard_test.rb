@@ -38,7 +38,6 @@ class LeaderboardTest < ActiveSupport::TestCase
     assert_difference ['leaderboard.rankings.count','Ranking.count'], +1 do    
       assert_difference ['Rank.count'], +Leaderboard.rankables_for_indefatigable.size do
         Leaderboard.rank_indefatigable
-        puts Rank.last.inspect
       end
     end
   end

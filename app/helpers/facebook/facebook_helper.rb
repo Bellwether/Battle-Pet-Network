@@ -33,7 +33,7 @@ module Facebook::FacebookHelper
   end
   
   def facebook_nested_url(url)
-    return url.gsub(/facebook\/*/i,'') 
+    return url.gsub(/facebook\/*/i, "#{facebook_app_path}/") 
   end
   
   def avatar_image(model, size='small', options = {})

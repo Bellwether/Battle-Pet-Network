@@ -117,4 +117,10 @@ class PetTest < ActiveSupport::TestCase
   def test_battle_record
     assert @pet.battle_record.match /\d\/\d\/\d/
   end
+  
+  def test_retire
+    assert @pet.retire!
+    assert_equal "retired", @pet.status
+    assert_nil @pet.user.pet
+  end
 end
