@@ -5,7 +5,12 @@ prowling:
     
 scavenging:
   name: Scavenging    
-  description: While scavenging you have a chance every hour to discover an item, but you cannot gain experience from battle.
+  description: While scavenging you have a chance every hour to discover an item.
+  cost: 10
+  
+foraging:
+  name: Foraging
+  description: While foraging you have a chance every hour to discover food or treats.
   cost: 10
     
 taming:
