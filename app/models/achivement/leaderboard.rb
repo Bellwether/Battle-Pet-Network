@@ -22,6 +22,7 @@ class Leaderboard < ActiveRecord::Base
       leaderboard = Leaderboard.indefatigable.first
       ranking = leaderboard.rankings.build
       rankables = rankables_for_indefatigable
+      puts rankables.inspect
       rankables.each_with_index do |r,idx|
         rank = idx + 1
         ranking.ranks.build(:rankable => r, :rank => rank)
@@ -42,7 +43,7 @@ class Leaderboard < ActiveRecord::Base
     def rank_strongest
       leaderboard = Leaderboard.strongest.first
       ranking = leaderboard.rankings.build
-      rankables = rankables_for_indefatigable
+      rankables = rankables_for_strongest
       rankables.each_with_index do |r,idx|
         rank = idx + 1
         ranking.ranks.build(:rankable => r, :rank => rank)
@@ -56,7 +57,7 @@ class Leaderboard < ActiveRecord::Base
       sql_order = "COUNT(challenges.id) DESC"
       return Pet.all(:conditions => "challenges.#{Leaderboard::SQL_RECENT} AND challenges.status = 'resolved' ", 
                      :joins => sql_joins, 
-                     :order => sql_order,
+                     # :order => sql_order,
                      :limit => leaderboard.ranked_count)
     end      
     

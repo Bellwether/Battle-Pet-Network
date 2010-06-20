@@ -262,6 +262,12 @@ td.radio-cell .input:hover {
   background-color: #66CDAA;
 }
 
+/* guide */
+
+.guide {color:#000;}
+.guide ul {padding:12px;}
+.guide a, .guide a:visited {color:red;}
+
 /* avatar backgrounds */
 
 .avatar-bg-siamese { background: url(../images/pets/cats/small/siamese.png) no-repeat; }
