@@ -4,7 +4,7 @@ class ActivityStream < ActiveRecord::Base
   belongs_to :indirect_object, :polymorphic => true
 
   validates_presence_of :category, :namespace
-  validates_inclusion_of :category, :in => %w(analytics combat humans packs social awards shopping world items)
+  validates_inclusion_of :category, :in => %w(analytics combat humans packs social awards shopping world items hunting)
   
   after_validation_on_create :set_polymorph_data
   after_validation_on_create :set_description_data

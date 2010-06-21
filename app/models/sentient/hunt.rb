@@ -8,6 +8,7 @@ class Hunt < ActiveRecord::Base
   accepts_nested_attributes_for :hunters, :allow_destroy => false
   
   after_create :depopulate
+  after_create :log_hunt
   
   validates_presence_of :sentient_id, :status
   validates_presence_of :hunters
@@ -71,5 +72,9 @@ class Hunt < ActiveRecord::Base
         break;
       end
     end
+  end
+  
+  def log_hunt
+    ActivityStream.log! 'hunting','hunted', hunter, sentient, self
   end
 end

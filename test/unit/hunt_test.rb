@@ -82,4 +82,11 @@ class HuntTest < ActiveSupport::TestCase
     assert hunt.errors.on(:sentient_id)
     assert hunt.errors.on(:sentient_id).include?('currently depopulated')
   end
+  
+  def test_log_hunt
+    hunt = @sentient.hunts.build(:hunters_attributes => { "0" => {:pet_id => @pet.id, :strategy_id => @pet.strategies.first.id }})
+    assert_difference 'ActivityStream.count', +1 do
+      assert hunt.save(false)
+    end
+  end
 end
