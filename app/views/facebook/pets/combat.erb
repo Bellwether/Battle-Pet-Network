@@ -136,7 +136,7 @@
 </div>
 
 <div class="box">
-  <table>	
+  <table width="100%">	
 	<tr>
 	  <td>
 	    <h4>Advancement</h4>
@@ -152,7 +152,7 @@
 	  </td>
 	</tr>
   </table>
-  <table id="advancements">
+  <table id="advancements" width="100%">
 	<tr><th>Level</th><th>Experience</th><th>Advancement</th><th>Obtained</th></tr>
 	<% @pet.breed.levels.each_with_index do |l,idx| %>
 	  <tr class="<%= @pet.level_rank_count >= idx ? 'complete' : 'incomplete'%>">
