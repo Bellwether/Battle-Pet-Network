@@ -204,10 +204,21 @@
 </div>
 
 <div class="box full guide">
-  <h3 id="market">Kibble</h3>
+  <h3 id="kibble">Kibble</h3>
   <p>Once fed to pets by humans, 'kibble' are dry flavorless pellets now used for currency when trading and buying items.</p>
   <p>There are many ways to acquire kibble, but the most direct is simply to buy kibble packs, which can be purchased with a PayPal account or major credit card from the <%= facebook_link_to 'Premium Shop', premium_facebook_items_path %>.</p>
   <p>Other ways to gain kibble include hunting awards, human slavery, ranking on the leaderboards, and your pet's daily login bonus.</p>
+</div>
+
+<div class="box full guide">
+  <h3 id="items">Items</h3>
+
+  <h4>Belongings</h4>
+Your pet's <%= facebook_link_to_if_pet 'belongings', facebook_belongings_path %> are some of the most important resources available. Many types of items are out there to be found, and although some are merely decorative or desirable, the vast majority can be used or equipped to give your pet an edge in the game somehow.   
+
+There are a number of common ways to get belongings for your pet. The easiest is simply to purchase them from the market stores or individual pet shops. Beyond this, your pet can scavenge random items, borrow them from their pack or a friend, discover them while hunting, win them for ranking on the leaderboards, and many other means besides.
+
+You can access your pet's <%= facebook_link_to_if_pet 'belongings', facebook_belongings_path %> from their main <%= facebook_link_to_if_pet 'profile', profile_facebook_pet_path %>.
 </div>
 
 <div class="box full guide">
