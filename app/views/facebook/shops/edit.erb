@@ -12,9 +12,11 @@
   <h3><%= @shop.name %></h3>
   <% form_for @shop, :url => facebook_nested_url(facebook_shop_path(@shop)), :html => {:id => 'shop-form'} do |f| %>
     <p>
-	  <div><label>Description</label></div>
-      <div><%= text_area(:shop, :description, :size => "50x15")%></div>	
-      <%= f.submit 'Update' %>
+      <p>
+		<%= f.label :description %><br />
+		<%= f.text_area(:description, :size => "50x5")%>
+	  </p>	
+      <p><%= f.submit 'Update' %></p>
     </p>
   <% end %>
 </div>
