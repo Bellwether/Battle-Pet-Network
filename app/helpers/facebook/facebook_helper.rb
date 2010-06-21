@@ -33,7 +33,11 @@ module Facebook::FacebookHelper
   end
 
   def facebook_link_to_if_pet(text, url, options = {})
-    if has_pet?
+    facebook_link_to_if(text, url, has_pet?, options
+  end
+  
+  def facebook_link_to_if(text, url, condition, options = {})
+    if condition
       link_to text, facebook_nested_url(url), options
     else
       text

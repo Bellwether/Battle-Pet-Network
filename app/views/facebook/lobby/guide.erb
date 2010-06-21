@@ -26,6 +26,7 @@
     <li>CHALLENGES: Challenging Pets; Challenging Packs; Open Challenges</li>
     <li>EXPERIENCE</li>
     <li>SENTIENTS: Ecology; Hunting; Population</li>
+    <li>KIBBLE</li>
     <li>THE MARKET: Buying Items; Restocking</li>
     <li>PREMIUM SHOP</li>
     <li>PET SHOPS: Opening a Shop; Running a Shop; Selling Items</li>
@@ -48,7 +49,7 @@
   <p>When <%= facebook_link_to 'befriending a pet', new_facebook_pet_path %> you'll only need to choose your pet's name, and select your pet's 'breed'. Different breeds have different characteristics, strengths, and weakness, so choose a breed that suits you best.</p>
 
   <h4>Pet Statistics</h4>
-  <p>Every pet has a statistics <%= facebook_link_to_if_pet 'profile', profile_facebook_pet_patj %> which charts their strengths and weaknesses, and gives shape to the habits and preferences of the pet. The statistics include:</p>
+  <p>Every pet has a statistics <%= facebook_link_to_if_pet 'profile', profile_facebook_pet_path %> which charts their strengths and weaknesses, and gives shape to the habits and preferences of the pet. The statistics include:</p>
   <ol>
     <li>Health: your pet's health is a measure of their wounds. When your pet reaches 0 health in battle, they loose.</li>
     <li>Endurance: your's pet's endurance is a measure of how much energy that have to perform tasks or fight. Many activities in the game require endurance, and when your pet reaches 0 endurance in battle, they loose.</li>
@@ -203,6 +204,13 @@
 </div>
 
 <div class="box full guide">
+  <h3 id="market">Kibble</h3>
+  <p>Once fed to pets by humans, 'kibble' are dry flavorless pellets now used for currency when trading and buying items.</p>
+  <p>There are many ways to acquire kibble, but the most direct is simply to buy kibble packs, which can be purchased with a PayPal account or major credit card from the <%= facebook_link_to 'Premium Shop', premium_facebook_items_path %>.</p>
+  <p>Other ways to gain kibble include hunting awards, human slavery, ranking on the leaderboards, and your pet's daily login bonus.</p>
+</div>
+
+<div class="box full guide">
   <h3 id="market">The Market</h3>
   <p>Among the commonwealth of pets, a merchants guild has risen to host a shanty-town <%= facebook_link_to 'market', facebook_items_path %> where all manner of items can be purchased at fair and standard prices. Pets can visit the market at any time, where you'll find a number of stores specializing in specific types of items.</p>
   <p>The <%= facebook_link_to 'Market', facebook_items_path %> follows the laws of supply and demand, and there are only a limited number of items available. You will need to compete with other pets hunting for bargins and watch the shops if you have your eye on a particularly rare of desirable item, ensuring you're around to buy the item when the market inventories are restocked.</p>
@@ -229,16 +237,16 @@
 
 <div class="box full guide">
   <h3 id="shops">Pet Shops</h3>
-  <p>For valuable items the markets are quick;y picked clean, and that's where pet shopkeepers come in. When your pet opens a shop, you stock it with inventory from your belongings, and then can sell to other pets for any price you like. If you have desirable items or a good sense of timing, you can earn quite a bit of Kibble.</p>
+  <p>For valuable items the markets are quickly picked clean, and that's where pet shopkeepers come in. When your pet opens a shop, you stock it with inventory from your belongings, and then can sell to other pets for any price you like. If you have desirable items or a good sense of timing, you can earn quite a bit of Kibble.</p>
 
   <h4>Opening a Shop</h4>
-  <p>The only requirement to open a shop is 2000 kibble in capital. Once your shop has opened, you can begin immediately stocking it with inventory and selling your wares to your fellow pets.</p>
-  <p>When you open a shop, you'll need to choose the type of items in which your shop specializes. Whenever you sell an item within your specialty, you'll receive a small kibble bonus from the market guild subsidizing your shop. This should encourage you to stock items within your specialty, and make it easier for customers to find the pet shops best suiting their needs.</p>
+  <p>The only requirement to <%= facebook_link_to_if_pet 'open a shop', new_facebook_shop_path %> is 2000 kibble in capital. Once your shop has opened, you can begin immediately stocking it with inventory and selling your wares to your fellow pets.</p>
+  <p>When you <%= facebook_link_to_if_pet 'open a shop', new_facebook_shop_path %>, you'll need to choose the type of items in which your shop specializes. Whenever you sell an item within your specialty, you'll receive a small kibble bonus from the market guild subsidizing your shop. This should encourage you to stock items within your specialty, and make it easier for customers to find the pet shops best suiting their needs.</p>
 
   <h4>Running a Shop</h4>
   <p>While other pets can always visit your shop and view your wares, your pet's occupation will need to be set to 'shopkeeping' in order for them to actually make sales. If your pet isn't shopkeeping, then presumably they're off on some other diversion and not present to complete the transaction.</p>
-  <p>Of course you'll also need to stock your shop with items from your pet's belongings. Buying low (or finding, winning, or trading) and selling high should be your aim, concentrating on those items in demand at the market, and which are hardest to find in stock there.</p>
-  <p>You can access your shop management screen from your pet's profile, and from there you can manage your inventory. You can stock your inventory with any items from your pet's belongings which they are not currently using, or which have not already been used. When you add an item to your shop, you choose the price, and may change the price at any time to better lure your the purse of your customers.</p>
+  <p>Of course you'll also need to stock <%= facebook_link_to_if 'your shop', edit_facebook_shop_path, has_shop? %> with items from your pet's belongings. Buying low (or finding, winning, or trading) and selling high should be your aim, concentrating on those items in demand at the market, and which are hardest to find in stock there.</p>
+  <p>You can access <%= facebook_link_to_if 'your shop', edit_facebook_shop_path, has_shop? %> management screen from your pet's profile, and from there you can manage your inventory. You can stock your inventory with any items from your pet's belongings which they are not currently using, or which have not already been used. When you add an item to your shop, you choose the price, and may change the price at any time to better lure your the purse of your customers.</p>
 
   <h4>Selling Items</h4>
   <p>As soon as you make a sale, the kibble will be immediately given to your pet, and your shop's inventory will decrease. You can see a history of transactions from your shop's profile.</p>
