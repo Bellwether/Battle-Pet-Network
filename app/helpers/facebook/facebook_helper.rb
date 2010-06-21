@@ -31,6 +31,14 @@ module Facebook::FacebookHelper
   def facebook_link_to(text, url, options = {})
     link_to text, facebook_nested_url(url), options
   end
+
+  def facebook_link_to_if_pet(text, url, options = {})
+    if has_pet?
+      link_to text, facebook_nested_url(url), options
+    else
+      text
+    end
+  end
   
   def facebook_nested_url(url)
     return url.gsub(/facebook\/*/i, "") 

@@ -21,18 +21,18 @@
 <div class="box full guide">
   <h3 id="toc">Table of Contents</h3>
   <ol>
-    <li>Pets</li>
-    <li>Combat</li>
-    <li>Challenges</li>
-    <li>Experience</li>
-    <li>Sentients</li>
-    <li>The Market</li>
-    <li>Premium Shop</li>
-    <li>Pet Shops</li>
-    <li>Humans</li>
-    <li>Packs</li>
-    <li>Signs</li>
-    <li>Messages</li>
+    <li>PETS: Ecology; Befriending a Pet; Pet Stats; Breeds; Biography; Endurance, Recovery, and Food; Retiring a Pet</li>
+    <li>COMBAT: Actions; Favorite Actions; Strategies; The Undercut Combat System; Tips</li>
+    <li>CHALLENGES: Challenging Pets; Challenging Packs; Open Challenges</li>
+    <li>EXPERIENCE</li>
+    <li>SENTIENTS: Ecology; Hunting; Population</li>
+    <li>THE MARKET: Buying Items; Restocking</li>
+    <li>PREMIUM SHOP</li>
+    <li>PET SHOPS: Opening a Shop; Running a Shop; Selling Items</li>
+    <li>HUMANS: Ecology; Human Taming; Enslaving Humans; Types of Humans; Co-Existence</li>
+    <li>PACKS: Ecology; Standards; Founder; Leader; Member Recovery; Treasury and Spoils; Loaning Spoils; Pack Dues; Invitations and Requests</li>
+    <li>SIGNS</li>
+    <li>MESSAGES</li>
   </ol>
 </div>
 
@@ -41,14 +41,14 @@
   <br />
   <h4>Ecology</h4>
   <p>Evolution has found its new star in the millions of pets loosed onto the blasted landscape of man. Housepets did not perish in the fallout, but instead escaped, survived, and were reforged by nature for the new world with more intelligence, cunning, and strength. Scant generations later, Battle Pets have the keys to the kingdom and are struggling, every one of them, to carve their place.</p>
-  <p>Befriending a pet and helping them survive and prosper is your primary charge. A pet's life is complex, and there are many ways to obtain prestige and happiness for your pet.</p>
+  <p><%= facebook_link_to 'Befriending a pet', new_facebook_pet_path %> and helping them survive and prosper is your primary charge. A pet's life is complex, and there are many ways to obtain prestige and happiness for your pet.</p>
 
   <h4>Befriending a Pet</h4>
   <p>If you have not <% facebook_link_to 'befriended a pet', new_facebook_pet_path %> already, you will be continually prompted to do so. Many areas of the game can be seen by visitors, but you'll need a pet to truly start playing.</p>
-  <p>When <% facebook_link_to 'befriending a pet', new_facebook_pet_path %> you'll only need to choose your pet's name, and select your pet's 'breed'. Different breeds have different characteristics, strengths, and weakness, so choose a breed that suits you best.</p>
+  <p>When <%= facebook_link_to 'befriending a pet', new_facebook_pet_path %> you'll only need to choose your pet's name, and select your pet's 'breed'. Different breeds have different characteristics, strengths, and weakness, so choose a breed that suits you best.</p>
 
   <h4>Pet Statistics</h4>
-  <p>Every pet has a statistics profile which charts their strengths and weaknesses, and gives shape to the habits and preferences of the pet. The statistics include:</p>
+  <p>Every pet has a statistics <%= facebook_link_to_if_pet 'profile', profile_facebook_pet_patj %> which charts their strengths and weaknesses, and gives shape to the habits and preferences of the pet. The statistics include:</p>
   <ol>
     <li>Health: your pet's health is a measure of their wounds. When your pet reaches 0 health in battle, they loose.</li>
     <li>Endurance: your's pet's endurance is a measure of how much energy that have to perform tasks or fight. Many activities in the game require endurance, and when your pet reaches 0 endurance in battle, they loose.</li>
@@ -194,8 +194,8 @@
   <p>After the fall of humans, new and dangerous creatures emerged from the wilderness and mysterious fallout zones to find food and menace the lands. These beasts became known as <%= facebook_link_to 'sentients', facebook_sentients_path %> - possessing only a simple, devious mind - and must be hunted down and destroyed lest they overrun the homesteads of goodly pets.</p>
 
   <h4>Hunting</h4>
-  <p>Hunting sentients works just like normal combat with another pet, except that the battle is resolved immediately, and victory is rewarded with kibble instead of experience. The only requirement for hunting sentients is that your pet have the required level to face a given sentient in battle.</p>
-  <p>During battle, sentients will attack and defend at random from a select set of actions preferred by their kind. Despite their mindless nature, sentients can be deadly foes and should not be hunted lightly.</p>
+  <p>Hunting <%= facebook_link_to 'sentients', facebook_sentients_path %> works just like normal combat with another pet, except that the battle is resolved immediately, and victory is rewarded with kibble instead of experience. The only requirement for hunting sentients is that your pet have the required level to face a given sentient in battle.</p>
+  <p>During battle, sentients will attack and defend at random from a select set of actions preferred by their kind. Despite their mindless nature, <%= facebook_link_to 'sentients', facebook_sentients_path %> can be deadly foes and should not be hunted lightly.</p>
   <p>Should your pet defeat a sentient in battle, they'll receive a reward of kibble in recognition of their service to their fellow pets in exterminating the menace.</p>
 
   <h4>Population</h4>
@@ -204,24 +204,27 @@
 
 <div class="box full guide">
   <h3 id="market">The Market</h3>
-  <p>Among the commonwealth of pets, a merchants guild has risen to host a shanty-town market where all manner of items can be purchased at fair and standard prices. Pets can visit the market at any time, where you'll find a number of stores specializing in specific types of items.</p>
-  <p>The markets follow the laws of supply and demand, and there are only a limited number of items available. You will need to compete with other pets hunting for bargins and watch the shops if you have your eye on a particularly rare of desirable item, ensuring you're around to buy the item when the market inventories are restocked.</p>
+  <p>Among the commonwealth of pets, a merchants guild has risen to host a shanty-town <%= facebook_link_to 'market', facebook_items_path %> where all manner of items can be purchased at fair and standard prices. Pets can visit the market at any time, where you'll find a number of stores specializing in specific types of items.</p>
+  <p>The <%= facebook_link_to 'Market', facebook_items_path %> follows the laws of supply and demand, and there are only a limited number of items available. You will need to compete with other pets hunting for bargins and watch the shops if you have your eye on a particularly rare of desirable item, ensuring you're around to buy the item when the market inventories are restocked.</p>
   <p>Even as pets pick the stalls clean, new scavengers return from the wastes with new wares to sell. Every twelve hours, the markets are restocked with fresh inventory.</p>
 
   <h4>Buying Market Items</h4>
-  <p>If you find an item in the market that you'd like to own for your pet, you can purchase only if:</p>
+  <p>If you find an item in the <%= facebook_link_to 'market', facebook_items_path %> that you'd like to own for your pet, you can purchase only if:</p>
   <ol>
     <li>Your pet has enough kibble.</li>
     <li>The item is not out of stock.</li>
     <li>Your pet is high enough level to use the item.</li>
   </ol>
-  <p>Once you buy an item, the store's inventory will decrease. If the inventory is already depleted, you'll have to wait until the next restock and try to buy the item before it sells out again.</p>
+
+  <h4>Restocking</h4>
+  <p>Once you buy an item, the store's inventory will decrease. If the inventory is already depleted, you'll have to wait until the next restock and try to buy the item before it sells out again. The <%= facebook_link_to 'market', facebook_items_path %> restocks once per week when the trader 
+	caravans pass through.</p>
 </div>
 
 <div class="box full guide">
   <h3 id="premium">Premium Shop</h3>
-  <p>The Premium shop is where you buy directly buy packs of kibble, and premium items that cannot be otherwise discovered. In order to purchase items from the premium shop, you'll either need a PayPal account, or a major credit card.</p>
-  <p>Note: repeat customers of the premium shop will often find themselves the recipients of surprise thank-you rewards. :)</p>
+  <p>The <%= facebook_link_to 'Premium Shop', premium_facebook_items_path %> is where you buy directly buy packs of kibble, and premium items that cannot be otherwise discovered. In order to purchase items from the <%= facebook_link_to 'Premium Shop', premium_facebook_items_path %>, you'll either need a PayPal account, or a major credit card.</p>
+  <p>Note: repeat customers of the <%= facebook_link_to 'Shop', premium_facebook_items_path %> will often find themselves the recipients of surprise thank-you rewards. :)</p>
 </div>
 
 <div class="box full guide">
@@ -270,7 +273,7 @@ These humans are valued for their attractiveness and gregarious manner which end
 Observant and filling with cunning, these humans will ensure your pet learns the most from their experiences in the world. Wise humans give your pet a bonus to the experience they earn, both in battle and any other experience-worthy activity.</li>
   </ol>
 
-  <h4>Co-Existing</h4>
+  <h4>Co-Existence</h4>
   <p>Although they can be domesticated, humans will never completely abandon their feral and violent ways. Once kenneled, they'll usually happily co-exist with other humans, but in some random cases, humans will grow quarrelsome and fight to the death amongst themselves. The more humans your pet has kenneled, the more likely they are to attack each other at some point - it's a cruel fact of nature.</p>
 </div>
 
