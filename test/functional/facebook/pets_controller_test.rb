@@ -204,7 +204,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_tag :tag => "div", :attributes => { :class => "box shop" }, :descendant => {
       :tag => "a", :attributes => { :href => @controller.facebook_nested_url(edit_facebook_shop_path) }
     }
-    assert_tag :tag => "form", :attributes => { :action => "/pets/home/pet"}, :descendant => {
+    assert_tag :tag => "form", :attributes => { :action => "/#{@controller.facebook_app_path}/pets/home/pet"}, :descendant => {
       :tag => "input", :attributes => { :name => "_method", :type => "hidden", :value => "put" }
     }
     assert_tag :tag => "div", :attributes => { :class => "box slim retire"}, :descendant => {

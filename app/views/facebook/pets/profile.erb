@@ -48,7 +48,7 @@
   <div class="box slim retire">
     <h4>Retire Pet</h4>
     <p class="em">If you wish to end your current companionship with your pet you can retire them. This <span class="strong">cannot be undone!</span></p>
-	<p><%= facebook_link_to 'Retire', retire_facebook_pet_path, :method => :delete, :confirm => "Are you sure you want to retire your pet?" %></p>
+	<p><%= facebook_link_to "Retire #{@pet.name}", retire_facebook_pet_path, :method => :delete, :confirm => "Are you sure you want to retire your pet?" %></p>
   </div>
 </div>
 
@@ -179,7 +179,7 @@
 <% if has_shop? %>
 <div class="box shop">
   <h4 class="right">Specialty: <%= @shop.specialty%></h4>
-  <h3><%= facebook_link_to @shop.name, edit_facebook_shop_path %></h3>
+  <h3>Item Shop: <%= facebook_link_to @shop.name, edit_facebook_shop_path %></h3>
   <% if @shop.inventories_count < 1 %>
   <p class="em">Your shop's inventory is empty. Your customers are fleeing to rival vendors!</p>
   <% else %>

@@ -7,9 +7,9 @@ class Facebook::SignsController < Facebook::FacebookController
     @sign = current_user_pet.signings.build(:recipient_id => params[:pet_id], :sign_type => sign_type)
     
     if @sign.save
-      flash[:notice] = "Sent #{@sign.sign_type}."
+      flash[:notice] = "You #{@sign.verb} #{@sign.recipient.name}."
     else
-      flash[:error] = "Couldn't send sign! :("
+      flash[:error] = "Couldn't #{@sign.sign_type}! :("
       flash[:error_message] = @sign.errors.full_messages.join(', ')
     end
     redirect_facebook_back

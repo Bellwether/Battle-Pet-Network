@@ -12,6 +12,15 @@ class ActivityStream < ActiveRecord::Base
   
   SQL_RECENT = "created_at >= DATE_ADD(NOW(), INTERVAL -7 DAY)"
   
+  named_scope :sentient_activity, :conditions => "category = 'hunting' OR (category = 'world' AND namespace = 'repopulation')"
+  named_scope :pet_activity, :conditions => "(category = 'combat' AND namespace = 'battled') OR " <<
+                                            "(category = 'humans' AND namespace = 'tame') OR " <<
+                                            "(category = 'packs' AND (namespace = 'founded' OR namespace = 'joined')) OR " <<
+                                            "(category = 'hunting' AND namespace = 'hunted') OR " <<
+                                            "(category = 'analytics' AND namespace = 'pet') ",
+                             :order => "created_at DESC ",
+                             :limit => 15
+      
   class << self
     def log!(category,namespace,actor=nil,object=nil,indirect_object=nil,data={})
       return true if AppConfig.logging != 1
@@ -98,6 +107,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} could not pay kibble for its members and became insolvent."
             when 'request'
               "#{actor_name} wishes to join the pack #{object_name}."
+            when 'joined'
+              "#{actor_name} joined the pack #{object_name}."
             when 'spoils'
               "#{actor_name} handed over a #{object_name} to the spoils of #{indirect_object_name}."
           end

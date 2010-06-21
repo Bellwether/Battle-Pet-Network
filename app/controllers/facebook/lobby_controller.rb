@@ -2,6 +2,7 @@ class Facebook::LobbyController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :only => [:invite]
   
   def index
+    @pet_activity = ActivityStream.pet_activity
   end
   
   def about

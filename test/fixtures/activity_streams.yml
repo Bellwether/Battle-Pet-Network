@@ -1,0 +1,10 @@
+siamese_joined:
+  new: false
+  actor_type: Pet
+  actor_id: <%= Fixtures.identify :siamese %>
+  category: analytics
+  namespace: pet
+  activity_data: |
+      --- 
+      :description: domino entered the world.
+  created_at: <%= (Time.now - 1.day).strftime("%Y-%m-%d %H:%M:00") %>

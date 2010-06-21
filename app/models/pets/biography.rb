@@ -7,12 +7,12 @@ class Biography < ActiveRecord::Base
   PEDIGREES = ['Thoroughbred','Purebred','Mongrel']
   SEASONS = ['Spring','Summer','Autumn','Winter']
   VOICES = ['Smooth','Galloping','Stentorian','Gentle','Silky','Shrill']
-  FOODS = ['Fresh Fish','Dairy','Plants','Delicacies','Red Meat','Treats','Pate']
+  FOODS = ['Fresh Fish','Dairy','Plants','Delicacies','Red Meat','Treats','Pate','Bugs & Grubs']
   TEMPERAMENTS = ['Aloof','Headstrong','Inquisitive','Mischievous','Neurotic','Paranoid','Somber','Violent']
-  ZODIAC = ['Mouser','Arch','Mittens','Crook-Tail']
+  ZODIAC = ['Mouser','Arch','Mittens','Crook-Tail','Night-Eyes']
   GENDERS = ['Tom', 'Queen']
-  PASTIMES = ['Cuddling','Eating','Exploring','Hunting','Playing','Sleeping','Grooming','']
-  COMPOSERS = ['J.S. Bach']
+  PASTIMES = ['Cuddling','Eating','Exploring','Hunting','Playing','Sleeping','Grooming','Storytelling']
+  COMPOSERS = ['J.S. Bach','Mozart','Saint-Saens','Wagner','Mussorgsky','Tchaikovsky','Beethoven','Rachmaninoff','Vivaldi']
   PHILOSOPHERS = ['Descartes']
 
   validates_presence_of :pet_id,:temperament,:lifestyle,:gender,:favorite_color,:favorite_food,:favorite_pastime,
