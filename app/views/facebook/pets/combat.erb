@@ -36,9 +36,17 @@
 		<table>
 		  <tr>
 		    <td rowspan="4"><%= avatar_image(@pet,'medium') %></td>
-		    <td><label>Endurance: <%= @pet.current_endurance %> / <%= @pet.endurance %></label></td>
+		    <td>
+			  <label>Endurance: <%= @pet.current_endurance %> / <%= @pet.endurance %></label>
+			  <%= percentage_bar [@pet.current_endurance, @pet.endurance ], :fill => true %>
+			</td>
 		  </tr>
-		  <tr><td><label>Health: <%= @pet.current_health %> / <%= @pet.health %></label></td></tr>
+		  <tr>
+			<td>
+			  <label>Health: <%= @pet.current_health %> / <%= @pet.health %></label>
+			  <%= percentage_bar [@pet.current_health, @pet.health ], :fill => true %>
+			</td>
+		  </tr>
 		  <tr><td><label>Power: <%= @pet.power %></label></td></tr>
 		  <tr><td><label>Fortitude: <%= @pet.fortitude %></label></td></tr>
 		  <tr>
@@ -66,12 +74,12 @@
 	  </td>	
 	  <td class="tright">
 		<h5>Leaderboard Ranking</h5>
-		<p>
-		  Current: 999<br />
+		<p class="tright">
+		  Current: UNRANKED<br />
 		  <span class="em">No ranking bonus</span>
 		</p>
-		<p>1 Week Ago: 999</p>
-		<p>2 Weeks Ago: 999</p>
+		<p class="tright">1 Week Ago: --</p>
+		<p class="tright">2 Weeks Ago: --</p>
 	  </td>
 	</tr>
   </table>

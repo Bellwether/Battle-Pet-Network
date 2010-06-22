@@ -19,7 +19,7 @@ tr {
 .left {float:left;}
 .tleft, table.tleft td {text-align:left;}
 .tcenter, table.tcenter td {text-align:center;}
-.tright, .tright p, table.tright td {text-align:right;}
+.tright, table.tright td {text-align:right;}
 .em {font-style:italic;}
 .strong {float-weight:bold;}
 
