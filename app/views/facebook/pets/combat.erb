@@ -36,9 +36,9 @@
 		<table>
 		  <tr>
 		    <td rowspan="4"><%= avatar_image(@pet,'medium') %></td>
-		    <td><label>Endurance: <%= @pet.endurance %></label></td>
+		    <td><label>Endurance: <%= @pet.current_endurance %> / <%= @pet.endurance %></label></td>
 		  </tr>
-		  <tr><td><label>Health: <%= @pet.health %></label></td></tr>
+		  <tr><td><label>Health: <%= @pet.current_health %> / <%= @pet.health %></label></td></tr>
 		  <tr><td><label>Power: <%= @pet.power %></label></td></tr>
 		  <tr><td><label>Fortitude: <%= @pet.fortitude %></label></td></tr>
 		  <tr>
@@ -142,12 +142,12 @@
 	    <h4>Advancement</h4>
 	    <h5>Level <%=@pet.level_rank_count %></h5>
 	  </td>
-	  <td>
+	  <td align="right" width-"130">
 		<label>Current Experience:</label> <label class="strong"><%= @pet.experience %></label>
 		<br />
 		<label>Level <%= @pet.level.next_level.rank %> Experience:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
 	  </td>
-	  <td>
+	  <td align="right">
 		<%= percentage_bar [@pet.experience, (@pet.level.next_level.experience - @pet.experience) ], :fill => true %>
 	  </td>
 	</tr>
