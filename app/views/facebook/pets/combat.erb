@@ -145,10 +145,10 @@
 	  <td>
 		<label>Current Experience:</label> <label class="strong"><%= @pet.experience %></label>
 		<br />
-		<label>Level <%= @pet.level.next_level.rank %>:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
+		<label>Level <%= @pet.level.next_level.rank %> Experience:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
 	  </td>
 	  <td>
-		<%= experience_bar @pet.level %>
+		<%= percentage_bar [@pet.experience, (@pet.level.next_level.experience - @pet.experience) ] %>
 	  </td>
 	</tr>
   </table>

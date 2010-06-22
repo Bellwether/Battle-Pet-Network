@@ -145,13 +145,14 @@ module Facebook::FacebookHelper
     html = "<div class='percentage-bar' style='width:#{bar_width}px;'>"
     values.each_with_index do |v,idx|
       next if (sum == 0) # guard clauses
+      on_last_value = (idx == values.size - 1)
       
       percent = ( v.to_f / sum.to_f ) * 100
       width = (bar_width.to_f * (percent / 100.0) ).floor
       next if width < 1
       
       color_tag = options[:reverse] ? (values.size - 1 - idx) : idx
-      omit_last = (options[:fill] == true && idx == values.size - 1) 
+      omit_last = (options[:fill] == true && on_last_value) 
       color_css = omit_last ? '' : "bar color-#{color_tag}"
       
       html = html + "<div class='bar #{color_css}' style='width:#{percent}%;'>"
