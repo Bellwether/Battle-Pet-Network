@@ -132,17 +132,17 @@
 	  <% form_for @pet, 
 		  :url => facebook_nested_url(attempt_facebook_occupation_path(@pet.occupation)), 
 		  :html => { :method => :post} do |f| %>
-        <td><%= submit_tag "do immediately for #{@pet.occupation.cost} endurance" %></td>
+        <td class="tright"><br /><%= submit_tag "Do Now for #{@pet.occupation.cost} endurance" %></td>
 	  <% end %>
 	<% end %>
 	</tr>
 	<tr><td colspan="3"><hr /></td></tr>
 	<tr>
 	<% form_for :pet, @pet, :url => "/#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
-	  <td colspan="2">
+	  <td class="tright" colspan="2">
 	    <%= f.collection_select(:occupation_id, Occupation.ordered, :id, :name, {:include_blank => true}) %>
 	  </td>
-	  <td><%= f.submit 'Update' %> </td>
+	  <td width="155"><%= f.submit 'Update Occupation' %></td>
 	<% end %>
 	</tr>
   </table>
