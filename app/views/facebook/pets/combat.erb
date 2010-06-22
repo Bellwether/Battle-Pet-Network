@@ -29,7 +29,7 @@
 </div>
 
 <div class="box">
-  <table id="combat-profile">
+  <table id="combat-profile" width="100%">
 	<tr>
 	  <td>
 	    <h3><%= @pet.name %></h3>
@@ -50,12 +50,21 @@
 	  <td>
 		<table>
 		  <tr><td><label class="strong">Total Battles:</label></td><td><%= @pet.battles_count %></td></tr>
-		  <tr><td><label>Wins:</label></td><td><%= @pet.wins_count %><%= graph_bar [@pet.wins_count,@pet.battles_count]%></td></tr>
-		  <tr><td><label>Loses:</label></td><td><%= @pet.loses_count %><%= graph_bar [@pet.loses_count,@pet.battles_count]%></td></tr>
-		  <tr><td><label>Draws:</label></td><td><%= @pet.draws_count %><%= graph_bar [@pet.draws_count,@pet.battles_count]%></td></tr>
+		  <tr>
+			<td><label>Wins:</label></td>
+			<td><%= @pet.wins_count %><%= graph_bar [@pet.wins_count,@pet.battles_count]%></td>
+		  </tr>
+		  <tr>
+			<td><label>Loses:</label></td>
+			<td><%= @pet.loses_count %><%= graph_bar [@pet.loses_count,@pet.battles_count]%></td>
+		  </tr>
+		  <tr>
+			<td><label>Draws:</label></td>
+			<td><%= @pet.draws_count %><%= graph_bar [@pet.draws_count,@pet.battles_count]%></td>
+		  </tr>
 		</table>
 	  </td>	
-	  <td>
+	  <td class="tright">
 		<h5>Leaderboard Ranking</h5>
 		<p>
 		  Current: 999<br />
