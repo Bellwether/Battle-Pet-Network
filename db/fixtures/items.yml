@@ -1,3 +1,15 @@
+dandelion_posy:
+  name: Dandelion Posy
+  description: A golden sunburst of soft, sweet-smelling flowers. Usually devoured with excessive nibbling, these golden apparatifs are harder to locate on the barren hills and city flats than in better days.
+  item_type: Food
+  power: 5
+  required_rank: 1
+  cost: 3
+  rarity: 20
+  stock: 50
+  stock_cap: 50
+  restock_rate: 10
+
 tinamou_egg:
   name: Tinamou Egg
   description: Lustrous and shiny, the delicious tinamou egg is found in nests through the southern bird kingdoms. The colorful markings given to the eggs make them as satisfying to possess and behold as to devour.

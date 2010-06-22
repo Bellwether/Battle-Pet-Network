@@ -18,8 +18,12 @@ class Facebook::OccupationsController < Facebook::FacebookController
     current_user_pet.update_occupation!(@occupation.id)
     
     if @occupation.pet_can?(current_user_pet)
-      @occupation.do_for_pet!(current_user_pet)
-      flash[:notice] = "You tried #{@occupation.name.downcase}"
+      success = @occupation.do_for_pet!(current_user_pet)
+      if success
+        flash[:notice] = "You tried #{@occupation.name.downcase}"
+      else
+        flash[:notice] = "You tried #{@occupation.name.downcase} but for naught. :/"
+      end
     else  
       flash[:error] = "Could not do #{@occupation.name.downcase}"
       flash[:error_message] = @occupation.errors.full_messages.join(', ')

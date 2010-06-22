@@ -23,7 +23,7 @@ class Twitter::TweetsToHtml
   end  
   
   def to_html
-    return EMPTY_DEFAULT if @doc.blank?
+    return EMPTY_DEFAULT unless @doc && !@doc.blank?
     
     html = ""
     (@doc/'status').each_with_index do |st,idx|

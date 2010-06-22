@@ -13,7 +13,7 @@ class Biography < ActiveRecord::Base
   GENDERS = ['Tom', 'Queen']
   PASTIMES = ['Cuddling','Eating','Exploring','Hunting','Playing','Sleeping','Grooming','Storytelling']
   COMPOSERS = ['J.S. Bach','Mozart','Saint-Saens','Wagner','Mussorgsky','Tchaikovsky','Beethoven','Rachmaninoff','Vivaldi']
-  PHILOSOPHERS = ['Descartes']
+  PHILOSOPHERS = ['Descartes','Hobbes','Hume','Plato','Spinoza']
 
   validates_presence_of :pet_id,:temperament,:lifestyle,:gender,:favorite_color,:favorite_food,:favorite_pastime,
                         :favorite_season,:pedigree,:circadian,:voice,:zodiac,:birthday,:siblings,:description
@@ -38,5 +38,31 @@ class Biography < ActiveRecord::Base
   def reward_pet
     pet.kibble = (pet.kibble + AppConfig.awards.biography)
     pet.save
+  end
+  
+  def reward_food
+    case favorite_food
+      when 'Bugs & Grubs'
+        pet.belongings.build(:item => Item.find_by_name('Soft Beetle'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Mega Grub'), :source => 'award')
+      when 'Dairy'
+        pet.belongings.build(:item => Item.find_by_name('Dandelion Posy'), :source => 'award')  
+        pet.belongings.build(:item => Item.find_by_name('Dandelion Posy'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Dairy Milk'), :source => 'award')
+      when 'Treats'
+        pet.belongings.build(:item => Item.find_by_name('Chocolate Chip Cookie'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Chocolate Chip Cookie'), :source => 'award')
+      when 'Plants'  
+        pet.belongings.build(:item => Item.find_by_name('Cat Grass'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Cat Grass'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Dandelion Posy'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Dandelion Posy'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Dandelion Posy'), :source => 'award')
+      else  
+        pet.belongings.build(:item => Item.find_by_name('Soft Beetle'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Cat Grass'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Cat Grass'), :source => 'award')
+        pet.belongings.build(:item => Item.find_by_name('Cat Grass'), :source => 'award')
+    end
   end
 end
