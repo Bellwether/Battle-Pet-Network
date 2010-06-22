@@ -38,13 +38,13 @@
 		    <td rowspan="4"><%= avatar_image(@pet,'medium') %></td>
 		    <td>
 			  <label>Endurance: <%= @pet.current_endurance %> / <%= @pet.endurance %></label>
-			  <%= percentage_bar [@pet.current_endurance, @pet.endurance ], :fill => true %>
+			  <%= percentage_bar [@pet.current_endurance, (@pet.endurance-@pet.current_endurance) ], :fill=>true, :width=>105 %>
 			</td>
 		  </tr>
 		  <tr>
 			<td>
 			  <label>Health: <%= @pet.current_health %> / <%= @pet.health %></label>
-			  <%= percentage_bar [@pet.current_health, @pet.health ], :fill => true %>
+			  <%= percentage_bar [@pet.current_health, (@pet.health-@pet.current_health) ], :fill=>true, :width=>105 %>
 			</td>
 		  </tr>
 		  <tr><td><label>Power: <%= @pet.power %></label></td></tr>

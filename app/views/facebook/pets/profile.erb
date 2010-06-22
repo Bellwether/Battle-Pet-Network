@@ -121,27 +121,21 @@
 <% end %>
 
 <div class="box">
+  <div class="right">	
+	<label><%= "#{@pet.name} is #{@pet.occupation.name.downcase}" %></label>
+  </div>	
   <h3><%= facebook_link_to 'Occupations', facebook_occupations_path %></h3>
   <table width="100%">
-	<tr><td colspan="3"><em>How is your pet currently occupying themselves?</em></td></tr>
-	<tr><td colspan="3"><hr /></td></tr>
 	<tr>
-	  <td colspan="3">
-		<label><%= "#{@pet.name} is #{@pet.occupation.name.downcase}" %></label>
-	  </td>
-	</tr>
-
+	  <td colspan="2"><p class="em">How is your pet currently occupying themselves?</p></td>
 	<% if @pet.occupation.cost > 0 && @pet.occupation.pet_can?(@pet) %>
 	  <% form_for @pet, 
-		:url => facebook_nested_url(attempt_facebook_occupation_path(@pet.occupation)), 
-		:html => { :method => :post} do |f| %>
-	    <tr>
-	      <td colspan="2">Do now for <%=@pet.occupation.cost%> endurance</td>
-	      <td><%= submit_tag 'perform'%></td>
-	    </tr>
+		  :url => facebook_nested_url(attempt_facebook_occupation_path(@pet.occupation)), 
+		  :html => { :method => :post} do |f| %>
+        <td><%= submit_tag "do immediately for #{@pet.occupation.cost} endurance" %></td>
 	  <% end %>
 	<% end %>
-
+	</tr>
 	<tr><td colspan="3"><hr /></td></tr>
 	<tr>
 	<% form_for :pet, @pet, :url => "/#{facebook_app_path}/pets/home/pet", :html => { :method => :put} do |f| %>
@@ -150,6 +144,7 @@
 	  </td>
 	  <td><%= f.submit 'Update' %> </td>
 	<% end %>
+	</tr>
   </table>
 </div>
 
