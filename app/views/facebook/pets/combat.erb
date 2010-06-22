@@ -148,7 +148,7 @@
 		<label>Level <%= @pet.level.next_level.rank %> Experience:</label> <label class="strong"><%= @pet.level.next_level.experience %></label>
 	  </td>
 	  <td>
-		<%= percentage_bar [@pet.experience, (@pet.level.next_level.experience - @pet.experience) ] %>
+		<%= percentage_bar [@pet.experience, (@pet.level.next_level.experience - @pet.experience) ], :fill => true %>
 	  </td>
 	</tr>
   </table>

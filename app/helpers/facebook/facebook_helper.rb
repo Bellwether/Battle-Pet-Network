@@ -153,7 +153,7 @@ module Facebook::FacebookHelper
       
       color_tag = options[:reverse] ? (values.size - 1 - idx) : idx
       omit_last = (options[:fill] == true && on_last_value) 
-      color_css = omit_last ? '' : "bar color-#{color_tag}"
+      color_css = omit_last ? '' : "color-#{color_tag}"
       
       html = html + "<div class='bar #{color_css}' style='width:#{percent}%;'>"
       html = html + "</div>"
