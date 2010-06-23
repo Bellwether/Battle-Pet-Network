@@ -114,9 +114,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
       @params = {}
       facebook_post :create, :fb_sig_user => @user.facebook_id, :challenge => @params
       assert !assigns(:challenge).blank?
-      assert !assigns(:pet).blank?
       assert_equal "1v0", assigns(:challenge).challenge_type
-      assert_equal assigns(:pet).id, @user.pet_id
     end    
     assert flash[:error]
     assert flash[:error_message]

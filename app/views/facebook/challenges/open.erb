@@ -11,16 +11,16 @@
 	  <td>
 	    <table class='pet' width="300">
 		<tbody>
-		  <tr><td rowspan="6"><%= avatar_image(@pet,'large') %></td><td>Health:</td><td><%= @pet.current_health %></td></tr>
-		  <tr><td>Endurance:</td><td><%= @pet.endurance %></td></tr>
-		  <tr><td>Fortitude:</td><td><%= @pet.fortitude %></td></tr>
-		  <tr><td>Power:</td><td><%= @pet.power %></td></tr>
-		  <tr><td>Intelligence:</td><td><%= @pet.intelligence %></td></tr>
-		  <tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
+		  <tr><td rowspan="6"><%= avatar_image(current_user_pet,'large') %></td><td>Health:</td><td><%= current_user_pet.current_health %></td></tr>
+		  <tr><td>Endurance:</td><td><%= current_user_pet.endurance %></td></tr>
+		  <tr><td>Fortitude:</td><td><%= current_user_pet.fortitude %></td></tr>
+		  <tr><td>Power:</td><td><%= current_user_pet.power %></td></tr>
+		  <tr><td>Intelligence:</td><td><%= current_user_pet.intelligence %></td></tr>
+		  <tr><td>Affection:</td><td><%= current_user_pet.affection %></td></tr>
 	    </tbody>
 	    </table>
 	
-	    <% cell_table(@pet.belongings.battle_ready) do |b,idx| %>
+	    <% cell_table(current_user_pet.belongings.battle_ready) do |b,idx| %>
 	      <td class='battle-gear'>
 		    <%= avatar_image(b.item,'small') %>
 		    <label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
