@@ -5,16 +5,31 @@
   <p class="em">Who can match your prowess in combat? Plot your strategy and howl your challenge to the winds to 
 	immediately battle any who would accept your summons. Issuing an open challenge is a good way to keep your pet 
 	battling if cowards are refusing to accept your direct challenges.</p>
-	
-  <table class='pet'>
-	<tbody>
-	<tr><td rowspan="6"><%= avatar_image(@pet,'large') %></td><td>Health:</td><td><%= @pet.current_health %></td></tr>
-	<tr><td>Endurance:</td><td><%= @pet.endurance %></td></tr>
-	<tr><td>Fortitude:</td><td><%= @pet.fortitude %></td></tr>
-	<tr><td>Power:</td><td><%= @pet.power %></td></tr>
-	<tr><td>Intelligence:</td><td><%= @pet.intelligence %></td></tr>
-	<tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
-    </tbody>
+
+  <table width="100%">	
+	<tr>
+	  <td>
+	    <table class='pet' width="350">
+		<tbody>
+		  <tr><td rowspan="6"><%= avatar_image(@pet,'large') %></td><td>Health:</td><td><%= @pet.current_health %></td></tr>
+		  <tr><td>Endurance:</td><td><%= @pet.endurance %></td></tr>
+		  <tr><td>Fortitude:</td><td><%= @pet.fortitude %></td></tr>
+		  <tr><td>Power:</td><td><%= @pet.power %></td></tr>
+		  <tr><td>Intelligence:</td><td><%= @pet.intelligence %></td></tr>
+		  <tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
+	    </tbody>
+	    </table>
+	  </td>
+	  <td>
+	    <h4>Your Pet's Battle Strategy</h4>
+	    <% form_for @challenge, :url => facebook_nested_url(facebook_challenges_path), :html => { :method => :post} do |f| %>	
+	      <div class="challenge">
+		    <%= render_strategy_picker(f) %>
+		  </div>
+		  <p><%= submit_tag "Issue Challenge"%></p>
+	    <% end %>
+	  </td>
+    </tr>
   </table>
 </div>
 
