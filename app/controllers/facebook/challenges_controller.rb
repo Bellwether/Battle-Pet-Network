@@ -31,9 +31,10 @@ class Facebook::ChallengesController < Facebook::FacebookController
       flash[:notice] = "Challenge sent!"
       facebook_redirect_to facebook_pet_path(@pet)
     else
+      @pet ||= current_user_pet
       flash[:error] = "Couldn't send challenge. :("
       flash[:error_message] = @challenge.errors.full_messages.join(', ')
-      render :action => (@challenge.challenge_type = "1v0" ? :open : :new)
+      render :action => (@challenge.challenge_type == "1v0" ? :open : :new)
     end
   end
   

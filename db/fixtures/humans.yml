@@ -1,9 +1,17 @@
+vincent:
+    name: Vincent
+    human_type: friendly
+    difficulty: 1
+    power: 1
+    cost: 3000
+    required_rank: 1
+    
 sarah:
     name: Sarah
     human_type: friendly
     difficulty: 3
     power: 2
-    cost: 4000
+    cost: 4500
     required_rank: 2
     
 ichabod:
@@ -37,6 +45,14 @@ beatrice:
     power: 2
     cost: 15000
     required_rank: 3
+    
+sheldon: 
+    name: Sheldon 
+    human_type: collector
+    difficulty: 8
+    power: 4
+    cost: 20000
+    required_rank: 5
 
 bruno:
     name: Bruno
@@ -44,4 +60,4 @@ bruno:
     difficulty: 2
     power: 1
     cost: 4000
-    required_rank: 2
+    required_rank: 2    

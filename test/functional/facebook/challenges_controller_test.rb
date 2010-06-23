@@ -107,6 +107,20 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert flash[:error]
     assert flash[:error_message]
   end
+
+  def test_fail_create_1v0
+    Challenge.destroy_all
+    assert_no_difference ['Challenge.count','Strategy.count'] do
+      @params = {}
+      facebook_post :create, :fb_sig_user => @user.facebook_id, :challenge => @params
+      assert !assigns(:challenge).blank?
+      assert !assigns(:pet).blank?
+      assert_equal "1v0", assigns(:challenge).challenge_type
+      assert_equal assigns(:pet).id, @user.pet_id
+    end    
+    assert flash[:error]
+    assert flash[:error_message]
+  end
   
   def test_edit
     challenge = challenges(:siamese_persian_issued)
