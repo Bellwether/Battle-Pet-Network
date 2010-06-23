@@ -33,7 +33,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     else
       flash[:error] = "Couldn't send challenge. :("
       flash[:error_message] = @challenge.errors.full_messages.join(', ')
-      render :action => :new
+      render :action => (@challenge.challenge_type = "1v0" ? :open : :new)
     end
   end
   

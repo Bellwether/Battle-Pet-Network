@@ -22,7 +22,7 @@
 	
 	    <% cell_table(@pet.belongings.battle_ready) do |b,idx| %>
 	      <td class='battle-gear'>
-		    <%= avatar_image(b.item,'tiny') %>
+		    <%= avatar_image(b.item,'small') %>
 		    <label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
 	       </td> 
 	    <% end %>
