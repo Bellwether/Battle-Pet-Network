@@ -9,7 +9,7 @@
   <table width="100%">	
 	<tr>
 	  <td>
-	    <table class='pet' width="350">
+	    <table class='pet' width="300">
 		<tbody>
 		  <tr><td rowspan="6"><%= avatar_image(@pet,'large') %></td><td>Health:</td><td><%= @pet.current_health %></td></tr>
 		  <tr><td>Endurance:</td><td><%= @pet.endurance %></td></tr>
@@ -19,6 +19,13 @@
 		  <tr><td>Affection:</td><td><%= @pet.affection %></td></tr>
 	    </tbody>
 	    </table>
+	
+	    <% cell_table(@pet.belongings.battle_ready) do |b,idx| %>
+	      <td class='battle-gear'>
+		    <%= avatar_image(b.item,'tiny') %>
+		    <label><%= b.item.name %></label> <label class="em"><%= b.item.power %></label>
+	       </td> 
+	    <% end %>
 	  </td>
 	  <td>
 	    <h4>Your Pet's Battle Strategy</h4>
@@ -31,14 +38,4 @@
 	  </td>
     </tr>
   </table>
-</div>
-
-<div class="box full">
-  <h4>Your Pet's Battle Strategy</h4>
-  <% form_for @challenge, :url => facebook_nested_url(facebook_challenges_path), :html => { :method => :post} do |f| %>	
-    <div class="challenge">
-	  <%= render_strategy_picker(f) %>
-	</div>
-	<p><%= submit_tag "Issue Challenge"%></p>
-  <% end %>
 </div>
