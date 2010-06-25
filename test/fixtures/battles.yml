@@ -1,6 +1,7 @@
 persian_burmese_resolved_battle:
   challenge: persian_burmese_resolved
   winner: persian
+  created_at: <%= (Time.now - 1.day).strftime("%Y-%m-%d %H:%M:00") %>
       
 siamese_burmese_resolved_battle:
   challenge: siamese_burmese_resolved
@@ -19,8 +20,10 @@ siamese_burmese_resolved_battle:
       :attacker_awards: 
         :experience: 
         - +20 kibble for battling
+  created_at: <%= (Time.now - 1.day).strftime("%Y-%m-%d %H:%M:00") %>
   
 siamese_burmese_old_battle:
   challenge: siamese_burmese_old
   winner: siamese
   logs: --  
+  created_at: <%= (Time.now - 3.days).strftime("%Y-%m-%d %H:%M:00") %>

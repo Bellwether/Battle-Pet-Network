@@ -364,6 +364,7 @@ class CreateCore < ActiveRecord::Migration
       t.belongs_to :ranking, :null => false
       t.belongs_to :rankable, :null => false, :polymorphic => true
       t.integer :rank, :default => 1, :null => false
+      t.integer :score, :default => 1
     end
     add_index :ranks, [:ranking_id]
     add_index :ranks, [:rankable_id,:rankable_type]

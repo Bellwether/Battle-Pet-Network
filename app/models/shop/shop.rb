@@ -6,6 +6,11 @@ class Shop < ActiveRecord::Base
   belongs_to :pet, :include => [:breed]
   has_many :inventories, :validate => true
   
+  has_many :sales, :class_name => "ActivityStream", 
+                   :as => :indirect_object, 
+                   :conditions => "category = 'shopping' AND namespace = 'purchase'",
+                   :order => "activity_streams.created_at DESC"
+  
   accepts_nested_attributes_for :inventories, :allow_destroy => false
   
   validates_presence_of :pet_id, :name, :status, :specialty, :inventories_count

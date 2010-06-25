@@ -47,7 +47,7 @@ class Inventory < ActiveRecord::Base
     if belonging.errors.empty? && belonging.save
       pet.update_attribute(:kibble, pet.kibble - cost)
       shop.pet.update_attribute(:kibble, shop.pet.kibble + cost)
-      ActivityStream.log! 'shopping', 'purchase', pet, item, shop.pet
+      ActivityStream.log! 'shopping', 'purchase', pet, item, shop
       self.destroy
     end
     return belonging

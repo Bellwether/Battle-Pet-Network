@@ -29,4 +29,13 @@ occupations:
   scavenge_chance_divisor: 2   
   find_human_chance_divisor: 5 
   tame_human_chance_divisor: 1
-              
+leaderboards:
+  ambassadors:
+    forum_posts: 10
+    messages: 5
+    signs: 1
+  hordes:
+    members: 10
+    standard_power: 4
+    treasury: 0.001
+    spoils: 1

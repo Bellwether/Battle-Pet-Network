@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :pet
   has_many :pets
+  has_many :forum_posts
   has_many :payment_orders
   
   acts_as_authentic do |c|

@@ -12,3 +12,8 @@ siamese_ichabod:
   pet: siamese
   human: ichabod
   status: enslaved
+
+persian_oscar:
+  pet: persian
+  human: oscar
+  status: enslaved

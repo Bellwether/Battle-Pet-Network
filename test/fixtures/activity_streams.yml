@@ -8,3 +8,18 @@ siamese_joined:
       --- 
       :description: domino entered the world.
   created_at: <%= (Time.now - 1.day).strftime("%Y-%m-%d %H:%M:00") %>
+  
+first_sale:
+  new: false
+  actor_type: Pet
+  actor_id: <%= Fixtures.identify :siamese %>
+  object_type: Item
+  object_id: <%= Fixtures.identify :cat_grass %>
+  indirect_object_type: Shop
+  indirect_object_id: <%= Fixtures.identify :first %>
+  category: shopping
+  namespace: purchase
+  activity_data: |
+      --- 
+      :description: domino got a Cat Grass from tailchaser's shop."
+  created_at: <%= (Time.now - 1.day).strftime("%Y-%m-%d %H:%M:00") %>
