@@ -349,7 +349,8 @@ class CreateCore < ActiveRecord::Migration
     
     create_table :awards do |t|
       t.belongs_to :leaderboard, :null => false
-      t.belongs_to :item, :null => false
+      t.string :award_type, :null => false, :limit => 32
+      t.string :prize, :null => false, :limit => 64
       t.integer :rank, :null => false
     end
     add_index :awards, [:leaderboard_id,:rank]

@@ -55,9 +55,10 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   add_index "activity_streams", ["object_id", "object_type", "created_at"], :name => "activity_streams_by_object"
 
   create_table "awards", :force => true do |t|
-    t.integer "leaderboard_id", :null => false
-    t.integer "item_id",        :null => false
-    t.integer "rank",           :null => false
+    t.integer "leaderboard_id",               :null => false
+    t.string  "award_type",     :limit => 32, :null => false
+    t.string  "prize",          :limit => 64, :null => false
+    t.integer "rank",                         :null => false
   end
 
   add_index "awards", ["leaderboard_id", "rank"], :name => "index_awards_on_leaderboard_id_and_rank"
@@ -445,6 +446,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer "rankable_id",                  :null => false
     t.string  "rankable_type",                :null => false
     t.integer "rank",          :default => 1, :null => false
+    t.integer "score",         :default => 1
   end
 
   add_index "ranks", ["rankable_id", "rankable_type"], :name => "index_ranks_on_rankable_id_and_rankable_type"

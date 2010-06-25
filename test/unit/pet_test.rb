@@ -77,6 +77,7 @@ class PetTest < ActiveSupport::TestCase
   end
   
   def test_slave_earnings
+    Tame.destroy_all
     pet = pets(:persian)
     sarah = humans(:sarah)
     ichabod = humans(:ichabod)

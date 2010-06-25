@@ -59,6 +59,7 @@ class CombatTest < ActiveSupport::TestCase
   
   def test_combat_needs_to_occur_on_hunt
     hunt = Hunt.new(:sentient_id => sentients(:leper_rat).id)
+    hunt.hunters.build(:pet_id => @attacker.id, :strategy_id => @attacker_strategy.id)
     assert hunt.combat_needs_to_occur?
     hunt.status = "ended"
     hunt.save(false)

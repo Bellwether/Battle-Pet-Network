@@ -5,43 +5,33 @@ class Leaderboard < ActiveRecord::Base
   SQL_RECENT = "created_at >= DATE_ADD(NOW(), INTERVAL -#{RANKING_PERIOD_DAYS} DAY)"
   
   has_many :rankings, :order => 'rankings.created_at DESC'
+  has_many :awards, :order => 'rank ASC'
   
   validates_presence_of :rankable_type, :name, :ranked_count
   validates_inclusion_of :rankable_type, :in => %w(Pet Pack Shop)
   
+  named_scope :include_awards
   named_scope :board, lambda { |b| 
     { :conditions => ["leaderboards.name = ?", b], :limit => 1 }
   }
   
   class << self
     def create_rankings
-      rank_ambassadors
-      rank_hordes
-      rank_forerunners
-      rank_overlords
-      rank_strongest
-      rank_relentless
-      rank_manlords
-      rank_franchises
-      
+      Leaderboard.all.each do |lb|
+        rank_leaderboard lb
+      end
       ActivityStream.log! 'world', 'leaderboards'      
     end
     
-    def rank_relentless
-      leaderboard = Leaderboard.board('Relentless Fighters').first
-      ranking = leaderboard.rankings.build
-      rankables = rankables_for_relentless
-      rankables.each_with_index do |r,idx|
-        rank = idx + 1
-        ranking.ranks.build(:rankable => r, :rank => rank)
-      end
-      return ranking.save
+    def rankable_method_from_name(name)
+      name = name.split(' ').first.downcase
+      "rankables_for_#{name}"
     end
-
-    def rank_strongest
-      leaderboard = Leaderboard.board('Strongest Fighters').first
+    
+    def rank_leaderboard(leaderboard)
       ranking = leaderboard.rankings.build
-      rankables = rankables_for_strongest
+      
+      rankables = self.send rankable_method_from_name(leaderboard.name).to_sym
       rankables.each_with_index do |r,idx|
         rank = idx + 1
         ranking.ranks.build(:rankable => r, :rank => rank)
