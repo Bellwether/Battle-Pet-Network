@@ -10,6 +10,7 @@ class OccupationTest < ActiveSupport::TestCase
   end
   
   def test_tame_human
+    Tame.destroy_all
     flexmock(Human).should_receive(:finds_human?).and_return(true)
     flexmock(Human).should_receive(:find_random_human).and_return(@human)
     flexmock(Tame).should_receive(:pet_tames_human?).and_return(true)

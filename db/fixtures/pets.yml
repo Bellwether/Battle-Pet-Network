@@ -25,13 +25,13 @@ domino:
   user: travis_dunn
   name: domino
   slug: domino
-  current_health: 10
+  current_health: 15
   current_endurance: 75
-  health: 14
+  health: 15
   endurance: 75
   fortitude: 4
-  intelligence: 4
-  affection: 4
+  intelligence: 8
+  affection: 2
   power: 1
   level_rank_count: 1
   experience: 0
@@ -48,13 +48,13 @@ pearl:
   user: becca_graver
   name: pearl
   slug: pearl
-  current_health: 12
-  current_endurance: 50
-  health: 12
-  endurance: 50
-  fortitude: 3
-  intelligence: 6
-  affection: 7
+  current_health: 20
+  current_endurance: 70
+  health: 20
+  endurance: 70
+  fortitude: 4
+  intelligence: 4
+  affection: 8
   power: 1
   level_rank_count: 1
   experience: 0
@@ -71,13 +71,13 @@ nova:
   user: candy_anderson
   name: nova
   slug: nova
-  current_health: 10
-  current_endurance: 40
-  health: 10
-  endurance: 40
+  current_health: 30
+  current_endurance: 80
+  health: 30
+  endurance: 80
   fortitude: 5
   intelligence: 3
-  affection: 4
+  affection: 3
   power: 1
   level_rank_count: 1
   experience: 0
