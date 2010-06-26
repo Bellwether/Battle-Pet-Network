@@ -10,7 +10,7 @@ class LeaderboardTest < ActiveSupport::TestCase
     rankables.each do |pet|
       sql = "#{pet.id} IN (attacker_id, defender_id) AND challenges.#{Leaderboard::SQL_RECENT}"
       cnt = Challenge.count(:conditions => sql)
-      assert_operator cnt, ">=", @rank
+      assert_operator cnt, "<=", @rank unless @rank == 0
       @rank = cnt
     end
   end
@@ -80,7 +80,7 @@ class LeaderboardTest < ActiveSupport::TestCase
   def test_rank_leaderboards
     Leaderboard.all.each do |leaderboard|
       assert_difference ['leaderboard.rankings.count','Ranking.count'], +1 do    
-        method = Leaderboard.rankable_method_from_name(leaderboard.name).to_sym
+        method = leaderboard.rankable_method_from_name.to_sym
         rankables = Leaderboard.send(method)
         assert_difference ['Rank.count'], +rankables.size do
           Leaderboard.rank_leaderboard(leaderboard)

@@ -11,14 +11,7 @@ class Facebook::LeaderboardsControllerTest  < ActionController::TestCase
     facebook_get :index
     assert_response :success
     assert_template 'index'
-    assert !assigns(:indefatigable).blank?
-    assert !assigns(:overlords).blank?
-    assert !assigns(:strongest).blank?
-    ['strongest','indefatigable'].each do |cid|
-      assert_tag :tag => "table", :attributes => {:class => 'leaderboard', :id => cid}, :descendant => {
-        :tag => "tr", :attributes => { :class => "ranking" }
-      }
-    end
+    assert !assigns(:leaderboards).blank?
   end 
   
   def test_index_empty
@@ -27,13 +20,6 @@ class Facebook::LeaderboardsControllerTest  < ActionController::TestCase
     facebook_get :index
     assert_response :success
     assert_template 'index'
-    assert assigns(:indefatigable).blank?
-    assert assigns(:overlords).blank?
-    assert assigns(:strongest).blank?
-    ['strongest','indefatigable'].each do |cid|
-      assert_tag :tag => "table", :attributes => {:class => 'leaderboard', :id => cid}, :descendant => {
-        :tag => "td", :attributes => { :class => "em empty" }
-      }
-    end
+    assert assigns(:leaderboards).blank?
   end 
 end

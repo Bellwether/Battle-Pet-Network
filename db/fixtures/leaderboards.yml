@@ -30,7 +30,7 @@ relentless:
   
 franchises:
   rankable_type: Shop
-  name: Overlords
+  name: Franchises
   description: Franchises are pet shops which have sold the most items. Whether pushing volume goods or luxury rarities, ranking has nothing to do with profit, and everything to do with popularity and playing an important role in the market economy.
   ranked_count: 10
   

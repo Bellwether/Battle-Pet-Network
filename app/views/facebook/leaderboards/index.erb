@@ -1,72 +1,41 @@
 <% content_for :page_title do %><h2><%=AppConfig.name%> Leadboards</h2><% end %>
-<div class="right">
-  <div class="box half">
-    <h3>Strongest Fighters</h3>
-    <table class="leaderboard" id="strongest">
-	  <tbody>
-		<tr><th>Rank</th><th>Wins</th><th>Name</th><th>Level</th><th>Record</th></tr>
-		<% if @strongest.blank? %>
-		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
-		<% else %>
-		  <% @strongest.ranks.each do |r| %>
-		    <tr class="ranking">
-		      <td><%= r.rank %></td>
-		      <td><%= r.rankable.challenges.wins.count %></td>
-		      <td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
-		      <td><%= r.rankable.level_rank_count %></td>
-		      <td><%= r.rankable.battle_record %></td>
-		    </tr>
-		  <% end %>
-		<% end %>
-	  </tbody>
-	</table>
-  </div>
-</div>
-<div>
-  <div class="box half">
-    <h3>Indefatigable Fighters</h3>
-    <table class="leaderboard" id="indefatigable">
-	  <tbody>
-		<tr><th>Rank</th><th>Battles</th><th>Name</th><th>Level</th><th>Record</th></tr>
-		<% if @indefatigable.blank? %>
-		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
-		<% else %>
-		  <% @indefatigable.ranks.each do |r| %>
-		    <tr class="ranking">
-		      <td><%= r.rank %></td>
-		      <td><%= r.rankable.challenges.recent.count %></td>
-		      <td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
-		      <td><%= r.rankable.level_rank_count %></td>
-		      <td><%= r.rankable.battle_record %></td>
-		    </tr>
-		  <% end %>
-		<% end %>
-	  </tbody>
-	</table>
-  </div>
 
-  <div class="box half">
-    <h3>Overlords</h3>
-    <table class="leaderboard" id="overlords">
-	  <tbody>
-		<tr><th>Rank</th><th>Name</th><th>Battles</th><th>Level</th><th>Humans</th><th>Pack</th><th>Shop</th><th>Gear</th></tr>
-		<% if @overlords.blank? %>
-		  <tr><td colspan="5" class="em empty">No ranked leaderboards</td></tr>
-		<% else %>	
-		  <% @overlords.ranks.each do |r| %>
-		    <tr class="ranking">
-		      <td><%= r.rank %></td>
-		      <td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
-		      <td><%= r.rankable.battles_count %></td>
-		      <td><%= r.rankable.level_rank_count %></td>
-		      <td></td>
-			  <td><%= r.rankable.pack_id.blank? ? 'NO' : 'YES' %></td>
-			  <td><%= r.rankable.shop_id.blank? ? 'NO' : 'YES' %></td>
-			  <td></td>
-		    </tr>
-		  <% end %>
-	    <% end %>
-	  </tbody>
-	</table>
-  </div>
-</div>
+<% cell_table(@leaderboards, 2, :class => "leaderboards") do |leaderboard,idx| %>
+  <td>
+    <div class="box half">
+      <h3><%= leaderboard.name %></h3>
+	  <% if leaderboard.rankable_type == 'Pet' %>	
+	    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Level</th><th>Battle Record</th><th>Joined</th><th>Award</th></tr>
+	  <% elsif leaderboard.rankable_type == 'Shop' %>	
+	    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Specialty</th><th>Opened</th><th>Award</th></tr>
+	  <% elsif leaderboard.rankable_type == 'Pack' %>
+	    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Leader</th><th>Members</th><th>Founded</th><th>Award</th></tr>
+	  <% end %>
+		
+	  <% if leaderboard.rankings.first.blank? %>
+	    <tr><td colspan="6" class="em empty">No ranked leaderboards</td></tr>
+	  <% else %>
+	  <% leaderboard.rankings.first.ranks.each do |r| %>
+	    <tr class="ranking">
+		  <% if leaderboard.rankable_type == 'Pet' %>	
+		    <tr>
+			<td><%= avatar_image(r.rankable,'small') %></td>
+	        <td><%= r.rank %></td>
+			<td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
+			<td><%= r.rankable.level_rank_count %></td>
+			<td><%= r.rankable.battle_record %></td>
+			<td><%= "#{time_ago_in_words(r.rankable.created_at)} ago" %></td>
+		  <% elsif leaderboard.rankable_type == 'Shop' %>	
+		    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Specialty</th><th>Opened</th><th>Award</th></tr>
+		  <% elsif leaderboard.rankable_type == 'Pack' %>
+		    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Leader</th><th>Members</th><th>Founded</th><th>Award</th></tr>
+		  <% end %>	
+		  <td>
+		  	<%= (leaderboard.awards.size > r.rank) ? leaderboard.awards[r].description : "--" %>
+		  </td>
+	    </tr>
+	  <% end %>
+	<% end %>
+	</div>
+  </td>
+<% end %>

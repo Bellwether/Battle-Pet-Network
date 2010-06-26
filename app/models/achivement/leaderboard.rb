@@ -23,15 +23,10 @@ class Leaderboard < ActiveRecord::Base
       ActivityStream.log! 'world', 'leaderboards'      
     end
     
-    def rankable_method_from_name(name)
-      name = name.split(' ').first.downcase
-      "rankables_for_#{name}"
-    end
-    
     def rank_leaderboard(leaderboard)
       ranking = leaderboard.rankings.build
       
-      rankables = self.send rankable_method_from_name(leaderboard.name).to_sym
+      rankables = self.send leaderboard.rankable_method_from_name.to_sym
       rankables.each_with_index do |r,idx|
         rank = idx + 1
         ranking.ranks.build(:rankable => r, :rank => rank)
@@ -50,9 +45,11 @@ class Leaderboard < ActiveRecord::Base
       leaderboard = Leaderboard.board('Strongest Fighters').first
       sql_joins = "INNER JOIN challenges ON pets.id IN (attacker_id, defender_id)"
       sql_order = "COUNT(challenges.id) DESC"
+      sql_group = "pets.id"
       return Pet.all(:conditions => "challenges.#{Leaderboard::SQL_RECENT} AND challenges.status = 'resolved' ", 
                      :joins => sql_joins, 
                      :order => sql_order,
+                     :group => sql_group,
                      :limit => leaderboard.ranked_count)
     end
     
@@ -123,19 +120,17 @@ class Leaderboard < ActiveRecord::Base
     def rankables_for_strongest
       leaderboard = Leaderboard.board('Strongest Fighters').first
       avg_number_fights = connection.select_value "SELECT AVG(cnt) FROM ( " + 
-                                                  "SELECT COUNT(challenges.id) AS cnt " +
+                                                  "SELECT COUNT(challenges.id) AS cnt  " +
                                                   "FROM challenges " +
                                                   "INNER JOIN pets ON pets.id = attacker_id OR pets.id = defender_id " +
                                                   "WHERE challenges.status = 'resolved' " +
-                                                  "AND challenges.#{SQL_RECENT} " +
-                                                  "GROUP BY pets.id) tbl"
+                                                  "AND challenges.#{SQL_RECENT} ) tbl"
       
       avg_number_wins = connection.select_value "SELECT AVG(cnt) FROM ( " +
                                                 "SELECT COUNT(battles.id) AS cnt " +
                                                 "FROM battles JOIN pets ON pets.id = battles.winner_id " +
                                                 "WHERE pets.status = 'active' " +
-                                                "AND battles.#{SQL_RECENT} " +
-                                                "GROUP BY pets.id) tbl"
+                                                "AND battles.#{SQL_RECENT} ) tbl"
 
       sql_joins = "INNER JOIN challenges ON pets.id IN (attacker_id, defender_id)"                                                    
       pet_number_wins = "SELECT COUNT(battles.id) FROM battles WHERE battles.winner_id = pets.id AND battles.#{SQL_RECENT}"
@@ -148,5 +143,10 @@ class Leaderboard < ActiveRecord::Base
                      :group => sql_group,
                      :limit => leaderboard.ranked_count)
     end
-  end  
+  end    
+    
+  def rankable_method_from_name
+    normal = self.name.split(' ').first.downcase
+    return "rankables_for_#{normal}"
+  end
 end
