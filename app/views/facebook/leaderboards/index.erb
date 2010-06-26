@@ -20,7 +20,7 @@
 	    <tr class="ranking">
 		  <% if leaderboard.rankable_type == 'Pet' %>	
 		    <tr>
-			<td><%= avatar_image(r.rankable,'small') %></td>
+			<td><%= avatar_image(r.rankable,'tiny') %></td>
 	        <td><%= r.rank %></td>
 			<td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
 			<td><%= r.rankable.level_rank_count %></td>
