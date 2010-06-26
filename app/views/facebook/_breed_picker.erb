@@ -28,9 +28,9 @@ function breedSelected(idx,avatar) {
   document.getElementById('breed-details-affection').setTextValue(breed.affection);
   document.getElementById('breed-details-description').setTextValue(breed.description);
   document.getElementById('breed-details-favorite-action-name').setTextValue(breed.favorite_action.name);
+  var src = '/images/pets/cats/medium/#{breed.name}.png'.toLowerCase().replace(" ", "");
+  document.getElementById('breed-details-image').setSrc(src);
 	
-  avatar = "avatar-bg-"+avatar;
-  document.getElementById('breed-details-image').setClassName(avatar);
   return false;
 } 
 //-->
