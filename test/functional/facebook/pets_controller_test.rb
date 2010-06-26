@@ -40,12 +40,12 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_template 'new'
     assert assigns(:pet)
     assert assigns(:breeds)
-    assert_tag :tag => "form", :descendant => { 
-      :tag => "input", :attributes => { :name => "pet[breed_id]", :type => "hidden" },
-      :tag => "div", :attributes => { :class => "breed-picker" },
-      :tag => "table", :attributes => { :class => "breed-details" },
-      :tag => "input", :attributes => { :type => "submit" }
-    }
+    assert_tag :tag => "table", :attributes => { :class => "breed-details" }
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :name => "pet[breed_id]", :type => "hidden" }}
+    assert_tag :tag => "form", :descendant => { :tag => "div", :attributes => { :class => "breed-picker" }}
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" }}
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "hidden", :id => "pet_breed_id" }}
+    assert_tag :tag => "img", :attributes => { :id => "breed-details-image" }
   end
   
   def test_create_pet

@@ -1,4 +1,5 @@
 <fb:editor-custom>
+<%= form.hidden_field :breed_id, {:value => (@breed ? @breed.id : ''), :id => 'pet_breed_id'} %>
 <div class='breed-picker'>
 <% cell_table(@breeds) do |b,idx| %>
   <td onclick="return breedSelected(<%="#{idx},'#{b.slug}'"%>);" class="radio-cell avatar-bg-<%=b.slug %>" id="breed-<%=idx%>">
