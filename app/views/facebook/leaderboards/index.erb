@@ -15,7 +15,8 @@
 	  <% if leaderboard.rankings.first.blank? %>
 	    <tr><td colspan="6" class="em empty">No ranked leaderboards</td></tr>
 	  <% else %>
-	  <% leaderboard.rankings.first.ranks.each do |r| %>
+	    <table width="100%">
+	    <% leaderboard.rankings.first.ranks.each do |r| %>
 	    <tr class="ranking">
 		  <% if leaderboard.rankable_type == 'Pet' %>	
 		    <tr>
@@ -34,8 +35,9 @@
 		  	<%= (leaderboard.awards.size > r.rank) ? leaderboard.awards[r].description : "--" %>
 		  </td>
 	    </tr>
+	    <% end %>
+	    </table>
 	  <% end %>
-	<% end %>
 	</div>
   </td>
 <% end %>
