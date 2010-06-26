@@ -4,18 +4,20 @@
   <td>
     <div class="box half">
       <h3><%= leaderboard.name %></h3>
-	  <% if leaderboard.rankable_type == 'Pet' %>	
-	    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Level</th><th>Battle Record</th><th>Joined</th><th>Award</th></tr>
-	  <% elsif leaderboard.rankable_type == 'Shop' %>	
-	    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Specialty</th><th>Opened</th><th>Award</th></tr>
-	  <% elsif leaderboard.rankable_type == 'Pack' %>
-	    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Leader</th><th>Members</th><th>Founded</th><th>Award</th></tr>
-	  <% end %>
 		
 	  <% if leaderboard.rankings.first.blank? %>
 	    <tr><td colspan="6" class="em empty">No ranked leaderboards</td></tr>
 	  <% else %>
 	    <table width="100%">
+		<tr>
+		  <% if leaderboard.rankable_type == 'Pet' %>	
+		    <th>&nbsp;</th><th>Rank</th><th>Name</th><th>Level</th><th>Battle Record</th><th>Joined</th><th>Award</th>
+		  <% elsif leaderboard.rankable_type == 'Shop' %>	
+		    <th>&nbsp;</th><th>Rank</th><th>Name</th><th>Specialty</th><th>Opened</th><th>Award</th>
+		  <% elsif leaderboard.rankable_type == 'Pack' %>
+		    <th>&nbsp;</th><th>Rank</th><th>Name</th><th>Leader</th><th>Members</th><th>Founded</th><th>Award</th>
+		  <% end %>
+		</tr>
 	    <% leaderboard.rankings.first.ranks.each do |r| %>
 	    <tr class="ranking">
 		  <% if leaderboard.rankable_type == 'Pet' %>	
