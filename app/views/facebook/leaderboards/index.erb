@@ -34,7 +34,7 @@
 		    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Leader</th><th>Members</th><th>Founded</th><th>Award</th></tr>
 		  <% end %>	
 		  <td>
-		  	<%= (leaderboard.awards.size > r.rank) ? leaderboard.awards[r].description : "--" %>
+		  	<%= (leaderboard.awards.size > r.rank) ? leaderboard.awards[r.rank-1].description : "--" %>
 		  </td>
 	    </tr>
 	    <% end %>

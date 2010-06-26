@@ -10,6 +10,7 @@
 <div class="box">
   <h4 class="right">Specialty: <%= @shop.specialty%></h4>
   <h3><%= @shop.name %></h3>
+  <p class="em">Open for business for <%= "#{time_ago_in_words(@shop.created_at)}" %></p>
   <% form_for @shop, :url => facebook_nested_url(facebook_shop_path(@shop)), :html => {:id => 'shop-form'} do |f| %>
     <p>
       <p>

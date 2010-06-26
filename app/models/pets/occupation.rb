@@ -84,6 +84,15 @@ class Occupation < ActiveRecord::Base
     return success
   end
   
+  def forage_item(pet,item=nil)
+    success = Item.forages?(pet)
+    item = Item.forageable.find_random_item(pet,item) if success
+    item = item.first if success && item.is_a?(Array)
+    success = pet.belongings.create(:item => item, :source => 'scavenged') if success
+    ActivityStream.log! 'items', 'scavenging', pet, item if success
+    return success
+  end
+  
   def exhaust(pet)
     pet.update_attribute(:current_endurance, [pet.current_endurance - cost, 0].max)
   end
