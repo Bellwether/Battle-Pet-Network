@@ -73,7 +73,7 @@ class Facebook::PetsController < Facebook::FacebookController
   def retire
     current_user_pet.retire!
     flash[:notice] = "All good things must come to an end. You've retired your dear pet."
-    redirect_to new_facebook_pet_path
+    facebook_redirect_to new_facebook_pet_path
   end
   
 protected

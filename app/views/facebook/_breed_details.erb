@@ -1,7 +1,7 @@
 <table class='breed-details'>
   <tbody>
 	  <tr><td rowspan="9">
-		<div id="breed-details-image" class="<%="avatar-#{breed.slug}-mid" unless breed.blank? %>"></div>
+		<img id="breed-details-image" src="<%= "/images/pets/cats/medium/#{breed.slug}.png" unless breed.blank? %>"></div>
 	  </td></tr>
 	  <%= breed_details_row 'Name', breed, :name %>
 	  <%= breed_details_row 'Health', breed, :health %>
