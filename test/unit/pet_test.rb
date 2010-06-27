@@ -13,7 +13,7 @@ class PetTest < ActiveSupport::TestCase
     assert @new_pet.save
     assert_not_nil @new_pet.slug
   end
-
+  
   def test_set_occupation
     assert @new_pet.save
     assert_not_nil @new_pet.reload.occupation
@@ -23,11 +23,11 @@ class PetTest < ActiveSupport::TestCase
     assert @new_pet.save
     assert_equal @new_pet.id, @user.reload.pet_id
   end
-
+  
   def test_populate_from_breed
     breed = breeds(:persian)
     @new_pet.populate_from_breed
-
+  
     assert_equal breed.health, @new_pet.health
     assert_equal breed.endurance, @new_pet.endurance
     assert_equal breed.power, @new_pet.power
@@ -67,61 +67,62 @@ class PetTest < ActiveSupport::TestCase
     assert @new_pet.save
     assert_equal 1, @new_pet.level_rank_count
     assert_not_nil @new_pet.level_id
+    assert_equal @new_pet.breed.levels.first, @new_pet.level
   end
   
   def test_award_experience
-    exp = 10
-    assert_difference 'Pet.find(@pet).experience', +exp do
-      @pet.award_experience!(exp)
-    end
-  end
+     exp = 10
+     assert_difference 'Pet.find(@pet).experience', +exp do
+       @pet.award_experience!(exp)
+     end
+   end
+   
+   def test_slave_earnings
+     Tame.destroy_all
+     pet = pets(:persian)
+     sarah = humans(:sarah)
+     ichabod = humans(:ichabod)
+     pet.tames.create(:human => sarah, :status => 'enslaved')
+     pet.tames.create(:human => ichabod, :status => 'enslaved')
+     expected = (sarah.power + ichabod.power) * AppConfig.humans.slavery_earnings_multiplier
+     assert_equal expected, pet.slave_earnings
+     Tame.destroy_all
+     assert_equal 0, pet.slave_earnings
+   end
   
-  def test_slave_earnings
-    Tame.destroy_all
-    pet = pets(:persian)
-    sarah = humans(:sarah)
-    ichabod = humans(:ichabod)
-    pet.tames.create(:human => sarah, :status => 'enslaved')
-    pet.tames.create(:human => ichabod, :status => 'enslaved')
-    expected = (sarah.power + ichabod.power) * AppConfig.humans.slavery_earnings_multiplier
-    assert_equal expected, pet.slave_earnings
-    Tame.destroy_all
-    assert_equal 0, pet.slave_earnings
-  end
-
-  def test_recover
-    Pet.connection.execute( "UPDATE pets SET current_endurance = 5, current_health = 1 " )
-    Pet.recover!
-    Pet.all.each do |p|
-      assert_equal p.current_endurance, 5 + p.fortitude
-      assert_equal p.current_health, p.health
-    end
-  end
-  
-  def test_last_seen
-    new_pet = Pet.new
-    assert_nil new_pet.last_seen
-    timestamp = Time.now
-    @pet.user.update_attribute(:current_login_at,timestamp)
-    assert_equal timestamp, @pet.last_seen
-  end
-  
-  def test_favorite_actions
-    @pet.favorite_action = @pet.breed.favorite_action
-    assert_equal "constantly #{@pet.favorite_action.name}", @pet.favorite_actions
-    @pet.favorite_action = nil
-    assert_equal "#{@pet.breed.favorite_action.name}", @pet.favorite_actions
-    @pet.favorite_action = actions(:leap)
-    assert_equal "#{@pet.breed.favorite_action.name} and #{actions(:leap).name}", @pet.favorite_actions
-  end
-  
-  def test_battle_record
-    assert @pet.battle_record.match /\d\/\d\/\d/
-  end
-  
-  def test_retire
-    assert @pet.retire!
-    assert_equal "retired", @pet.status
-    assert_nil @pet.user.pet
-  end
+   def test_recover
+     Pet.connection.execute( "UPDATE pets SET current_endurance = 5, current_health = 1 " )
+     Pet.recover!
+     Pet.all.each do |p|
+       assert_equal p.current_endurance, 5 + p.fortitude
+       assert_equal p.current_health, p.health
+     end
+   end
+   
+   def test_last_seen
+     new_pet = Pet.new
+     assert_nil new_pet.last_seen
+     timestamp = Time.now
+     @pet.user.update_attribute(:current_login_at,timestamp)
+     assert_equal timestamp, @pet.last_seen
+   end
+   
+   def test_favorite_actions
+     @pet.favorite_action = @pet.breed.favorite_action
+     assert_equal "constantly #{@pet.favorite_action.name}", @pet.favorite_actions
+     @pet.favorite_action = nil
+     assert_equal "#{@pet.breed.favorite_action.name}", @pet.favorite_actions
+     @pet.favorite_action = actions(:leap)
+     assert_equal "#{@pet.breed.favorite_action.name} and #{actions(:leap).name}", @pet.favorite_actions
+   end
+   
+   def test_battle_record
+     assert @pet.battle_record.match /\d\/\d\/\d/
+   end
+   
+   def test_retire
+     assert @pet.retire!
+     assert_equal "retired", @pet.status
+     assert_nil @pet.user.pet
+   end
 end

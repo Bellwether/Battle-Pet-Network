@@ -233,8 +233,8 @@ class Pet < ActiveRecord::Base
   end
   
   def set_level
-    return if breed.blank?
-    self.level_id = breed.levels.ranked(1).id
+    return if breed_id.blank?
+    self.level_id = breed.levels.first.id
   end
   
   def set_user
