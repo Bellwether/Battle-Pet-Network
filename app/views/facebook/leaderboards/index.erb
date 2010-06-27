@@ -35,6 +35,7 @@
 			<td><%= avatar_image(r.rankable.standard,'tiny') %></td>
 	        <td><%= r.rank %></td>
 			<td><%= facebook_link_to r.rankable.name, facebook_pack_path(r.rankable) %></td>
+			<td><%= facebook_link_to r.rankable.leader.name, facebook_pet_path(r.rankable.leader) %></td>
 			<td><%= r.rankable.pack_members_count %></td>
 		  <% end %>		
 		  <td><%= "#{time_ago_in_words(r.rankable.created_at)} ago" %></td>
