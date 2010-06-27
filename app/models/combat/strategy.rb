@@ -10,7 +10,8 @@ class Strategy < ActiveRecord::Base
   validates_inclusion_of :combatant_type, :in => %w(Pet Sentient)
   validates_inclusion_of :status, :in => %w(active used)
   
-  before_validation_on_create :set_name, :set_ranks
+  before_validation_on_create :set_name
+  before_validation_on_create :set_ranks
   
   named_scope :active, :conditions => ["strategies.status = 'active'"]
   
@@ -60,6 +61,8 @@ class Strategy < ActiveRecord::Base
   end  
   
   def set_name
+    return unless name.blank?
+    
     self.name = maneuvers.blank? ? "" : maneuvers.map(&:action).map(&:power).join('-')
     
     name_part = combatant.respond_to?(:name) ? combatant.name[0, [3, combatant.name.size].min ] : "ANON"

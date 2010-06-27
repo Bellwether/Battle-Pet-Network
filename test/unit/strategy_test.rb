@@ -17,10 +17,18 @@ class StrategyTest < ActiveSupport::TestCase
     assert invalid.errors.on(:maneuvers)
   end
   
-  def test_set_name
+  def test_set_name_automatically
     assert_nil @new_strategy.name
     @new_strategy.save
     assert_not_nil @new_strategy.name
+    assert @new_strategy.name.match /[a-z]{3}(-\d)+?$/
+  end
+  
+  def test_set_name_for_given
+    given = "1234testing"
+    @new_strategy.name = given
+    @new_strategy.save
+    assert_equal given, @new_strategy.name
   end
   
   def test_average_power

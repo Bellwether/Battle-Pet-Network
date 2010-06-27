@@ -75,6 +75,6 @@ class Hunt < ActiveRecord::Base
   end
   
   def log_hunt
-    ActivityStream.log! 'hunting','hunted', hunter, sentient, self
+    ActivityStream.log! 'hunting','hunted', hunter.pet, sentient, self
   end
 end
