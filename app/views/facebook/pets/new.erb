@@ -1,11 +1,10 @@
 <% content_for :page_title do %><h2>Befriend Your Pet</h2><% end %>
 	
 <div class="box full">
-  <p>Befriending a pet is easy, just: (1) type your pet's name, and (2) choose a breed.</p> 
   <p class="em">While your pet starts with the archetypal abilities, strengths, and weaknesses of their breed, but they'll quickly grow as you customize them through further play.</p>
 </div>
 
-<div class="sidebox half right">
+<div class="sidebox half" style="position:absolute;right:0;">
   <%= render_breed_details @breed %>	
 </div>
 
@@ -13,7 +12,8 @@
   <% form_for @pet, :url => facebook_nested_url(facebook_pets_path) do |f| %>
   <%= f.hidden_field :breed_id %>
 
-  <table class='form'>
+  <p>Befriending a pet is easy, just: (1) type your pet's name, and (2) choose a breed.</p>
+  <table class='form' width="100%" cellpadding="5">
     <tbody>
     <tr>
 	  <td><%= f.label :name, 'Name' %></td>
