@@ -51,7 +51,7 @@ class Shop < ActiveRecord::Base
   end
   
   def max_inventory
-    pet ? pet.intelligence : 0
+    pet ? pet.total_intelligence : 0
   end
   
   def last_restock

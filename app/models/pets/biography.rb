@@ -12,7 +12,7 @@ class Biography < ActiveRecord::Base
   ZODIAC = ['Mouser','Arch','Mittens','Crook-Tail','Night-Eyes']
   GENDERS = ['Tom', 'Queen']
   PASTIMES = ['Cuddling','Eating','Exploring','Hunting','Playing','Sleeping','Grooming','Storytelling']
-  COMPOSERS = ['J.S. Bach','Mozart','Saint-Saens','Wagner','Mussorgsky','Tchaikovsky','Beethoven','Rachmaninoff','Vivaldi']
+  COMPOSERS = ['J.S. Bach','Mozart','Saint-Saens','Wagner','Mussorgsky','Tchaikovsky','Beethoven','Rachmaninoff','Vivaldi','Schumann','Berlioz']
   PHILOSOPHERS = ['Descartes','Hobbes','Hume','Plato','Spinoza']
 
   validates_presence_of :pet_id,:temperament,:lifestyle,:gender,:favorite_color,:favorite_food,:favorite_pastime,

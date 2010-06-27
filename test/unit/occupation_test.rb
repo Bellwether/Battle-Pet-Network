@@ -5,8 +5,10 @@ class OccupationTest < ActiveSupport::TestCase
     @pet = pets(:siamese)
     @human = humans(:oscar)
     @item = items(:cat_grass)
+    @toy = items(:spiked_yarn_ball)
     @taming = occupations(:taming)
     @scavenging = occupations(:scavenging)
+    @foraging = occupations(:foraging)
   end
   
   def test_tame_human
@@ -18,10 +20,18 @@ class OccupationTest < ActiveSupport::TestCase
       @taming.tame_human(@pet)
     end
   end
+
+  def test_forage_item
+    flexmock(Item).should_receive(:forages?).and_return(true)
+    flexmock(Item).should_receive(:find_random_item).and_return(@item)
+    assert_difference '@pet.belongings.count', +1 do
+      @foraging.forage_item(@pet)
+    end
+  end
   
   def test_scavenge_item
     flexmock(Item).should_receive(:scavenges?).and_return(true)
-    flexmock(Item).should_receive(:find_random_item).and_return(@item)
+    flexmock(Item).should_receive(:find_random_item).and_return(@toy)
     assert_difference '@pet.belongings.count', +1 do
       @scavenging.scavenge_item(@pet)
     end

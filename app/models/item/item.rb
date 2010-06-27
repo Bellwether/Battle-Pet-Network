@@ -52,7 +52,14 @@ class Item < ActiveRecord::Base
       chance = (pet.total_intelligence.to_f) / div
       val = 1 + rand(100)
       return val <= chance
-    end    
+    end 
+
+    def forages?(pet)
+      div = AppConfig.occupations.forage_chance_divisor.to_f
+      chance = (pet.total_intelligence.to_f) / div
+      val = 1 + rand(100)
+      return val <= chance
+    end   
   end  
   
   def slug

@@ -26,7 +26,8 @@ merchant:
   paypal:
     notification_url: 
 occupations:
-  scavenge_chance_divisor: 2   
+  scavenge_chance_divisor: 2 
+  forage_chance_divisor: 1
   find_human_chance_divisor: 5 
   tame_human_chance_divisor: 1
 leaderboards:

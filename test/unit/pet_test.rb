@@ -125,4 +125,13 @@ class PetTest < ActiveSupport::TestCase
      assert_equal "retired", @pet.status
      assert_nil @pet.user.pet
    end
+   
+   def test_set_actions
+     assert @new_pet.save!
+     assert_operator @new_pet.actions.size, ">", 0
+     assert_equal @new_pet.actions.size, @new_pet.breed.species.actions.size
+     @new_pet.breed.species.actions.each do |a|
+       assert @new_pet.actions.include?(a)
+     end
+   end
 end

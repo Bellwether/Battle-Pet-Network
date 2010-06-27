@@ -126,9 +126,21 @@ lost_caviar:
   required_rank: 2
   cost: 20
   rarity: 35
-  stock: 25
-  stock_cap: 25
+  stock: 15
+  stock_cap: 15
   restock_rate: 5 
+  
+chedder_wedge:
+  name: Chedder Wedge
+  description: Hardened by years of war, this chedder is remarkably tough and strong, thick with protein and a radiant coat of wax. 
+  item_type: Food
+  power: 50
+  required_rank: 2
+  cost: 15
+  rarity: 30
+  stock: 15
+  stock_cap: 15
+  restock_rate: 5
   
 leviathon_salmon:
   name: Leviathon Salmon
@@ -227,7 +239,7 @@ fiberboard_pillar:
     
 sisal_mast:    
   name: Sisal Mast
-  description: An imposing tower of sisal fibre engirthed with coarse rope and 
+  description: An imposing tower of sisal fibre engirthed with coarse rope, rat tail totems, and "cat's cradle" string webs.
   item_type: Standard
   power: 3
   required_rank: 3
@@ -239,6 +251,7 @@ sisal_mast:
   
 hunting_claws:
   name: Hunting Claws
+  description: Light and swift, these weapons serve the hunter's murderous purpose with the ceremonious efficiency of a slit throat.
   item_type: Weapon
   power: 1
   required_rank: 3
@@ -263,7 +276,7 @@ sabre_claws:
 catamount_claws:
   species: cat
   name: Catamount Claws
-  description: The murder weapon of choice of all serious predators.
+  description: The murder weapon of choice of all serious predators, "overkill" is the operative word of nature's most gruesume meat knifes.
   item_type: Weapon
   power: 4
   required_rank: 7
@@ -331,9 +344,20 @@ spiked_yarn_ball:
     
 kibble_pack:
   name: Kibble Pack
+  description: A plastic, heat-sealed package, this item contains 1000 pieces of kibble.
   item_type: Kibble
   premium: true
   power: 1000
   required_rank: 0
   cost: 1
+  rarity: 0
+
+kibble_box:
+  name: Kibble Box
+  description: A thick colorful box filled with 5000 kibble, these heavy containers are opened only with difficulty.
+  item_type: Kibble
+  premium: true
+  power: 5000
+  required_rank: 0
+  cost: 2
   rarity: 0

@@ -1,13 +1,6 @@
 require 'test_helper'
 
 class AwardTest < ActiveSupport::TestCase
-  def setup
-    @pet = pets(:siamese)
-    @pack = packs(:alpha)
-    @shop = shops(:first)
-    @rankables = [@pet,@pack,@shop]
-  end
-  
   def test_description
     Award::AWARD_TYPES.each do |t|
       award = Award.find_by_award_type(t)
@@ -17,6 +10,10 @@ class AwardTest < ActiveSupport::TestCase
   end
   
   def test_award_rankable
+    @pet = pets(:siamese)
+    @pack = packs(:alpha)
+    @shop = shops(:first)
+    @rankables = [@pet,@pack,@shop]
     Award::AWARD_TYPES.each do |t|
       award = Award.find_by_award_type(t)
       next unless award

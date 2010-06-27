@@ -12,7 +12,7 @@
 ActiveRecord::Schema.define(:version => 20100124124827) do
 
   create_table "actions", :force => true do |t|
-    t.integer "breed_id",                   :null => false
+    t.integer "species_id",                 :null => false
     t.string  "name",        :limit => 32,  :null => false
     t.string  "action_type", :limit => 32,  :null => false
     t.string  "verb",        :limit => 128
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   end
 
   add_index "actions", ["action_type"], :name => "index_actions_on_action_type"
-  add_index "actions", ["breed_id", "action_type"], :name => "index_actions_on_breed_id_and_action_type"
+  add_index "actions", ["species_id", "action_type"], :name => "index_actions_on_species_id_and_action_type"
 
   create_table "actions_breeds", :id => false, :force => true do |t|
     t.integer "action_id", :null => false

@@ -66,6 +66,14 @@ class ItemTest < ActiveSupport::TestCase
     assert !Item.scavenges?(@pet)
   end
 
+  def test_forages
+    chance = @pet.total_intelligence.to_f
+    AppConfig.occupations.forage_chance_divisor = chance / 1000
+    assert Item.forages?(@pet)
+    AppConfig.occupations.forage_chance_divisor = chance * 1000
+    assert !Item.forages?(@pet)
+  end
+
   def test_restock
     Item.all.each do |item|
       next if item.stock_cap < 1

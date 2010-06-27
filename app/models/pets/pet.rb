@@ -61,7 +61,8 @@ class Pet < ActiveRecord::Base
   validates_inclusion_of :status, :in => %w(active retired)
   
   before_validation_on_create :populate_from_breed, :set_slug, :set_level
-  after_create :set_user, :set_actions
+  after_create :set_user
+  after_create :set_actions
 
   named_scope :active, :conditions => "status = 'active'"
   named_scope :scavenging, :conditions => "occupations.name = 'Scavenging'", :include => [:occupation]
@@ -242,7 +243,7 @@ class Pet < ActiveRecord::Base
   end
   
   def set_actions
-    breed.actions.each do |action|
+    breed.species.actions.each do |action|
       self.actions << action
     end
   end
