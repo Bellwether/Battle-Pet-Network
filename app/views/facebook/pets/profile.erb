@@ -131,7 +131,7 @@
 	<% if @pet.occupation.cost > 0 && @pet.occupation.pet_can?(@pet) %>
 	  <% form_for @pet, 
 		  :url => facebook_nested_url(attempt_facebook_occupation_path(@pet.occupation)), 
-		  :html => { :method => :post} do |f| %>
+		  :html => { :method => :put} do |f| %>
         <td class="tright"><br /><%= submit_tag "Do Now for #{@pet.occupation.cost} endurance" %></td>
 	  <% end %>
 	<% end %>

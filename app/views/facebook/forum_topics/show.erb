@@ -11,7 +11,10 @@
   <% @posts.each do |p| %>	
     <tr class="post">
 	  <td>
-		<p class="strong"><%= p.user.username %></p>
+		<p>
+		  <div class="strong"><%= p.user.username %></div>
+		  <span class="em"><%= "joined #{time_ago_in_words(p.user.created_at)} ago" %></span>
+		</p>
 		<p>
 		  <% if p.user.pet %>	
 		    <div class="left"><%= avatar_image(p.user.pet,'small') %></div>

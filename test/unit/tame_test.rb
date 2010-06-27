@@ -28,10 +28,12 @@ class TameTest < ActiveSupport::TestCase
   
   def test_releases
     release_award = @tamed.human.power * AppConfig.humans.release_multiplier
-    assert_difference '@pet.reload.kibble', +release_award do 
-      assert_difference ['@pet.tames.count','Tame.count'], -1 do
-        @pet.tames.kenneled.release(@tamed.id)
-      end    
+    assert_difference 'ActivityStream.count', +1 do
+      assert_difference '@pet.reload.kibble', +release_award do 
+        assert_difference ['@pet.tames.count','Tame.count'], -1 do
+          @pet.tames.kenneled.release(@tamed.id)
+        end    
+      end
     end
     assert_nil Tame.find_by_id(@tamed.id)
   end

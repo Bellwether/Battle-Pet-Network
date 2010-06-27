@@ -354,6 +354,18 @@ catnip_orb:
   stock: 5
   stock_cap: 5
   restock_rate: 1
+  
+feather_boa_flail: 
+  name: Feather Boa Flail
+  description: These thrashing curls of feather coils ensnare a pet many times over, putting their best grabbling and contortionist work to test by feats of rabid acrobatics.
+  item_type: Toy
+  power: 35
+  required_rank: 2
+  cost: 400
+  rarity: 50
+  stock: 4
+  stock_cap: 4
+  restock_rate: 1 
     
 kibble_pack:
   name: Kibble Pack

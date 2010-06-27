@@ -81,6 +81,8 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} discovered the human called #{object_name}, but could not tame them."
             when 'tame'
               "#{actor_name} discovered the human called #{object_name} and tamed them."
+            when 'release'
+              "#{actor_name} released their human #{object_name} and returned them to the freedom of the wild"
             when 'murder'
               "#{actor_name}'s kenneled humans grew violent, and #{indirect_object_name} killed #{object_name}."
             when 'scavenged'

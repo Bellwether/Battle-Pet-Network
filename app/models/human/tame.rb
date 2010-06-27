@@ -14,11 +14,13 @@ class Tame < ActiveRecord::Base
       tame = find(id)
       release_award = tame.human.power * AppConfig.humans.release_multiplier
       tame.pet.update_attribute(:kibble, tame.pet.kibble + release_award)
+      ActivityStream.log! 'humans', 'release', tame.pet, tame.human
       Tame.delete(id)
     end
     
     def enslave(id)
-      find(id).update_attribute(:status, 'enslaved')
+      tame = find(id)
+      tame.update_attribute(:status, 'enslaved')
     end    
   end
   
