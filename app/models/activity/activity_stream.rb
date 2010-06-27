@@ -92,6 +92,10 @@ class ActivityStream < ActiveRecord::Base
               "#{actor_name} was out scavenging when they discovered a #{object_name}."
             when 'scavenged'
               "#{actor_name} went scavenging and discovered a #{object_name}."
+            when 'foraging'
+              "#{actor_name} was out foraging when they discovered a #{object_name}."
+            when 'foraged'
+              "#{actor_name} went foraging and discovered a #{object_name}."
           end
         when 'hunting'
           case namespace
