@@ -3,16 +3,13 @@ class Award < ActiveRecord::Base
   
   AWARD_TYPES = %w(kibble item)
   
-  attr_accessor :rankable  
-  
   validates_inclusion_of :award_type, :in => AWARD_TYPES
     
   def award_rankable(rankable)
-    @rankable = rankable
     if award_type == 'kibble'
-      award_kibble
+      award_kibble(rankable)
     elsif award_type == 'item'
-      award_item
+      award_item(rankable)
     end
   end
   
@@ -25,15 +22,16 @@ class Award < ActiveRecord::Base
   
 protected  
   
-  def award_kibble
-    if @rankable.respond_to?(:kibble)
-      @rankable.update_attribute(:kibble, [@rankable.kibble + prize.to_i, 0].max)
-    elsif @rankable.respond_to?(:pet)
-      @rankable.pet.update_attribute(:kibble, [@rankable.pet.kibble + prize.to_i, 0].max)
+  def award_kibble(rankable)
+    rankable.reload if rankable.readonly?
+    if rankable.respond_to?(:kibble)
+      rankable.update_attribute(:kibble, [rankable.kibble + prize.to_i, 0].max)
+    elsif rankable.respond_to?(:pet)
+      rankable.pet.update_attribute(:kibble, [rankable.pet.kibble + prize.to_i, 0].max)
     end
   end
   
-  def award_item
+  def award_item(rankable)
     true
   end
 end
