@@ -7,7 +7,7 @@ module Facebook::FacebookHelper
     else
       if type.to_s == 'error'
         return flash[type].blank? ? "" : fb_error(flash[:error], flash[:error_message])
-      elsif type.to_s == 'notice'
+      elsif type.to_s == 'notice' || type.to_s == 'success'
         return flash[type].blank? ? "" : fb_success(flash[:notice], flash[:notice_message])
       else
         return flash[type].blank? ? "" : fb_explanation(flash[type])

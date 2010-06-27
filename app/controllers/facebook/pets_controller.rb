@@ -42,7 +42,7 @@ class Facebook::PetsController < Facebook::FacebookController
     
     if @pet.save
       flash[:success] = "Pet befriended!"
-      facebook_redirect_to home_facebook_pets_path
+      facebook_redirect_to profile_facebook_pet_path
     else
       flash[:error] = "Couldn't befriend pet! :("
       flash[:error_message] = @pet.errors.full_messages.join(', ')
