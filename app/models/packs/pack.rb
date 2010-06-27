@@ -3,7 +3,7 @@ class Pack < ActiveRecord::Base
 
   belongs_to :founder, :class_name => "Pet"
   belongs_to :leader, :class_name => "Pet"
-  belongs_to :standard, :class_name => "Item", :select => 'id, name, description, power, required_rank'
+  belongs_to :standard, :class_name => "Item", :select => 'id, name, description, power, required_rank, item_type'
   
   has_many :pack_members, :order => 'pack_members.position, pack_members.created_at', :include => {:pet => [:breed]}
   has_many :pets, :through => :pack_members
