@@ -1,5 +1,20 @@
 <% content_for :page_title do %><h2>Welcome to <%=AppConfig.name%></h2><% end %>
 
+<div class="sidebox slim right">
+  <div class="box slim">	
+    <h4>World Activity</h4>
+    <% if @world_activity.blank? %>
+      <p class="em">No recent activity...</p>
+    <% else %>
+      <ul width="100%" id="world-activity" class="activity-stream">
+		<% @world_activity.each do |a| %>
+		  <li class="activity"><%= a.activity_data[:description]%></li>
+		<% end %>
+	  </ul>
+    <% end %>
+  </div>
+</div>
+
 <% unless registered? %>
 <div class="box">
   <h3>Get a Pet and Start Playing</h3>

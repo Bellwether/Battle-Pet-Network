@@ -27,8 +27,8 @@ class Tame < ActiveRecord::Base
   class << self  
     def pet_tames_human?(pet,human)
       div = AppConfig.occupations.tame_human_chance_divisor.to_f
-      change = [(pet.affection + pet.affection_bonus) - human.difficulty, 1].max
-      chance = pet.affection.to_f / div
+      change = [(pet.total_affection) - human.difficulty, 1].max
+      chance = pet.total_affection.to_f / div
       val = 1 + rand(100)
       return val <= chance
     end

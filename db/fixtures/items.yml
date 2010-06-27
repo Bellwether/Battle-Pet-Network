@@ -333,14 +333,27 @@ cordura_collar:
   
 spiked_yarn_ball:
   name: Spiked Yarn Ball
+  description: This otherwise ordinary ponderous ball of yarn has been skewered with sharp spikes, confering a deadly edge to the already considerable martial practice of yarn-play.
   item_type: Toy
-  power: 50
+  power: 20
   required_rank: 1
-  cost: 40
+  cost: 100
   rarity: 35
-  stock: 75
-  stock_cap: 75
-  restock_rate: 5
+  stock: 5
+  stock_cap: 5
+  restock_rate: 2
+
+catnip_orb:
+  name: Catnip Orb
+  description: A woven sack stuffed with pungent catnip and sewn tight until its delerious fumes are whafting free. Playing with this intoxicating orb is not only great fun, but trains pets to better cope with the airborn toxins bequeathed by the works of humans.
+  item_type: Toy
+  power: 20
+  required_rank: 1
+  cost: 150
+  rarity: 35
+  stock: 5
+  stock_cap: 5
+  restock_rate: 1
     
 kibble_pack:
   name: Kibble Pack

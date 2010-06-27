@@ -3,6 +3,7 @@ class Facebook::LobbyController < Facebook::FacebookController
   
   def index
     @pet_activity = ActivityStream.pet_activity
+    @world_activity = ActivityStream.world_activity
   end
   
   def about

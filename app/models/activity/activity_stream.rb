@@ -12,6 +12,7 @@ class ActivityStream < ActiveRecord::Base
   
   SQL_RECENT = "created_at >= DATE_ADD(NOW(), INTERVAL -7 DAY)"
   
+  named_scope :world_activity, :conditions => "category = 'world'", :order => "created_at DESC ", :limit => 12
   named_scope :sentient_activity, :conditions => "category = 'hunting' OR (category = 'world' AND namespace = 'repopulation')"
   named_scope :pet_activity, :conditions => "(category = 'combat' AND namespace = 'battled') OR " <<
                                             "(category = 'humans' AND namespace = 'tame') OR " <<
