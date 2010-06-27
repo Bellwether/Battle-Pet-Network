@@ -2,7 +2,7 @@
   <div class="online-pets">
 	<h6>Online Pets</h6>
 	<ul>
-	<% Pet.online.all.each do |pet| %>
+	<% Pet.active.online.all.each do |pet| %>
 	  <li><%= facebook_link_to pet.name, facebook_pet_path(pet) %></li>
 	<% end %>
 	</ul>

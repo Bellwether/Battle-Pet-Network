@@ -21,21 +21,24 @@
 	    <% leaderboard.rankings.first.ranks.each do |r| %>
 	    <tr class="ranking">
 		  <% if leaderboard.rankable_type == 'Pet' %>	
-		    <tr>
 			<td><%= avatar_image(r.rankable,'tiny') %></td>
 	        <td><%= r.rank %></td>
 			<td><%= facebook_link_to r.rankable.name, facebook_pet_path(r.rankable) %></td>
 			<td><%= r.rankable.level_rank_count %></td>
 			<td><%= r.rankable.battle_record %></td>
-			<td><%= "#{time_ago_in_words(r.rankable.created_at)} ago" %></td>
 		  <% elsif leaderboard.rankable_type == 'Shop' %>	
-		    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Specialty</th><th>Opened</th><th>Award</th></tr>
+			<td>&nbsp;</td>
+	        <td><%= r.rank %></td>
+	        <td><%= r.rankable.specialty %></td>
+			<td><%= facebook_link_to r.rankable.name, facebook_shop_path(r.rankable) %></td>
 		  <% elsif leaderboard.rankable_type == 'Pack' %>
-		    <tr><th>&nbsp;</th><th>Rank</th><th>Name</th><th>Leader</th><th>Members</th><th>Founded</th><th>Award</th></tr>
-		  <% end %>	
-		  <td>
-		  	<%= (leaderboard.awards.size > r.rank) ? leaderboard.awards[r.rank-1].description : "--" %>
-		  </td>
+			<td><%= avatar_image(r.rankable.standard,'tiny') %></td>
+	        <td><%= r.rank %></td>
+			<td><%= facebook_link_to r.rankable.name, facebook_pack_path(r.rankable) %></td>
+			<td><%= r.rankable.pack_members_count %></td>
+		  <% end %>		
+		  <td><%= "#{time_ago_in_words(r.rankable.created_at)} ago" %></td>
+		  <td><%= (leaderboard.awards.size > r.rank) ? leaderboard.awards[r.rank-1].description : "--" %></td>
 	    </tr>
 	    <% end %>
 	    </table>
