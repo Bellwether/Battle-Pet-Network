@@ -1,29 +1,19 @@
-indefatigable_ranking_1:
-  ranking: indefatigable_ranking
-  rankable_type: Pet
-  rankable_id: <%= Fixtures.identify :siamese %>
-  
-indefatigable_ranking_2:
-  ranking: indefatigable_ranking
-  rankable_type: Pet
-  rankable_id: <%= Fixtures.identify :persian %>  
-  
-strongest_ranking_1:
-  ranking: strongest_ranking
+franchises_1:
+  ranking: franchises
+  rankable_type: Shop
+  rankable_id: <%= Fixtures.identify :first %>
+
+strongest_1:
+  ranking: strongest
   rankable_type: Pet
   rankable_id: <%= Fixtures.identify :burmese %>
 
-strongest_ranking_2:
-  ranking: strongest_ranking
+strongest_2:
+  ranking: strongest
   rankable_type: Pet
   rankable_id: <%= Fixtures.identify :persian %>  
 
-strongest_ranking_3:
-  ranking: strongest_ranking
+strongest_3:
+  ranking: strongest
   rankable_type: Pet
-  rankable_id: <%= Fixtures.identify :siamese %>  
-
-overlords_ranking_1:
-  ranking: overlords_ranking
-  rankable_type: Pet
-  rankable_id: <%= Fixtures.identify :persian %>
+  rankable_id: <%= Fixtures.identify :siamese %>

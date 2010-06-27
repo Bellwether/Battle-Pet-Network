@@ -82,6 +82,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'index'
     assert !assigns(:pets).blank?
+    assert assigns(:pets).select {|p| p.status != 'active' }.blank?
     assert_tag :tag => "form", :descendant => {
       :tag => "div", :attributes => { :class => "filters" },
       :tag => "input", :attributes => { :type => "text" }

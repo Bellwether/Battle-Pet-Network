@@ -90,3 +90,26 @@ russian_blue:
     pack: beta
     level: russian_blue_2
     actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+    
+shorthair:
+    breed: shorthair
+    user: five
+    status: retired
+    name: old master
+    current_health: 25
+    current_endurance: 50
+    health: 25
+    endurance: 50
+    fortitude: 7
+    intelligence: 2
+    affection: 2
+    power: 2
+    level_rank_count: 1
+    experience: 39
+    wins_count: 1
+    loses_count: 1
+    draws_count: 1
+    occupation: prowling 
+    level: shorthair_1
+    actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+    slug: short

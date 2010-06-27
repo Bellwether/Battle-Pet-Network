@@ -4,7 +4,7 @@ class Facebook::PetsController < Facebook::FacebookController
   before_filter :ensure_no_pet, :only => [:new,:create]  
   
   def index
-    scope = Pet.include_user
+    scope = Pet.include_user.active
     scope = scope.searching(params[:search]) if params[:search]
     @pets = scope.paginate :page => params[:page]
   end
