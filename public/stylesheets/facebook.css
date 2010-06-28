@@ -3,6 +3,7 @@
 a {outline: none;}
 
 select {max-width:200px;}
+input {max-width:125px;}
 
 h2 {
   font-size: 15px;

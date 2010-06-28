@@ -29,8 +29,8 @@
 		<tr>
 	      <td><%= f.label :zodiac %></td>
 	      <td><%= f.collection_select(:zodiac, Biography::ZODIAC, :to_s, :to_s, {:include_blank => true}) %></td>
-		  <td><%= f.label :birthday %></td>
-		  <td><%= f.date_select :birthday %></td>
+		  <td><%= f.label :favorite_pastime %></td>
+	      <td><%= f.collection_select(:favorite_pastime, Biography::PASTIMES, :to_s, :to_s, {:include_blank => true}) %></td>
 		  <td><%= f.label :siblings, 'Litter Size' %> (<em>1-8</em>)</td>
 		  <td><%= f.text_field :siblings, {:value => @biography.siblings} %></td>
 		</tr>
@@ -43,14 +43,17 @@
 	      <td><%= f.collection_select(:favorite_season, Biography::SEASONS, :to_s, :to_s, {:include_blank => true}) %></td>
 		</tr>
 		<tr>
-	      <td rowspan="2"><%= f.label :description %></td>
-	      <td rowspan="2"><%= text_area(:biography, :description, :size => "20x5")%></td>
+	      <td rowspan="3"><%= f.label :description %></td>
+	      <td rowspan="3" colspan="3"><%= text_area(:biography, :description, :size => "20x5")%></td>
 	      <td><%= f.label :favorite_composer %></td>
 	      <td><%= f.collection_select(:favorite_composer, Biography::COMPOSERS, :to_s, :to_s, {:include_blank => true}) %></td>		  
 		</tr>
 		<tr>
 	      <td><%= f.label :favorite_philosopher %></td>
 	      <td><%= f.collection_select(:favorite_philosopher, Biography::PHILOSOPHERS, :to_s, :to_s, {:include_blank => true}) %></td>
+		<tr>
+		  <td><%= f.label :birthday %></td>
+		  <td><%= f.date_select :birthday %></td>
 		</tr>
 	    <tr>
 		  <td colspan="6">
