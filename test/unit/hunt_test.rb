@@ -64,13 +64,16 @@ class HuntTest < ActiveSupport::TestCase
   def test_depopulate
     mock_combat
     hunt = @sentient.hunts.build(:hunters_attributes => { "0" => {:pet_id => @pet.id }})
-    hunt.hunter.outcome = "lost"
-    assert_no_difference ['@sentient.reload.population'] do
-      hunt.depopulate
-    end
-    hunt.hunter.outcome = "won"
-    assert_difference ['@sentient.reload.population'], -1 do
-      hunt.depopulate
+    assert_no_difference '@sentient.health' do
+      hunt.hunter.outcome = "lost"
+      assert_no_difference ['@sentient.reload.population'] do
+        hunt.depopulate
+      end
+      hunt.hunter.outcome = "won"
+      assert_difference ['@sentient.reload.population'], -1 do
+        hunt.defender.current_health = 0
+        hunt.depopulate
+      end
     end
   end
   
