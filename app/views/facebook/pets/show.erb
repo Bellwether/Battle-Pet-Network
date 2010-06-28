@@ -16,36 +16,29 @@
 	  </td>
 	  <td>Health:</td><td><%=@pet.health%></td>
 	  <td rowspan="6">
-		<table class="right">
-		  <tr><td class="tright">Leaderboard Rank:</td><td></td></tr>
+		<table class="right" width="100%">
 		  <tr>
 			<td class="tright">Total Battles:</td>
-			<td>
+			<td colspan="2">
 			  <span class="left"><%= @pet.battles_count %></span>
 			</td>
 		  </tr>
 		  <tr>
 			<td class="tright">Wins:</td>
-			<td>
-			  <span class="left"><%= @pet.wins_count %></span>
-			  <%= percentage_bar [@pet.wins_count,@pet.battles_count], :width => 75, :fill => true %>
-			</td>
+		    <td width="15"><%= @pet.wins_count %></td>
+			<td><%= percentage_bar [@pet.wins_count,@pet.battles_count], :width => 75, :fill => true %></td>
 		  </tr>
 		  <tr>
 			<td class="tright">Loses:</td>
-			<td>
-			  <span class="left"><%= @pet.loses_count %></span>
-			  <%= percentage_bar [@pet.loses_count,@pet.battles_count], :width => 75, :fill => true %>
-			</td>
+		    <td><%= @pet.loses_count %></td>
+			<td><%= percentage_bar [@pet.loses_count,@pet.battles_count], :width => 75, :fill => true %></td>
 		  </tr>
 		  <tr>
 			<td class="tright">Draws:</td>
-			<td>
-			  <span class="left"><%= @pet.draws_count %></span>
-			  <%= percentage_bar [@pet.draws_count,@pet.battles_count], :width => 75, :fill => true %>
-			</td>
+		    <td><%= @pet.draws_count %></td>
+			<td><%= percentage_bar [@pet.draws_count,@pet.battles_count], :width => 75, :fill => true %></td>
 		  </tr>
-		  <tr><td class="tright">Favorite Actions:</td><td><%= @pet.favorite_actions %></td></tr>
+		  <tr><td class="tright">Favorite Actions:</td><td colspan="2"><%= @pet.favorite_actions %></td></tr>
 		</table>
 	  </td>	
 	</tr>
