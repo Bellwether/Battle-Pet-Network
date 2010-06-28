@@ -65,13 +65,11 @@
 		<%= avatar_image(@pet,'large') %>
 	  </td>
 	  <td>Health:</td><td><%=@pet.health%></td>
-	  <td><%= percentage_bar [@pet.current_health, (@pet.total_health-@pet.current_health) ], :fill=>true, :width=>80 %></td>
-	</tr>
-	<tr>
+	  <td><%= percentage_bar [@pet.current_health, (@pet.total_health-@pet.current_health) ], :fill=>true, :width=>150 %></td>
 	</tr>
 	<tr>
 	  <td>Endurance:</td><td><%= @pet.endurance %></td>
-	  <td><%= percentage_bar [@pet.current_endurance, (@pet.total_endurance-@pet.current_endurance) ], :fill=>true, :width=>80 %></td>
+	  <td><%= percentage_bar [@pet.current_endurance, (@pet.total_endurance-@pet.current_endurance) ], :fill=>true, :width=>150 %></td>
 	</tr>
 	<tr>
 	  <td>Fortitude:</td><td><%= @pet.fortitude %></td>

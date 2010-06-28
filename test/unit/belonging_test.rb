@@ -33,4 +33,28 @@ class BelongingTest < ActiveSupport::TestCase
     assert_equal other_gear, new_gear
     assert_equal "holding", gear.reload.status
   end
+
+  def test_update_bonus_count_column
+    Belonging.destroy_all
+    Item.equipable.all.each do |i|
+      b = @pet.belongings.build(:item => i)
+      col = case i.item_type.downcase
+        when 'weapon'
+          'power'
+        when 'mantle'
+          'health'
+        when 'collar'
+          'defense'
+        when 'sensor'
+          'intelligence'
+      end
+      next unless col
+      assert_difference "b.pet.#{col}_bonus_count", +i.power do
+        b.update_bonus_count_column
+      end 
+      assert_difference "b.pet.#{col}_bonus_count", -i.power do
+        b.update_bonus_count_column(-1)
+      end
+    end
+  end
 end

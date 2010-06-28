@@ -4,7 +4,7 @@ class ProfileCacheColumnsTest < ActiveSupport::TestCase
   def setup
     @pet = pets(:siamese)
     # @cached_attributes = ['affection','intelligence','health','endurance','power','fortitude','affection','experience','shopkeeping']
-    @cached_attributes = ['health','endurance','fortitude','power','affection','experience','defense']
+    @cached_attributes = ['health','endurance','fortitude','power','affection','experience','defense','intelligence']
   end
   
   def test_column_attributes

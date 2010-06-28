@@ -7,8 +7,9 @@ class Belonging < ActiveRecord::Base
   validates_inclusion_of :source, :in => %w(scavenged purchased gift award inventory)
   
   validate :validates_exclusivity
-  after_create :apply
   after_validation :deactivate_other_gear
+  after_create :apply
+  after_create :update_bonus_count_column
   
   named_scope :active, :conditions => "status = 'active'"
   named_scope :holding, :conditions => "status = 'holding'"  
@@ -73,5 +74,19 @@ class Belonging < ActiveRecord::Base
   
   def active?
     status == "active"
+  end
+
+  def update_bonus_count_column(multiply=1)
+    bonus = item.power * multiply
+    case item.item_type.downcase
+      when 'weapon'
+        pet.update_power_bonus_count(bonus)
+      when 'sensor'
+        pet.update_intelligence_bonus_count(bonus)
+      when 'mantle'
+        pet.update_health_bonus_count(bonus)
+      when 'collar'
+        pet.update_defense_bonus_count(bonus)
+    end
   end
 end

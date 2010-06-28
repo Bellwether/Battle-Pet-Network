@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
   has_many :spoils
   has_many :inventories
   has_many :belongings
-
+  
   named_scope :kibble, :conditions => "item_type = 'Kibble'"
   named_scope :premium, :conditions => {:premium => true}
   named_scope :in_stock, :conditions => 'stock > 0'
@@ -28,6 +28,7 @@ class Item < ActiveRecord::Base
   named_scope :random_for_pet, lambda { |pet| 
     { :conditions => ["rarity > 0 AND required_rank <= ?", pet.level_rank_count], :order => "rarity * RAND() DESC", :limit => 1 }
   }
+  named_scope :equipable, :conditions => ["items.item_type IN (?) ", BATTLE_TYPES]
   named_scope :scavengeable, :conditions => ["item_type IN (?)", SCAVENGE_TYPES]
   named_scope :forageable, :conditions => ["item_type IN (?)", FORAGE_TYPES]
     

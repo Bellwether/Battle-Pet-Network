@@ -285,10 +285,24 @@ catamount_claws:
   stock: 3
   stock_cap: 3
   restock_rate: 1
+
+telemetry_whiskers:
+  species: cat
+  name: Telemetry Whiskers
+  description: A bundle of stiff high-frequency whiskers attached to the sides of the face, these sensors serve as the feline's foremost information command center, continually recalculating the surrounding space and evaluating reaction plans.
+  item_type: Sensor
+  power: 1
+  required_rank: 2
+  cost: 2500
+  rarity: 600
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
   
 silver_whiskers:
   species: cat
   name: Silver Whiskers
+  description: These cold, shimmering spindle blades cut through the dark and fog, revealing the subtle secrets of space and tuning into the slightest threat.
   item_type: Sensor
   power: 2
   required_rank: 3
@@ -314,6 +328,7 @@ choke_chain:
   description: A yoke of leather and mail, these collars were once used to discipline pets but are now worn freely as a restyled gothic armor-piece.
   item_type: Collar
   power: 1
+  required_rank: 1
   cost: 2500
   rarity: 500
   stock: 5

@@ -6,8 +6,9 @@ class Tame < ActiveRecord::Base
   @@per_page = 5
     
   validates_inclusion_of :status, :in => %w(kenneled enslaved)
-
   validate :validates_exclusivity, :validates_max_tames
+  
+  after_create :update_bonus_count_column
   
   named_scope :kenneled, :conditions => "tames.status = 'kenneled'" do
     def release(id)
@@ -15,12 +16,14 @@ class Tame < ActiveRecord::Base
       release_award = tame.human.power * AppConfig.humans.release_multiplier
       tame.pet.update_attribute(:kibble, tame.pet.kibble + release_award)
       ActivityStream.log! 'humans', 'release', tame.pet, tame.human
+      tame.update_bonus_count_column(-1)
       Tame.delete(id)
     end
     
     def enslave(id)
       tame = find(id)
       tame.update_attribute(:status, 'enslaved')
+      tame.update_bonus_count_column(-1)
     end    
   end
   
@@ -67,5 +70,17 @@ class Tame < ActiveRecord::Base
     errors.add(:human_id, "human already tamed") if human && 
                                                     pet && 
                                                     pet.tames.kenneled.map(&:human_id).include?(human.id)
+  end
+
+  def update_bonus_count_column(multiply=1)
+    bonus = human.power * multiply
+    case human.human_type.downcase
+      when 'wise'
+        pet.update_intelligence_bonus_count(bonus)
+      when 'fatted'
+        pet.update_health_bonus_count(bonus)
+      when 'friendly'
+        pet.update_affection_bonus_count(bonus)
+    end
   end
 end

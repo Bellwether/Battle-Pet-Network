@@ -65,11 +65,33 @@ class TameTest < ActiveSupport::TestCase
       end    
     end
   end
-
+  
   def test_coexist_peace
     AppConfig.humans.kills_neighbor_modifier = 0
     assert_no_difference '@pet.tames.count' do
       Tame.coexist!(@kenneled)
     end    
+  end
+  
+  def test_update_bonus_count_column
+    Tame.destroy_all
+    Human.all.each do |h|
+      t = @pet.tames.build(:human => h)
+      col = case h.human_type.downcase
+        when 'friendly'
+          'affection'
+        when 'fatted'
+          'health'
+        when 'wise'
+          'intelligence'
+      end
+      next unless col
+      assert_difference "t.pet.#{col}_bonus_count", +h.power do
+        t.update_bonus_count_column
+      end 
+      assert_difference "t.pet.#{col}_bonus_count", -h.power do
+        t.update_bonus_count_column(-1)
+      end
+    end
   end
 end
