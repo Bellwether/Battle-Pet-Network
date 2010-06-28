@@ -126,7 +126,7 @@ class Facebook::PetsControllerTest  < ActionController::TestCase
     assert !assigns(:levels).blank?
     assert !assigns(:resolved).blank?
     assert !assigns(:challenges).blank?
-    assert assigns(:strategies)
+    assert !assigns(:strategies).blank?
     assert assigns(:gear)
     assert_tag :tag => "table", :attributes => { :id => "combat-profile" }
     assert_tag :tag => "table", :attributes => { :class => "records challenges" }

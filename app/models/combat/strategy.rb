@@ -2,7 +2,7 @@ require "#{RAILS_ROOT}/lib/ruby/array"
       
 class Strategy < ActiveRecord::Base
   belongs_to :combatant, :polymorphic => true
-  has_many :maneuvers, :validate => false, :order => 'rank DESC'
+  has_many :maneuvers, :validate => false, :include => :action, :order => 'rank DESC'
   
   accepts_nested_attributes_for :maneuvers, :allow_destroy => false
 
@@ -14,6 +14,7 @@ class Strategy < ActiveRecord::Base
   before_validation_on_create :set_ranks
   
   named_scope :active, :conditions => ["strategies.status = 'active'"]
+  named_scope :include_maneuvers, :include => :maneuvers
   
   def after_initialize(*args)
     self.status ||= 'used'

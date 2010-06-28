@@ -11,7 +11,7 @@ class Facebook::PetsController < Facebook::FacebookController
   
   def combat
     @pet = current_user_pet
-    @strategies = current_user_pet.strategies.active
+    @strategies = current_user_pet.strategies.include_maneuvers.active
     @gear = @pet.belongings.battle_ready
     @levels = @pet.breed.levels
     @challenges = current_user_pet.challenges.issued.defending

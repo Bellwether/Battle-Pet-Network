@@ -14,13 +14,20 @@
 	  <% end %>
 	</p>
 	<% unless @strategies.blank? %>
-	  <table class="strategies">
+	  <table class="strategies" width="100%">
+		<tr><th>Title</th><th>Power</th><th>Delete</th></tr>
 		<% @strategies.each do |strategy| %>
 		  <tr>
-			<td></td>
 			<td><%= strategy.name %></td>
 			<td><%= strategy.average_power %></td>
 			<td><%= facebook_link_to "[delete]", facebook_strategy_path(strategy), :method => :delete %></td>
+		  </tr>
+		  <tr>
+			<td colspan="3">
+			  <% strategy.maneuvers.each do |m| %>
+			    <%= avatar_image(m.action,'tiny') %>
+			  <% end %>
+			</td>
 		  </tr>
 		<% end %>
 	  </table>	
