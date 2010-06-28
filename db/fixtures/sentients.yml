@@ -1,3 +1,20 @@
+dark_vole:
+  sentient_type: threat    
+  name: Dark Vole
+  description: After years of wrestling pets for the trinkets and baubles left by the human empire, the dark vole has evolved into the ultimate
+               stealth advisary. Pitch black and nearly physiologically invisible to animal night vision, these troublesome pits 
+               of shadow strike and steal in the darkness like the sniveling cowards they are.
+  health: 20
+  endurance: 60
+  power: 3
+  intelligence: 3
+  fortitude: 2
+  kibble: 3
+  population: 50
+  repopulation_rate: 10
+  population_cap: 50
+  required_rank: 1
+
 leper_rat:
   sentient_type: threat    
   name: Leper Rat

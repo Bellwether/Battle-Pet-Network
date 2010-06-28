@@ -52,3 +52,33 @@ gila_monstrosity_strategy_slash:
   action: slash
   strategy: gila_monstrosity_strategy
   rank: 2
+
+dark_vole_strategy_claw: 
+    action: claw
+    strategy: dark_vole_strategy
+    rank: 4
+
+dark_vole_strategy_scratch: 
+    action: scratch
+    strategy: dark_vole_strategy
+    rank: 3
+
+dark_vole_strategy_leap: 
+    action: leap
+    strategy: dark_vole_strategy
+    rank: 3
+
+dark_vole_strategy_dodge: 
+    action: dodge
+    strategy: dark_vole_strategy
+    rank: 3
+
+dark_vole_strategy_flank: 
+    action: flank
+    strategy: dark_vole_strategy
+    rank: 1
+
+dark_vole_strategy_bite: 
+    action: bite
+    strategy: dark_vole_strategy
+    rank: 2

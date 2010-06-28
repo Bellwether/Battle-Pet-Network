@@ -18,10 +18,22 @@ class Facebook::BiographiesControllerTest  < ActionController::TestCase
 
     assert_response :success
     assert_template 'new'
-    assert_tag :tag => "form", :descendant => { 
-      :tag => "table", :attributes => { :class => "breed-biography" },
-      :tag => "input", :attributes => { :type => "submit" }
-    }
+    assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "biography" } }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[temperament]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[lifestyle]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[gender]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[favorite_color]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[favorite_food]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[favorite_pastime]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[favorite_season]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[favorite_philosopher]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[favorite_composer]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[pedigree]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[circadian]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[voice]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "select", :attributes => {:name => "biography[zodiac]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => {:name => "biography[description]"} }
+    assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" } }
   end
 
   def test_create

@@ -4,6 +4,12 @@ leper_rat_strategy:
   name: LRS
   status: active
   
+dark_vole_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :dark_vole %>
+  name: DVS
+  status: active
+  
 omega_rat_strategy:
   combatant_type: Sentient
   combatant_id: <%= Fixtures.identify :omega_rat %>
