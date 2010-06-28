@@ -9,7 +9,7 @@
 <div class="box">
   <% form_for @message, :url => facebook_nested_url(facebook_messages_path) do |f| %>	
   <%= f.hidden_field :reply_to_id %>
-  <table class="message">
+  <table class="message" width="100%">
 	<tbody>
 	  <tr>
 	    <td><%= f.label :recipient_name, 'To' %></td>
@@ -27,11 +27,11 @@
 	    <td><%= f.text_field :subject %></td>
 	  </tr>
 	  <tr>	
-        <td rowspan="2"><%= f.label :body %></td>
-        <td rowspan="2"><%= text_area(:message, :body, :size => "50x15")%></td>
+        <td><%= f.label :body %></td>
+        <td><%= text_area(:message, :body, :size => "50x8")%></td>
 	  </tr>
 	  <tr>	
-	    <td rowspan="4">
+	    <td>
 	      <%= f.submit 'Send Message' %> 
 	      <%= facebook_link_to "Nevermind", inbox_facebook_messages_path %>
 	    </td>

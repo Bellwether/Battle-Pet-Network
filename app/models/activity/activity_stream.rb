@@ -1,4 +1,6 @@
 class ActivityStream < ActiveRecord::Base
+  serialize :activity_data
+
   belongs_to :actor, :polymorphic => true
   belongs_to :object, :polymorphic => true
   belongs_to :indirect_object, :polymorphic => true
