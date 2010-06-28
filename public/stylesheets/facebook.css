@@ -125,7 +125,7 @@ a.button:hover{
 }
 
 .sign { display:inline-block; margin:0 5px 5px 0; }
-.sign-button { cursor:pointer; }
+.sign-button { cursor:pointer; margin-right: 10px; }
 
 .maneuver-button {
   height: 30px;

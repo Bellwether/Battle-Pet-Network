@@ -73,7 +73,7 @@
 <% unless @pet.belongings.battle_ready.blank? %>
 <div class="box gear">
   <h4>Battle Gear</h4>
-
+  <p class="em"><%= @pet.name %> is equipped for battle.</p>
   <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
     <td class='battle-gear'>
 	  <%= avatar_image(b.item,'small') %>
@@ -90,11 +90,14 @@
   <div class="box pack">
     <h4>Pack: <%= facebook_link_to @pet.pack.name, facebook_pack_path(@pet.pack) %></h4>
 	<h5><%= @pet.pack.position_for(@pet)%></h5>
-    <table>
+    <table width="100%">
 	  <tr>
 		<td>Founded:</td>
-		<td><%= "#{time_ago_in_words(@pet.pack.created_at)} ago" %></td>
 		<td>
+		  <div>by <%= facebook_link_to @pet.pack.leader.name, facebook_pet_path(@pet.pack.leader) %></div>
+		  <span><%= "#{time_ago_in_words(@pet.pack.created_at)} ago" %></span>
+		</td>
+		<td rowspan="3">
 		  <% cell_table(@pet.pack.pack_members, 4) do |m,idx| %>
 		    <td>
 		      <%= avatar_image(m.pet) %>
