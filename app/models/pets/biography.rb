@@ -8,7 +8,7 @@ class Biography < ActiveRecord::Base
   SEASONS = ['Spring','Summer','Autumn','Winter']
   VOICES = ['Smooth','Galloping','Stentorian','Gentle','Silky','Shrill','Meezer']
   FOODS = ['Fresh Fish','Dairy','Plants','Delicacies','Red Meat','Treats','Pate','Bugs & Grubs']
-  TEMPERAMENTS = ['Aloof','Headstrong','Inquisitive','Mischievous','Neurotic','Paranoid','Somber','Violent']
+  TEMPERAMENTS = ['Aloof','Headstrong','Inquisitive','Mischievous','Neurotic','Paranoid','Somber','Violent','Tranquil']
   ZODIAC = ['Mouser','Arch','Mittens','Crook-Tail','Night-Eyes']
   GENDERS = ['Tom', 'Queen']
   PASTIMES = ['Cuddling','Eating','Exploring','Hunting','Playing','Sleeping','Grooming','Storytelling']
@@ -33,11 +33,27 @@ class Biography < ActiveRecord::Base
   validates_inclusion_of :zodiac, :in => ZODIAC
   validates_uniqueness_of :pet_id
   
+  after_create :reward_pedigree
   after_create :reward_pet
   
   def reward_pet
     pet.kibble = (pet.kibble + AppConfig.awards.biography)
     pet.save
+  end
+  
+  def reward_pedigree
+    case pedigree
+      when 'Thoroughbred'
+        pet.kibble = pet.kibble + 25
+        egg = Item.find_by_name('Tinamou Egg')
+        pet.belongings.build(:item => egg, :source => 'award')
+        pet.belongings.build(:item => egg, :source => 'award')
+      when 'Purebred'
+        pet.kibble = pet.kibble + 75
+      when 'Mongrel'    
+        pet.belongings.build(:item => Item.find_by_name('Soft Beetle'), :source => 'award')
+        pet.experience = pet.experience + 10
+    end
   end
   
   def reward_food

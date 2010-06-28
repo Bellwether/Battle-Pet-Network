@@ -28,7 +28,7 @@
 	
 	<div id="body">
 	  <div id="title"><%= yield :page_title %></div>
-	  <%= render_petless_callout if has_facebook_user? && !has_pet? %>
+	  <%= render_petless_callout if !has_pet? %>
       <%= yield %>
     </div>
 

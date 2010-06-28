@@ -11,7 +11,8 @@ class Inventory < ActiveRecord::Base
   @@per_page = 12
   
   validate :validates_belonging
-  after_create :remove_belonging, :log_stock
+  after_create :remove_belonging
+  after_create :log_stock
   
   named_scope :top, :limit => 15
   

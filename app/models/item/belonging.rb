@@ -9,7 +9,6 @@ class Belonging < ActiveRecord::Base
   validate :validates_exclusivity
   after_validation :deactivate_other_gear
   after_create :apply
-  after_create :update_bonus_count_column
   
   named_scope :active, :conditions => "status = 'active'"
   named_scope :holding, :conditions => "status = 'holding'"  
@@ -56,7 +55,10 @@ class Belonging < ActiveRecord::Base
   def deactivate_other_gear
     if item.gear? && errors.empty? && active?
       other = pet.belongings.active.type_is(item.item_type).first
-      other.update_attribute(:status, "holding") if other
+      if other
+        other.update_attribute(:status, "holding") 
+        other.update_bonus_count_column(-1)
+      end
     end
   end
   
