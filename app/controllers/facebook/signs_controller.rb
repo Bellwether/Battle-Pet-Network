@@ -7,7 +7,7 @@ class Facebook::SignsController < Facebook::FacebookController
     @sign = current_user_pet.signings.build(:recipient_id => params[:pet_id], :sign_type => sign_type)
     
     if @sign.save
-      flash[:notice] = "You #{@sign.verb} #{@sign.recipient.name}."
+      flash[:notice] = "You #{@sign.verb} #{@sign.recipient.name}. #{@sign.effects}"
     else
       flash[:error] = "Couldn't #{@sign.sign_type}! :("
       flash[:error_message] = @sign.errors.full_messages.join(', ')

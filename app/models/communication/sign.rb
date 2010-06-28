@@ -37,6 +37,20 @@ class Sign < ActiveRecord::Base
     end
   end
   
+  def effects
+    return nil unless sender && recipient
+    return case sign_type
+    when 'play'
+      "#{recipient.name} recovered 3 endurance and #{sender.name} spent 3 endurance."
+    when 'hiss'
+      "#{recipient.name} lost 5 endurance and #{sender.name} spent 5 endurance."
+    when 'purr'
+      "#{recipient.name} recovered 1 endurance and #{sender.name} spent 1 endurance."
+    when 'groom'
+      "#{recipient.name} recovered 1 health and #{sender.name} spent 3 endurance."
+    end
+  end
+  
   def verb
     return case sign_type
     when 'play'

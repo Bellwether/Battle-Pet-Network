@@ -44,15 +44,13 @@ class Biography < ActiveRecord::Base
   def reward_pedigree
     case pedigree
       when 'Thoroughbred'
-        pet.kibble = pet.kibble + 25
         egg = Item.find_by_name('Tinamou Egg')
         pet.belongings.build(:item => egg, :source => 'award')
-        pet.belongings.build(:item => egg, :source => 'award')
       when 'Purebred'
-        pet.kibble = pet.kibble + 75
+        pet.kibble = pet.kibble + 50
       when 'Mongrel'    
         pet.belongings.build(:item => Item.find_by_name('Soft Beetle'), :source => 'award')
-        pet.experience = pet.experience + 10
+        pet.experience = pet.experience + 5
     end
   end
   

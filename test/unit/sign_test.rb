@@ -54,6 +54,12 @@ class SignTest < ActiveSupport::TestCase
       assert_not_nil Sign.new(:sign_type => 'purr').verb
     end
   end
+
+  def test_effects
+    Sign::SIGNINGS.each do |s|
+      assert_not_nil Sign.new(:sign_type => 'purr', :sender => Pet.first, :recipient => Pet.last).effects
+    end
+  end
   
   def test_validates_endurance_cost
     @sender.update_attribute(:current_endurance, 0)  

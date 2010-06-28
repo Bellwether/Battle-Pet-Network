@@ -15,7 +15,8 @@ class Facebook::SignsControllerTest  < ActionController::TestCase
     assert_difference ['Sign.count','@sender.signings.count','@recipient.signs.count'], +1 do
       facebook_post :create, :pet_id => @recipient.id, :sign_type => 'purr', :fb_sig_user => @user.facebook_id
       assert_response :success
-      assert flash[:notice]
+      assert !assigns(:sign).blank?
+      assert flash[:notice] && flash[:notice].include?( assigns(:sign).effects )
     end
   end
   
