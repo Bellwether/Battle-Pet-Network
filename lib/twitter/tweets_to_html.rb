@@ -45,17 +45,17 @@ class Twitter::TweetsToHtml
   
   def load_from_filesystem
     if File.exist?(LOCAL_CACHE)
-      last_modified = File.mtime(LOCAL_CACHE)
-      last_download = Time.now - last_modified
-      hours,minutes,seconds,frac = Date.day_fraction_to_time(last_download)
-      if hours > EXPIRATION_IN_HOURS # stale xml
-        return nil
-      else
-        return Hpricot( open( LOCAL_CACHE ) ) 
-      end
+      return cache_expired? ? nil : Hpricot( open( LOCAL_CACHE ) ) 
     else
       return nil
     end
+  end
+  
+  def cache_expired?
+    last_modified = File.mtime(LOCAL_CACHE)
+    last_download_in_ms = Time.now - last_modified
+    last_download_in_hours = ((last_download_in_ms / 100) / 60) / 60
+    return last_download_in_hours > EXPIRATION_IN_HOURS
   end
   
   def load_from_twitter

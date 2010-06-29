@@ -43,6 +43,8 @@ class ActiveSupport::TestCase
   def mock_tweets
     @tweets_xml = fixture_file_upload("files/tweets.xml",'text/xml', false)
     flexmock(Twitter::TweetsToHtml).new_instances.should_receive(:load_xml).and_return(@tweets_xml)
+    flexmock(Twitter::TweetsToHtml).new_instances.should_receive(:load_from_filesystem).and_return(@tweets_xml)
+    flexmock(Twitter::TweetsToHtml).new_instances.should_receive(:load_from_twitter).and_return(@tweets_xml)
   end 
     
   # A convinience wrapper for the native Rails logger
