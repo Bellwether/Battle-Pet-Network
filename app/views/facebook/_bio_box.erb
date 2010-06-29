@@ -7,22 +7,22 @@
 </div>
 <% elsif pet.biography %>
 <div class="box slim biography">
-  <h4>Kennel</h4>
-  <p><strong>Description:<strong><%= pet.biography.description %></p>
-  <div><label>Temperament:</label><strong><%= pet.biography.temperament %></strong></div>
-  <div><label>Lifestyle:</label><strong><%= pet.biography.lifestyle %></strong></div>
-  <div><label>Circadian:</label><strong><%= pet.biography.circadian %></strong></div>
-  <div><label>Gender:</label><strong><%= pet.biography.gender %></strong></div>
-  <div><label>Favorite Color:</label><strong><%= pet.biography.favorite_color %></strong></div>
-  <div><label>Favorite Food:</label><strong><%= pet.biography.favorite_food %></strong></div>
-  <div><label>Favorite Pastime:</label><strong><%= pet.biography.favorite_pastime %></strong></div>
-  <div><label>Favorite Season:</label><strong><%= pet.biography.favorite_season %></strong></div>
-  <div><label>Favorite Composer:</label><strong><%= pet.biography.favorite_composer %></strong></div>
-  <div><label>Favorite Philosopher:</label><strong><%= pet.biography.favorite_philosopher %></strong></div>
-  <div><label>Pedigree:</label><strong><%= pet.biography.pedigree %></strong></div>
-  <div><label>Voice:</label><strong><%= pet.biography.voice %></strong></div>
-  <div><label>Zodiac:</label><strong><%= pet.biography.zodiac %></strong></div>
-  <div><label>Siblings:</label><strong><%= pet.biography.siblings %></strong></div>
-  <div><label>Birthday:</label><strong><%= pet.biography.birthday.strftime("%B %d") %></strong></div>
+  <h4>Biography</h4>
+  <p><span>Description:</span> <strong><%= pet.biography.description %></strong></p>
+  <div><span>Temperament:</span> <strong><%= pet.biography.temperament %></strong></div>
+  <div><span>Lifestyle:</span> <strong><%= pet.biography.lifestyle %></strong></div>
+  <div><span>Circadian:</span> <strong><%= pet.biography.circadian %></strong></div>
+  <div><span>Gender:</span> <strong><%= pet.biography.gender %></strong></div>
+  <div><span>Favorite Color:</span> <strong><%= pet.biography.favorite_color %></strong></div>
+  <div><span>Favorite Food:</span> <strong><%= pet.biography.favorite_food %></strong></div>
+  <div><span>Favorite Pastime:</span> <strong><%= pet.biography.favorite_pastime %></strong></div>
+  <div><span>Favorite Season:</span> <strong><%= pet.biography.favorite_season %></strong></div>
+  <div><span>Favorite Composer:</span> <strong><%= pet.biography.favorite_composer %></strong></div>
+  <div><span>Favorite Philosopher:</span> <strong><%= pet.biography.favorite_philosopher %></strong></div>
+  <div><span>Pedigree:</span> <strong><%= pet.biography.pedigree %></strong></div>
+  <div><span>Voice:</span> <strong><%= pet.biography.voice %></strong></div>
+  <div><span>Zodiac:</span> <strong><%= pet.biography.zodiac %></strong></div>
+  <div><span>Siblings:</span> <strong><%= pet.biography.siblings %></strong></div>
+  <div><span>Birthday:</span> <strong><%= pet.biography.birthday.strftime("%B %d") %></strong></div>
 </div>
 <% end %>
