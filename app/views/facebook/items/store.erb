@@ -21,7 +21,7 @@
 <div class="box">
   <h3 id="<%= params[:id].downcase %>-store-title"><%= params[:id] %> Store</h3>
 	
-  <% cell_table(@items,4) do |i,idx| %>
+  <% cell_table(@items,2) do |i,idx| %>
     <td>
 	  <table class="item">
 		<tr><th colspan="2"><%= i.name %></th></tr>

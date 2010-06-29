@@ -179,6 +179,7 @@ glass_tuna:
   restock_rate: 10
   
 atomic_truffles:
+  name: Atmoic Truffles
   description: Plucked from the roots of trees, these fungi are smaller than their historic cousin and infused with draining nuclear runoffs slakening the scorched earth. Chewy and unpleasant, atomic truffles are highly vitalizing puzzles of accidental science.
   item_type: Food
   power: 25

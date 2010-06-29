@@ -181,7 +181,7 @@ module Facebook::FacebookHelper
       concat("")
     end
     
-    output = "<table class='#{(options[:class] || '')}'><tbody>"
+    output = "<table class='#{(options[:class] || '')}' class='#{(options[:width] || '100%')}'><tbody>"
     concat(output)
     
     array.each_with_index do |row,idx|
