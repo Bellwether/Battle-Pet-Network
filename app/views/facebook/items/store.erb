@@ -26,7 +26,7 @@
 	  <table class="item">
 		<tr><th colspan="2"><%= i.name %></th></tr>
 		<tr>
-		  <td rowspan="5"><%= avatar_image(i,'medium') %></td>
+		  <td rowspan="5" width="105"><%= avatar_image(i,'medium') %></td>
 		  <td>
 			<% if has_pet? %>
 			  <% if current_user_pet.kibble >= i.cost && i.stock > 0 %>
