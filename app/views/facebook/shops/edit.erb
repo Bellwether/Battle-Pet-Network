@@ -31,17 +31,16 @@
     <p class="em">Your shop's inventory is empty. Your customers are fleeing to rival vendors!</p>
   <% end %>
 
-
   <% @inventory.each do |i| %>
   <table class="item dotbox">
 	<tr>
 	  <th colspan="2"><%= i.item.name %></th>
-	  <td><%= facebook_link_to "Remove from Inventory", facebook_shop_inventory_path(i), :method => :delete %></td>
+	  <td align="right"><%= facebook_link_to "Remove from Inventory", facebook_shop_inventory_path(i), :method => :delete %></td>
 	</tr>
 	<tr>
 	  <td rowspan="5"><%= avatar_image(i.item, 'medium') %></td>
-	  <td>Type: <strong><%= i.item.item_type %></strong></td>
-	  <td rowspan="5"><%= i.item.description %></td>
+	  <td width="100">Type: <strong><%= i.item.item_type %></strong></td>
+	  <td rowspan="4"><%= i.item.description %></td>
 	</tr>
 	<tr><td>Rarity: <strong><%= i.item.rarity %></strong></td></tr>
 	<tr><td>Power: <strong><%= i.item.power %></strong></td></tr>
@@ -50,7 +49,7 @@
 	  <td>Suggested Price: <strong><%= i.item.cost %></strong></td>
 	  <td>
 		<% form_for i, :url => facebook_nested_url(facebook_shop_inventories_path(i)) do |f| %>		
-		  <%= f.label :cost, 'Your Shop Price:' %> <%= f.text_field :cost, {:value => i.cost} %> <%= f.submit 'Update' %>
+		  <%= f.label :cost, 'Your Shop Price:' %> <%= f.text_field :cost, {:value => i.cost, :style => "width:50px;"} %> <%= f.submit 'Update' %>
 		<% end %>
 	  </td>
 	</tr>
