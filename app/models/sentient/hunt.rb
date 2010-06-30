@@ -68,7 +68,7 @@ class Hunt < ActiveRecord::Base
   def depopulate
     hunters.each do |h|
       if h.outcome == "won"
-        sentient.reload.update_attribute(:population, [sentient.population - 1, 0].max)
+        Sentient.find(sentient).update_attribute(:population, [sentient.population - 1, 0].max)
         break;
       end
     end
