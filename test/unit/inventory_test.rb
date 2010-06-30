@@ -19,11 +19,17 @@ class InventoryTest < ActiveSupport::TestCase
     assert_equal "shop owner isn't holding belonging", inventory.errors.on(:item_id)
   end
   
+  def test_requires_belonging_on_create
+    @belonging = belongings(:three_grass)
+    inventory = Inventory.create(:item_id => @belonging.item.id, :shop_id => @shop.id)
+    assert_equal "can't be blank", inventory.errors.on(:belonging_id)
+  end
+  
   def test_remove_belonging
     pet = @shop.pet
     assert_difference 'ActivityStream.count', +1 do
       assert_difference ['Belonging.count','@shop.pet.belongings.count'], -1 do
-        inventory = Inventory.create!(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)      
+        inventory = Inventory.create!(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)
       end
     end
   end

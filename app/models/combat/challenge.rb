@@ -58,7 +58,7 @@ class Challenge < ActiveRecord::Base
     existing_challenge = Challenge.exists?(
       ["status = 'issued' AND ((attacker_id = ? AND defender_id = ?) OR (attacker_id = ? AND defender_id = ?))", 
         attacker_id, defender_id, defender_id, attacker_id])
-    errors.add_to_base("existing challenge already issued") if existing_challenge
+    errors.add_to_base("An outstanding challenge already exists for those pets.") if existing_challenge
   end
   
   def validates_status_update

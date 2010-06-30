@@ -20,7 +20,7 @@ class ChallengeTest < ActiveSupport::TestCase
   
   def test_validates_no_existing_challenge
     invalid_challenge = Challenge.create(@params)
-    assert invalid_challenge.errors.on_base.include?("existing challenge already issued")
+    assert invalid_challenge.errors.on_base.include?("An outstanding challenge already exists for those pets.")
   end
   
   def test_validates_prowling

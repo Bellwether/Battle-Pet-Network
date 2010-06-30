@@ -2,10 +2,11 @@ class Inventory < ActiveRecord::Base
   belongs_to :shop, :validate => true, :counter_cache => true
   belongs_to :item
   
-  validates_presence_of :item_id, :shop_id, :cost
-  validates_numericality_of :cost, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 1000000
-  
   attr_accessor :belonging_id
+  
+  validates_presence_of :belonging_id, :if => Proc.new { |i| i.new_record? }
+  validates_presence_of :shop_id, :cost
+  validates_numericality_of :cost, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 1000000
     
   cattr_reader :per_page
   @@per_page = 12
