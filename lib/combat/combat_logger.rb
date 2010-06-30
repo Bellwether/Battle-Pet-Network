@@ -89,7 +89,7 @@ module Combat::CombatLogger
         "for #{res.first_damage}."
       when Combat::CombatActions::Resolution::Description::TWO_ATTACK_CUT_TWO_DEFEND
         "#{named(res.second)} UNDERCUT #{named(res.first)}'s misplaced #{res.first_action.name} " <<
-        "with a painful #{res.second_action.name} for #{res.second_damage}."
+        "with a painful #{res.second_action.name} for #{res.first_damage}."
       when Combat::CombatActions::Resolution::Description::TWO_ATTACK_HIT_TWO_DEFENDED
         "#{named(res.second)} #{verbed(res.second_action)} for #{res.second_damage} as " <<
         "#{named(res.first)} #{verbed(res.first_action)} in defense."

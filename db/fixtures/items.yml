@@ -1,3 +1,15 @@
+bait_string:
+  name: Bait String
+  description: This threadbare length of string makes an excellent human lure. A pet need but to swat the bait suggestively to catch a human's eye, and then they're drawn almost magically by an urge to play with the other end.
+  item_type: Charm
+  power: 1
+  required_rank: 1
+  cost: 130
+  rarity: 20
+  stock: 30
+  stock_cap: 30
+  restock_rate: 10
+
 dandelion_posy:
   name: Dandelion Posy
   description: A golden sunburst of soft, sweet-smelling flowers. Usually devoured with excessive nibbling, these golden apparatifs are harder to locate on the barren hills and city flats than in better days.

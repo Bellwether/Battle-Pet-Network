@@ -22,7 +22,7 @@ class InventoryTest < ActiveSupport::TestCase
   def test_remove_belonging
     pet = @shop.pet
     assert_difference 'ActivityStream.count', +1 do
-      assert_difference ['Belonging.count'], -1 do
+      assert_difference ['Belonging.count','@shop.pet.belongings.count'], -1 do
         inventory = Inventory.create!(:belonging_id => @belonging.id, :shop_id => @shop.id, :cost => 10)      
       end
     end
