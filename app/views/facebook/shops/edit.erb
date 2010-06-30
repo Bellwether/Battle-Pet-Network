@@ -27,6 +27,11 @@
   <p class="em">Owning a shop allows you to sell items to other pets. Once your pet owns an item, you can add it
 	to the shop's inventory and set a price of your choosing.</p>
 
+  <% if @inventory.blank? %>
+    <p class="em">Your shop's inventory is empty. Your customers are fleeing to rival vendors!</p>
+  <% end %>
+
+
   <% @inventory.each do |i| %>
   <table class="item dotbox">
 	<tr>
