@@ -88,7 +88,7 @@ tr {
   padding:3px 0 0 15px; 
 } 
 
-.footer { width: 740px;	}
+.footer { margin-top:60px; width: 740px; }
 .footer .online-pets { height: 100px; width: 200px; }
 .footer .announcements { height: 200px; left: 215px; position: relative; top: -100px; width: 300px; }
 .footer ul.tweets { width: 300px;}
