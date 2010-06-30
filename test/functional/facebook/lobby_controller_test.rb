@@ -13,8 +13,10 @@ class Facebook::LobbyControllerTest  < ActionController::TestCase
     assert_template 'index'
     assert !assigns(:pet_activity).blank?
     assert !assigns(:world_activity).blank?
+    assert !assigns(:forum_posts).blank?
     assert_tag :tag => "ul", :attributes => { :class => "activity-stream", :id => "pet-activity" }, :descendant => { :tag => "li", :attributes => { :class => "activity" } }
     assert_tag :tag => "ul", :attributes => { :class => "activity-stream", :id => "world-activity" }, :descendant => { :tag => "li", :attributes => { :class => "activity" } }
+    assert_tag :tag => "ul", :attributes => { :class => "activity-stream", :id => "forum-posts" }, :descendant => { :tag => "li", :attributes => { :class => "activity" } }
   end
 
   def test_tos

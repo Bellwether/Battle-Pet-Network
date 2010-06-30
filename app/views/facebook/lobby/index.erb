@@ -35,6 +35,19 @@
 </div>
 
 <div class="box">
-  <%= facebook_image_tag "twitter-long-badge.png" %>  
-  <span></span>
+  <h3>Forum Posts</h3>
+  <% if @forum_posts.blank? %>
+    <p class="em">No recent posts...</p>
+  <% else %>
+    <ul id="forum-posts" class="activity-stream">
+	  <% @forum_posts.each do |p| %>
+	    <li class="activity">
+	        in <strong><%= facebook_link_to p.forum_topic.title, facebook_forum_forum_topic_path(:forum_id => p.forum_topic.forum_id, :id => p.forum_topic.id, :anchor => dom_id(p)) %></strong>
+			<br />
+	        <%= time_ago_in_words(p.created_at) %> ago 
+	        by <strong><%= p.user.username %></strong>
+		</li>
+	  <% end %>
+    </ul>
+  <% end %>
 </div>

@@ -7,6 +7,8 @@ class ForumPost < ActiveRecord::Base
   
   after_create :touch_parents
   
+  named_scope :recent, :limit => 5, :order => 'forum_posts.created_at DESC', :include => [:forum_topic,:user]
+  
   def touch_parents
     forum_topic.update_attribute(:last_post_id, self.id)
     forum_topic.forum.update_attribute(:last_post_id, self.id)
