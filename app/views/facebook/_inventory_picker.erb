@@ -6,8 +6,8 @@
 	  <% unless @belongings.blank? %>	
 	    <tr><td colspan="2"><p class="em">Add items from your <%= facebook_link_to 'belongings', facebook_belongings_path %> to sell them from your shop.</p></td></tr>
         <tr>
-	      <td width="40"><%= f.label :item_id, 'Select Belonging' %></td>
-          <td><%= f.collection_select(:item_id, @belongings, :id, :name, {:include_blank => true}) %></td>
+	      <td width="70"><%= f.label :item_id, 'Belonging' %></td>
+          <td><%= f.collection_select(:item_id, @belongings, :item_id, :name, {:include_blank => true}) %></td>
 		</tr>
         <tr>
 	      <td><%= f.label :item_id, 'Cost' %></td>
