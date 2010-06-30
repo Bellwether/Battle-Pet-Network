@@ -7,7 +7,7 @@
 	    <tr><td colspan="2"><p class="em">Add items from your <%= facebook_link_to 'belongings', facebook_belongings_path %> to sell them from your shop.</p></td></tr>
         <tr>
 	      <td width="70"><%= f.label :belonging_id, 'Belonging' %></td>
-          <td><%= f.collection_select(:belonging_id, @belongings, :belonging_id, :name, {:include_blank => true}) %></td>
+          <td><%= f.collection_select(:belonging_id, @belongings, :id, :name, {:include_blank => true}) %></td>
 		</tr>
         <tr>
 	      <td><%= f.label :cost, 'Cost' %></td>
