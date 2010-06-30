@@ -8,7 +8,7 @@
     <% else %>
       <ul width="100%" id="world-activity" class="activity-stream">
 		<% @world_activity.each do |a| %>
-		  <li class="activity"><%= a.activity_data['description']%></li>
+		  <li class="activity"><%= a.activity_data[:description]%></li>
 		<% end %>
 	  </ul>
     <% end %>
