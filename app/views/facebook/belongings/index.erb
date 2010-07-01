@@ -32,6 +32,6 @@
   <p class="em">You don't have any belongings to your name at the moment. You can buy items at the 
 	<%= facebook_link_to "item market", facebook_items_path %> or the <%= facebook_link_to "pet shops", facebook_shops_path %>, 
 	get lucky <%= facebook_link_to "scavenging", facebook_occupations_path(Occupation.scavenging.first) %> treasure in the ruins,
-	or else <%= facebook_link_to "claim valuable rewards", "" %> by reaching the top of the leaderbaords.</p>
+	or else <%= facebook_link_to "claim valuable rewards", facebook_leaderboards_path %> by reaching the top of the leaderbaords.</p>
 <% end %>
 </div>

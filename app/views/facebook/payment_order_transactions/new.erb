@@ -6,9 +6,9 @@
 	<ul>
 	  <li><%= facebook_link_to "The item market...", facebook_items_path %></li>
 	  <li><%= facebook_link_to "Some pet shops...", facebook_shops_path %></li>
-	  <li><%= facebook_link_to "Your belongings...", "" %></li>
+	  <li><%= facebook_link_to "Your belongings...", facebook_belongings_path %></li>
 	  <% if has_shop? %>
-	    <li><%= facebook_link_to "Your shop...", "" %></li>
+	    <li><%= facebook_link_to "Your shop...", edit_facebook_shop_path %></li>
 	  <% else %>
 	    <li><%= facebook_link_to "Opening a shop...", new_facebook_shop_path %></li>
 	  <% end %>
