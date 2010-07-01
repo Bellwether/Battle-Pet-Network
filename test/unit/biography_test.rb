@@ -9,10 +9,11 @@ class BiographyTest < ActiveSupport::TestCase
                :birthday => '2010-1-1', :siblings => 2, :description => 'Test pet. Test pet. Test pet. Test pet. Test pet. Test pet. Test pet.'}    
   end
   
-  def test_should_award_pet
+  def test_reward_pet
     pet = pets(:siamese)
     assert_difference 'pet.reload.kibble', +AppConfig.awards.biography do
-      pet.create_biography(@params)
+      pet.build_biography(@params)
+      pet.biography.reward_pet
     end
   end
 end

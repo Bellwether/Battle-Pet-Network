@@ -66,7 +66,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     @challenge.attributes = params[:challenge]
     @challenge.defender_strategy.combatant = @challenge.defender unless @challenge.defender_strategy.blank?
     
-    if @challenge.save
+    if @challenge.save && @challenge.battle!
       facebook_redirect_to facebook_challenges_path
     else
       flash[:error] = "Couldn't respond to challenge. :("

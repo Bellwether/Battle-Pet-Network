@@ -145,9 +145,12 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     pet = challenge.defender
     mock_user_facebooking(pet.user.facebook_id)
     params = {:defender_strategy_attributes => { :maneuvers_attributes => { "0" => {:action_id => actions(:scratch).id}} }}
-    facebook_put :update, :fb_sig_user => pet.user.facebook_id, :id => challenge.id, :challenge => params
-    assert_response :success
-    assert !assigns(:challenge).blank?    
+    assert_difference ['Battle.count'], +1 do
+      facebook_put :update, :fb_sig_user => pet.user.facebook_id, :id => challenge.id, :challenge => params
+      assert_response :success
+      assert !assigns(:challenge).blank?    
+      assert !assigns(:challenge).battle.blank?
+    end
   end
   
   def test_refuse
