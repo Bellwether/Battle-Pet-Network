@@ -327,14 +327,27 @@ silver_whiskers:
   
 calico_cloak:
   name: Calico Cloak
+  description: Dabbled urban fatigues, patterned with a dizzying explosion of white tortoiseshell to bwilder the onlooker. The calico is a tough fabic, thick to the cut, and with a regal coloration that belies its humble origins this mantle is the choice of many a weathered traveler.
   item_type: Mantle
   power: 1
-  required_rank: 2
+  required_rank: 1
   cost: 4000
   rarity: 800
   stock: 2
   stock_cap: 2
   restock_rate: 1
+  
+spidersilk_shroud:
+  name: Spidersilk Shroud
+  description: Painstakingly woven from the product of one hundred spider craftsmen, the shroud is a stylish answer to the even sharpest tooth and claw. This exquisite attire is favored by assassins and thieves for its weightless quality and innocent appearance.
+  item_type: Mantle
+  power: 1
+  required_rank: 2
+  cost: 10000
+  rarity: 1000
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1  
   
 choke_chain:
   name: Choke Chain

@@ -117,7 +117,7 @@
 	
   <% unless @challenges.blank? %>	
 	  <h4>Heads up! You Have Open Challenges Against You:</h4>
-	  <% cell_table(@challenges, 4) do |c,idx| %>
+	  <% cell_table(@challenges, 4, :width => "100%") do |c,idx| %>
 	  <td>
 	    <table class="challenge">
 		  <tbody>
@@ -139,17 +139,18 @@
 	  <% end %>
   <% end %>
 	
-  <% unless @challenges.blank? %>	
+  <% unless @resolved.blank? %>	
     <h4>Recent Battles</h4>
-    <table class="records challenges">
+    <table class="records challenges" width="100%">
 	  <tbody>
-	  <% @challenges.each do |c,idx| %>
+	  <% @resolved.each do |c,idx| %>
 		<tr>
 		  <td>
 			<%= avatar_image(c.attacker,'tiny') %>
 			<%= avatar_image(c.defender,'tiny') %>
 		  </td>
 		  <td><%= c.description %></td>
+		  <td width="25"><%= facebook_link_to 'view', facebook_battle_path(c.battle) %></td>
 		</tr>
 	  <% end %>
 	  </tbody>	

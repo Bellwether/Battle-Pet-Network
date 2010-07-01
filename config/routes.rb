@@ -33,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     
     f.resources :packs, :only => [:index,:new,:create,:show] do |p|
+      p.resources :challenges, :only => [:create], :collection => {:pack => :get}
     end
     
     f.resources :sentients, :only => [:index,:show] do |s|

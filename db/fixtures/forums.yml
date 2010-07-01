@@ -1,11 +1,23 @@
-discussion:
-  name: Battle Pet Disscussion
-  description: Main discussion forum on how to play, strategy advise, the universe, or any other aspects of the game.
+introductions:
+  name: Introductions
+  description: Welcome to the Battle Pet Network. Come in and introduce yourself.
   rank: 1
   last_post: discussion_rules_1
+  forum_topics_count: 1
+  forum_posts_count: 1
+
+discussion:
+  name: Battle Pet Disscussion
+  description: Go here for discussion on how to play, strategy advise, the universe, or any other aspects of the game.
+  rank: 1
+  last_post: discussion_rules_1
+  forum_topics_count: 1
+  forum_posts_count: 1
  
 development:
   name: Battle Pet Development     
   description: Announcements for game updates and upcoming changes, suggestions, and feature requests.
   rank: 2
   last_post: development_rules_1
+  forum_topics_count: 1
+  forum_posts_count: 1

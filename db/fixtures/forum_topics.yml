@@ -1,3 +1,15 @@
+introductions_rules:
+  forum: introductions
+  user: travis_dunn
+  title: Rules
+  last_post: introductions_rules_1
+  forum_posts_count: 1
+  views_count: 1
+  locked: true
+  sticky: true
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  
 discussion_rules:
   forum: discussion
   user: travis_dunn

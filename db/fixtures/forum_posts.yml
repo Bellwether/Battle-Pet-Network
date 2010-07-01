@@ -1,3 +1,14 @@
+introductions_rules_1:
+  forum_topic: introductions_rules
+  user: travis_dunn
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  body: |
+      Introductions Forum Rules
+      ----------------------
+      
+      Play nice!
+
 discussion_rules_1:
   forum_topic: discussion_rules
   user: travis_dunn

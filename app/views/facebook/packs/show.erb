@@ -47,13 +47,13 @@
     <td class="pack-member">
 	  <table>	
 		<tr>
-		  <td rowspan="4"><%= avatar_image(m.pet) %></td>
+		  <td rowspan="5"><%= avatar_image(m.pet) %></td>
 		  <td><span class="strong"><%= facebook_link_to m.pet.name, facebook_pet_path(m.pet) %></span></td>
 		</tr>
 		<tr><td>Health:</td><td><%= m.pet.fortitude %></td></tr>
 		<tr><td>Endurance:</td><td><%= m.pet.endurance %></td></tr>
 		<tr><td>Record:</td><td><%= m.pet.battle_record %></td></tr>
-		<tr><td colspan="2">%= m.position</td></tr>
+		<tr><td colspan="2">%= m.position %></td></tr>
 	  </table>
 	</td>
   <% end %>

@@ -10,8 +10,8 @@
   </tr>
   <% @forums.each do |forum| %>	
     <tr class="forum">
-    <td></td>	
-    <td></td>
+    <td rowspan="2"></td>	
+    <td rowspan="2"></td>
     <td><%= facebook_link_to forum.name, facebook_forum_path(forum), :class => "title" %></td>
     <td><%= forum.forum_topics_count %></td>
     <td><%= forum.forum_posts_count %></td>
@@ -24,7 +24,7 @@
       <% end %>
     </td>
     </tr>
-    <tr><td colspan="6"><p class="em"><%= forum.description %></p></td></tr>
+    <tr><td colspan="4"><p class="em"><%= forum.description %></p></td></tr>
   <% end %>
   </table>
 </div>

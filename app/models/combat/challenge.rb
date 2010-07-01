@@ -10,6 +10,8 @@ class Challenge < ActiveRecord::Base
   
   has_one :battle
 
+  attr_accessor :pack_id
+  
   validates_presence_of :status, :challenge_type, :attacker_id, :attacker_strategy
   validates_length_of :message, :in => 3..256, :allow_blank => true
   validates_inclusion_of :status, :in => %w(issued refused canceled expired resolved)
@@ -91,6 +93,7 @@ class Challenge < ActiveRecord::Base
   def set_challenge_type
     if attacker_id && defender_id
       self.challenge_type = "1v1"
+    elsif attacker_id && defender_id.blank? && pack_id
     elsif attacker_id && defender_id.blank?
       self.challenge_type = "1v0"
     end
