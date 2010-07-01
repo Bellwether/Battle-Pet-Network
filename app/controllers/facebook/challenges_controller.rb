@@ -29,7 +29,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     
     if @challenge.save
       flash[:notice] = "Challenge sent!"
-      facebook_redirect_to facebook_challenge_path(@challenge)
+      facebook_redirect_to facebook_challenges_path
     else
       flash[:error] = "Couldn't send challenge. :("
       flash[:error_message] = @challenge.errors.full_messages.join(', ')
@@ -67,7 +67,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     @challenge.defender_strategy.combatant = @challenge.defender unless @challenge.defender_strategy.blank?
     
     if @challenge.save && @challenge.battle!
-      facebook_redirect_to facebook_challenges_path
+      facebook_redirect_to facebook_challenge_path(@challenge)
     else
       flash[:error] = "Couldn't respond to challenge. :("
       flash[:error_message] = @challenge.errors.full_messages.join(', ')
