@@ -228,7 +228,7 @@ cheezburger:
 
 fishliver_oil:
   name: Fishliver Oil
-  description: Three claws of stiff, pungent, fishliver oil, lapped up in a shot for a powerful burst of pure marine energy!
+  description: Three fingers of stiff, pungent, fishliver oil, lapped up in a shot for a powerful burst of pure marine energy!
   item_type: Treat
   power: 3
   required_rank: 3
@@ -337,6 +337,18 @@ calico_cloak:
   stock_cap: 2
   restock_rate: 1
   
+winter_coat:
+  name: Winter Coat
+  description: An armour and a comfort, this cowled mantle heaps long snowy folds of fur upon the pet, far beyond what the even strongest winters would naturally grow. Delicately sewn from the pelts of the slain, its rich arboreal surface blies the bloody origins beneath.
+  item_type: Mantle
+  power: 1
+  required_rank: 1
+  cost: 6000
+  rarity: 900
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
+    
 spidersilk_shroud:
   name: Spidersilk Shroud
   description: Painstakingly woven from the product of one hundred spider craftsmen, the shroud is a stylish answer to the even sharpest tooth and claw. This exquisite attire is favored by assassins and thieves for its weightless quality and innocent appearance.

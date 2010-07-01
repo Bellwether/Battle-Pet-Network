@@ -31,7 +31,7 @@
 	<tr>
 	  <td><label>Member Bonus:</label></td>
 	  <td><%= @pack.membership_bonus %></td>
-	  <td><% if can_user_pet_challenge(@pack) %><span id="membership-button" class="button">Request Membership</span><% end %></td>
+	  <td><%= facebook_link_to 'Request Membership', new_facebook_message_path(:pet_id => @pack.leader_id, :message_type => 'membership') if has_pet? && !has_pack %></td>
 	</tr>
 	<tr>
 	  <td><label>Member Battle Record:</label></td>
