@@ -29,7 +29,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
     
     if @challenge.save
       flash[:notice] = "Challenge sent!"
-      facebook_redirect_to combat_facebook_pet_path
+      facebook_redirect_to facebook_challenge_path(@challenge)
     else
       flash[:error] = "Couldn't send challenge. :("
       flash[:error_message] = @challenge.errors.full_messages.join(', ')

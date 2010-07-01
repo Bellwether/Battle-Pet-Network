@@ -222,9 +222,21 @@ cheezburger:
   required_rank: 2
   cost: 35
   rarity: 85
-  stock: 50
-  stock_cap: 50
-  restock_rate: 10
+  stock: 25
+  stock_cap: 25
+  restock_rate: 5
+  
+salt_lick:
+  name: Salt Lick
+  description: This hoary bronze block of salt sates the strongest yearnings of the tongue.
+  item_type: Treat
+  power: 3
+  required_rank: 2
+  cost: 75
+  rarity: 95
+  stock: 25
+  stock_cap: 25
+  restock_rate: 5
 
 fishliver_oil:
   name: Fishliver Oil
@@ -419,6 +431,18 @@ feather_boa_flail:
   stock: 4
   stock_cap: 4
   restock_rate: 1 
+  
+bell_collar: 
+  name: Bell Collar
+  description: A dainy bejeweled necklace with an oversized silver bell, this atrocious charm could only be the product of a warmed human mind, and thus proves quite useful in calling them to a pet's side.
+  item_type: Charm
+  power: 35
+  required_rank: 1
+  cost: 200
+  rarity: 50
+  stock: 5
+  stock_cap: 5
+  restock_rate: 5
     
 kibble_pack:
   name: Kibble Pack
