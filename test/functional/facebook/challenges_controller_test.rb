@@ -52,6 +52,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert_tag :tag => "form", :attributes => { :action => "/pets/#{@defender.id}/challenges", :method => 'post' }
     assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "comparison-table" }}
     assert_tag :tag => "form", :descendant => { :tag => "td", :attributes => { :class => "battle-gear" }}
+    assert_tag :tag => "form", :descendant => {:tag=>"input",:attributes=>{:type=>"checkbox",:name=>"attacker_strategy_attributes[status]"} }
     assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" }}
   end
   
@@ -66,6 +67,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert_tag :tag => "form", :descendant => {
       :tag => "input", :attributes => { :type => "submit" }
     }
+    assert_tag :tag => "form", :descendant => {:tag=>"input",:attributes=>{:type=>"checkbox",:name=>"attacker_strategy_attributes[status]"} }
   end
   
   def test_create_1v1
@@ -135,6 +137,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert_tag :tag => "form", :descendant => { :tag => "table", :attributes => { :class => "comparison-table" }}
     assert_tag :tag => "form", :descendant => { :tag => "td", :attributes => { :class => "battle-gear" }}
     assert_tag :tag => "form", :descendant => { :tag => "input", :attributes => { :type => "submit" }}
+    assert_tag :tag => "form", :descendant => {:tag=>"input",:attributes=>{:type=>"checkbox",:name=>"defender_strategy_attributes[status]"} }
   end
   
   def test_update
