@@ -57,7 +57,14 @@
 	  <td colspan="2">
 		<ul class="logs">
 		  <% @challenge.battle.logs[:rounds].each do |log| %>	
-		    <li class="log"><%= log %></li>
+		    <li class="log">
+			  <%= facebook_image_tag "actions/tiny/#{log[:attacker_action]}.png" %>
+			  <%= facebook_image_tag "actions/tiny/#{log[:defender_action]}.png" %> 
+			  <%= log[:description] %>
+			</li>
+		  <% end %>
+		  <% @challenge.battle.logs[:attacker_awards].each_pair do |key,log| %>
+		    <li class="log award"><%= log %></li>
 		  <% end %>
 		  <% @challenge.battle.logs[:attacker_awards].each do |log| %>
 		    <li class="log award"><%= log %></li>

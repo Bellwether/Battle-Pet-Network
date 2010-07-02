@@ -36,6 +36,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert !assigns(:challenge).blank?
     assert !assigns(:pet).blank?
     assert !assigns(:opponent).blank?
+    assert_not_equal assigns(:opponent), @user.pet
     assert !assigns(:history).blank?
     assert_tag :tag => "ul", :attributes => { :class => 'battle-records'}, :descendant => {
       :tag => "li", :attributes => { :class => "battle" }
