@@ -90,9 +90,9 @@ module Combat
       log_round(results)
     end
     
-    restore_combatants_condition
     set_outcome if respond_to?(:set_outcome)
     log_outcome
+    restore_combatants_condition
     respond_to?(:award!) ? award! : award_combatants
   end
   

@@ -42,7 +42,7 @@ class Facebook::PacksControllerTest < ActionController::TestCase
     assert_tag :tag => "div", :attributes => { :id => "spoils" }
     assert_tag :tag => "td", :attributes => { :class => "pack-member" }
     assert_tag :tag => "span", :attributes => { :id => "challenge-button" }
-    assert_tag :tag => "span", :attributes => { :id => "membership-button" }
+    assert_tag :tag => "a", :attributes => { :href => "/pets/home/messages/new?message_type=membership&amp;pet_id=#{packs(:alpha).leader_id}" }
   end
   
   def test_get_new_pack

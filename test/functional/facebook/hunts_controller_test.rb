@@ -61,7 +61,7 @@ class Facebook::HuntsControllerTest  < ActionController::TestCase
       h.save!
       assert assigns(:hunt).hunters.map(&:pet_id).include?(@pet.id)
     end    
-    assert flash[:success]
+    assert flash[:success] || flash[:notice]
   end
 
   def test_fail_create

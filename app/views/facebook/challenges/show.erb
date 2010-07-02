@@ -22,8 +22,9 @@
   <table class="battle-profile">
 	<tr>
 	  <th>
-	    <%= "#{time_ago_in_words(@challenge.battle.created_at)} ago" %> <label><%= @challenge.attacker.name %></label> battled
-		<label><%= @challenge.defender.name %></label>
+	    <%= "#{time_ago_in_words(@challenge.battle.created_at)} ago" %> 
+		<%= facebook_link_to @challenge.attacker.name, facebook_pet_path(@challenge.attacker) %> battled 
+		<%= facebook_link_to @challenge.defender.name, facebook_pet_path(@challenge.defender) %>
 	  </th>
 	</tr>
 	<tr>
@@ -64,13 +65,13 @@
 			</li>
 		  <% end %>
 		  <% @challenge.battle.logs[:attacker_awards].each_pair do |key,log| %>
-		    <li class="log award"><%= log %></li>
+		    <%= "<li class='log award'>#{log}</li>" unless log.blank? %>
 		  <% end %>
-		  <% @challenge.battle.logs[:attacker_awards].each do |log| %>
-		    <li class="log award"><%= log %></li>
+		  <% @challenge.battle.logs[:attacker_awards].each_pair do |key,log| %>
+		    <%= "<li class='log award'>#{log}</li>" unless log.blank? %>
 		  <% end %>
-		  <% @challenge.battle.logs[:defender_awards].each do |log| %>
-		    <li class="log award"><%= log %></li>
+		  <% @challenge.battle.logs[:defender_awards].each_pair do |key,log| %>
+		    <%= "<li class='log award'>#{log}</li>" unless log.blank? %>
 		  <% end %>
 		</ul>
 	  </td>
