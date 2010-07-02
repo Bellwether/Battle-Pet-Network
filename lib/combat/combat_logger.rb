@@ -81,7 +81,7 @@ module Combat::CombatLogger
         "for #{res.first_damage}."
       when Combat::CombatActions::Resolution::Description::ONE_ATTACK_CUT_TWO_DEFEND  
         "#{named(res.second)} UNDERCUT #{named(res.first)}'s rash #{res.second_action.name} " <<
-        "with a countering #{res.second_action.name} for #{res.second_damage}."
+        "with a countering #{res.first_action.name} for #{res.second_damage}."
       when Combat::CombatActions::Resolution::Description::ONE_ATTACK_HIT_TWO_DEFENDED
         "#{named(res.first)} #{verbed(res.first_action)} for #{res.first_damage} as " <<
         "#{named(res.second)} #{verbed(res.second_action)} in defense."
