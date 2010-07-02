@@ -60,6 +60,10 @@ module Combat::CombatLogger
     return log
   end
   
+  def log_combatant_status(combatant,state='entered')
+    
+  end
+  
   def log_round(res)
     log = case res.description
       when Combat::CombatActions::Resolution::Description::ALL_ATTACK
@@ -69,27 +73,28 @@ module Combat::CombatLogger
         "#{named(res.first)} #{verbed(res.first_action)} and #{named(res.second)} #{verbed(res.second_action)} " <<
         "but neither struck a blow."
       when Combat::CombatActions::Resolution::Description::ONE_DEFEND_CUT_TWO_ATTACK
-        "#{named(res.second)} UNDERCUT #{named(res.first)}'s rash #{res.second_action.name} " <<
-        "with a countering #{res.second_action.name} for #{res.second_damage}."
+        "#{named(res.first)} UNDERCUT #{named(res.second)}'s misplaced #{res.second_action.name} " <<
+        "with a painful #{res.first_action.name} for #{res.first_damage}."
       when Combat::CombatActions::Resolution::Description::ONE_ATTACK_HIT_TWO_DEFEND
         "#{named(res.first)} #{verbed(res.first_action)} through " << 
         "#{named(res.second)}'s helpless #{res.second_action.name} " <<
         "for #{res.first_damage}."
-      when Combat::CombatActions::Resolution::Description::ONE_ATTACK_CUT_TWO_DEFEND
-        "#{named(res.first)} UNDERCUT #{named(res.second)}'s misplaced #{res.second_action.name} " <<
-        "with a painful #{res.first_action.name} for #{res.first_damage}."
+      when Combat::CombatActions::Resolution::Description::ONE_ATTACK_CUT_TWO_DEFEND  
+        "#{named(res.second)} UNDERCUT #{named(res.first)}'s rash #{res.second_action.name} " <<
+        "with a countering #{res.second_action.name} for #{res.second_damage}."
       when Combat::CombatActions::Resolution::Description::ONE_ATTACK_HIT_TWO_DEFENDED
         "#{named(res.first)} #{verbed(res.first_action)} for #{res.first_damage} as " <<
         "#{named(res.second)} #{verbed(res.second_action)} in defense."
       when Combat::CombatActions::Resolution::Description::TWO_DEFEND_CUT_TWO_ATTACK
-        ""
+        "#{named(res.second)} UNDERCUT #{named(res.first)}'s misplaced #{res.first_action.name} " <<
+        "with a painful #{res.second_action.name} for #{res.second_damage}."
       when Combat::CombatActions::Resolution::Description::TWO_ATTACK_HIT_TWO_DEFEND
         "#{named(res.first)} #{verbed(res.first_action)} through " << 
         "#{named(res.second)}'s helpless #{res.second_action.name} " <<
         "for #{res.first_damage}."
-      when Combat::CombatActions::Resolution::Description::TWO_ATTACK_CUT_TWO_DEFEND
-        "#{named(res.second)} UNDERCUT #{named(res.first)}'s misplaced #{res.first_action.name} " <<
-        "with a painful #{res.second_action.name} for #{res.first_damage}."
+      when Combat::CombatActions::Resolution::Description::TWO_ATTACK_CUT_TWO_DEFEND 
+        "#{named(res.first)} UNDERCUT #{named(res.second)}'s rash #{res.first_action.name} " <<
+        "with a countering #{res.first_action.name} for #{res.first_damage}."
       when Combat::CombatActions::Resolution::Description::TWO_ATTACK_HIT_TWO_DEFENDED
         "#{named(res.second)} #{verbed(res.second_action)} for #{res.second_damage} as " <<
         "#{named(res.first)} #{verbed(res.first_action)} in defense."

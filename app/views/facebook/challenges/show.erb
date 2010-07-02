@@ -64,6 +64,7 @@
 			  <%= log[:description] %>
 			</li>
 		  <% end %>
+		  <li class="log strong"><%= @challenge.battle.logs[:outcome] %></li>
 		  <% @challenge.battle.logs[:attacker_awards].each_pair do |key,log| %>
 		    <%= "<li class='log award'>#{log}</li>" unless log.blank? %>
 		  <% end %>
