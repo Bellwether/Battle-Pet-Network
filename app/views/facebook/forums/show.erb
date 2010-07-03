@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="box full">
-  <table border="0" cellspacing="0" cellpadding="0" class="topics">
+  <table cellpadding="3" cellspacing="0" cellpadding="0" class="topics">
     <tr>
       <th colspan="2">Topic</th>
 	  <th width="1%">Posts</th>
@@ -12,7 +12,7 @@
 	</tr>
 	<% @topics.each do |topic| %>
 	<tr class="topic">
-	  <td><%= topic_icon(topic.last_post) %></td>
+	  <td width="25"><%= topic_icon(topic.last_post) %></td>
 	  <td>
 		<%= facebook_link_to topic.title, facebook_forum_forum_topic_path(@forum,topic) %>
 	  </td>
@@ -20,8 +20,7 @@
 	  <td><%= topic.views_count %></td>
 	  <td>
       <% if topic.last_post %>	
-        <strong><%= link_to "#{time_ago_in_words(topic.last_post.created_at)} ago", facebook_forum_forum_topic_path(:forum_id => @forum.id, :id => topic.id, :anchor => dom_id(topic.last_post.id)) %></strong>
-		<br />
+        <strong><%= link_to "#{time_ago_in_words(topic.last_post.created_at)} ago", facebook_forum_forum_topic_path(:forum_id => @forum.id, :id => topic.id, :anchor => dom_id(topic.last_post.id)) %></strong> 
         by <strong><%= topic.last_post.user.username %></strong>
       <% end %>
 	  </td>
