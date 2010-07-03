@@ -12,10 +12,8 @@
 	</tr>
 	<% @topics.each do |topic| %>
 	<tr class="topic">
-	  <td></td>
+	  <td><%= topic_icon(topic.last_post) %></td>
 	  <td>
-        <%= "<strong>[sticky]</strong>" if topic.sticky? %>
-        <%= "<strong>[locked]</strong>" if topic.locked? %>
 		<%= facebook_link_to topic.title, facebook_forum_forum_topic_path(@forum,topic) %>
 	  </td>
 	  <td><%= topic.forum_posts_count %></td>

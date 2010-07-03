@@ -3,15 +3,18 @@
 <div class="box full">
   <table class="forums">
   <tr>
-    <th width="70%" colspan="2">Forum</th>
+    <th colspan="2">Forum</th>
     <th width="5%">Topics</th>
     <th width="5%">Posts</th>
     <th class="la" width="30%" colspan="1">Last Post</th>
   </tr>
   <% @forums.each do |forum| %>	
     <tr class="forum">
-    <td rowspan="2"><%= topic_icon(forum.last_post) %></td>	
-    <td><%= facebook_link_to forum.name, facebook_forum_path(forum), :class => "title" %></td>
+    <td rowspan="2" width="25"><%= topic_icon(forum.last_post) %></td>	
+    <td>
+	  <%= facebook_link_to forum.name, facebook_forum_path(forum), :class => "title" %>
+	  <p class="em"><%= forum.description %></p>
+	</td>
     <td><%= forum.forum_topics_count %></td>
     <td><%= forum.forum_posts_count %></td>
     <td>
@@ -23,7 +26,6 @@
       <% end %>
     </td>
     </tr>
-    <tr><td colspan="4"><p class="em"><%= forum.description %></p></td></tr>
   <% end %>
   </table>
 </div>
