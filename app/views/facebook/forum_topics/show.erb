@@ -25,7 +25,7 @@
 		</p>
 	  </td>
 	  <td>
-		<p><%= p.body %></p>
+		<p><%= RDiscount.new(p.body).to_html %></p>
 		<hr />
 		<p class="em"><%= "#{time_ago_in_words(p.created_at)} ago on #{(Time.now).strftime("%Y-%m-%d %H:%M")}" %></p>
 	  </td>
