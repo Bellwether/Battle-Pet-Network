@@ -13,7 +13,7 @@
 	  <tr><th><label>Sent:</label></th><td class="em"><%= @message.subject %></td></tr>
 	  <tr>
 		<th><label>Message:</label></th>
-		<td><p><%= @message.body %></p></td>
+		<td><p><%= RDiscount.new(@message.body).to_html %></p></td>
 	  </tr>
 	  <tr>	
 	    <td colspan="2">

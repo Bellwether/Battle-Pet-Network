@@ -1,6 +1,10 @@
 <% content_for :page_title do %><h2>Compose Message</h2><% end %>
 
-<div class="sidebox slim right">	 
+<div class="sidebox slim right">
+  <div class="box slim">
+    <%= render_markdown_instructions %>
+  </div>
+	 
   <div class="box slim biography">	
       <h4>Corespondents</h4>
   </div>
@@ -31,9 +35,11 @@
         <td><%= text_area(:message, :body, :size => "50x8")%></td>
 	  </tr>
 	  <tr>	
-	    <td>
-	      <%= f.submit 'Send Message' %> 
-	      <%= facebook_link_to "Nevermind", inbox_facebook_messages_path %>
+	    <td colspan="2">
+		  <p>
+	        <%= f.submit 'Send Message' %> 
+	        <%= facebook_link_to "Nevermind", inbox_facebook_messages_path %>
+	      </p>
 	    </td>
 	  </tr>
 	</tbody>
