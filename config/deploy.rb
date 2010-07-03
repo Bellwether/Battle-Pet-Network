@@ -47,6 +47,11 @@ end
 namespace :deploy do
   desc "Runs after every successful deployment"
   task :after_default do
+    # Rebuild the gem native extensions, unless we explicitly say not to.
+    unless ENV['BUILD_GEMS'] and ENV['BUILD_GEMS'] == '0'
+      run "rake -f #{release_path}/Rakefile gems:build"
+    end    
+    
     cleanup # removes the old deploys
   end
 end
