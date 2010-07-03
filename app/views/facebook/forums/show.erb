@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="box full">
-  <table cellpadding="3" cellspacing="0" cellpadding="0" class="topics">
+  <table cellpadding="3" cellspacing="0" class="topics">
     <tr>
       <th colspan="2">Topic</th>
 	  <th width="1%">Posts</th>
@@ -27,6 +27,6 @@
 	</tr>
 	<% end %>
   </table>
-  <div class="right"><%= facebook_link_to 'New topic', new_facebook_forum_forum_topic_path(@forum) %></div>
+  <p class="right"><%= facebook_link_to 'New topic', new_facebook_forum_forum_topic_path(@forum) %></p>
   <p class="center"><%= will_paginate @topics %></p>
 </div>
