@@ -116,6 +116,10 @@ module Facebook::FacebookHelper
   def render_strategy_picker(form,strategy_name='attacker_strategy',parent_form=nil)
     render :partial => '/facebook/strategy_picker', :locals => {:form =>form,:strategy_name=>strategy_name,:parent_form=>parent_form}
   end
+  
+  def render_markdown_instructions
+    render :partial => '/facebook/markdown'
+  end
 
   def breed_details_row(label,model,attribute)
     val = nil
