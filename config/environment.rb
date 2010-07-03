@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   config.gem "facebooker"
   config.gem "searchlogic"
   config.gem 'flexmock'
+  config.gem 'rdiscount'
   config.gem "activemerchant", :lib => "active_merchant"
 
   # Activate observers that should always be running
