@@ -20,7 +20,7 @@
 	  <td><%= topic.views_count %></td>
 	  <td>
       <% if topic.last_post %>	
-        <strong><%= link_to "#{time_ago_in_words(topic.last_post.created_at)} ago", facebook_forum_forum_topic_path(:forum_id => @forum.id, :id => topic.id, :anchor => dom_id(topic.last_post.id)) %></strong> 
+        <strong><%= facebook_link_to "#{time_ago_in_words(topic.last_post.created_at)} ago", facebook_forum_forum_topic_path(:forum_id => @forum.id, :id => topic.id, :anchor => dom_id(topic.last_post.id)) %></strong> 
         by <strong><%= topic.last_post.user.username %></strong>
       <% end %>
 	  </td>
