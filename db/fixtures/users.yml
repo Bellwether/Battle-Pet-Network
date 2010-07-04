@@ -33,3 +33,12 @@ candy_anderson:
   persistence_token: <%= Authlogic::Random.friendly_token %>
   created_at: 2010-06-01 01:01:00
   pet: nova
+
+tracy_rouse:
+  username: Tracy Rouse
+  email: 
+  gender: female
+  facebook_id: "100000486820544"
+  persistence_token: <%= Authlogic::Random.friendly_token %>
+  created_at: 2010-06-01 01:01:00
+  pet: dinah

@@ -9,6 +9,8 @@ class Facebook::FacebookController < ApplicationController
   before_filter :ensure_facebook_request, :set_facebook_user
   after_filter :store_location
   
+  filter_parameter_logging :fb_sig_friends
+  
   def application_tweets_html
     return "&nbsp;" if AppConfig.tweets.to_i != 1
     return @application_tweets if defined?(@application_tweets)

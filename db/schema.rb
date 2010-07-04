@@ -548,7 +548,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   create_table "users", :force => true do |t|
     t.integer  "pet_id"
     t.integer  "referer_id"
-    t.integer  "facebook_id"
+    t.integer  "facebook_id",          :limit => 8
     t.string   "iphone_udid",          :limit => 512
     t.string   "username",             :limit => 128
     t.string   "first_name",           :limit => 128

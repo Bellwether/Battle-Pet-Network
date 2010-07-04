@@ -1,3 +1,26 @@
+dinah:  
+  breed: maine_coon
+  user: tracy_rouse
+  name: Dinah
+  slug: dinah
+  current_health: 35
+  current_endurance: 90
+  health: 35
+  endurance: 90
+  fortitude: 3
+  intelligence: 3
+  affection: 3
+  power: 1
+  level_rank_count: 1
+  experience: 0
+  wins_count: 0
+  loses_count: 0
+  draws_count: 0
+  kibble: 1500
+  occupation: prowling
+  level: maine_coon_1
+  actions: scratch,slash,claw,bite,swat,flank,dodge,leap
+  
 shadow:
   breed: shorthair
   user: renita_orellana
