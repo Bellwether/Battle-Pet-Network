@@ -26,7 +26,7 @@
 	  </td>
 	</tr>
 	<% end %>
-	<tr><td colspan="5" align="center"><p><%= will_paginate @topics %></p></td></tr>
-	<tr><td colspan="4">&nbsp;</td><td align="right"><p><%= facebook_link_to 'New topic', new_facebook_forum_forum_topic_path(@forum) %></p></td></tr>
+	<tr><td colspan="5" align="center"><%= will_paginate @topics %></td></tr>
+	<tr><td colspan="4">&nbsp;</td><td class="right"><%= facebook_link_to 'New topic', new_facebook_forum_forum_topic_path(@forum) if registered? %></td></tr>
   </table>
 </div>

@@ -1,13 +1,60 @@
-introductions_rules_1:
-  forum_topic: introductions_rules
+development_beta_update_1:
+  forum_topic: development_beta_update_1
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   body: |
-      Introductions Forum Rules
-      ----------------------
-      
-      Play nice!
+      ### Today
+
+      So, the game is feature-complete to the point of everything described in the [guidebook](http://apps.facebook.com/battlecat/guide). All the rules covered there are functional, and should be working as described.
+
+      #### Testing
+
+      There is already an great deal of automated test code (~1:1 ratio of code to tests) in place that should catch a good deal of logic and programmatic errors, but there are still UI problems and other issues to consider.
+
+      SANITY TESTING
+
+      I'm pretty confident that we won't see many crashing bugs or other glaring errors, and for what it's worth, whenever we discover a bug, I write a test to ensure the problem won't regress back into the codebase at a later date. 
+
+      A good round of excessive clicking around and trying to break forms with bad input should hopefully reveal any user-facing stuff that's slipped through the cracks, and that's what we need now: a general sanity test of the app.
+
+      The infancy of the UI makes any deeper testing difficult right now, since there's little guidance on the flow of things from the layout, design, and copy. The other two things which impede testing right now are lack of content, and lack of gameplay balance.
+
+      CONTENT
+
+      The game needs more content in the way of sentients, items, and humans in order to better mode how things like occupations will pay off, and to test the various combinations of bonuses to ensure there aren't any odd side effects.
+
+      As far as content goes, I'll be adding a suitable test bed of available stuff to play with in the next couple of weeks.
+
+      BALANCE
+
+      The power of the breeds, items, the price of things, the difficulty in taming and retaining humans, scavenging and foraging, etc. are all currently set to somewhat arbitrary values. There are undoubtably broken builds, frustrating difficulty levels, slow advancement, and other gross imbalances. I've obviously tried to set the starting values of things to sane levels, but actual gameplay is required to really work this out.
+
+      This is where testers come in, so _anyone_, feel free to invite others to come and help playlets. 
+
+      The other thing I'll be doing is adding a number of administrative features so we can easily tweak our data and run simulations for combat and such.
+
+      ### Tomorrow
+
+      In the next week or so I'll be hopefully finalizing any functional issues to the point that everything in the [guidebook](http://apps.facebook.com/battlecat/guide) is 100% working and tested. I'll also be adding additional content.
+
+      #### Staff Tools
+
+      I'll also be adding a staff forum and access control, as well as some admin panel controls. We'll also need to open discussion on layout and design, which to some degree precedes any art requirements.
+
+introductions_staff:
+  forum_topic: introductions_staff
+  user: travis_dunn
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  body: |
+      Hello,
+
+      There're a few of us here working on the game, me (Travis), and some artists. We're friendly, so get in touch or leave a post here in the forums if you have any questions.
+
+      For more details about us you can visit the [staff page](http://apps.facebook.com/battlecat/staff)
+
+      - travis
 
 discussion_rules_1:
   forum_topic: discussion_rules

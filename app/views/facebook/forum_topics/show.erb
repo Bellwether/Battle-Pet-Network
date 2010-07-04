@@ -35,7 +35,7 @@
   <p class="center"><%= will_paginate @posts %></p>
 </div>
 
-<% unless @topic.locked? %>
+<% unless @topic.locked? || !registered? %>
 <div class="box full">
   <% form_for @post, :url => facebook_nested_url(facebook_forum_forum_topic_forum_posts_path(@forum,@topic)) do |f| %>
   <table class="message" width="100%" cellpadding="3">

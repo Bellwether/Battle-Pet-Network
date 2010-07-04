@@ -22,14 +22,14 @@ discussion_rules:
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   
-development_rules:
+development_beta_update_1:
   forum: development
   user: travis_dunn
-  title: Rules
-  last_post: development_rules_1
+  title: Beta Update
+  last_post: development_beta_update_1
   forum_posts_count: 1
   views_count: 1
-  locked: true
-  sticky: true
+  locked: false
+  sticky: false
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>  

@@ -79,6 +79,7 @@ class CreateCore < ActiveRecord::Migration
       t.string :persistence_token
       t.string :timezone, :limit => 32, :default => 'UTC +00:00'
       t.string :locale, :limit => 16, :default => 'en_US'
+      t.string :role, :limit => 128, :default => 'member'
       t.datetime :birthday
       t.datetime :current_login_at
       t.datetime :last_login_at

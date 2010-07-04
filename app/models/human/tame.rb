@@ -26,8 +26,10 @@ class Tame < ActiveRecord::Base
       tame.update_bonus_count_column(-1)
     end    
   end
-  
   named_scope :enslaved, :conditions => "tames.status = 'enslaved'"
+  named_scope :type_is, lambda { |human_type| 
+    { :conditions => ["humans.human_type = ?", human_type], :include => [:human] }
+  }  
   
   class << self  
     def pet_tames_human?(pet,human)
