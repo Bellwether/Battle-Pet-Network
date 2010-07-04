@@ -17,7 +17,7 @@
 	  </tr>
 	  <tr>	
 	    <td colspan="2">
-	      <%= facebook_link_to "Reply", new_facebook_message_path(:reply_to_id => @message.id) %>
+	      <%= facebook_link_to "Reply", new_facebook_message_path(:reply_to_id => @message.id) if current_user_pet.id != @message.sender.id %>
 	      <%= facebook_link_to "Delete", facebook_message_path(@message) %>
 	    </td>
 	  </tr>
