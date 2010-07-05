@@ -69,6 +69,10 @@ class Challenge < ActiveRecord::Base
                                                                                         defender_strategy.maneuvers.blank?
   end
   
+  def open?
+    challenge_type == "1v0"
+  end
+  
   def description
     text = "#{time_ago_in_words(created_at)} ago #{attacker.name} challenged #{defender.name} "
     

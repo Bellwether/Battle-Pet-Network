@@ -9,13 +9,17 @@
 	  <ul id='issued-challenges' class='challenges'>
 	  <% @issued.each do |challenge| %>
 	    <li>
-		  <%= avatar_image(challenge.defender,'tiny') %>
-		  <div>
-			<span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
-			<br />
-		    <div><%= facebook_link_to "Cancel Challenge", cancel_facebook_challenge_path(challenge) %></div>
+	      <div>
+		    <% if challenge.open? %>
+			  <span><%= "You issued an open challenge #{time_ago_in_words(challenge.created_at)} ago" %></span>
+		    <% else %>
+		      <%= avatar_image(challenge.defender,'tiny') %>
+			  <span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
+			  <br />
+		    <% end %>
+	        <div><%= facebook_link_to "Cancel Challenge", cancel_facebook_challenge_path(challenge) %></div>
 		  </div>
-		</li>
+        </li>
 	  <% end %>	
 	  </ul>
     <% end %>

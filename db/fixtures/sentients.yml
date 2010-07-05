@@ -1,3 +1,33 @@
+vampire_bat:
+  sentient_type: threat
+  name: Vampire Bat
+  description: These creatures are most vexing to hunt, an irritable bloodthirsty race of night stalkers whose cowardice is their bravery, fearlessly swooping down under the cover of darkness with precision fangs. The hunger of these creatures makes them almost too easy to lure to battle.
+  health: 15
+  endurance: 50
+  power: 1
+  intelligence: 3
+  fortitude: 2
+  kibble: 3
+  population: 50
+  repopulation_rate: 25
+  population_cap: 50
+  required_rank: 1
+  
+quad_crab:
+  sentient_type: threat
+  name: Double Crab
+  description: Originally a mean and humble stone crab, the quad crab was so-named after the species evolved with four arms, each brandishing a mighty crab claw. An urban creature, the quad crab can be found in the saltwater lakes and rivers which have flooded into the cities.
+  health: 30
+  endurance: 100
+  power: 3
+  intelligence: 3
+  fortitude: 2
+  kibble: 10
+  population: 15
+  repopulation_rate: 10
+  population_cap: 15
+  required_rank: 1
+
 dark_vole:
   sentient_type: threat    
   name: Dark Vole
@@ -9,7 +39,7 @@ dark_vole:
   power: 3
   intelligence: 3
   fortitude: 2
-  kibble: 3
+  kibble: 5
   population: 50
   repopulation_rate: 10
   population_cap: 50
