@@ -26,6 +26,7 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     assert_tag :tag => "table", :attributes => {:class => 'challenge'}, :descendant => { :tag => "span", :attributes => { :class => "right button" } }
     assert_tag :tag => "table", :attributes => {:class => 'challenge'}, :descendant => { :tag => "span", :attributes => { :class => "left button" } }
     assert_tag :tag => "ul", :attributes => { :id => 'open-challenges' }
+    assert_tag :tag => "ul", :attributes => { :id => 'open-challenges' }
   end
   
   def test_show

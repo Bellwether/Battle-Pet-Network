@@ -17,7 +17,7 @@
 			  <span><%= "You challenged #{challenge.defender.name} #{time_ago_in_words(challenge.created_at)} ago" %></span>
 			  <br />
 		    <% end %>
-	        <div><%= facebook_link_to "Cancel Challenge", cancel_facebook_challenge_path(challenge) %></div>
+	        <div><%= facebook_link_to "Cancel Challenge", cancel_facebook_challenge_path(challenge), :method => :put %></div>
 		  </div>
         </li>
 	  <% end %>	
