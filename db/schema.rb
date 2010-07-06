@@ -194,9 +194,10 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
   end
 
   create_table "forums", :force => true do |t|
-    t.integer  "last_post_id",                                     :null => false
-    t.string   "name",               :limit => 128,                :null => false
+    t.integer  "last_post_id",                                          :null => false
+    t.string   "name",               :limit => 128,                     :null => false
     t.string   "description"
+    t.string   "forum_type",         :limit => 32,  :default => "user", :null => false
     t.integer  "forum_topics_count",                :default => 0
     t.integer  "forum_posts_count",                 :default => 0
     t.integer  "rank",                              :default => 0
@@ -559,6 +560,7 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.string   "persistence_token"
     t.string   "timezone",             :limit => 32,  :default => "UTC +00:00"
     t.string   "locale",               :limit => 16,  :default => "en_US"
+    t.string   "role",                 :limit => 128, :default => "member"
     t.datetime "birthday"
     t.datetime "current_login_at"
     t.datetime "last_login_at"

@@ -1,3 +1,11 @@
+staff_1:
+  forum_topic: staff_readme
+    user: travis_dunn
+    created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+    updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+    body: |
+        This is the private staff forum. All game development discussion can happen here. Cheers!
+    
 development_beta_update_1:
   forum_topic: development_beta_update_1
   user: travis_dunn

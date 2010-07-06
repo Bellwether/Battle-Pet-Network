@@ -6,6 +6,11 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:one)
   end
   
+  def test_initializes
+    user = User.new
+    assert_equal 'member', user.role
+  end
+  
   def test_should_update_from_facebook_session
     attributes_to_update = [:username,:email,:gender,:locale]
     @user = User.create(:facebook_id => "3145")
@@ -44,5 +49,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'first last', fullname.normalized_name
     mysterio = User.new
     assert_equal 'mysterio', mysterio.normalized_name
+  end
+  
+  def test_staff
+    user = User.new
+    User::ROLES.each do |r|
+      user.role = r 
+      assert (r == 'member' ? !user.staff? : user.staff?)
+    end
   end
 end

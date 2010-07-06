@@ -1,6 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <statuses type="array">
 <status>
+  <created_at>Sun Jul 04 12:54:58 +0000 2010</created_at>
+  <id>17718499752</id>
+  <text>Hup hup huzzah, integrated forums are now in place; went with markdown for &quot;wysiwyg&quot; editing. Nothing fancy, but clean (and integrated).</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>108645104</id>
+    <name>Battle Pet Network</name>
+    <screen_name>battlepet</screen_name>
+    <location>A world where pets rule</location>
+    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
+    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
+    <url>http://apps.facebook.com/battlecat</url>
+    <protected>false</protected>
+    <followers_count>34</followers_count>
+    <profile_background_color>9ae4e8</profile_background_color>
+    <profile_text_color>000000</profile_text_color>
+    <profile_link_color>0000ff</profile_link_color>
+    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+    <friends_count>135</friends_count>
+    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset>-36000</utc_offset>
+    <time_zone>Hawaii</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications></notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following></following>
+    <statuses_count>75</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+  </user>
+  <geo />
+  <coordinates />
+  <place />
+  <contributors />
+</status>
+<status>
+  <created_at>Sat Jul 03 12:27:12 +0000 2010</created_at>
+  <id>17644633909</id>
+  <text>Thank you capistrano! Boo, hiss Dreamhost.</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>108645104</id>
+    <name>Battle Pet Network</name>
+    <screen_name>battlepet</screen_name>
+    <location>A world where pets rule</location>
+    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
+    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
+    <url>http://apps.facebook.com/battlecat</url>
+    <protected>false</protected>
+    <followers_count>34</followers_count>
+    <profile_background_color>9ae4e8</profile_background_color>
+    <profile_text_color>000000</profile_text_color>
+    <profile_link_color>0000ff</profile_link_color>
+    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+    <friends_count>135</friends_count>
+    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset>-36000</utc_offset>
+    <time_zone>Hawaii</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications></notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following></following>
+    <statuses_count>75</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+  </user>
+  <geo />
+  <coordinates />
+  <place />
+  <contributors />
+</status>
+<status>
+  <created_at>Sat Jul 03 07:59:34 +0000 2010</created_at>
+  <id>17634569623</id>
+  <text>Meow sir, lot of polish, some testing, and here we are, with a feature-complete playable, but undressed, fighting game. Time for testers!</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>108645104</id>
+    <name>Battle Pet Network</name>
+    <screen_name>battlepet</screen_name>
+    <location>A world where pets rule</location>
+    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
+    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
+    <url>http://apps.facebook.com/battlecat</url>
+    <protected>false</protected>
+    <followers_count>34</followers_count>
+    <profile_background_color>9ae4e8</profile_background_color>
+    <profile_text_color>000000</profile_text_color>
+    <profile_link_color>0000ff</profile_link_color>
+    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+    <friends_count>135</friends_count>
+    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset>-36000</utc_offset>
+    <time_zone>Hawaii</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications></notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following></following>
+    <statuses_count>75</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+  </user>
+  <geo />
+  <coordinates />
+  <place />
+  <contributors />
+</status>
+<status>
   <created_at>Mon Jun 28 15:19:16 +0000 2010</created_at>
   <id>17258400976</id>
   <text>Programming progress graph for Battle Pet by lines-of-code: http://tinyurl.com/27uvf9e</text>
@@ -19,7 +157,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -30,14 +168,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -65,7 +203,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -76,14 +214,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -111,7 +249,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -122,14 +260,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -157,7 +295,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -168,14 +306,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -203,7 +341,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -214,14 +352,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -249,7 +387,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -260,14 +398,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -295,7 +433,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -306,14 +444,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -341,7 +479,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -352,14 +490,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -387,7 +525,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -398,14 +536,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -433,7 +571,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -444,14 +582,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -479,7 +617,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -490,14 +628,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -525,7 +663,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -536,14 +674,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -571,7 +709,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -582,14 +720,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -617,7 +755,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -628,14 +766,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -663,7 +801,7 @@
     <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
     <url>http://apps.facebook.com/battlecat</url>
     <protected>false</protected>
-    <followers_count>32</followers_count>
+    <followers_count>34</followers_count>
     <profile_background_color>9ae4e8</profile_background_color>
     <profile_text_color>000000</profile_text_color>
     <profile_link_color>0000ff</profile_link_color>
@@ -674,152 +812,14 @@
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>72</statuses_count>
-    <lang>en</lang>
-    <contributors_enabled>false</contributors_enabled>
-  </user>
-  <geo />
-  <coordinates />
-  <place />
-  <contributors />
-</status>
-<status>
-  <created_at>Fri May 21 18:00:01 +0000 2010</created_at>
-  <id>14443817456</id>
-  <text>Happy 30th to Pacman! We owe you.</text>
-  <source>web</source>
-  <truncated>false</truncated>
-  <in_reply_to_status_id></in_reply_to_status_id>
-  <in_reply_to_user_id></in_reply_to_user_id>
-  <favorited>false</favorited>
-  <in_reply_to_screen_name></in_reply_to_screen_name>
-  <user>
-    <id>108645104</id>
-    <name>Battle Pet Network</name>
-    <screen_name>battlepet</screen_name>
-    <location>A world where pets rule</location>
-    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
-    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
-    <url>http://apps.facebook.com/battlecat</url>
-    <protected>false</protected>
-    <followers_count>32</followers_count>
-    <profile_background_color>9ae4e8</profile_background_color>
-    <profile_text_color>000000</profile_text_color>
-    <profile_link_color>0000ff</profile_link_color>
-    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
-    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
-    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
-    <favourites_count>0</favourites_count>
-    <utc_offset>-36000</utc_offset>
-    <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
-    <profile_background_tile>false</profile_background_tile>
-    <profile_use_background_image>true</profile_use_background_image>
-    <notifications></notifications>
-    <geo_enabled>false</geo_enabled>
-    <verified>false</verified>
-    <following></following>
-    <statuses_count>72</statuses_count>
-    <lang>en</lang>
-    <contributors_enabled>false</contributors_enabled>
-  </user>
-  <geo />
-  <coordinates />
-  <place />
-  <contributors />
-</status>
-<status>
-  <created_at>Fri May 21 09:04:09 +0000 2010</created_at>
-  <id>14416648321</id>
-  <text>Facebook, Zynga, Reach Five-Year Agreement On Virtual Currency - http://tinyurl.com/2ukm9ot - Minor benefits/irritations for the rest of us.</text>
-  <source>web</source>
-  <truncated>false</truncated>
-  <in_reply_to_status_id></in_reply_to_status_id>
-  <in_reply_to_user_id></in_reply_to_user_id>
-  <favorited>false</favorited>
-  <in_reply_to_screen_name></in_reply_to_screen_name>
-  <user>
-    <id>108645104</id>
-    <name>Battle Pet Network</name>
-    <screen_name>battlepet</screen_name>
-    <location>A world where pets rule</location>
-    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
-    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
-    <url>http://apps.facebook.com/battlecat</url>
-    <protected>false</protected>
-    <followers_count>32</followers_count>
-    <profile_background_color>9ae4e8</profile_background_color>
-    <profile_text_color>000000</profile_text_color>
-    <profile_link_color>0000ff</profile_link_color>
-    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
-    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
-    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
-    <favourites_count>0</favourites_count>
-    <utc_offset>-36000</utc_offset>
-    <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277771427/images/themes/theme1/bg.png</profile_background_image_url>
-    <profile_background_tile>false</profile_background_tile>
-    <profile_use_background_image>true</profile_use_background_image>
-    <notifications></notifications>
-    <geo_enabled>false</geo_enabled>
-    <verified>false</verified>
-    <following></following>
-    <statuses_count>72</statuses_count>
-    <lang>en</lang>
-    <contributors_enabled>false</contributors_enabled>
-  </user>
-  <geo />
-  <coordinates />
-  <place />
-  <contributors />
-</status>
-<status>
-  <created_at>Sun May 16 13:23:18 +0000 2010</created_at>
-  <id>14097863434</id>
-  <text>Latest rake test output: 134 tests, 737 assertions, 0 failures</text>
-  <source>web</source>
-  <truncated>false</truncated>
-  <in_reply_to_status_id></in_reply_to_status_id>
-  <in_reply_to_user_id></in_reply_to_user_id>
-  <favorited>false</favorited>
-  <in_reply_to_screen_name></in_reply_to_screen_name>
-  <user>
-    <id>108645104</id>
-    <name>Battle Pet Network</name>
-    <screen_name>battlepet</screen_name>
-    <location>A world where pets rule</location>
-    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
-    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
-    <url>http://apps.facebook.com/battlecat</url>
-    <protected>false</protected>
-    <followers_count>32</followers_count>
-    <profile_background_color>9ae4e8</profile_background_color>
-    <profile_text_color>000000</profile_text_color>
-    <profile_link_color>0000ff</profile_link_color>
-    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
-    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
-    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
-    <favourites_count>0</favourites_count>
-    <utc_offset>-36000</utc_offset>
-    <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1277506381/images/themes/theme1/bg.png</profile_background_image_url>
-    <profile_background_tile>false</profile_background_tile>
-    <profile_use_background_image>true</profile_use_background_image>
-    <notifications></notifications>
-    <geo_enabled>false</geo_enabled>
-    <verified>false</verified>
-    <following></following>
-    <statuses_count>72</statuses_count>
+    <statuses_count>75</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>

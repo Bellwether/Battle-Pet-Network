@@ -1,3 +1,15 @@
+qua_crab_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :quad_crab %>
+  name: QCS
+  status: active
+  
+vampire_bat_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :vampire_bat %>
+  name: VBS
+  status: active
+
 leper_rat_strategy:
   combatant_type: Sentient
   combatant_id: <%= Fixtures.identify :leper_rat %>

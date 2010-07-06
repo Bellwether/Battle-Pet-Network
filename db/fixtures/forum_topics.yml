@@ -1,3 +1,14 @@
+staff_readme:
+  forum: staff
+  user: travis_dunn
+  title: Readme
+  last_post: staff_1
+  forum_posts_count: 1
+  views_count: 1
+  sticky: true
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  
 introductions_rules:
   forum: introductions
   user: travis_dunn

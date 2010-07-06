@@ -10,7 +10,7 @@
   </tr>
   <% @forums.each do |forum| %>	
     <tr class="forum">
-    <td width="25"><%= topic_icon(forum.last_post) %></td>	
+    <td width="25"><%= topic_icon(forum.last_post) unless forum.last_post.blank? %></td>	
     <td>
 	  <%= facebook_link_to forum.name, facebook_forum_path(forum), :class => "title" %>
 	  <p class="em"><%= forum.description %></p>

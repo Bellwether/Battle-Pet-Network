@@ -1,3 +1,33 @@
+quad_crab_strategy_flank: 
+  action: flank
+  strategy: quad_crab_strategy
+  rank: 2
+  
+quad_crab_strategy_dodge: 
+  action: dodge
+  strategy: quad_crab_strategy
+  rank: 2
+  
+quad_crab_strategy_slash: 
+  action: slash
+  strategy: quad_crab_strategy
+  rank: 4
+  
+quad_crab_strategy_claw: 
+  action: claw
+  strategy: quad_crab_strategy
+  rank: 6
+
+vampire_bat_strategy_scratch: 
+  action: bite
+  strategy: vampire_bat_strategy
+  rank: 4
+  
+vampire_bat_strategy_scratch: 
+  action: scratch
+  strategy: vampire_bat_strategy
+  rank: 3
+
 leper_rat_strategy_scratch: 
   action: scratch
   strategy: leper_rat_strategy

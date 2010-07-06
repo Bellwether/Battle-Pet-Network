@@ -14,9 +14,17 @@ class Facebook::ForumsControllerTest  < ActionController::TestCase
     assert_response :success
     assert_template 'index'
     assert !assigns(:forums).blank?
+    assert assigns(:forums).select{|f| f.forum_type != 'user'}.blank?
     assert_tag :tag => "table", :attributes => { :class => "forums"}, :descendant => { 
       :tag => "tr", :attributes => { :class => "forum" }
     }
+  end
+  
+  def test_index_with_staff
+    @user.update_attribute(:role, 'admin')
+    facebook_get :index, :fb_sig_user => @user.facebook_id
+    assert !assigns(:forums).blank?
+    assert !assigns(:forums).select{|f| f.forum_type == 'staff'}.blank?
   end
   
   def test_show

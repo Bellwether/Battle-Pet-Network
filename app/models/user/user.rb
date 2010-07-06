@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
+  ROLES = ['member','staff','developer','admin']
+  
   belongs_to :pet
   has_many :pets
   has_many :forum_posts
   has_many :payment_orders
+  
+  validates_presence_of :role
+  validates_inclusion_of :role, :in => ROLES
   
   acts_as_authentic do |c|
     c.login_field = :username
@@ -24,6 +29,10 @@ class User < ActiveRecord::Base
         end 
       end
     end
+  end
+
+  def after_initialize(*args)
+    self.role ||= 'member'
   end
   
   def normalized_name
@@ -51,5 +60,9 @@ class User < ActiveRecord::Base
     self.email = facebook_session.user.proxied_email
     self.gender = facebook_session.user.sex
     self.locale = facebook_session.user.locale
+  end
+  
+  def staff?
+    ['staff','developer','admin'].include?(role) 
   end
 end
