@@ -1,7 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <title>Battle Pet Network :: Administration</title>
+  <%= stylesheet_link_tag "admin" %>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-  <%= yield %>
+  <div id="wrapper">
+    <header>
+	  <h1><a>Battle Pet Network :: Admin</a></h1>
+	</header>
+    <%= yield %>
+  </div>
 </body>
