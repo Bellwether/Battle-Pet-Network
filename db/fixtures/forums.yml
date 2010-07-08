@@ -12,7 +12,7 @@ introductions:
   forum_type: user
   description: Welcome to the Battle Pet Network. Come in and introduce yourself.
   rank: 2
-  last_post: discussion_rules_1
+  last_post: introductions_staff
   forum_topics_count: 1
   forum_posts_count: 1
 
@@ -21,7 +21,7 @@ discussion:
   forum_type: user
   description: Go here for discussion on how to play, strategy advise, the universe, or any other aspects of the game. 
   rank: 3
-  last_post: discussion_rules_1
+  last_post: discussion_rules
   forum_topics_count: 1
   forum_posts_count: 1
  

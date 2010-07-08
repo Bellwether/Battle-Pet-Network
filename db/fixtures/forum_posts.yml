@@ -24,7 +24,7 @@ staff_1:
   body: This is the private staff forum. All game development discussion can happen here. Cheers!
 
 development_beta_update_1:
-  forum_topic: development_beta_update_1
+  forum_topic: development_beta_update
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
@@ -67,8 +67,8 @@ development_beta_update_1:
 
       I'll also be adding a staff forum and access control, as well as some admin panel controls. We'll also need to open discussion on layout and design, which to some degree precedes any art requirements.
 
-introductions_rules:
-  forum_topic: introductions_rules
+introductions_staff:
+  forum_topic: introductions_staff
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
@@ -81,7 +81,7 @@ introductions_rules:
 
       - travis
 
-discussion_rules_1:
+discussion_rules:
   forum_topic: discussion_rules
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>

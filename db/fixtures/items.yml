@@ -288,14 +288,38 @@ hunting_claws:
   
 sabre_claws:
   name: Sabre Claws
-  description: Long and tampered to an elegant murder point, sabre claws are the tools of the practiced killer.
+  description: Long and tampered to an elegant murder-point, sabre claws are the tried and true tools of the practiced killer.
   item_type: Weapon
   power: 2
   required_rank: 4
   cost: 18000
   rarity: 1500 
+  stock: 3
+  stock_cap: 3
+  restock_rate: 1 
+  
+ivory_claws:
+  name: Ivory Claws
+  description: Born of one of nature's richest substances, ivory claws give death a rare radiant beauty.
+  item_type: Weapon
+  power: 2
+  required_rank: 5
+  cost: 23000
+  rarity: 0
   stock: 2
   stock_cap: 2
+  restock_rate: 1   
+  
+eviserators:
+  name: Eviserators
+  description: Single-edged and hooked, these claws have been engineered by time to excel at slicing open an animal's underbelly with the slightest scratch. There are few means more effective at splaying guts and rendering open wounds.
+  item_type: Weapon
+  power: 3
+  required_rank: 6
+  cost: 25000
+  rarity: 3000
+  stock: 3
+  stock_cap: 3
   restock_rate: 1  
     
 catamount_claws:
@@ -305,7 +329,7 @@ catamount_claws:
   item_type: Weapon
   power: 4
   required_rank: 7
-  cost: 28000
+  cost: 30000
   rarity: 4000
   stock: 3
   stock_cap: 3
@@ -369,8 +393,20 @@ spidersilk_shroud:
   required_rank: 2
   cost: 10000
   rarity: 1000
-  stock: 2
-  stock_cap: 2
+  stock: 1
+  stock_cap: 1
+  restock_rate: 1  
+  
+studded_leathers:
+  name: Studded Leathers
+  description: Bound together from strips of industrial leather and punctuated by ornamental straps, buckles, and metal spikes, it's unknown what original purpose the humans had for these scraps but when woven together they form a hardened, stalwart mantle to defend a pet.
+  item_type: Mantle
+  power: 3
+  required_rank: 5
+  cost: 20000
+  rarity: 4000
+  stock: 1
+  stock_cap: 1
   restock_rate: 1  
   
 choke_chain:

@@ -19,11 +19,11 @@ staff_readme:
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   
-introductions_rules:
+introductions_staff:
   forum: introductions
   user: travis_dunn
-  title: Rules
-  last_post: introductions_rules_1
+  title: Staff Hellos
+  last_post: introductions_staff
   forum_posts_count: 1
   views_count: 1
   locked: true
@@ -35,7 +35,7 @@ discussion_rules:
   forum: discussion
   user: travis_dunn
   title: Rules
-  last_post: discussion_rules_1
+  last_post: discussion_rules
   forum_posts_count: 1
   views_count: 1
   locked: true
@@ -43,7 +43,7 @@ discussion_rules:
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   
-development_beta_update_1:
+development_beta_update:
   forum: development
   user: travis_dunn
   title: Beta Update
