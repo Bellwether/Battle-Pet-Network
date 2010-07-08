@@ -35,4 +35,24 @@ class Facebook::ForumPostsControllerTest  < ActionController::TestCase
       assert flash[:error_message]
     end
   end
+  
+  def test_edit
+    @post = @topic.last_post
+    facebook_get :edit, :forum_id => @forum.id, :forum_topic_id => @topic.id, :id => @post.id, :fb_sig_user => @post.user.facebook_id
+    assert_response :success
+    assert_template 'edit'
+    assert !assigns(:forum).blank?
+    assert !assigns(:topic).blank?
+    assert !assigns(:post).blank?
+    assert_tag :tag => "form", :attributes => {:action => @controller.facebook_nested_url(facebook_forum_forum_topic_forum_post_path(@forum,@topic,@post))}
+    assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_post[body]" } }
+  end
+  
+  def test_update
+    @post = @topic.last_post
+    facebook_put :update, :forum_id => @forum.id, :forum_topic_id => @topic.id, :id => @post.id, :fb_sig_user => @post.user.facebook_id, :forum_post => {:body => "EDITED"}
+    assert flash[:notice]
+    assert !assigns(:post).blank?
+    assert_equal 'EDITED', @post.reload.body
+  end
 end

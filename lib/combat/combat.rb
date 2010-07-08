@@ -86,6 +86,7 @@ module Combat
       attacker.current_health = [attacker.current_health - results.second_damage,0].max
       defender.current_health = [defender.current_health - results.first_damage,0].max
       logger.info "combat: attacker health #{attacker.current_health}, defender health #{defender.current_health}"
+      logger.info "combat: attacker end #{attacker.current_endurance}, defender end #{defender.current_endurance}"      
       
       log_round(results)
     end
@@ -93,6 +94,7 @@ module Combat
     set_outcome if respond_to?(:set_outcome)
     log_outcome
     restore_combatants_condition
+    save_combatants
     respond_to?(:award!) ? award! : award_combatants
   end
   

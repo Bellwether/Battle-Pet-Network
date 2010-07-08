@@ -31,10 +31,14 @@ class Facebook::ForumTopicsControllerTest  < ActionController::TestCase
   
   def test_show_with_user
     @topic.update_attribute(:locked,false)
+    @post = @topic.last_post
+    @user = @post.user
     facebook_get :show, :forum_id => @forum.id, :id => @topic.id, :fb_sig_user => @user.facebook_id
     assert_response :success
     assert_template 'show'
     post_url = "/forums/#{@forum.id}/forum_topics/#{@topic.id}/forum_posts"
+    assert_tag :tag => "a", :attributes => {:href => @controller.facebook_nested_url(edit_facebook_forum_forum_topic_forum_post_path(@forum,@topic,@post))}
+    
     assert_tag :tag => "form", :attributes => {:action => post_url, :method => "post"}
     assert_tag :tag => "form", :descendant => { :tag => "textarea", :attributes => { :name => "forum_post[body]" } }
   end

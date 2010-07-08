@@ -2,13 +2,13 @@ class Facebook::ForumTopicsController < Facebook::FacebookController
   before_filter :ensure_application_is_installed_by_facebook_user, :except => [:show]
   
   def new
-    @forum = Forum.find(params[:forum_id])
+    @forum = Forum.find_for_user(current_user,params[:forum_id])
     @topic = @forum.topics.new
     @post = @topic.posts.build
   end
   
   def create
-    @forum = Forum.find(params[:forum_id])
+    @forum = Forum.find_for_user(current_user,params[:forum_id])
     @topic = @forum.topics.new(params[:forum_topic])
     @topic.user = current_user
     @topic.posts.first.user = @topic.user unless @topic.posts.blank?
@@ -24,7 +24,7 @@ class Facebook::ForumTopicsController < Facebook::FacebookController
   end
   
   def show
-    @forum = Forum.find(params[:forum_id])
+    @forum = Forum.find_for_user(current_user,params[:forum_id])
     @topic = @forum.topics.find(params[:id])
     @posts = @topic.posts.paginate :page => params[:page]
     @post = @topic.posts.new

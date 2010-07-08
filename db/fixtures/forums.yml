@@ -30,6 +30,6 @@ development:
   forum_type: user  
   description: Announcements for game updates, bug fixes, upcoming changes, suggestions, and feature requests.
   rank: 4
-  last_post: development_rules_1
+  last_post: development_beta_update_1
   forum_topics_count: 1
   forum_posts_count: 1

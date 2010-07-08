@@ -1,11 +1,28 @@
+development_paypal_testing_1:
+  forum_topic: development_paypal_testing
+  user: travis_dunn
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  body: |
+      Cash shop purchases are currently made using PayPal. Facebook is currently piloting its Coins program, and we'll probably eventually use those in addition to or in lieu of PayPal checkouts.
+      
+      Right now I've only implemented PayPal Express, which requires the user to already have a PayPal account. When it becomes meaningful to do so, I'll go ahead and add basic CC purchasing support as well. For now, Express gives us more than enough to test with, however.
+      
+      The game is currently running in PayPal's sandbox mode, so real account holders cannot complete any transactions. Instead, please use the following sandbox account to login to PayPal and test cash shop purchases.
+      
+      login: 
+      **pet_1268359332_per@battlepet.net**
+      
+      password: 
+      **268360619**
+
 staff_1:
   forum_topic: staff_readme
-    user: travis_dunn
-    created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
-    updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
-    body: |
-        This is the private staff forum. All game development discussion can happen here. Cheers!
-    
+  user: travis_dunn
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  body: This is the private staff forum. All game development discussion can happen here. Cheers!
+
 development_beta_update_1:
   forum_topic: development_beta_update_1
   user: travis_dunn
@@ -50,8 +67,8 @@ development_beta_update_1:
 
       I'll also be adding a staff forum and access control, as well as some admin panel controls. We'll also need to open discussion on layout and design, which to some degree precedes any art requirements.
 
-introductions_staff:
-  forum_topic: introductions_staff
+introductions_rules:
+  forum_topic: introductions_rules
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
@@ -73,15 +90,4 @@ discussion_rules_1:
       Discussion Forum Rules
       ----------------------
       
-      Play nice!
-  
-development_rules_1:
-  forum_topic: development_rules
-  user: travis_dunn
-  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
-  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
-  body: |
-      Development Forum Rules
-      ----------------------
-  
       Play nice!

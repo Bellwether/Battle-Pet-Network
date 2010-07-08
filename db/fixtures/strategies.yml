@@ -1,4 +1,10 @@
-qua_crab_strategy:
+plague_of_flies_strategy:
+  combatant_type: Sentient
+  combatant_id: <%= Fixtures.identify :plague_of_flies %>
+  name: POFS
+  status: active
+  
+quad_crab_strategy:
   combatant_type: Sentient
   combatant_id: <%= Fixtures.identify :quad_crab %>
   name: QCS

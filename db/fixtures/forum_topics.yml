@@ -1,3 +1,13 @@
+development_paypal_testing:
+  forum: development
+  user: travis_dunn
+  title: Cash Shop PayPal Testing
+  last_post: development_paypal_testing_1
+  forum_posts_count: 1
+  views_count: 1
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+
 staff_readme:
   forum: staff
   user: travis_dunn

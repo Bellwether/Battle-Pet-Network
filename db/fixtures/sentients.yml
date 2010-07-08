@@ -1,3 +1,18 @@
+plague_of_flies:
+  sentient_type: threat
+  name: Plague of Flies   
+  description: Summoned from corpse bellies, offal heaps, and the rotten leagues of ruined suburbia, this buzzing black cloud hosts countless thousands of wicked horseflies deadly in their endless numbers and appetite for the filth and blood.  
+  health: 35
+  endurance: 125
+  power: 1
+  intelligence: 1
+  fortitude: 1
+  kibble: 12
+  population: 25
+  repopulation_rate: 15
+  population_cap: 25
+  required_rank: 1 
+
 vampire_bat:
   sentient_type: threat
   name: Vampire Bat
@@ -15,14 +30,14 @@ vampire_bat:
   
 quad_crab:
   sentient_type: threat
-  name: Double Crab
+  name: Quad Crab
   description: Originally a mean and humble stone crab, the quad crab was so-named after the species evolved with four arms, each brandishing a mighty claw. An urban creature, the quad crab can be found in the oily saltwater lakes and rivers which have flooded into the cities.
   health: 30
   endurance: 100
-  power: 3
+  power: 4
   intelligence: 3
   fortitude: 2
-  kibble: 10
+  kibble: 20
   population: 15
   repopulation_rate: 10
   population_cap: 15

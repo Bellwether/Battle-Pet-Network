@@ -1,3 +1,23 @@
+plague_of_flies_strategy_scratch:
+  action: scratch
+  strategy: plague_of_flies_strategy
+  rank: 1
+  
+plague_of_flies_strategy_flank: 
+  action: flank
+  strategy: plague_of_flies_strategy
+  rank: 2
+  
+plague_of_flies_strategy_dodge: 
+  action: dodge
+  strategy: plague_of_flies_strategy
+  rank: 4
+  
+plague_of_flies_strategy_leap: 
+  action: leap
+  strategy: plague_of_flies_strategy
+  rank: 6
+
 quad_crab_strategy_flank: 
   action: flank
   strategy: quad_crab_strategy

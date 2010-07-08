@@ -13,4 +13,8 @@ class ForumPost < ActiveRecord::Base
     forum_topic.update_attribute(:last_post_id, self.id)
     forum_topic.forum.update_attribute(:last_post_id, self.id)
   end
+  
+  def can_edit?(u)
+    u && (u.id == user_id || u.staff?)
+  end
 end

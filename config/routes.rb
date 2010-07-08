@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     
     f.resources :forums, :only => [:index,:show] do |m|
       m.resources :forum_topics, :only => [:index,:show,:new,:create] do |t|
-        t.resources :forum_posts, :only => [:create]
+        t.resources :forum_posts, :only => [:edit,:update,:create]
       end
     end
     

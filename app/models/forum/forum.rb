@@ -15,6 +15,16 @@ class Forum < ActiveRecord::Base
   validates_presence_of :forum_type
   validates_inclusion_of :forum_type, :in => %w(user staff pack breed)
 
+  class << self
+    def find_for_user(user,id=nil)
+      if user && user.staff?
+        return id.blank? ? Forum.include_last_post.ranked.all : Forum.find_by_id(id)
+      else
+        return id.blank? ? Forum.include_last_post.open.ranked.all : Forum.open.find_by_id(id)
+      end
+    end
+  end
+
   def after_initialize(*args)
     self.forum_type ||= 'user'
   end

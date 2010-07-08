@@ -27,6 +27,9 @@
 	  <td>
 		<p><%= RDiscount.new(p.body).to_html %></p>
 		<hr />
+		<% if p.can_edit?(current_user) %>
+		  <p class="right"><%= facebook_link_to 'Edit Post', edit_facebook_forum_forum_topic_forum_post_path(@forum,@topic,p) %></p>
+		<% end %>
 		<p class="em"><%= "#{time_ago_in_words(p.created_at)} ago on #{(Time.now).strftime("%Y-%m-%d %H:%M")}" %></p>
 	  </td>
     </tr>
