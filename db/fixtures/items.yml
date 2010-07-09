@@ -401,7 +401,7 @@ studded_leathers:
   name: Studded Leathers
   description: Bound together from strips of industrial leather and punctuated by ornamental straps, buckles, and metal spikes, it's unknown what original purpose the humans had for these scraps but when woven together they form a hardened, stalwart mantle to defend a pet.
   item_type: Mantle
-  power: 3
+  power: 2
   required_rank: 5
   cost: 20000
   rarity: 4000
@@ -409,6 +409,18 @@ studded_leathers:
   stock_cap: 1
   restock_rate: 1  
   
+imperator_mane:
+  name: Imperator Mane
+  description: An endlessly flowing swath of furs poached from the greatest beasts of prey, the imperator mane is the majestic mantle of a supreme champion, and the pet who wears it is as a blazing sun who outshines all others from the heavens.
+  item_type: Mantle
+  power: 3
+  required_rank: 8
+  cost: 30000
+  rarity: 0
+  stock: 1
+  stock_cap: 1
+  restock_rate: 1  
+
 choke_chain:
   name: Choke Chain
   description: A yoke of leather and mail, these collars were once used to discipline pets but are now worn freely as a restyled gothic armor-piece.
@@ -472,13 +484,61 @@ bell_collar:
   name: Bell Collar
   description: A dainy bejeweled necklace with an oversized silver bell, this atrocious charm could only be the product of a warmed human mind, and thus proves quite useful in calling them to a pet's side.
   item_type: Charm
-  power: 35
+  power: 1
   required_rank: 1
   cost: 200
   rarity: 50
   stock: 5
   stock_cap: 5
   restock_rate: 5
+  
+garland_flower: 
+  name: Garland Flower
+  description: A sunburst halo of nature's softest colors, this floral charm seems to blind and dazzle human onlookers when adorned.
+  item_type: Charm
+  power: 1
+  required_rank: 1
+  cost: 200
+  rarity: 50
+  stock: 5
+  stock_cap: 5
+  restock_rate: 3
+  
+ringlet_locks:  
+  name: Ringlet Locks  
+  description: A insufferably precious nest of ribbons, bows, and plaited baubles woven into locks of artificial hair designed to mop a pet's head in the gaudy mock-hairstyle of a human.
+  item_type: Charm
+  power: 1
+  required_rank: 1
+  cost: 200
+  rarity: 50
+  stock: 5
+  stock_cap: 5
+  restock_rate: 3
+
+haute_cravat: 
+  name: Haute Cravat
+  description: The cultivated sophistication of the cravat combined with the innocent dignity of the pet is sure to capture the heart of any human who beholds it upon ones neck.
+  item_type: Charm
+  power: 1
+  required_rank: 1
+  cost: 200
+  rarity: 50
+  stock: 5
+  stock_cap: 5
+  restock_rate: 3  
+  
+jaunty_bootsies:
+  name: Jaunty Bootsies  
+  description: The ultimate in fashion-over-form footwear, these cloying mock-boots sheath a pet's natural weapons, hobble their agility, and loudly announce their slightest movements, but to humans, the jaunty bootsies are a profound charm which they but helplessly grin and follow.
+  item_type: Charm
+  power: 1
+  required_rank: 1
+  cost: 200
+  rarity: 50
+  stock: 5
+  stock_cap: 5
+  restock_rate: 3
     
 kibble_pack:
   name: Kibble Pack

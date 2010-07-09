@@ -1,10 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
-    admin.with_options :controller => 'main' do |l|
-      l.logs 'logs', :action => 'logs'
+    admin.with_options :controller => 'main' do |m|
+      m.dashboard 'dashboard', :action => 'dashboard'
+      m.logs 'logs', :action => 'logs'
     end
-    
     admin.resources :activity_streams, :only => [:index], :collection => {:toggle => :put}
+    admin.root :controller => 'main', :action => 'dashboard'
   end
   
   map.namespace :facebook do |f|

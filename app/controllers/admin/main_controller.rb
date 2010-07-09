@@ -1,6 +1,9 @@
 class Admin::MainController < Admin::AdminController
   include ApplicationHelper
   
+  def dashboard
+  end
+  
   def logs
     Dir.glob("log/*.log")
     @log_file = ''

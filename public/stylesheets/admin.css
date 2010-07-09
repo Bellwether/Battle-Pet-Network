@@ -18,26 +18,6 @@ font-size: 14px;
 line-height: 18px;
 }
 
-/* layout */
-
-#wrapper {
-width: 950px;
-margin: 0 auto;
-margin-top: 5px;
-margin-bottom: 5px;
-}
-
-header {
-width: 940px;
-height: 250px;
-margin: 0 auto;
-background: #fff ;/*url(images/header.png) no-repeat right top;*/
-
-/* curved border radius */
--moz-border-radius: 10px;
--webkit-border-radius: 10px;
-}
-
 /* basics */
 
 h1,h2,h3,h4,h5,h6 {
@@ -67,4 +47,56 @@ margin-bottom: 18px;
 
 li {
 padding-left: 5px;
+}
+
+/* layout */
+
+#wrapper {
+width: 950px;
+margin: 0 auto;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+header {
+width: 940px;
+height: 250px;
+margin: 0 auto;
+background: #fff ;/*url(images/header.png) no-repeat right top;*/
+
+/* curved border radius */
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+
+/* nav */
+
+nav .menu {
+font-size: 14px;
+font-weight: bold;
+}
+
+nav .menu ul {
+margin: 0;
+padding: 17px 0 0 20px;
+list-style: none;
+line-height: normal;
+}
+
+nav .menu li {
+display: block;
+float: left;
+}
+
+nav .menu a {
+display: block;
+float: left;
+margin-right: 5px;
+padding: 0px 15px;
+text-decoration: none;
+color: #FFF;
+}
+
+nav .menu a:hover {
+font-style: italic;
 }

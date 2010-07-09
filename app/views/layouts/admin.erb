@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Battle Pet Network :: Administration</title>
-  <%= stylesheet_link_tag "admin" %>
+  <link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/admin.css">
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -11,6 +11,16 @@
     <header>
 	  <h1><a>Battle Pet Network :: Admin</a></h1>
 	</header>
+	
+	<nav><!-- top nav -->
+	  <div class="menu">
+	    <ul>
+		  <li><a href="#">Dashboard</a></li>
+		  <li><a href="#">Data</a></li>
+		  <li><a href="#">Users</a></li>
+		</ul>
+	  </div>
+	</nav>	
     <%= yield %>
   </div>
 </body>
