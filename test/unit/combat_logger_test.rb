@@ -106,4 +106,21 @@ class CombatLoggerTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_log_combatant_status
+    @combat_models.each do |m|
+      m.combatants.each do |c|
+        ['entered','ended'].each do |s|
+          c.current_health = 1
+          c.current_endurance = 1
+          log = m.log_combatant_status(c,s)
+          if c.is_a?(Pet)
+            assert_equal "#{c.name} #{s} the battle with 1 health and 1 endurance.", log
+          else
+            assert_nil log
+          end
+        end
+      end
+    end
+  end
 end

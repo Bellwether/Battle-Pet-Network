@@ -57,6 +57,9 @@
 	<tr>
 	  <td colspan="2">
 		<ul class="logs">
+		  <% @challenge.battle.logs[:status][:entered].each do |status| %>
+		    <li class="log"><%= status %></li>
+		  <% end %>
 		  <% @challenge.battle.logs[:rounds].each do |log| %>	
 		    <li class="log">
 			  <%= facebook_image_tag "actions/tiny/#{log[:attacker_action]}.png" %>
@@ -65,6 +68,9 @@
 			</li>
 		  <% end %>
 		  <li class="log strong"><%= @challenge.battle.logs[:outcome] %></li>
+		  <% @challenge.battle.logs[:status][:ended].each do |status| %>
+		    <li class="log"><%= status %></li>
+		  <% end %>
 		  <% @challenge.battle.logs[:attacker_awards].each_pair do |key,log| %>
 		    <%= "<li class='log award'>#{log}</li>" unless log.blank? %>
 		  <% end %>

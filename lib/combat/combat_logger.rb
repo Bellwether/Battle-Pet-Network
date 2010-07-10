@@ -4,6 +4,7 @@ module Combat::CombatLogger
   
   LOG_STRUCT = {:rounds => [], 
                 :outcome => nil, 
+                :status => {:entered => [], :ended => []},
                 :gear => [],
                 :attacker_awards => {:experience => [], :kibble => []}, 
                 :defender_awards => {:experience => []}}
@@ -61,7 +62,10 @@ module Combat::CombatLogger
   end
   
   def log_combatant_status(combatant,state='entered')
-    
+    return nil unless combatant.is_a?(Pet)
+    log = "#{named(combatant)} #{state} the battle with #{combatant.current_health} health and #{combatant.current_endurance} endurance."
+    logs[:status][state.to_sym] << log
+    return log
   end
   
   def log_round(res)

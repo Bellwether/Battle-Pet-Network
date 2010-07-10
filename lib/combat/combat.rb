@@ -140,9 +140,10 @@ module Combat
     
     experience = Combat.calculate_experience(power, level, other_level, did_win)
     strategy = strategy_for(c)
-    strategy_bonus = did_win ? strategy.favorite_action_experience_bonus : 0
+    favorite_action_bonus = (did_win ? strategy.favorite_action_experience_bonus : 0)
+    intelligence_bonus = (did_win ? c.intelligence_bonus_count : 0)
     
-    return experience + strategy_bonus
+    return experience + favorite_action_bonus + intelligence_bonus
   end
   
   def save_combatants
