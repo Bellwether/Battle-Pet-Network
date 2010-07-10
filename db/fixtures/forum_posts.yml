@@ -1,3 +1,26 @@
+staff_branding:
+  forum_topic: staff_branding
+  user: travis_dunn
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  body: |
+        The sooner we discuss this the better, for at the moment I've not quite settled on a canonical name, or brand, for the game. My thoughts on branding are based on a few considerations. 
+
+        Initially, I had thought it would best to have a single game system, with a different front-end game supporting different breeds, so cats, dogs, beasts, etc. The idea was to have a suite of apps, based on animal. Hence, the Battle Pet *Network*, where you'd then have Battle Cat, Battle Dog, Battle Beast, and so on. Thus, www.battletpet.net, and @battlepet. This seemed to be a way to get "more bang for our game design buck" as it were, but I've since re-examined this assumption.
+
+        The downside, in actuality, is that the brand is diluted, _especially_ amongst casual players, and it would probably be better to consolidate the players as much together as possible than to separate them by artificial 'games'. We would still want to move on to other species of pets, but I now suspect this is a problem to be solved more in the UI and UX side of things, instead of by some silly franchising.
+
+        That said, we need:
+
+        * Facebook app name
+        * website
+        * Twitter account
+        * App Store name
+
+        I'm inclined to leave the website as battlepet.net and the twitter @battlepet, because I think those are solid names (although I picked up a bunch of similar domains). This means that the Facebook app should probably change its name to match. This isn't a huge deal, but the operative question is: "what should the official name be"? This is the name that shows up in banner images (and which we'll need font/art for), and the name by which we want people to know our work.
+
+        Any thoughts? At the moment, I'm leaning to our current convention of "The Battle Pet Network" as the formal name, with "Battle Pet" being our shorthand. A final, albeit comparatively trivial question, is whether "Battle Pet" should be one or two words; "Battlepet". I slightly prefer two words, because it's easier for the eye to read and allows the initialism "BPN".
+  
 development_paypal_testing_1:
   forum_topic: development_paypal_testing
   user: travis_dunn
@@ -16,14 +39,14 @@ development_paypal_testing_1:
       password: 
       **268360619**
 
-staff_1:
+staff_readme:
   forum_topic: staff_readme
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
   body: This is the private staff forum. All game development discussion can happen here. Cheers!
 
-development_beta_update_1:
+development_beta_update:
   forum_topic: development_beta_update
   user: travis_dunn
   created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>

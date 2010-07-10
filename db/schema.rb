@@ -404,7 +404,6 @@ ActiveRecord::Schema.define(:version => 20100124124827) do
     t.integer  "health_bonus_count",                     :default => 0,        :null => false
     t.integer  "endurance_bonus_count",                  :default => 0,        :null => false
     t.integer  "power_bonus_count",                      :default => 0,        :null => false
-    t.integer  "experience_bonus_count",                 :default => 0,        :null => false
     t.integer  "fortitude_bonus_count",                  :default => 0,        :null => false
     t.integer  "defense_bonus_count",                    :default => 0,        :null => false
     t.integer  "affection_bonus_count",                  :default => 0,        :null => false

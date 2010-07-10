@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProfileCacheColumnsTest < ActiveSupport::TestCase
   def setup
-    @cached_attributes = ['health','endurance','fortitude','power','affection','experience','defense','intelligence']
+    @cached_attributes = ['health','endurance','fortitude','power','affection','defense','intelligence']
     @pet = pets(:siamese)
     @pet.update_attribute(:level_rank_count,10) # ensure rank for all humans / items
   end

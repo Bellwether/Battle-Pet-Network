@@ -347,6 +347,19 @@ telemetry_whiskers:
   stock: 2
   stock_cap: 2
   restock_rate: 1
+
+polestar_whiskers:
+  species: cat
+  name: Polestar Whiskers
+  description: Each whisker tipped by a miniature stellar glow, these remarkable fibers navigate the pet through the darkest shade and illuminate unknowns.
+  item_type: Sensor
+  power: 2
+  required_rank: 3
+  cost: 4000
+  rarity: 700
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
   
 silver_whiskers:
   species: cat
@@ -357,6 +370,32 @@ silver_whiskers:
   required_rank: 3
   cost: 3000
   rarity: 800
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
+  
+vibrissa_mask:  
+  species: cat
+  name: Vibrissa Mask  
+  description: Almost invisibly thin, these whiskers sprout from all about the pet's face, hooding the eyes, clamping the chin, and lending the pet an erratic shimmering mask poised to sense the smallest shift in their immediate surroundings.
+  item_type: Sensor
+  power: 3
+  required_rank: 4
+  cost: 10000
+  rarity: 1400
+  stock: 2
+  stock_cap: 2
+  restock_rate: 1
+
+ferrous_whiskers  
+  species: cat
+  name: Ferrous Whiskers
+  description: Fragmented iron filaments thread the core fibers of these unordinary whiskers, giving them not only a stiff weight and metallic glow, but ultimately permeating the pet's senses with a sympathy to electromagnetic fields conferring a deeper understanding of the world around them.
+  item_type: Sensor
+  power: 4
+  required_rank: 6
+  cost: 15000
+  rarity: 1800
   stock: 2
   stock_cap: 2
   restock_rate: 1

@@ -12,6 +12,7 @@ class ForumPost < ActiveRecord::Base
   def touch_parents
     forum_topic.update_attribute(:last_post_id, self.id)
     forum_topic.forum.update_attribute(:last_post_id, self.id)
+    forum_topic.forum.update_attribute(:forum_posts_count, forum_topic.forum.forum_posts_count + 1)
   end
   
   def can_edit?(u)

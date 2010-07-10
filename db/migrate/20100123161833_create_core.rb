@@ -80,6 +80,7 @@ class CreateCore < ActiveRecord::Migration
       t.string :timezone, :limit => 32, :default => 'UTC +00:00'
       t.string :locale, :limit => 16, :default => 'en_US'
       t.string :role, :limit => 128, :default => 'member'
+      t.string :signature, :limit => 512
       t.datetime :birthday
       t.datetime :current_login_at
       t.datetime :last_login_at
@@ -110,7 +111,6 @@ class CreateCore < ActiveRecord::Migration
       t.integer :health_bonus_count, :default => 0, :null => false
       t.integer :endurance_bonus_count, :default => 0, :null => false
       t.integer :power_bonus_count, :default => 0, :null => false
-      t.integer :experience_bonus_count, :default => 0, :null => false
       t.integer :fortitude_bonus_count, :default => 0, :null => false
       t.integer :defense_bonus_count, :default => 0, :null => false
       t.integer :affection_bonus_count, :default => 0, :null => false

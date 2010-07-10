@@ -10,7 +10,9 @@ class ForumPostTest < ActiveSupport::TestCase
   
   def test_touch_parents
     post = @topic.posts.build(:body => 'test', :user => @user)
-    assert post.save
+    assert_difference ['@topic.reload.forum_posts_count','@topic.reload.forum.forum_posts_count'], +1 do
+      assert post.save
+    end
     assert_equal post, @topic.reload.last_post
     assert_equal post, @topic.forum.last_post
   end

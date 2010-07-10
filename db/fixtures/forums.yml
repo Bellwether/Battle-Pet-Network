@@ -3,7 +3,7 @@ staff:
   forum_type: staff
   description: Developers, artists, and staff, post game development discussions here, including art and design review, gameplay and balance, monetization, ToS policies, inspiration, market analysis, et cetera.
   rank: 1
-  last_post: staff_1
+  last_post: staff_branding
   forum_topics_count: 1
   forum_posts_count: 1
   
@@ -30,6 +30,6 @@ development:
   forum_type: user  
   description: Announcements for game updates, bug fixes, upcoming changes, suggestions, and feature requests.
   rank: 4
-  last_post: development_beta_update_1
+  last_post: development_beta_update
   forum_topics_count: 1
   forum_posts_count: 1

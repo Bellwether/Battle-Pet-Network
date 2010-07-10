@@ -1,3 +1,13 @@
+staff_branding:
+  forum: staff
+  user: travis_dunn
+  title: Nameing & Branding
+  last_post: staff_branding
+  forum_posts_count: 1
+  views_count: 1
+  created_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  updated_at: <%= (Time.now).strftime("%Y-%m-%d %H:%M:00") %>
+  
 development_paypal_testing:
   forum: development
   user: travis_dunn
@@ -12,7 +22,7 @@ staff_readme:
   forum: staff
   user: travis_dunn
   title: Readme
-  last_post: staff_1
+  last_post: staff_readme
   forum_posts_count: 1
   views_count: 1
   sticky: true
@@ -47,7 +57,7 @@ development_beta_update:
   forum: development
   user: travis_dunn
   title: Beta Update
-  last_post: development_beta_update_1
+  last_post: development_beta_update
   forum_posts_count: 1
   views_count: 1
   locked: false
