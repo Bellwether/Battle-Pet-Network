@@ -72,7 +72,10 @@ module Combat
     return unless combat_needs_to_occur? && validates_combat
     initialize_combat
     
-    combatants.each { |c| log_gear(c); }
+    combatants.each do |c| 
+      log_combatant_status(c)
+      log_gear(c)
+    end
     while combat_in_progress?
       reset_actions
       @current_round = @current_round + 1
@@ -93,6 +96,9 @@ module Combat
     
     set_outcome if respond_to?(:set_outcome)
     log_outcome
+    combatants.each do |c| 
+      log_combatant_status(c)
+    end
     restore_combatants_condition
     save_combatants
     respond_to?(:award!) ? award! : award_combatants
