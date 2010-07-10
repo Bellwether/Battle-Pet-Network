@@ -42,7 +42,7 @@
 		      <li class="log"><%= log %></li>
 		    <% end %>
 		  <% end %>
-		  <% @challenge.battle.logs[:status][:entered].each do |status| %>
+		  <% @hunt.hunt.logs[:status][:entered].each do |status| %>
 		    <li class="log"><%= status %></li>
 		  <% end %>
 		  <% @hunt.hunt.logs[:rounds].each do |log| %>	
@@ -56,7 +56,7 @@
 		  <% @hunt.hunt.logs[:attacker_awards].each_pair do |key,log| %>
 		    <li class="log award"><%= log %></li>
 		  <% end %>
-		  <% @challenge.battle.logs[:status][:ended].each do |status| %>
+		  <% @hunt.hunt.logs[:status][:ended].each do |status| %>
 		    <li class="log"><%= status %></li>
 		  <% end %>		
 		</ul>
