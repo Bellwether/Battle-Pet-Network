@@ -44,8 +44,11 @@ background: #3B5998 ;/*url(images/header.png) no-repeat right top;*/
 }
 
 #header h1 {
-color:#fff;
 display:inline-block;	
+}
+
+#header a {
+color:#fff;
 }
 
 #header ul {
@@ -55,8 +58,14 @@ list-style: none;
 line-height: normal;
 }
 
+#header ul li {
+display: block;
+float: left;
+}
+
 #header-profile {
 float:right;	
+width:250px;
 }
 
 #beta {
