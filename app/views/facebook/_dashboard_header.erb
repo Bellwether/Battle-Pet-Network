@@ -10,12 +10,12 @@
 		<div id="header-stats">
 		  <label>Health: <%= "#{current_user_pet.current_health}/#{current_user_pet.total_health}" %></label>
 		  <span class="graph">
-			<span style="width:<%= 150*(current_user_pet.current_health/current_user_pet.total_health) %>;"></span>
+			<span style="width:<%= 150*(current_user_pet.current_health/current_user_pet.total_health) %>px;"></span>
 		  </span>
 		  <br />
 		  <label>Endurance: <%= "#{current_user_pet.current_endurance}/#{current_user_pet.total_endurance}" %></label>
 		  <span class="graph">
-			<span style="width:<%= 150*(current_user_pet.current_endurance/current_user_pet.total_endurance) %>;"></span>
+			<span style="width:<%= 150*(current_user_pet.current_endurance/current_user_pet.total_endurance) %>px;"></span>
 		  </span>
 		</div>
       </div>
@@ -25,7 +25,10 @@
 		<li><%= facebook_link_to 'Items', facebook_belongings_path %></li>
 	  </ul>
 	  <br />
-      <h4><%= "Kibble: #{current_user_pet.kibble}" %> <%= facebook_link_to 'Buy Kibble', premium_facebook_items_path %></h4>
+      <h4>
+	    <label><%= "Kibble: #{current_user_pet.kibble}" %></label> 
+		<%= facebook_link_to 'Buy Kibble', premium_facebook_items_path %>
+	  </h4>
     </div>
   <% end %>
 </div>
