@@ -19,16 +19,16 @@
 		  </span>
 		</div>
       </div>
+      <h4>
+	    <label><%= "Kibble: #{current_user_pet.kibble}" %></label> 
+		<%= facebook_link_to 'Buy Kibble', premium_facebook_items_path %>
+	  </h4>
+	  <br />
       <ul>
 		<li><%= facebook_link_to 'Profile', profile_facebook_pet_path %></li>
 		<li><%= facebook_link_to 'Combat', combat_facebook_pet_path %></li>
 		<li><%= facebook_link_to 'Items', facebook_belongings_path %></li>
 	  </ul>
-	  <br />
-      <h4>
-	    <label><%= "Kibble: #{current_user_pet.kibble}" %></label> 
-		<%= facebook_link_to 'Buy Kibble', premium_facebook_items_path %>
-	  </h4>
     </div>
   <% end %>
 </div>
