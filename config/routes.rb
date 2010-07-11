@@ -5,6 +5,9 @@ ActionController::Routing::Routes.draw do |map|
       m.data 'data', :action => 'data'
       m.logs 'logs', :action => 'logs'
     end
+    admin.resources :breeds, :only => [:index,:edit,:update]
+    admin.resources :levels, :only => [:index,:edit,:update]
+    
     admin.resources :activity_streams, :only => [:index], :collection => {:toggle => :put}
     admin.root :controller => 'main', :action => 'dashboard'
   end
