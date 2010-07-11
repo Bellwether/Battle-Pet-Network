@@ -45,10 +45,17 @@ background: #3B5998 ;/*url(images/header.png) no-repeat right top;*/
 
 #header h1 {
 display:inline-block;	
+float:left;
+font-size:30px;
+margin: 10px;
 }
 
 #header a {
 color:#fff;
+}
+
+#header img {
+margin-left:300px;
 }
 
 #header ul {
