@@ -5,8 +5,12 @@ ActionController::Routing::Routes.draw do |map|
       m.data 'data', :action => 'data'
       m.logs 'logs', :action => 'logs'
     end
+    admin.resources :sentients, :only => [:index,:edit,:update]
+    admin.resources :humans, :only => [:index,:edit,:update]
     admin.resources :breeds, :only => [:index,:edit,:update]
     admin.resources :levels, :only => [:index,:edit,:update]
+    admin.resources :items, :only => [:index,:edit,:update]
+    admin.resources :occupations, :only => [:index,:edit,:update]
     
     admin.resources :activity_streams, :only => [:index], :collection => {:toggle => :put}
     admin.root :controller => 'main', :action => 'dashboard'
