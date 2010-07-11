@@ -56,6 +56,10 @@ color: #FFF;
 margin:5px 0 0 0;	
 }
 
+#header h4 {
+float:left;
+}
+
 #header h5 {
 float:right;
 font-style:italic;
@@ -84,10 +88,17 @@ margin-right:10px;
 }
 
 #header ul li a {
+background-color:#FF8C00;
 display:inline-block;
+font-size:10px;
 padding: 2px 5px 2px 5px;	
 text-align:center;
+text-decoration:none;
 width:35px;
+}
+
+#header ul li a:hover {
+background-color:#FFA500;
 }
 
 #header-profile {
