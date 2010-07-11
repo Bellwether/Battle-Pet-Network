@@ -50,6 +50,12 @@ font-size:38px;
 margin: 10px;
 }
 
+#header h5 {
+float:right;
+font-style:italic;
+margin-right: 3px;
+}
+
 #header a {
 color:#fff;
 }
@@ -74,6 +80,13 @@ margin-right:10px;
 #header-profile {
 float:right;	
 width:250px;
+}
+
+#header-stats label {
+width:25px;
+}
+#header-stats .graph {
+width:150px;	
 }
 
 #beta {
