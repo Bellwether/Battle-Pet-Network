@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.with_options :controller => 'main' do |m|
       m.dashboard 'dashboard', :action => 'dashboard'
+      m.data 'data', :action => 'data'
       m.logs 'logs', :action => 'logs'
     end
     admin.resources :activity_streams, :only => [:index], :collection => {:toggle => :put}

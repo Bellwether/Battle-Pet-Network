@@ -15,12 +15,18 @@
 	<nav><!-- top nav -->
 	  <div class="menu">
 	    <ul>
-		  <li><a href="#">Dashboard</a></li>
-		  <li><a href="#">Data</a></li>
+		  <li><%= link_to 'Dashboard', admin_root_path %></li>
+		  <li><%= link_to 'Data', admin_data_path %></li>
 		  <li><a href="#">Users</a></li>
+		  <li><a href="#">Commerce</a></li>
 		</ul>
 	  </div>
 	</nav>	
-    <%= yield %>
+	
+	<section id="main">
+	  <div id="content">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </body>

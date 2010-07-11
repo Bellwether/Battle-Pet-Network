@@ -97,7 +97,7 @@ module Combat
     set_outcome if respond_to?(:set_outcome)
     log_outcome
     combatants.each do |c| 
-      log_combatant_status(c)
+      log_combatant_status(c,'ended')
     end
     restore_combatants_condition
     save_combatants

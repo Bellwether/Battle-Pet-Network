@@ -4,6 +4,9 @@ class Admin::MainController < Admin::AdminController
   def dashboard
   end
   
+  def data
+  end
+  
   def logs
     Dir.glob("log/*.log")
     @log_file = ''

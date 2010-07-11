@@ -202,6 +202,30 @@ atomic_truffles:
   stock_cap: 50
   restock_rate: 10
 
+steak_tartare:  
+  Name: Steak Tartare  
+  description: It takes hours of violent ravaging to make tartare of one's prey, but the results are well worth it. Minced into tender morsels, this steak is a complete powerhouse of taste and fettle.
+  item_type: Food
+  power: 40
+  required_rank: 4
+  cost: 50
+  rarity: 200
+  stock: 25
+  stock_cap: 25
+  restock_rate: 10
+  
+hanger_steak:  
+  name: Hanger Steak  
+  description: Freshly torn from the throat of a hale beast, the hanger steak is a culinary treasure, a supreme meal rich and succulent, dripping with empowering red lifeforce. 
+  item_type: Food
+  power: 50
+  required_rank: 4
+  cost: 75
+  rarity: 200
+  stock: 25
+  stock_cap: 25
+  restock_rate: 10
+
 chocolate_chip_cookie:
   name: Chocolate Chip Cookie
   description: Made just for you, and totally uneaten. Nom, nom.

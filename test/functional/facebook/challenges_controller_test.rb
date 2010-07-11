@@ -71,6 +71,15 @@ class Facebook::ChallengesControllerTest  < ActionController::TestCase
     }
     assert_tag :tag => "form", :descendant => {:tag=>"input",:attributes=>{:type=>"checkbox",:name=>"attacker_strategy_attributes[status]"} }
   end
+
+  def test_edit_open
+    mock_user_facebooking(@user.facebook_id)
+    facebook_get :edit, :fb_sig_user => @user.facebook_id, :id => challenges(:burmese_open).id
+    assert_response :success
+    assert_template 'edit'
+    assert !assigns(:challenge).blank?
+    assert !assigns(:challenge).defender.blank?
+  end
   
   def test_create_1v1
     Challenge.destroy_all

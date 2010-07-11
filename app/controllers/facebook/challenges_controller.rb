@@ -1,5 +1,7 @@
 class Facebook::ChallengesController < Facebook::FacebookController
-  before_filter :ensure_application_is_installed_by_facebook_user, :ensure_has_pet
+  before_filter :ensure_application_is_installed_by_facebook_user
+  before_filter :ensure_has_pet
+  before_filter :ensure_combatant, :only => [:edit]
   
   def index
     @challenges = current_user_pet.challenges.issued.defending
@@ -56,7 +58,6 @@ class Facebook::ChallengesController < Facebook::FacebookController
   
   def edit
     @pet = current_user_pet
-    @challenge = current_user_pet.challenges.responding_to(params[:id])
     @gear = @pet.belongings.battle_ready
   end
   
@@ -81,5 +82,17 @@ class Facebook::ChallengesController < Facebook::FacebookController
     @challenge = current_user_pet.challenges.responding_to(params[:id])
     @opponent = (@challenge.attacker_id == current_user_pet.id) ? @challenge.defender : @challenge.attacker
     @history = Challenge.for_combatants(@pet.id, @opponent.id).resolved.excluding(@challenge.id).all(:limit => 12)
+  end
+  
+private
+
+  def ensure_combatant  
+    @challenge = Challenge.find_by_id(params[:id])
+    @challenge.defender ||= current_user_pet if @challenge.open?
+    
+    unless @challenge.open? || [@challenge.attacker_id,@challenge.defender_id].include?(current_user_pet.id)
+      render :file => "#{RAILS_ROOT}/public/401.html", :status => :unauthorized
+      return false
+    end
   end
 end

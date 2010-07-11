@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <statuses type="array">
 <status>
+  <created_at>Thu Jul 08 04:40:55 +0000 2010</created_at>
+  <id>18009407522</id>
+  <text>Mouse fight club! Thank you fisticuff science mice: http://tinyurl.com/3xvqhon</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>108645104</id>
+    <name>Battle Pet Network</name>
+    <screen_name>battlepet</screen_name>
+    <location>A world where pets rule</location>
+    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
+    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
+    <url>http://apps.facebook.com/battlecat</url>
+    <protected>false</protected>
+    <followers_count>34</followers_count>
+    <profile_background_color>9ae4e8</profile_background_color>
+    <profile_text_color>000000</profile_text_color>
+    <profile_link_color>0000ff</profile_link_color>
+    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+    <friends_count>136</friends_count>
+    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset>-36000</utc_offset>
+    <time_zone>Hawaii</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications></notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following></following>
+    <statuses_count>76</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+  </user>
+  <geo />
+  <coordinates />
+  <place />
+  <contributors />
+</status>
+<status>
   <created_at>Sun Jul 04 12:54:58 +0000 2010</created_at>
   <id>17718499752</id>
   <text>Hup hup huzzah, integrated forums are now in place; went with markdown for &quot;wysiwyg&quot; editing. Nothing fancy, but clean (and integrated).</text>
@@ -25,19 +71,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -71,19 +117,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -117,19 +163,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -163,19 +209,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -209,19 +255,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -255,19 +301,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -301,19 +347,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -347,19 +393,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -393,19 +439,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -439,19 +485,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -485,19 +531,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -531,19 +577,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -577,19 +623,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -623,19 +669,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -669,19 +715,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -715,19 +761,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
@@ -761,65 +807,19 @@
     <profile_link_color>0000ff</profile_link_color>
     <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
     <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
+    <friends_count>136</friends_count>
     <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
     <favourites_count>0</favourites_count>
     <utc_offset>-36000</utc_offset>
     <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
     <profile_background_tile>false</profile_background_tile>
     <profile_use_background_image>true</profile_use_background_image>
     <notifications></notifications>
     <geo_enabled>false</geo_enabled>
     <verified>false</verified>
     <following></following>
-    <statuses_count>75</statuses_count>
-    <lang>en</lang>
-    <contributors_enabled>false</contributors_enabled>
-  </user>
-  <geo />
-  <coordinates />
-  <place />
-  <contributors />
-</status>
-<status>
-  <created_at>Mon May 24 08:52:40 +0000 2010</created_at>
-  <id>14611376933</id>
-  <text>Latest rake test output: 188 tests, 932 assertions, 0 failures, 0 errors</text>
-  <source>web</source>
-  <truncated>false</truncated>
-  <in_reply_to_status_id></in_reply_to_status_id>
-  <in_reply_to_user_id></in_reply_to_user_id>
-  <favorited>false</favorited>
-  <in_reply_to_screen_name></in_reply_to_screen_name>
-  <user>
-    <id>108645104</id>
-    <name>Battle Pet Network</name>
-    <screen_name>battlepet</screen_name>
-    <location>A world where pets rule</location>
-    <description>The Battle Pet Network is a virtual pet combat game on Facebook and the iPhone</description>
-    <profile_image_url>http://a3.twimg.com/profile_images/789070933/bctwittericon_normal.jpg</profile_image_url>
-    <url>http://apps.facebook.com/battlecat</url>
-    <protected>false</protected>
-    <followers_count>34</followers_count>
-    <profile_background_color>9ae4e8</profile_background_color>
-    <profile_text_color>000000</profile_text_color>
-    <profile_link_color>0000ff</profile_link_color>
-    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
-    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
-    <friends_count>135</friends_count>
-    <created_at>Tue Jan 26 16:13:35 +0000 2010</created_at>
-    <favourites_count>0</favourites_count>
-    <utc_offset>-36000</utc_offset>
-    <time_zone>Hawaii</time_zone>
-    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
-    <profile_background_tile>false</profile_background_tile>
-    <profile_use_background_image>true</profile_use_background_image>
-    <notifications></notifications>
-    <geo_enabled>false</geo_enabled>
-    <verified>false</verified>
-    <following></following>
-    <statuses_count>75</statuses_count>
+    <statuses_count>76</statuses_count>
     <lang>en</lang>
     <contributors_enabled>false</contributors_enabled>
   </user>
