@@ -44,16 +44,11 @@ background: #3B5998 ;/*url(images/header.png) no-repeat right top;*/
 }
 
 #header h1 {
+color: #fff;
 display:inline-block;	
 float:left;
 font-size:38px;
 margin: 10px;
-}
-
-#header h1 {
-color: #fff;
-font-size: 18px;	
-margin:5px 0 3px 0;
 }
 
 #header h5 {
@@ -101,6 +96,11 @@ border:1px solid #FFF;
 display:inline-block;
 height:10px;
 width:100px;	
+}
+
+#header-stats .graph span {
+display:inline-block;
+height:10px;
 }
 
 #beta {
