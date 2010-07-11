@@ -51,6 +51,11 @@ font-size:38px;
 margin: 10px;
 }
 
+#header h2 {
+color: #FFF;
+margin:5px 0 5px 0;	
+}
+
 #header h5 {
 float:right;
 font-style:italic;
@@ -99,6 +104,7 @@ width:100px;
 }
 
 #header-stats .graph span {
+background-color: #627AAD;
 display:inline-block;
 height:10px;
 }
