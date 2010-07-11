@@ -72,10 +72,6 @@ module Facebook::FacebookHelper
   def render_tabs
     render(:partial => '/facebook/tabs')
   end
-
-  def render_dashboard_header
-    render(:partial => '/facebook/dashboard_header')
-  end
   
   def render_petless_callout
     render :partial => '/facebook/petless_callout' unless params[:controller]  == 'facebook/pets' && params[:action]  == 'new'

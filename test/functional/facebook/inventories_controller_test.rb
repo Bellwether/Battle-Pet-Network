@@ -96,7 +96,7 @@ class Facebook::InventoriesControllerTest  < ActionController::TestCase
       assert_no_difference 'Inventory.count' do    
         facebook_post :purchase, :fb_sig_user => pet.user.facebook_id, :shop_id => @shop.id, :id => inventory.id
         assert_response :success
-        assert assigns(:purchase_errors)
+        assert !assigns(:purchase_errors).blank?
       end
     end
     assert flash[:error]
