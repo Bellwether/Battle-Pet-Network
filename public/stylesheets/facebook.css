@@ -32,6 +32,18 @@ tr {
   color: #333333; 
 }
 
+#header {
+width: 740px;
+height: 125px;
+margin: 0 auto;
+background: #fff ;/*url(images/header.png) no-repeat right top;*/
+
+/* curved border radius */
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+	
+}
+
 #beta {
   font-size:10px;
   font-style:italic;	
