@@ -3,12 +3,13 @@
 
   <% if has_pet? %>
     <div>
-      <figure><%= avatar_image(current_user_pet,'large') %></figure>
+      <%= avatar_image(current_user_pet,'large') %>
       <h2><%= current_user_pet.name %></h2>
       <h5><%= "Level #{current_user_pet.level_rank_count} #{current_user_pet.breed.name}" %></h5>
       <ul>
 		<li><%= facebook_link_to 'Profile', profile_facebook_pet_path %></li>
 		<li><%= facebook_link_to 'Combat', combat_facebook_pet_path %></li>
+		<li><%= facebook_link_to 'Items', facebook_belongings_path %></li>
 	  </ul>
       <h4><%= "Kibble: #{current_user_pet.kibble}" %> <%= facebook_link_to 'Buy Kibble', premium_facebook_items_path %></h4>
     </div>
