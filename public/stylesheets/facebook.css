@@ -34,14 +34,21 @@ tr {
 
 #header {
 width: 740px;
-height: 125px;
+height: 90px;
 margin: 0 auto;
-background: #fff ;/*url(images/header.png) no-repeat right top;*/
+background: #3B5998 ;/*url(images/header.png) no-repeat right top;*/
 
 /* curved border radius */
 -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
-	
+}
+
+#header h1 {
+display:inline-block;	
+}
+
+#header-profile {
+float:right;	
 }
 
 #beta {

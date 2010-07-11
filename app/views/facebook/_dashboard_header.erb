@@ -2,7 +2,7 @@
   <h1><a>Battle Pet</a></h1>
 
   <% if has_pet? %>
-    <div>
+    <div id="header-profile">
       <%= avatar_image(current_user_pet,'large') %>
       <h2><%= current_user_pet.name %></h2>
       <h5><%= "Level #{current_user_pet.level_rank_count} #{current_user_pet.breed.name}" %></h5>
