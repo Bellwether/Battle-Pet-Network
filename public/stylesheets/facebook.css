@@ -44,7 +44,15 @@ background: #3B5998 ;/*url(images/header.png) no-repeat right top;*/
 }
 
 #header h1 {
+color:#fff;
 display:inline-block;	
+}
+
+#header ul {
+margin: 0;
+padding: 0;
+list-style: none;
+line-height: normal;
 }
 
 #header-profile {
