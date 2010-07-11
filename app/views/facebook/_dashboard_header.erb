@@ -10,12 +10,12 @@
 		<div id="header-stats">
 		  <label>Health: <%= "#{current_user_pet.current_health}/#{current_user_pet.total_health}" %></label>
 		  <span class="graph">
-			<span style="width:<%= 150*(current_user_pet.current_health/current_user_pet.total_health) %>px;"></span>
+			<span style="width:<%= 100*(current_user_pet.current_health/current_user_pet.total_health) %>px;"></span>
 		  </span>
 		  <br />
 		  <label>Endurance: <%= "#{current_user_pet.current_endurance}/#{current_user_pet.total_endurance}" %></label>
 		  <span class="graph">
-			<span style="width:<%= 150*(current_user_pet.current_endurance/current_user_pet.total_endurance) %>px;"></span>
+			<span style="width:<%= 100*(current_user_pet.current_endurance/current_user_pet.total_endurance) %>px;"></span>
 		  </span>
 		</div>
       </div>

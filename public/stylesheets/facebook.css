@@ -88,10 +88,13 @@ float:right;
 width:250px;
 }
 
-#header-stats label {
+#header label {
 color:#999;
-display:inline-block;
 font-size:10px;
+}
+
+#header-stats label {
+display:inline-block;
 font-weight:normal;
 width:105px;
 }
@@ -100,13 +103,14 @@ width:105px;
 border:1px solid #FFF;
 display:inline-block;
 height:10px;
+padding-bottom:1px;
 width:100px;	
 }
 
 #header-stats .graph span {
 background-color: #627AAD;
 display:inline-block;
-height:10px;
+height:9px;
 }
 
 #beta {
