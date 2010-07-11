@@ -8,12 +8,15 @@
       <h2><%= current_user_pet.name %></h2>
 	  <p>
 		<div id="header-stats">
-		  <span>Health:</span>
-		  <label><%= "#{current_user_pet.current_health}/#{current_user_pet.total_health}" %></label>
-		  <span class="graph"></span>
+		  <label>Health: <%= "#{current_user_pet.current_health}/#{current_user_pet.total_health}" %></label>
+		  <span class="graph">
+			<span width="<%= 150*(current_user_pet.current_health/current_user_pet.total_health) %>"></span>
+		  </span>
 		  <br />
-		  <span>Endurance:</span>
-		  <label><%= "#{current_user_pet.current_endurance}/#{current_user_pet.total_endurance}" %></label>
+		  <label>Endurance: <%= "#{current_user_pet.current_endurance}/#{current_user_pet.total_endurance}" %></label>
+		  <span class="graph">
+			<span width="<%= 150*(current_user_pet.current_endurance/current_user_pet.total_endurance) %>"></span>
+		  </span>
 		</div>
       </p>
       <ul>
