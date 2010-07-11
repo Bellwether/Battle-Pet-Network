@@ -6,7 +6,7 @@
       <figure><%= avatar_image(current_user_pet,'large') %></figure>
       <h2><%= current_user_pet.name %></h2>
       <h5><%= "Level #{current_user_pet.level_rank_count} #{current_user_pet.breed.name}" %></h5>
-      <h4><%= "Kibble: #{current_user_pet.kibble}" %> <%= facebook_link_to 'Buy Kibble' premium_facebook_items_path %></h4>
+      <h4><%= "Kibble: #{current_user_pet.kibble}" %> <%= facebook_link_to 'Buy Kibble', premium_facebook_items_path %></h4>
     </section>
   <% end %>
 </header>
