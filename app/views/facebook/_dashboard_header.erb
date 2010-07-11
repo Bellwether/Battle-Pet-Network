@@ -6,7 +6,7 @@
     <div id="header-profile">
       <h5><%= "Level #{current_user_pet.level_rank_count} #{current_user_pet.breed.name}" %></h5>
       <h2><%= current_user_pet.name %></h2>
-	  <p>
+	  <div>
 		<div id="header-stats">
 		  <label>Health: <%= "#{current_user_pet.current_health}/#{current_user_pet.total_health}" %></label>
 		  <span class="graph">
@@ -18,7 +18,7 @@
 			<span width="<%= 150*(current_user_pet.current_endurance/current_user_pet.total_endurance) %>"></span>
 		  </span>
 		</div>
-      </p>
+      </div>
       <ul>
 		<li><%= facebook_link_to 'Profile', profile_facebook_pet_path %></li>
 		<li><%= facebook_link_to 'Combat', combat_facebook_pet_path %></li>

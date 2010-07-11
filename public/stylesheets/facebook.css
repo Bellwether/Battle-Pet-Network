@@ -84,12 +84,16 @@ width:250px;
 
 #header-stats label {
 color:#999;
-width:100px;
+display:inline-block;
+font-size:10px;
+font-weight:normal;
+width:105px;
 }
 
 #header-stats .graph {
-height:24px;
-width:150px;	
+border:1px solid #FFF;
+height:14px;
+width:100px;	
 }
 
 #beta {
