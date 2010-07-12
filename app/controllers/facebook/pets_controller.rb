@@ -1,5 +1,5 @@
 class Facebook::PetsController < Facebook::FacebookController
-  before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show]
+  before_filter :ensure_application_is_installed_by_facebook_user, :except => [:index, :show, :new]
   before_filter :ensure_has_pet, :only => [:combat,:profile,:update,:destroy]
   before_filter :ensure_no_pet, :only => [:new,:create]  
   
