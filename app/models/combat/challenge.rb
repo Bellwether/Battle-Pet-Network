@@ -42,6 +42,14 @@ class Challenge < ActiveRecord::Base
     { :conditions => ["id NOT IN (?)", ids.is_a?(Array) ? ids : [ids] ] }
   }      
   
+  class << self
+    def find_for_defender(id, pet_id)
+      challenge = Challenge.find(id)
+      return challenge if challenge.defender_id.blank? || challenge.defender_id == pet_id
+      return nil
+    end
+  end
+  
   def after_initialize(*args)
     self.status ||= 'issued' if attributes.include?(:status)
   end

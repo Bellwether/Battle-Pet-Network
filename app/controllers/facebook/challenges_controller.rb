@@ -63,7 +63,7 @@ class Facebook::ChallengesController < Facebook::FacebookController
   
   def update
     @pet = current_user_pet
-    @challenge = current_user_pet.challenges.responding_to(params[:id])
+    @challenge = Challenge.find_for_defender( params[:id], @pet.id )
     @challenge.attributes = params[:challenge]
     @challenge.defender_strategy.combatant = @challenge.defender unless @challenge.defender_strategy.blank?
     

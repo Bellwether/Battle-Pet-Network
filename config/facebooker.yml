@@ -38,6 +38,7 @@ production:
   api_key: d697e44ba780627c9e5960c332828b29
   secret_key: f4f3b348a608bd51890c937bf8afe61d
   canvas_page_name: battlecat
+  callback_url: http://www.battlepet.net/facebook/
   pretty_errors: true
   set_asset_host_to_callback_url: true
   tunnel:
