@@ -20,7 +20,10 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :attacker_strategy, :allow_destroy => false
   accepts_nested_attributes_for :defender_strategy, :allow_destroy => false
   
-  validate :validates_different_combatants, :validates_no_existing_challenge, :validates_prowling, :validates_status_update
+  validate :validates_different_combatants
+  validate :validates_no_existing_challenge
+  validate :validates_prowling
+  validate :validates_status_update
   
   before_validation_on_create :set_challenge_type
   after_validation :log_refusal
@@ -43,10 +46,16 @@ class Challenge < ActiveRecord::Base
   }      
   
   class << self
-    def find_for_defender(id, pet_id)
-      challenge = Challenge.find(id)
-      return challenge if challenge.defender_id.blank? || challenge.defender_id == pet_id
-      return nil
+    def find_issued_for_defender(id, pet_id)
+      challenge = Challenge.issued.find_by_id(id)
+      if challenge && (challenge.defender_id.blank? || challenge.defender_id == pet_id)
+        challenge.defender_id = pet_id
+        return challenge 
+      else
+        return nil
+      end
+      
+      assign pet as defender if open
     end
   end
   

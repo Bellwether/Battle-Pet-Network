@@ -17,6 +17,11 @@ omega_rat_hunt:
       - r1
       - r2
       - r3
+      :status:
+        :entered:
+        - persian entered with x and y
+        :ended:
+        - persian ended with x and y
       :outcome: hunter defeated hunted
       :attacker_awards: 
         :experience: 

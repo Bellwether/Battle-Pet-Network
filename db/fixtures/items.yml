@@ -204,6 +204,15 @@ atomic_truffles:
 
 visceral_stew:  
   name: Visceral Stew  
+  description: A pool of warm animal visera bowled into a hearty meal, these stews contain the raw essence of life. They can be found naturally where ever life has chanced to expire on a pitted slab and tepid rainwater transformed it, or else boiled by a pet chef upon an open file, seasoned with salt and natural minerals.
+  item_type: Food
+  power: 30
+  required_rank: 3
+  cost: 50
+  rarity: 130
+  stock: 25
+  stock_cap: 25
+  restock_rate: 10
 
 steak_tartare:  
   Name: Steak Tartare  

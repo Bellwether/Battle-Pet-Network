@@ -105,4 +105,12 @@ class ChallengeTest < ActiveSupport::TestCase
     assert !challenge.save
     assert challenge.errors.on(:defender_strategy_id).include?("maneuvers cannot be empty")
   end
+  
+  def test_find_issued_for_defender
+    assert_nil Challenge.find_issued_for_defender(0, 0)
+    challenge = Challenge.find_issued_for_defender(challenges(:burmese_open).id, pets(:siamese).id)
+    assert_equal pets(:siamese).id, challenge.defender_id
+    assert Challenge.find_issued_for_defender(challenges(:siamese_persian_issued).id, pets(:persian).id)
+    assert_nil Challenge.find_issued_for_defender(challenges(:siamese_persian_issued).id, pets(:siamese).id)
+  end
 end
