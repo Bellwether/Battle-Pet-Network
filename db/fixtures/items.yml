@@ -237,6 +237,18 @@ hanger_steak:
   stock: 25
   stock_cap: 25
   restock_rate: 10
+  
+swan_goose:  
+  name: Swan Goose
+  description: This heavenly creature hides beneath its angelic feather mantle and noble wings an ample breast of the most succulent meat known in the kingdom of fowl.
+  item_type: Treat
+  power: 60
+  required_rank: 5
+  cost: 75
+  rarity: 300
+  stock: 10
+  stock_cap: 10
+  restock_rate: 5
 
 chocolate_chip_cookie:
   name: Chocolate Chip Cookie
