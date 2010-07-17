@@ -3,7 +3,7 @@
   <h4>Write Biography</h4>
   <p class="em">Your pet's history are personality are a mystery. Record their biography and earn Kibble stat bonuses for 
   their life's journeys.</p>
-  <p><span class="button"><%= facebook_link_to "Record Pet Biography", new_facebook_biography_path %></span></p>
+  <p><%= facebook_link_to "Record Pet Biography", new_facebook_biography_path, :class => 'button orange' %></p>
 </div>
 <% elsif pet.biography %>
 <div class="box slim biography">

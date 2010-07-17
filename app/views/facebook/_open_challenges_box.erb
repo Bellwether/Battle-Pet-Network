@@ -12,13 +12,17 @@
 			<br />
 			<span><%= "Level #{challenge.attacker.level_rank_count} #{challenge.attacker.breed.name}" %></span>
 			<br />
-			<div><span class="button"><%= facebook_link_to "Accept Challenge", edit_facebook_challenge_path(challenge) %></span></div>
+			<div>
+			  <%= facebook_link_to "Accept Challenge", 
+								   edit_facebook_challenge_path(challenge), 
+								   :class=>'button gray small' %>
+			</div>
 		  </div>
 		</li>
 	  <% end %>	
 	  </ul>
   <% end %>
   <% if has_pet? %>
-	 <p><span class="button"><%= facebook_link_to "Issue Open Challenge", open_facebook_challenges_path %></span></p>
+	 <p><%= facebook_link_to "Issue Open Challenge", open_facebook_challenges_path, :class => 'button green' %></p>
   <% end %>
 </div>
