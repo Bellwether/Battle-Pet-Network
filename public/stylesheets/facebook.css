@@ -130,6 +130,10 @@ position: relative;
 top: 1px;
 }
 
+.button.orange.small, .button.gray.small, .button.green.small {height:10px; width: 60px;}
+.button.orange.average, .button.gray.average, .button.green.average { height:12px; width: 100px;}
+.button.orange.large, .button.gray.large, .button.green.large { height:14px; width: 125px;}
+
 .button.orange {
 background: #f47c20;
 background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
