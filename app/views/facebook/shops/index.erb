@@ -31,9 +31,7 @@
   <div class="filters">
   	<% @shop_filter_types.each do |filter| %>
       <% filter_qs = params[:filters].include?(filter) ? @filters.delete(filter) : @filters.add(filter) %>
-      <span class="filter-button">
-        <%= facebook_link_to filter, facebook_shops_path, :filters => filter_qs, :search => params[:search] %>
-      </span>
+      <%= facebook_link_to filter, facebook_shops_path, :filters => filter_qs, :search => params[:search], :class => 'button small orange' %>
     <% end %>
   </div>
 

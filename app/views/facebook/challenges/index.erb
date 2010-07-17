@@ -44,8 +44,8 @@
 		  <td><label>Level <%= c.attacker.level_rank_count %><%= c.attacker.breed.name %></label></td>
 		  <td><label>Record: <% c.attacker.battle_record %></label></td>
 		  <td>
-			<span class="right button"><%= facebook_link_to "Decline", refuse_facebook_challenge_path(c) %></span>
-			<span class="left button"><%= facebook_link_to "Accept", edit_facebook_challenge_path(c) %></span>
+			<%= facebook_link_to "Decline", refuse_facebook_challenge_path(c), :class => 'right button small gray' %></span>
+			<%= facebook_link_to "Accept", edit_facebook_challenge_path(c), :class => 'left button small green' %></span>
 		  </td>
 		</tr>
 	  </tbody>	

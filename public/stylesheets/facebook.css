@@ -116,7 +116,7 @@ cursor: pointer;
 text-align: center;
 text-decoration: none;
 font: 14px/100% Arial, Helvetica, sans-serif;
-padding: .5em 2em .55em;
+padding: .3em 1em .3em;
 text-shadow: 0 1px 1px rgba(0,0,0,.3);
 -webkit-border-radius: .7em;
 -moz-border-radius: .7em;
@@ -131,9 +131,9 @@ position: relative;
 top: 1px;
 }
 
-.button.orange.small, .button.gray.small, .button.green.small {height:10px; width: 60px;}
-.button.orange.average, .button.gray.average, .button.green.average { height:12px; width: 100px;}
-.button.orange.large, .button.gray.large, .button.green.large { height:14px; width: 125px;}
+.button.orange.small, .button.gray.small, .button.green.small {font-size:10px; height:10px; width: 60px;}
+.button.orange.average, .button.gray.average, .button.green.average { font-size:12px; height:12px; width: 100px;}
+.button.orange.large, .button.gray.large, .button.green.large { font-size:14px; height:14px; width: 125px;}
 
 .button.orange {
 background: #f47c20;
