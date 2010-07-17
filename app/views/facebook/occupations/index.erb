@@ -15,9 +15,7 @@
 		  <%= avatar_image(o,'medium') %>
 		  <% if o.cost > 0 && o.pet_can?(current_user_pet) %>
 			<p>
-			  <span class="occupation-button">
-			  <%= facebook_link_to "Perform (#{o.cost}K)", attempt_facebook_occupation_path(0) %>)
-			  </span>
+			  <%= facebook_link_to "Perform (#{o.cost}K)", attempt_facebook_occupation_path(0), :class => 'button orange' %>)
 			</p>
 		  <% elsif o.cost > 0 %>
 			<p class="em">Too Tired</p>
