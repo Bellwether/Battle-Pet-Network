@@ -180,7 +180,6 @@ background: -moz-linear-gradient(top,  #98FB98,  #90EE90);
 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#98FB98', endColorstr='#90EE90');
 }
 
-
 	
 /* html */
 
@@ -284,27 +283,6 @@ tr {
 .footer-links li { display: inline;	font-size: 9px; text-align: center;}
 
 /* buttons */
-
-a.button {
-  display:block;
-  background-position: 6px;
-  background-repeat:no-repeat;
-  font-weight:bold;
-  font-family: Trebuchet MS, Tahoma, sans-serif;
-  font-size: 0.7em;
-  text-decoration:none;
-  text-indent:30px;
-  color:#555555;
-  background-color:#EAEAD7;
-  border:#CCCCCC solid 1px;
-  height:30px;
-  line-height:30px;
-}
-
-a.button:hover{
-  background-color:#F3F3E9;
-  color:#737373;
-}
 
 .delete {
   background-image:url('../images/ui/delete.png');
