@@ -26,7 +26,7 @@ module Facebook::ItemsHelper
             "<tr><td><label>Rarity: <span>#{item.cost}</span></td></tr>" <<
             "<tr><td><label>Cost: <span>#{item.cost}</span></td></tr>"
             
-    html = html + "<tr><td colspan='3'><em>#{item.description}</em></td></tr>" if options[:descriptio]
+    html = html + "<tr><td colspan='3'><em>#{item.description}</em></td></tr>" if options[:description]
     concat(html)
     if proc
       concat("<tfoot><tr><td colspan='3'>")
