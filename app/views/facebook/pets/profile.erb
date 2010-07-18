@@ -158,9 +158,7 @@
   <% unless @items.blank? %>	
     <% cell_table(@items, 4, :class => "belongings") do |i,idx| %>
 	    <td>
-		  <% item_badge(i.item) do %>	
-			<%= link_to_belonging(i) %>
-		  <% end %>
+		  <% item_badge(i.item) %>	
 		</td>
     <% end %>
   <% else %>
