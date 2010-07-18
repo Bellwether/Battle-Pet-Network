@@ -26,28 +26,18 @@
 
   <% cell_table(@inventory) do |i,idx| %>
     <td>
-	  <table class="item">
-		<tr><th colspan="2"><%= i.item.name %></th></tr>
-		<tr>
-		  <td rowspan="4"><%= avatar_image(i.item, 'small') %></td>
-		  <td>
-			<% if has_pet? %>
-			  <% if current_user_pet.kibble >= i.cost %>
-		      <%= facebook_link_to "Buy for #{i.cost}K",
-								   purchase_facebook_shop_inventory_path(@shop,i.id), 
-								   :method => :post, 
-								   :class => 'button green small' %>
-			  <% elsif current_user_pet.kibble < i.cost %>
-			    <label>Cost: <%= i.cost %>K <span class="em empty">Too Expensive</span></label>
-			  <% end %>
-			<% end %>
-		  </td>	
-		</tr>
-		<tr><td><label>Type: <%= i.item.item_type %></label></td></tr>
-		<tr><td><label>Power: <%= i.item.power %></label></td></tr>
-		<tr><td><label>Required Level: <%= i.item.required_rank %></label></td></tr>
-		<tr><td class="em" colspan="2"><%= i.item.description %></td></tr>
-	  </table>	
+	  <% item_badge(i, :description => true) do %>	
+		<% if has_pet? %>
+		  <% if current_user_pet.kibble >= i.cost %>
+	        <%= facebook_link_to "Buy for #{i.cost}K",
+							   purchase_facebook_shop_inventory_path(@shop,i.id), 
+							   :method => :post, 
+							   :class => 'button green small' %>
+		  <% elsif current_user_pet.kibble < i.cost %>
+		    <label>Cost: <%= i.cost %>K <span class="em empty">Too Expensive</span></label>
+		  <% end %>
+		<% end %>
+	  <% end %>	
 	</td>
   <% end %>
   <p class="center"><%= will_paginate @inventory %></p>
