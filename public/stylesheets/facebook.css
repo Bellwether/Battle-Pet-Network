@@ -204,6 +204,7 @@ table.item img {
 border:3px solid #C0C0C0;
 padding:2px;	
 }
+table.item thead td {line-height:9px;}
 table.item label {
 cursor:default;	
 font-size:10px;
