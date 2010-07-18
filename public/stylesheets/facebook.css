@@ -185,29 +185,29 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#98FB98', end
 /* ITEMS */
 /*********************************/
 	
-table.item	{
+table.badge	{
 border:1px solid #2F4F4F;
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
 }
-table.item thead th {	
+table.badge thead th {	
 background-color:#2F4F4F;
 color:#fff;
 padding:2px 5px;
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
 }	
-table.item img {
+table.badge img {
 border:3px solid #C0C0C0;
 padding:2px;	
 }
-table.item td {line-height:9px;}
-table.item label {
+table.badge td {line-height:9px;}
+table.badge label {
 cursor:default;	
 font-size:10px;
 font-weight:normal;	
 }
-table.item label span {font-weight:bold;}
+table.badge label span {font-weight:bold;}
 
 /* html */
 

@@ -9,24 +9,30 @@ module Facebook::ItemsHelper
       "</table>"
   end
   
-  def item_badge(item, &proc)
-    html = "<table class='item'>" <<
+  def item_badge(item, *args, &proc)
+    options = args.last.is_a?(Hash) ? args.pop : {}
+    html = "<table class='badge'>" <<
            "<thead>" <<
               "<tr><th colspan='3'>#{item.name}</th></tr>" <<
             "</thead>" <<
-              "<tbody>" <<
-              "<tr>" <<
-                "<td rowspan='4'>" <<
-                avatar_image(item,'small') <<
-                "</td>" <<
-                "<td><label>Type: <span>#{item.item_type}</span></td>" <<
-              "</tr>" <<
-              "<tr><td><label>Power: <span>#{item.power}</span></td></tr>" <<
-              "<tr><td><label>Rarity: <span>#{item.cost}</span></td></tr>" <<
-              "<tr><td><label>Cost: <span>#{item.cost}</span></td></tr>"
+            "<tbody>" <<
+            "<tr>" <<
+              "<td rowspan='4'>" <<
+              avatar_image(item,'small') <<
+              "</td>" <<
+              "<td><label>Type: <span>#{item.item_type}</span></td>" <<
+            "</tr>" <<
+            "<tr><td><label>Power: <span>#{item.power}</span></td></tr>" <<
+            "<tr><td><label>Rarity: <span>#{item.cost}</span></td></tr>" <<
+            "<tr><td><label>Cost: <span>#{item.cost}</span></td></tr>"
             
-    concat("#{html}<tfoot>")
-    proc.call(item) if proc
-    concat("</tfoot></table>")
+    html = html + "<tr><td colspan='3'><em>#{item.description}</em></td></tr>" if options[:descriptio]
+    concat(html)
+    if proc
+      concat("<tfoot><tr><td colspan='3'>")
+      proc.call(item)
+      concat("</tr></td></tfoot>")
+    end
+    concat("</table>")
   end
 end
