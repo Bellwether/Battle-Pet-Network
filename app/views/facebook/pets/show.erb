@@ -75,13 +75,7 @@
   <h4>Battle Gear</h4>
   <p class="em"><%= @pet.name %> is equipped for battle.</p>
   <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
-    <td class='battle-gear'>
-	  <%= avatar_image(b.item,'small') %>
-	  <br />
-	  <label class="strong"><%= b.item.name %></label> 
-	  <br />
-	  <label class="em">Power: <%= b.item.power %></label>
-    </td>
+    <td><% item_badge(b.item) %></td>
   <% end %>
 </div>
 <% end %>

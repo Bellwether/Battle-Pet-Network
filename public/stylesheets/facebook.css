@@ -180,6 +180,20 @@ color: #2E8B57;
 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#98FB98', endColorstr='#90EE90');
 }
 
+
+
+/*********************************/
+/* ITEMS */
+/*********************************/
+	
+table.item	{
+background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#fff));
+background: -moz-linear-gradient(top,  #000,  #fff);
+	
+}
+	
+	
+	
 	
 /* html */
 
@@ -187,11 +201,6 @@ a {outline: none;}
 
 select {max-width:200px;}
 input {max-width:125px;}
-
-h2 {
-  font-size: 15px;
-  margin: 5px 0 10px 0;	
-}
 
 tr {
   vertical-align: top;	
