@@ -114,10 +114,10 @@ height:9px;
 #title h2 {
 color: #4682B4;
 background-color: #fff;
-text-shadow: 2px 2px 2px #5F9EA0;
-font-size: 16px;
+font-size: 20px;
+margin:3px 0 10px;
+text-shadow: 1px 1px 2px #5F9EA0;
 }
-
 
 /*********************************/
 /* BUTTONS */
