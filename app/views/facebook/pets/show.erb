@@ -64,8 +64,8 @@
 	    </div>
 	  <% end %>
     </p>
-    <%= facebook_link_to 'Message', new_facebook_message_path(:pet_id => @pet.id), :class => "button orange" %>
     <%= facebook_link_to "Challenge to Battle", new_facebook_pet_challenge_path(@pet), :class => "button orange" %>
+    <%= facebook_link_to 'Message', new_facebook_message_path(:pet_id => @pet.id), :class => "button orange" %>
   </div>
   <% end %>
 </div>
