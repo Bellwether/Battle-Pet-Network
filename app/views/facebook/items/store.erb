@@ -33,7 +33,7 @@
 			    <%= facebook_link_to "Buy for #{i.cost}K",
 									 purchase_facebook_item_path(i.id), 
 									:method => :post, 
-									:class => 'button green small' ) %>
+									:class => 'button green small' %>
 			  <% elsif i.stock == 0 %>
 			    <label>Cost: <%= i.cost %>K <span class="em empty">Out of Stock</span></label>
 			  <% elsif current_user_pet.kibble < i.cost %>
