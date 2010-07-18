@@ -32,8 +32,9 @@ font-size:10px;
 #header h5 {
 color: #FFF;
 float:right;
+font-size:9px;
 font-style:italic;
-margin: 5px 8px 0 0;
+margin: 2px 8px 0 0;
 }
 
 #header a {
@@ -192,8 +193,10 @@ border:1px solid #C0C0C0;
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
 }
-table.item thead {	
-background-color:#C0C0C0;
+table.item thead th {	
+background-color:#2F4F4F;
+color:#fff;
+padding:2px 5px;
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
 }	
