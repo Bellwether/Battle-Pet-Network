@@ -106,6 +106,19 @@ display:inline-block;
 height:9px;
 }
 
+
+/*********************************/
+/* CONTENT */
+/*********************************/
+
+#title h2 {
+color: #4682B4;
+background-color: #fff;
+text-shadow: 2px 2px 2px #5F9EA0;
+font-size: 16px;
+}
+
+
 /*********************************/
 /* BUTTONS */
 /*********************************/
