@@ -16,7 +16,7 @@ module Facebook::ItemsHelper
             "</thead>" <<
               "<tbody>" <<
               "<tr>" <<
-                "<td colspan='4'>" <<
+                "<td rowspan='4'>" <<
                 avatar_image(item,'small') <<
                 "</td>" <<
                 "<td><label>Type: <span>#{item.item_type}</span></td>" <<
