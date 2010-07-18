@@ -12,7 +12,7 @@ module Facebook::ItemsHelper
   def item_badge(item, &proc)
     html = "<table class='item'>" <<
            "<thead>" <<
-              "<tr><th>#{item.name}</th></tr>" <<
+              "<tr><th colspan='3'>#{item.name}</th></tr>" <<
             "</thead>" <<
               "<tbody>" <<
               "<tr>" <<

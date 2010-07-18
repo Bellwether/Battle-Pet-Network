@@ -192,16 +192,21 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to
 background-image: -moz-linear-gradient(top,  #000,  #fff);
 border:1px solid #C0C0C0;
 }
-table.item thead	{	
+table.item thead {	
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
 }	
-
 table.item img {
 border:3px solid #C0C0C0;
 padding:2px;	
 }
-	
+table.item label {
+cursor:default;	
+font-size:10px;
+font-weight:normal;	
+}
+table.item label span {font-weight:bold;}
+
 /* html */
 
 a {outline: none;}
