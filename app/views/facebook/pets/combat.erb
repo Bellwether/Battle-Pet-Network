@@ -98,7 +98,7 @@
   <p class="em">You can equip items from your <%= facebook_link_to 'belongings', facebook_belongings_path %> to aid you in battle</p>
   <% cell_table(@pet.belongings.battle_ready,4) do |b,idx| %>
     <td>
-	  <% item_badge(i.item) %>
+	  <% item_badge(b.item) %>
     </td>
   <% end %>
 </div>
