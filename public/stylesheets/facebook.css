@@ -207,8 +207,8 @@ border:1px solid #2F4F4F;
 .long-badge {
 border:1px solid #2F4F4F;
 margin-bottom:12px;
--moz-border-radius: 8px 0 8px 0;
--webkit-border-radius: 8px 0 8px 0
+-moz-border-radius: 10px 0 10px 0;
+-webkit-border-radius: 10px 0 10px 0
 }
 
 .long-badge thead th a {
@@ -226,8 +226,8 @@ padding:2px 5px;
 }
 
 .long-badge thead th {	
--moz-border-radius: 8px 0 8px 0;
--webkit-border-radius: 8px 0 8px 0
+-moz-border-radius: 10px 0 10px 0;
+-webkit-border-radius: 10px 0 10px 0
 }
 	
 .badge img, .long-badge img {

@@ -1,7 +1,7 @@
 module Facebook::SentientsHelper
   def sentient_badge(sentient, *args, &proc)
     options = args.last.is_a?(Hash) ? args.pop : {}
-    html = "<table class='long badge'>" <<
+    html = "<table class='long-badge'>" <<
            "<thead>" <<
               "<tr><th colspan='3'>#{sentient.name}</th></tr>" <<
             "</thead>" <<
