@@ -3,7 +3,7 @@ module Facebook::SentientsHelper
     options = args.last.is_a?(Hash) ? args.pop : {}
     html = "<table class='long-badge'>" <<
            "<thead>" <<
-              "<tr><th colspan='3'>#{sentient.name}</th></tr>" <<
+              "<tr><th colspan='3'>#{facebook_link_to(sentient.name, facebook_sentient_path(sentient))}</th></tr>" <<
             "</thead>" <<
             "<tbody>" <<
             "<tr>" <<
