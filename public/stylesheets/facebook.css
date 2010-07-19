@@ -198,26 +198,26 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#98FB98', end
 /* BADGES */
 /*********************************/
 	
-table.badge	{
+.badge	{
 border:1px solid #2F4F4F;
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
 }
 
-long.badge {
+.long-badge {
 border:1px solid #2F4F4F;
 margin-bottom:12px;
 -moz-border-radius: 8px 0 8px 0;
 -webkit-border-radius: 8px 0 8px 0
 }
 
-long.badge thead th a {
+.long-badge thead th a {
 color:#fff;
 font-size:16px;	
 text-decoration:none;
 }
 
-table.badge thead th {	
+.badge thead th, .long-badge thead th {	
 background-color:#2F4F4F;
 color:#fff;
 padding:2px 5px;
@@ -225,22 +225,22 @@ padding:2px 5px;
 -webkit-border-radius: 5px 5px 0 0
 }
 
-long-badge thead th {	
+.long-badge thead th {	
 -moz-border-radius: 8px 0 8px 0;
 -webkit-border-radius: 8px 0 8px 0
 }
 	
-table.badge img {
+.badge img, .long-badge img {
 border:3px solid #C0C0C0;
 padding:2px;	
 }
-table.badge td {line-height:9px;}
-table.badge label {
+.badge td, .long-badge td {line-height:9px;}
+.badge label, .long-badge label {
 cursor:default;	
 font-size:10px;
 font-weight:normal;	
 }
-table.badge label span {font-weight:bold;}
+.badge label span, .long-badge label span {font-weight:bold;}
 
 
 
