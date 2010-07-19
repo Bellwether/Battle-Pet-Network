@@ -1,20 +1,15 @@
 <% content_for :page_title do %><h2>The Sentient Threat</h2><% end %>
 
-<div class="sidebox slim right">
-  <%= render_hunts_box @hunts unless !has_pet? || @hunts.blank? %>
-</div>
-
-<div class="box">
+<div class="box full">
 <p class="em">
   <em>The world remains a dangerous battleground, inhabited by noble pets as well as populations of vicious predators, 
   mindless animals, mutants, feral humans, and worse. These beasts are known as 'sentients' and must be hunted down and 
   destroyed by vigilant pets like yours.</em>
 </p>
-<p class="em">
-  Hunting sentients works just like normal battle, except that combat is resolved immediately and instead of 
-  experience your pet is rewarded in Kibble for fighting the sentient menace. It's a great way to earn Kibble and 
-  safeguard your community.
-</p>
+</div>
+
+<div class="sidebox slim right">
+  <%= render_hunts_box @hunts unless !has_pet? || @hunts.blank? %>
 </div>
 
 <div class="box">
