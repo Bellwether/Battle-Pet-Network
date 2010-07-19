@@ -124,7 +124,7 @@ text-shadow: 1px 1px 2px #5F9EA0;
 /*********************************/
 
 .button {
-	color: #fff;
+color: #fff;
 display: inline-block;
 outline: none;
 cursor: pointer;
@@ -206,8 +206,15 @@ border:1px solid #2F4F4F;
 
 table.long.badge {
 border:1px solid #2F4F4F;
+margin-bottom:12px;
 -moz-border-radius: 5px 0 5px 0;
 -webkit-border-radius: 5px 0 5px 0
+}
+
+table.long.badge thead th a {
+color:#fff;
+font-size:16px;	
+text-decoration:none;
 }
 
 table.badge thead th {	

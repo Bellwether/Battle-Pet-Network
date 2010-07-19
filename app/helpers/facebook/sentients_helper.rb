@@ -8,10 +8,10 @@ module Facebook::SentientsHelper
             "<tbody>" <<
             "<tr>" <<
               "<td rowspan='4'>" <<
-              avatar_image(sentient,'small') <<
+              avatar_image(sentient,'medium') <<
               "</td>" <<
               "<td><label>Health: <span>#{sentient.health}</span></td>" <<
-              "<td><em>#{sentient.description}</em></td>" <<
+              "<td rowspan='4'><em>#{sentient.description}</em></td>" <<
             "</tr>" <<            
             "<tr><td><label>Endurance: <span>#{sentient.endurance}</span></td></tr>" <<
             "<tr><td><label>Power: <span>#{sentient.power}</span></td></tr>" <<
