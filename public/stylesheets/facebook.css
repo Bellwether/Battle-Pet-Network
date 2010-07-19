@@ -204,14 +204,14 @@ border:1px solid #2F4F4F;
 -webkit-border-radius: 5px 5px 0 0
 }
 
-table.long.badge {
+long.badge {
 border:1px solid #2F4F4F;
 margin-bottom:12px;
--moz-border-radius: 5px 0 5px 0;
--webkit-border-radius: 5px 0 5px 0
+-moz-border-radius: 8px 0 8px 0;
+-webkit-border-radius: 8px 0 8px 0
 }
 
-table.long.badge thead th a {
+long.badge thead th a {
 color:#fff;
 font-size:16px;	
 text-decoration:none;
@@ -223,7 +223,13 @@ color:#fff;
 padding:2px 5px;
 -moz-border-radius: 5px 5px 0 0;
 -webkit-border-radius: 5px 5px 0 0
-}	
+}
+
+long-badge thead th {	
+-moz-border-radius: 8px 0 8px 0;
+-webkit-border-radius: 8px 0 8px 0
+}
+	
 table.badge img {
 border:3px solid #C0C0C0;
 padding:2px;	
